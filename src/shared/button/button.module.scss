@@ -1,0 +1,21 @@
+.button {
+  background: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 24px;
+  &--primary {
+    background-color: $green;
+    padding: 14px 36px;
+    color: $white;
+  }
+  &--secondary {
+    background-color: $black;
+    padding: 14px 36px;
+    color: $white;
+  }
+  &--icon {
+    padding: 14px 14px;
+    background-color: transparent;
+    color: $primary;
+  }
+}
