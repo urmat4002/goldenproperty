@@ -1,0 +1,19 @@
+$white:    #fff !default;
+$black:    #000 !default;
+
+$primary: $black;
+
+$min-width: 320px;
+$max-width: 1920px;
+
+$max-width-container: 1170px;
+$container-padding: 32px;
+
+// first breakpoint trigger width
+$container-width: $max-width-container + $container-padding;
+
+// break point
+$pc: em($container-width);
+$tablet: em(991.98);
+$mobile: em(767.98);
+$small-mobile: em(479.98);
