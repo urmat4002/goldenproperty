@@ -3,16 +3,14 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  > main {
-    flex: 1 1 auto;
-  }
+  font-family: $font-main;
 }
 
 [class*='__container'] {
-  max-width: $max-width-container;
+  max-width: 1170;
   box-sizing: content-box;
   margin: 0px auto;
-  padding: 0px $container-padding;
+  padding: 0px 32px;
 }
 
 %smoothscroll {

@@ -17,8 +17,8 @@ export const Button: FC<ButtonProps> = ({
       className={`${style.button} ${typesButton}`}
       onClick={onClick}
     >
-      {content}
       {children}
+      {content}
     </button>
   );
 };

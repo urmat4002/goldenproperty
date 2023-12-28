@@ -1,6 +1,9 @@
 @import '../../app/style/variables';
 
 .button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: none;
   border-radius: 6px;
   cursor: pointer;
