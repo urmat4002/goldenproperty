@@ -1,7 +1,10 @@
+import HeroRoom from "../widget/hero/hero-room/hero-room";
 
 const Room = () => {
   return (
-    <div>Room</div>
+    <div>
+      <HeroRoom />
+    </div>
   )
 }
 

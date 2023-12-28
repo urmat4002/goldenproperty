@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import style from './header.module.scss';
-import Navbar from '../../entities/navbar/navbar';
+import Navbar from '../../features/navbar/navbar';
 import { Button } from '../../shared/button/button';
 import { WhatsApp } from '../../shared/icons/whats-app';
 import { GuldemLogo } from '../../shared/icons/guldem-logo';
