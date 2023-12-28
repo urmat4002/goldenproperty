@@ -1,4 +1,4 @@
-import Search from '../../shared/search/search';
+import Search from '../../../shared/search/search';
 import style from './hero.module.scss';
 
 const Hero = () => {
