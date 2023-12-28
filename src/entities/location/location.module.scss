@@ -1,0 +1,12 @@
+@import '../../app/style/variables';
+
+.locate {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: $black;
+  &__text {
+    font-size: $font-size-p;
+    font-weight: $font-medium;
+  }
+}
