@@ -1,0 +1,55 @@
+@import '../../app/style/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  &__img {
+    height: 442px;
+    width: 376px;
+    background-color: $gray;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    &_top {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      h4 {
+        font-size: $font-size-h4;
+        line-height: $line-height-h4;
+        font-weight: $font-regular;
+      }
+    }
+    &_bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+  &__divider {
+    width: 100%;
+    background-color: $gray;
+    height: 1px;
+  }
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  &__button_wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid $gray;
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 8px;
+    width: 100%;
+    border-right: 1px solid $gray;
+  }
+}
