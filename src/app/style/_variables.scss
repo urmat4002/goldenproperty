@@ -1,10 +1,37 @@
+// colors
 $white:    #fff !default;
 $black:    #000 !default;
 $green:    #26925e !default;
 
+$font-main: 'Montserrat', sans-serif;
+
+// font-size headlines
+$font-size-h1: 64px;
+$font-size-h2: 48px;
+$font-size-h3: 32px;
+$font-size-h4: 24px;
+$font-size-h5: 20px;
+$font-size-h6: 18px;
+$font-size-p: 16px;
+
+// font line-height headlines
+$line-height-h1: 80px;
+$line-height-h2: 64px;
+$line-height-h3: 48px;
+$line-height-h4: 36px;
+$line-height-h5: 30px;
+$line-height-h6: 28px;
+$line-height-p: 24px;
+
+// font weight headlines
+$font-bold: 80px;
+$font-semibold: 64px;
+$font-medium: 48px;
+$font-regular: 36px;
+
+// width & container
 $min-width: 320px;
 $max-width: 1920px;
-
 $max-width-container: 1170px;
 $container-padding: 32px;
 

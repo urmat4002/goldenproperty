@@ -1,0 +1,10 @@
+.nav {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  &__item {
+    cursor: pointer;
+  }
+}
