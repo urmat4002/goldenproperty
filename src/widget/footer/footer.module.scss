@@ -1,0 +1,57 @@
+@import '../../app/style/variables';
+
+.footer {
+  background: $background-footer;
+  padding: 86px 0;
+  &__container {
+    max-width: 1170;
+    box-sizing: content-box;
+    margin: 0px auto;
+    padding: 0px 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  h1 {
+    color: $white;
+    font-family: 'Montserrat Alternates';
+    font-size: $font-size-h2;
+  }
+  &__right {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    color: $white;
+    h2 {
+      font-size: $font-size-h4;
+      font-weight: $font-semibold;
+      color: $white;
+    }
+    a {
+      color: $white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      span {
+        font-size: $font-size-p;
+        font-weight: $font-semibold;
+      }
+    }
+  }
+  &__contact {
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    margin-top: 82px;
+  }
+}
