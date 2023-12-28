@@ -1,8 +1,7 @@
 @import '../../../app/style/variables';
 
-.igh {
-  width: 100%;
-  padding: 82px 0;
+.details {
+  margin: 82px 0;
   &__container {
     max-width: 1170px;
     box-sizing: content-box;
@@ -24,34 +23,27 @@
       color: $black;
     }
   }
-  &__img {
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-  }
-  &__img_wrapper {
+  &__content {
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: 32px;
   }
-  &__img_item {
-    height: 440px;
+  &__image {
+    height: 520px;
     width: 100%;
     background-color: $gray;
     border-radius: 24px;
-    position: relative;
     img {
-      width: 100%;
+      border-radius: 24px;
+      height: 100%;
       width: 100%;
     }
-    h3 {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      font-size: $font-size-h3;
-      color: $white;
+  }
+  &__right {
+    width: 100%;
+    p {
+      font-size: 18px;
+      line-height: 31.89px;
     }
   }
 }
