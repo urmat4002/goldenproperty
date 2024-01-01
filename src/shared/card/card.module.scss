@@ -5,9 +5,14 @@
   flex-direction: column;
   gap: 16px;
   &__img {
-    height: 442px;
-    width: 376px;
+    height: 446px;
+    width: 372px;
     background-color: $gray;
+    img {
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+    }
   }
   &__content {
     display: flex;
