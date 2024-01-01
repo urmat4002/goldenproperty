@@ -1,4 +1,4 @@
-import CardList from '../../../features/card-list/card-list';
+import CardList from '../../../features/card-list-catalog/card-list-catalog';
 import style from './catalog.module.scss';
 
 const Catalog = () => {
@@ -8,7 +8,7 @@ const Catalog = () => {
         <CardList />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Catalog;

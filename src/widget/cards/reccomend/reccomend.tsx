@@ -1,4 +1,4 @@
-import { Card } from '../../../shared/card/card';
+import CardListReccomend from '../../../features/card-list-reccomend/card-list-reccomend';
 import style from './reccomend.module.scss';
 
 const Reccomend = () => {
@@ -9,13 +9,11 @@ const Reccomend = () => {
           <h3>You might like</h3>
         </div>
         <div className={style.reccomend__wrapper}>
-          <Card />
-          <Card />
-          <Card />
+          <CardListReccomend />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Reccomend
+export default Reccomend;
