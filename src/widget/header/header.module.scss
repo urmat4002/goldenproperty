@@ -12,4 +12,9 @@
     align-items: center;
     justify-content: space-between;
   }
+  &__options {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
 }
