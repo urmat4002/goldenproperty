@@ -1,8 +1,8 @@
 import { Card } from '../../shared/card/card';
 import { CardProps } from '../../shared/card/types/card.types';
-import style from './card-list.module.scss';
+import style from './card-list-catalog.module.scss';
 
-const CardList = () => {
+const CardListCatalog = () => {
   const db: CardProps[] = [
     {
       id: 0,
@@ -38,4 +38,4 @@ const CardList = () => {
   );
 };
 
-export default CardList;
+export default CardListCatalog;
