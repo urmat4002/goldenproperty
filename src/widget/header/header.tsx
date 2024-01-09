@@ -4,6 +4,7 @@ import Navbar from '../../features/navbar/navbar';
 import { Button } from '../../shared/button/button';
 import { WhatsApp } from '../../shared/icons/whats-app';
 import { GuldemLogo } from '../../shared/icons/guldem-logo';
+import { LangSelect } from '../../shared/lang-select/lang-select'
 
 
 const Header: FC = () => {
@@ -15,6 +16,7 @@ const Header: FC = () => {
         </div>
         <Navbar />
         <div className={style.header__options}>
+          <LangSelect />
           <Button
             types="primary"
             content='Связатся с нами'>
