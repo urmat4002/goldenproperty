@@ -3,7 +3,6 @@ import style from './header.module.scss';
 import Navbar from '../../features/navbar/navbar';
 import { Button } from '../../shared/button/button';
 import { WhatsApp } from '../../shared/icons/whats-app';
-import { NavMenu } from '../../shared/icons/nav-menu/nav-menu';
 import { GuldemLogo } from '../../shared/icons/guldem-logo/guldem-logo';
 
 
@@ -16,16 +15,18 @@ const Header: FC = () => {
         </div>
         <Navbar />
         <div className={style.header__options}>
-          <NavMenu />
           <Button
+            href="https://api.whatsapp.com/send/?phone=996700871222&text=Здравствуйте%2C+у+меня+есть+вопрос"
+            type="link"
             types="primary"
-            content='Связатся с нами'>
-            <WhatsApp color='white' size={32}/>
+            content="Связатся с нами"
+          >
+            <WhatsApp color="white" size={32} />
           </Button>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
