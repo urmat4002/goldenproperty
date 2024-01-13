@@ -1,6 +1,6 @@
 import style from './image-grid-home.module.scss';
-import { Right } from '../../../shared/icons/rightLeft/right';
-import { Left } from '../../../shared/icons/rightLeft/left';
+import { Right } from '../../../shared/icons/right-left/right';
+import { Left } from '../../../shared/icons/right-left/left';
 
 const ImageGridHome = () => {
   return (
