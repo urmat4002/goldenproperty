@@ -23,4 +23,13 @@
     background-color: transparent;
     color: $black;
   }
+  @media all and (max-width: 479.98px) {
+    block-size: 37px;
+    border-radius: 50px;
+    box-shadow: 0.10000000149011612px 1px 8px 0px #3FB12D;
+
+    p{
+      display: none;
+    }
+  }
 }

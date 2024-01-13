@@ -1,3 +1,4 @@
+@import "../../app/style/variables";
 
 .header {
   width: 100%;
@@ -11,5 +12,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  &__options{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  @media all and (max-width:479.98px){
+    background: #333333;
+    padding: 0 0;
   }
 }

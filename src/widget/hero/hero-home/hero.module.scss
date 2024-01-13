@@ -14,11 +14,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    @media all and (max-width:479.98px){
+      display: flex;
+      padding: 0 20px;
+    }
   }
   &__title {
     color: $white;
     font-size: $font-size-h1;
     font-weight: $font-bold;
     line-height: $line-height-h1;
+    @media all and (max-width:479.98px){
+      font-size: $font-size-h1;
+      line-height: $line-height-h2;
+
+    }
   }
+  
 }
