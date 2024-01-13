@@ -13,4 +13,13 @@
     align-items: center;
     justify-content: space-between;
   }
+  &__options{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  @media all and (max-width: 479.98px) {
+    padding: 0px 0;
+    background: #333333;
+  }
 }

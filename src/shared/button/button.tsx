@@ -20,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
         onClick={onClick}
       >
         {children}
-        {content}
+        <p>{content}</p>
       </a>
     );
   }
