@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface ButtonProps {
   type?: 'button' | 'reset' | 'submit' | 'link';
-  types?: 'primary' | 'secondary' | 'icon';
+  types?: 'primary' | 'secondary' | 'icon' | 'link';
   state?: string;
   content?: string;
   isDisabled?: boolean;
