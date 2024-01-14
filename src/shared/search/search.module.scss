@@ -7,6 +7,10 @@
     display: flex;
     min-height: 60px;
     gap: 2px;
+    @media all and (max-width: 479.98px){
+      display: grid;
+      gap: 15px;
+    }
   }
 
   &__form {
@@ -17,11 +21,15 @@
     padding: 0 24px;
     gap: 4px;
     background: $white;
+    @media all and (max-width: 479.98px){
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0px 2.594665050506592px 2.594665050506592px 0px #00000040;
+    }
   }
 
   &__input {
     width: 100%;
-
     &::placeholder {
       color: $gray;
     }
@@ -36,6 +44,9 @@
     padding: 0 24px;
     background: $white;
     cursor: pointer;
+    @media all and (max-width: 479.98px){
+      display: none;
+    }
   }
 
   &__button {
@@ -50,6 +61,16 @@
     padding: 0 24px;
     &:hover {
       background: $white;
+    }
+    @media all and (max-width: 479.98px){
+      height: $line-height-h2;
+      border-radius: 20px;
+      background: rgba(175, 175, 175, 0.5);
+    }
+  }
+  @media all and (max-width: 479.98px){
+    &__icon{
+      width: 35px;
     }
   }
 }

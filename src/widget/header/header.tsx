@@ -3,8 +3,9 @@ import style from './header.module.scss';
 import Navbar from '../../features/navbar/navbar';
 import { Button } from '../../shared/button/button';
 import { WhatsApp } from '../../shared/icons/whats-app';
-import { GuldemLogo } from '../../shared/icons/guldem-logo';
-import { LangSelect } from '../../shared/lang-select/lang-select';
+import { GuldemLogo } from '../../shared/icons/guldem-logo/guldem-logo';
+import { NavMenu } from '../../shared/icons/nav-menu/nav-menu';
+
 
 const Header: FC = () => {
   return (
@@ -15,7 +16,7 @@ const Header: FC = () => {
         </div>
         <Navbar />
         <div className={style.header__options}>
-          <LangSelect />
+          <NavMenu />
           <Button
             href="https://api.whatsapp.com/send/?phone=996700871222&text=Здравствуйте%2C+у+меня+есть+вопрос"
             type="link"

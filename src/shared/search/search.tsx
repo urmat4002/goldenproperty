@@ -6,7 +6,7 @@ const Search = () => {
     <div className={style.search}>
       <div className={style.search__container}>
         <div className={style.search__form}>
-          <SearchIcon color="#b9bcbe" />
+          <SearchIcon color="#b9bcbe" className={style.search__icon}/>
           <input
             className={style.search__input}
             type="text"
