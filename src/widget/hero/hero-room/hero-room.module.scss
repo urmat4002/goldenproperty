@@ -11,6 +11,9 @@
     display: flex;
     flex-direction: column;
     gap: 56px;
+    @media all and (max-width: 479.98px){
+      gap: 20px;
+    }
   }
   &__wrapper {
     width: 100%;
@@ -85,5 +88,38 @@
     color: $white;
     font-size: $font-size-p;
     font-weight: $font-medium;
+    @media all and (max-width: 479.98px){
+      position: absolute;
+      top: 800px;
+      left: 205px;
+      font-size: 13px;
+      font-weight: $font-regular;
+      background-color: rgba(0, 0, 0, 0.61);
+      box-shadow: 0px 3.524752378463745px 3.524752378463745px 0px rgba(0, 0, 0, 0.4);
+    }
+    @media all and (max-width: 460.98px){
+      left: 186px;
+    }
+    @media all and (max-width: 440.98px){
+      left: 170px;
+    }
+    @media all and (max-width: 430.98px){
+      left: 160px;
+    }
+    @media all and (max-width: 418.98px){
+      left: 140px;
+    }
+    @media all and (max-width: 395.98px){
+      left: 125px;
+    }
+    @media all and (max-width: 380.98px){
+      left: 110px;
+    }
+  }
+  @media all and (max-width: 479.98px){
+    margin: 50px 0;
+  }
+  @media all and (max-width:479.98px) {
+    
   }
 }
