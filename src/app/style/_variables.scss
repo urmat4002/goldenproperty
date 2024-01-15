@@ -43,5 +43,5 @@ $container-width: $max-width-container + $container-padding;
 // break point
 $pc: em($container-width);
 $tablet: em(991.98);
-$mobile: em(767.98);
-$small-mobile: em(479.98);
+$mobile: 767.98px;
+$small-mobile: 479.98px;
