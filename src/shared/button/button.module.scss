@@ -32,4 +32,11 @@
     background-color: transparent;
     color: $black;
   }
+  @media all and (max-width: 479.98px) {
+    block-size: 37px;
+    border-radius: 50px;
+    p{
+      display: none;
+    }
+  }
 }
