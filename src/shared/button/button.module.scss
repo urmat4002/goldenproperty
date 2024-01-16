@@ -13,6 +13,14 @@
     padding: 14px 36px;
     color: $white;
     text-decoration: none;
+    @media all and (max-width: $small-mobile) {
+      border-radius: 50px;
+      box-shadow: 0.10000000149011612px 1px 8px 0px #3FB12D;
+      padding: 8px;
+      p{
+        display: none;
+      }
+    }
   }
   &--secondary {
     background-color: $black;
