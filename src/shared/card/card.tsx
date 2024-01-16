@@ -6,7 +6,8 @@ import { WhatsApp } from '../icons/whats-app';
 import style from './card.module.scss';
 import { CardProps } from './types/card.types';
 
-export const Card: FC<CardProps> = ({ title, location, price, img, type }) => {
+export const Card: FC<CardProps> = (props) => {
+  const { title, location, price, img, type } = props;
   return (
     <div className={style.card}>
       <div className={style.card__img}>
@@ -41,7 +42,7 @@ export const Card: FC<CardProps> = ({ title, location, price, img, type }) => {
               </Button>
             </div>
             <div className={style.card__button}>
-              <Button href="catalog.pdf" download type="link" types="link">
+              <Button href="catalog.pdf" type="link" types="link">
                 <Download />
               </Button>
             </div>
