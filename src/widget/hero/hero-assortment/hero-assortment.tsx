@@ -1,4 +1,4 @@
-import { ChevronDown, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import style from './hero-assortment.module.scss';
 import { Select } from '../../../shared/select/select';
 import { useState } from 'react';
@@ -8,17 +8,19 @@ const HeroAssortment = () => {
     { label: 'Дубай', value: 1 },
     { label: 'Станбул', value: 2 },
     { label: 'Анталия', value: 3 },
-    { label: 'Анталия', value: 3 },
+    { label: 'Анталия', value: 4 },
   ];
   const types = [
     { label: 'Популярное', value: 1 },
     { label: 'Новое', value: 2 },
     { label: 'Вторичка', value: 3 },
-    { label: 'Вторичка', value: 3 },
+    { label: 'Вторичка', value: 4 },
+    { label: 'Вторичка', value: 4 },
+    { label: 'Вторичка', value: 4 },
   ];
 
+  const [search, setSearch] = useState('');
   const [city, setCity] = useState<(typeof cities)[0] | undefined>(cities[0]);
-
   const [sort, setSort] = useState<(typeof types)[0] | undefined>(types[0]);
 
   return (
@@ -52,7 +54,11 @@ const HeroAssortment = () => {
             </div>
             <div className={style.ha__search_input}>
               <Search />
-              <input type="text" placeholder="Search" />
+              <input
+                onChange={(e) => setSearch(e.target.value)}
+                type="text"
+                placeholder="Search"
+              />
             </div>
           </div>
         </div>
