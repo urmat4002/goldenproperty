@@ -25,8 +25,8 @@
     justify-content: flex-start;
     align-items: center;
     h2 {
-      font-size: $font-size-h2;
-      line-height: $line-height-h2;
+      font-size: $fsz-mb-title-h2;
+      line-height: $lh-mb-title-h2;
       font-weight: $font-semibold;
       color: $black;
     }
@@ -35,36 +35,16 @@
     display: flex;
     flex-direction: column;
     gap: 26px;
-    @media all and (max-width:479.98px) {
+    @media all and (max-width: $mobile) {
       position: relative;
       right: 355px;
-    }
-    @media all and (max-width:454px) {
-      position: relative;
-      right: 340px;
-    }
-    @media all and (max-width:434px) {
-      position: relative;
-      right: 330px;
-    }
-    @media all and (max-width:420px) {
-      position: relative;
-      right: 320px;
-    }
-    @media all and (max-width:407px) {
-      position: relative;
-      right: 310px;
-    }
-    @media all and (max-width:396px) {
-      position: relative;
-      right: 300px;
     }
   }
   &__img_wrapper {
     display: flex;
     align-items: center;
     gap: 26px;
-    @media all and (max-width: 479.98px){
+    @media all and (max-width: $mobile){
       display: flex;
       align-items: flex-end;
     }
@@ -72,7 +52,7 @@
   &__img_item {
     height: 440px;
     width: 100%;
-    background-color: $gray;
+    background-color: $system-gray;
     border-radius: 24px;
     position: relative;
     img {
@@ -85,10 +65,10 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      font-size: $font-size-h3;
+      font-size: $fsz-mb-title-h3;
       color: $white;
     }
-    @media all and (max-width: 479.98px) {
+    @media all and (max-width: $mobile) {
       height: 320px;
       width: 120%;
     }
@@ -96,7 +76,7 @@
   &__img_item_mb {
     height: 440px;
     width: 100%;
-    background-color: $gray;
+    background-color: $system-gray;
     border-radius: 24px;
     position: relative;
     display: none;
@@ -110,10 +90,10 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      font-size: $font-size-h3;
+      font-size: $fsz-mb-title-h3;
       color: $white;
     }
-    @media all and (max-width: 479.98px){
+    @media all and (max-width: $mobile){
       display: block;
       width: 120%;
       height: 380px;
@@ -122,7 +102,7 @@
   &__img_item_pc {
     height: 440px;
     width: 100%;
-    background-color: $gray;
+    background-color: $system-gray;
     border-radius: 24px;
     position: relative;
     img {
@@ -135,16 +115,16 @@
       left: 50%;
       transform: translate(-50%, -50%);
       display: block;
-      font-size: $font-size-h3;
+      font-size: $fsz-mb-title-h3;
       color: $white;
     }
-    @media all and (max-width:479.98px){
+    @media all and (max-width: $mobile){
       display: none;
     }
   }
   &__left_right{
     display: none;
-    @media all and (max-width: 479.98px){
+    @media all and (max-width: $mobile){
       display: block;
     }
   }

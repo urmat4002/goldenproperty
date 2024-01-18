@@ -31,7 +31,7 @@
   &__input {
     width: 100%;
     &::placeholder {
-      color: $gray;
+      color: $system-gray;
     }
   }
 
@@ -39,7 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: $gray;
+    color: $system-gray;
     width: 40%;
     padding: 0 24px;
     background: $white;
@@ -62,13 +62,13 @@
     &:hover {
       background: $white;
     }
-    @media all and (max-width: 479.98px){
-      height: $line-height-h2;
+    @media all and (max-width: $mobile){
+      height: $lh-headline-h2;
       border-radius: 20px;
-      background: rgba(175, 175, 175, 0.5);
+      background: $system-gray-02;
     }
   }
-  @media all and (max-width: 479.98px){
+  @media all and (max-width: $mobile){
     &__icon{
       width: 35px;
     }

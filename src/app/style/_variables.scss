@@ -1,31 +1,59 @@
-// colors
-$white:    #fff !default;
-$black:    #000 !default;
-$green:    #26925e !default;
-$gray:     #b9bcbe !default;
-$background-footer: #697077 !default;
+// System color
+$white:			     #ffffff !default;
+$black:			     #2C2C2E !default;
+
+$system-red:   	 #FF3B30 !default;
+$system-orange:  #FF9500 !default;
+$system-yellow:  #FFCC00 !default;
+$system-green:   #34C759 !default;
+$system-teal:	   #5AC8FA !default;
+$system-blue:	   #007AFF !default;
+$system-indigo:  #5856D6 !default;
+$system-purple:  #AF52DE !default;
+$system-pink:    #FF2D55 !default;
+
+$system-gray:		 #8E8E93 !default;
+$system-gray-02: #AEAEB2 !default;
+$system-gray-03: #C7C7CC !default;
+$system-gray-04: #D1D1D6 !default;
+$system-gray-05: #E5E5EA !default;
+$system-gray-05: #F2F2F7 !default;
 
 $font-main: 'Montserrat', sans-serif;
 
 // font-size headlines
-$font-size-h1: 64px;
-$font-size-h2: 48px;
-$font-size-h3: 32px;
-$font-size-h4: 24px;
-$font-size-h5: 20px;
-$font-size-h6: 18px;
-$font-size-p: 16px;
+$fsz-headline-h1: 64px;
+$fsz-headline-h2: 48px;
+// font-size mobile
+$fsz-mb-title-regular: 34px;
+$fsz-mb-title-h1: 28px;
+$fsz-mb-title-h2: 22px;
+$fsz-mb-title-h3: 20px;
+$fsz-mb-headline: 17px;
+$fsz-mb-body: 17px;
+$fsz-mb-callout: 16px;
+$fsz-mb-subheadline: 15px;
+$fsz-mb-footnote: 13px;
+$fsz-mb-caption-01: 12px;
+$fsz-mb-caption-02: 11px;
 
-// font line-height headlines
-$line-height-h1: 80px;
-$line-height-h2: 64px;
-$line-height-h3: 48px;
-$line-height-h4: 36px;
-$line-height-h5: 30px;
-$line-height-h6: 28px;
-$line-height-p: 24px;
+// line-height headlines
+$lh-headline-h1: 80px;
+$lh-headline-h2: 64px;
+// line-height mobile
+$lh-mb-title-regular: 41px;
+$lh-mb-title-h1: 34px;
+$lh-mb-title-h2: 28px;
+$lh-mb-title-h3: 25px;
+$lh-mb-headline: 22px;
+$lh-mb-body: 22px;
+$lh-mb-callout: 21px;
+$lh-mb-subheadline: 20px;
+$lh-mb-footnote: 18px;
+$lh-mb-caption-01: 16px;
+$lh-mb-caption-02: 13px;
 
-// font weight headlines
+// font-weight headlines
 $font-bold: 700;
 $font-semibold: 600;
 $font-medium: 500;
@@ -41,7 +69,7 @@ $container-padding: 32px;
 $container-width: $max-width-container + $container-padding;
 
 // break point
-$pc: em($container-width);
-$tablet: em(991.98);
+$pc: $container-width;
+$tablet: 991.98px;
 $mobile: 767.98px;
 $small-mobile: 479.98px;

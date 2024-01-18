@@ -17,8 +17,8 @@
     justify-content: center;
     align-items: center;
     h2 {
-      font-size: $font-size-h3;
-      line-height: $line-height-h3;
+      font-size: $fsz-mb-title-h3;
+      line-height: $lh-mb-title-h3;
       font-weight: $font-semibold;
       color: $black;
     }
@@ -29,8 +29,8 @@
     align-items: center;
     gap: 32px;
     &_text {
-      font-size: $font-size-p;
-      line-height: $line-height-p;
+      font-size: $fsz-mb-body;
+      line-height: $lh-mb-body;
       font-weight: $font-regular;
       color: $black;
     }

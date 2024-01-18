@@ -2,7 +2,7 @@
 
 .hero {
   width: 100%;
-  background-color: $gray;
+  background-color: $system-gray;
   &__container {
     max-width: 1170px;
     min-height: 785px;
@@ -14,21 +14,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    @media all and (max-width:479.98px){
+    @media all and (max-width: $mobile){
       display: flex;
       padding: 0 20px;
     }
   }
   &__title {
     color: $white;
-    font-size: $font-size-h1;
+    font-size: $fsz-mb-title-h1;
     font-weight: $font-bold;
-    line-height: $line-height-h1;
-    @media all and (max-width:479.98px){
-      font-size: $font-size-h1;
-      line-height: $line-height-h2;
-
+    line-height: $lh-mb-title-h1;
+    @media all and (max-width: $mobile){
+      font-size: $fsz-mb-title-h2;
+      line-height: $lh-mb-title-h2;
     }
   }
-  
 }

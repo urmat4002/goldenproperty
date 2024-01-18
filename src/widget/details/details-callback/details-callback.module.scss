@@ -15,12 +15,12 @@
     align-items: center;
     gap: 18px;
     h3 {
-      font-size: $font-size-h3;
+      font-size: $fsz-mb-title-h3;
       font-weight: $font-semibold;
       text-align: center;
     }
     p {
-      font-size: $font-size-p;
+      font-size: $fsz-mb-body;
       font-weight: $font-regular;
     }
   }
