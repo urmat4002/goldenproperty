@@ -1,11 +1,10 @@
 import { FC } from 'react';
-import style from './header.module.scss';
 import Navbar from '../../features/navbar/navbar';
-import { Button } from '../../shared/button/button';
-import { WhatsApp } from '../../shared/icons/whats-app';
-import { GuldemLogo } from '../../shared/icons/guldem-logo/guldem-logo';
-import { NavMenu } from '../../shared/icons/nav-menu/nav-menu';
-
+import { Button } from '../../shared/ui/button/button';
+import { GuldemLogo } from '../../shared/ui/icons/guldem-logo/guldem-logo';
+import { NavMenu } from '../../shared/ui/icons/nav-menu/nav-menu';
+import { WhatsApp } from '../../shared/ui/icons/whats-app';
+import style from './header.module.scss';
 
 const Header: FC = () => {
   return (

@@ -1,5 +1,5 @@
-import { Card } from '../../shared/card/card';
-import { CardProps } from '../../shared/card/types/card.types';
+import { Card } from '../../shared/ui/card/card';
+import { CardProps } from '../../shared/ui/card/types/card.types';
 import style from './card-list-reccomend.module.scss';
 
 const CardListReccomend = () => {

@@ -3,14 +3,13 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  font-family: $font-main;
+  font-family: $base-font-family;
 }
 
 [class*='__container'] {
-  max-width: 1170px;
-  box-sizing: content-box;
-  margin: 0px auto;
-  padding: 0px 32px;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $container-padding;
 }
 
 %smoothscroll {

@@ -16,12 +16,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    h3 {
-      font-size: $fsz-mb-title-h3;
-      line-height: $lh-mb-title-h3;
-      font-weight: $font-medium;
-      color: $black;
-    }
   }
   &__wrapper {
     display: flex;

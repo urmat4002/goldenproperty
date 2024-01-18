@@ -1,10 +1,11 @@
 import { Download, PhoneCall } from 'lucide-react';
 import { FC } from 'react';
-import { Location } from '../../entities/location/location';
+import { Location } from '../../../entities/location/location';
 import { Button } from '../button/button';
 import { WhatsApp } from '../icons/whats-app';
 import style from './card.module.scss';
 import { CardProps } from './types/card.types';
+import { Typography } from '../typography/typography'
 
 export const Card: FC<CardProps> = (props) => {
   const { title, location, price, img, type } = props;
@@ -15,7 +16,10 @@ export const Card: FC<CardProps> = (props) => {
       </div>
       <div className={style.card__content}>
         <div className={style.card__content_top}>
-          <h4 className={style.card__title}>Serena Living Tower</h4>
+          <Typography variant='h4' weight='regular'>
+            Serena Living Tower
+          </Typography>
+
           <Location place={location} />
           <span className={style.card__type}>
             <p>{type}</p>

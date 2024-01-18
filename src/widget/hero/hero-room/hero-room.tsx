@@ -1,6 +1,8 @@
 import { Download } from 'lucide-react';
 import { Location } from '../../../entities/location/location';
 import style from './hero-room.module.scss';
+import { Typography } from '../../../shared/ui/typography/typography'
+import { Button } from '../../../shared/ui/button/button'
 
 const HeroRoom = () => {
   return (
@@ -8,7 +10,7 @@ const HeroRoom = () => {
       <div className={style.hr__container}>
         <div className={style.hr__wrapper}>
           <div className={style.hr__title}>
-            <h2>Serena Living Tower</h2>
+            <Typography variant='h2' weight='bold'>Serena Living Tower</Typography>
           </div>
           <div className={style.hr__images}>
             <div className={style.hr__images__main}>
@@ -27,12 +29,12 @@ const HeroRoom = () => {
         <div className={style.hr__bottom}>
           <Location place='Serenia Living' />
           <span className={style.hr__type}>
-            <p>Penthaus</p>
+            <Typography variant='label' weight='regular'>Penthaus</Typography>
           </span>
-          <button className={style.hr__download}>
+          <Button>
             Download catalogue
             <Download />
-          </button>
+          </Button>
         </div>
       </div>
     </div>

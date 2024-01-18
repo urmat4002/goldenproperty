@@ -1,75 +1,54 @@
-// System color
-$white:			     #ffffff !default;
-$black:			     #2C2C2E !default;
+// Container Dimensions
+$container-max-width: 1200px;
+$container-padding: 16px;
 
-$system-red:   	 #FF3B30 !default;
-$system-orange:  #FF9500 !default;
-$system-yellow:  #FFCC00 !default;
-$system-green:   #34C759 !default;
-$system-teal:	   #5AC8FA !default;
-$system-blue:	   #007AFF !default;
-$system-indigo:  #5856D6 !default;
-$system-purple:  #AF52DE !default;
-$system-pink:    #FF2D55 !default;
+// Typography
+$base-font-family: 'Montserrat', sans-serif;
+$base-font-size: 1rem;
+$base-line-height: 1.5;
 
-$system-gray:		 #8E8E93 !default;
-$system-gray-02: #AEAEB2 !default;
-$system-gray-03: #C7C7CC !default;
-$system-gray-04: #D1D1D6 !default;
-$system-gray-05: #E5E5EA !default;
-$system-gray-05: #F2F2F7 !default;
+$heading-font-family: 'Inter', sans-serif;
+$heading1-font-size: 2rem;
+$heading2-font-size: 1.8rem;
+$heading3-font-size: 1.6rem;
+$heading4-font-size: 1.4rem;
+$heading5-font-size: 1.2rem;
 
-$font-main: 'Montserrat', sans-serif;
+$regular-weight: 400;
+$bold-weight: 700;
 
-// font-size headlines
-$fsz-headline-h1: 64px;
-$fsz-headline-h2: 48px;
-// font-size mobile
-$fsz-mb-title-regular: 34px;
-$fsz-mb-title-h1: 28px;
-$fsz-mb-title-h2: 22px;
-$fsz-mb-title-h3: 20px;
-$fsz-mb-headline: 17px;
-$fsz-mb-body: 17px;
-$fsz-mb-callout: 16px;
-$fsz-mb-subheadline: 15px;
-$fsz-mb-footnote: 13px;
-$fsz-mb-caption-01: 12px;
-$fsz-mb-caption-02: 11px;
+// Responsive Typography
+$mobile-font-size: 14px;
+$tablet-font-size: 18px;
+$desktop-font-size: $base-font-size;
 
-// line-height headlines
-$lh-headline-h1: 80px;
-$lh-headline-h2: 64px;
-// line-height mobile
-$lh-mb-title-regular: 41px;
-$lh-mb-title-h1: 34px;
-$lh-mb-title-h2: 28px;
-$lh-mb-title-h3: 25px;
-$lh-mb-headline: 22px;
-$lh-mb-body: 22px;
-$lh-mb-callout: 21px;
-$lh-mb-subheadline: 20px;
-$lh-mb-footnote: 18px;
-$lh-mb-caption-01: 16px;
-$lh-mb-caption-02: 13px;
+// Line Heights
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
 
-// font-weight headlines
-$font-bold: 700;
-$font-semibold: 600;
-$font-medium: 500;
-$font-regular: 400;
+// Colors
+$white: #ffffff !default;
+$black: #2c2c2e !default;
 
-// width & container
-$min-width: 320px;
-$max-width: 1920px;
-$max-width-container: 1170px;
-$container-padding: 32px;
+// System Colors
+$system-red: #ff3b30 !default;
+$system-orange: #ff9500 !default;
+$system-yellow: #ffcc00 !default;
+$system-green: #34c759 !default;
+$system-teal: #5ac8fa !default;
+$system-blue: #007aff !default;
+$system-indigo: #5856d6 !default;
+$system-purple: #af52de !default;
+$system-pink: #ff2d55 !default;
 
-// first breakpoint trigger width
-$container-width: $max-width-container + $container-padding;
+$system-gray: #8e8e93 !default;
+$system-gray-02: #aeaeb2 !default;
+$system-gray-03: #c7c7cc !default;
+$system-gray-04: #d1d1d6 !default;
+$system-gray-05: #e5e5ea !default;
+$system-gray-06: #f2f2f7 !default;
 
-// break point
-$pc: $container-width;
-$tablet: 991.98px;
-$mobile: 767.98px;
-$small-mobile: 479.98px;
+// Media Query Breakpoints
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1024px;

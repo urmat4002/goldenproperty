@@ -1,12 +1,13 @@
-import { Mail, Phone, Facebook, Instagram } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
+import { WhatsApp } from '../../shared/ui/icons/whats-app';
 import style from './footer.module.scss';
-import { WhatsApp } from '../../shared/icons/whats-app';
+import { Typography } from '../../shared/ui/typography/typography'
 
 const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footer__container}>
-        <h1>Gulsdem</h1>
+        <Typography variant='h1' weight='regular'>Gulsdem</Typography>
         <div className={style.footer__center}>
           <div>
             <ul>
@@ -34,14 +35,14 @@ const Footer = () => {
         </div>
         <div className={style.footer__right}>
           <div className={style.footer__link}>
-            <h2>Contact us:</h2>
+            <Typography variant='h2' weight='bold'>Contact us:</Typography>
             <a href="info@gulsdem.com">
               <Mail />
-              <span>info@gulsdem.com</span>
+              <Typography variant='caption' weight='regular'>info@gulsdem.com</Typography>
             </a>
             <a href="tel:9021267890900">
               <Phone />
-              <span>+90 (212) 67890900</span>
+              <Typography variant='caption' weight='regular'>+90 (212) 67890900</Typography>
             </a>
           </div>
           <div className={style.footer__contact}>
@@ -52,7 +53,7 @@ const Footer = () => {
               <Instagram />
             </a>
             <a href="#">
-              <WhatsApp color="white" size={28}/>
+              <WhatsApp color="white" size={28} />
             </a>
           </div>
         </div>

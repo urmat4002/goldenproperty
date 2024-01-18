@@ -1,4 +1,5 @@
 @import '../../../app/style/variables';
+@import '../../../app/style/mixins';
 
 .details {
   margin: 82px 0;
@@ -15,18 +16,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    h2 {
-      font-size: $fsz-mb-title-h2;
-      line-height: $lh-mb-title-h2;
-      font-weight: $font-semibold;
-      color: $black;
-    }
   }
   &__content {
     display: flex;
     align-items: center;
     gap: 32px;
-    @media all and (max-width: $mobile){
+    @include tablet {
       display: flex;
       flex-direction: column;
     }
@@ -41,15 +36,11 @@
       height: 100%;
       width: 100%;
     }
-    @media all and (max-width: $mobile){
+    @include tablet {
       height: 420px;
     }
   }
   &__right {
     width: 100%;
-    p {
-      font-size: $fsz-mb-body;
-      line-height: $lh-mb-body;
-    }
   }
 }

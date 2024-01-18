@@ -1,10 +1,10 @@
-@import '../../app/style/variables';
+@import '../../../app/style/variables';
 
 .input-wrapper {
   margin-top: 20px;
   input {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: $base-font-size;
+    font-weight: $regular-weight;
     width: 100%;
     color: $black;
     background: $white;
@@ -14,8 +14,8 @@
     outline: none;
     &::placeholder {
       border: none;
-      font-size: 16px;
-      font-weight: 400;
+      font-size: $base-font-size;
+      font-weight: $regular-weight;
       color: $black;
     }
     &:focus {

@@ -16,35 +16,17 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    h3 {
-      font-size: $fsz-mb-title-h3;
-      line-height: $lh-mb-title-h3;
-      font-weight: $font-semibold;
-      color: $black;
-    }
   }
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
-    &_text {
-      font-size: $fsz-mb-body;
-      line-height: $lh-mb-body;
-      font-weight: $font-regular;
-      color: $black;
-    }
   }
   &__caption {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 12px;
-    &_text {
-      font-size: $fsz-mb-headline;
-      line-height: $lh-mb-headline;
-      font-weight: $font-medium;
-      color: $black;
-    }
   }
 }

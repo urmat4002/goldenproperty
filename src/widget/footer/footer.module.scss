@@ -1,4 +1,5 @@
 @import '../../app/style/variables';
+@import '../../app/style/mixins';
 
 .footer {
   background: $black;
@@ -12,24 +13,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    @media all and (max-width: $mobile){
-
-    }
-  }
-  h1 {
-    color: $white;
-    font-family: 'Montserrat Alternates';
-    font-size: $fsz-mb-title-h2;
-    margin-top: 45px;
-    @media all and (max-width: $mobile){
-      font-size: $fsz-mb-headline;
-      font-family: $font-main;
-      font-weight: 300;
-      margin-top: 0;
-    }
-    @media all and (max-width: $mobile){
-      font-size: $fsz-mb-body;
-    }
   }
   &__center{
     display: flex;
@@ -39,21 +22,18 @@
       flex-direction: column;
       gap: 30px;
       color: $white;
-      @media all and (max-width: $mobile){
+      @include tablet {
         gap: 10px;
       }
     }
     li{
       list-style-type: none;
-      @media all and (max-width: $mobile){
-        font-size: $fsz-mb-body;
+      @include tablet {
+        font-size: 16px;
       }
     }
-    @media all and (max-width: $mobile){
+    @include tablet {
       gap: 30px;
-      li{
-        font-size: $fsz-mb-subheadline;
-      }
     }
   }
   &__right {
@@ -67,21 +47,12 @@
     align-items: flex-start;
     gap: 14px;
     color: $white;
-    h2 {
-      font-size: $fsz-mb-callout;
-      font-weight: $font-semibold;
-      color: $white;
-    }
     a {
       color: $white;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 26px;
-      span {
-        font-size: $fsz-mb-body;
-        font-weight: $font-semibold;
-      }
     }
   }
   &__contact {
@@ -91,11 +62,11 @@
     justify-content: flex-start;
     gap: 14px;
     margin-top: 82px;
-    @media all and (max-width: $mobile){
+    @include tablet {
       margin-top: 10px;
     }
   }
-  @media all and (max-width: $mobile){
+  @include tablet {
     padding: 60px 0;
   }
 }

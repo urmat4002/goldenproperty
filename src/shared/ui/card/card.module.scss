@@ -1,4 +1,4 @@
-@import '../../app/style/variables';
+@import '../../../app/style/variables';
 
 .card {
   display: flex;
@@ -22,11 +22,6 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
-      h4 {
-        font-size: $fsz-mb-headline;
-        line-height: $lh-mb-headline;
-        font-weight: $font-regular;
-      }
     }
     &_bottom {
       display: flex;

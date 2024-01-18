@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
 import { X } from 'lucide-react';
-import { useAppDispatch, useAppSelector } from '../../app/lib/store/hooks';
+import { useEffect } from 'react';
 import { setClose } from '../../app/lib/features/modal/modal-slice';
-import { Button } from '../../shared/button/button';
+import { useAppDispatch, useAppSelector } from '../../app/lib/store/hooks';
 import { Form } from '../../features/form/form';
+import { Button } from '../../shared/ui/button/button';
 import style from './modal.module.scss';
+import { Typography } from '../../shared/ui/typography/typography'
 
 const Modal = () => {
   const dispatch = useAppDispatch();
@@ -32,8 +33,8 @@ const Modal = () => {
         </div>
         <div className={style.modal__container}>
           <div className={style.modal__content}>
-            <h3>Sell an appartment through our company!</h3>
-            <p>Fill form below and our agent will contact you shortly</p>
+            <Typography variant='h3' weight='bold'>Sell an appartment through our company!</Typography>
+            <Typography variant='label' weight='regular'>Fill form below and our agent will contact you shortly</Typography>
           </div>
           <Form />
         </div>
