@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     gap: 56px;
-    @media all and (max-width: 479.98px){
+    @media all and (max-width: $mobile){
       gap: 20px;
     }
   }
@@ -26,8 +26,8 @@
     justify-content: flex-start;
     align-items: center;
     h2 {
-      font-size: $font-size-h2;
-      line-height: $line-height-h2;
+      font-size: $fsz-mb-title-h2;
+      line-height: $lh-mb-title-h2;
       font-weight: $font-semibold;
       color: $black;
     }
@@ -41,7 +41,7 @@
     &__main {
       width: 160%;
       height: 100%;
-      background-color: $gray;
+      background-color: $system-gray;
       img {
         height: 100%;
         width: 100%;
@@ -50,7 +50,7 @@
     &__item {
       width: 100%;
       height: 100%;
-      background-color: $gray;
+      background-color: $system-gray;
       img {
         height: 100%;
         width: 100%;
@@ -62,7 +62,7 @@
       gap: 26px;
       width: 100%;
       height: 100%;
-      @media all and (max-width: 479.98px) {
+      @media all and (max-width: $mobile) {
         display: none;
       }
     }
@@ -74,7 +74,7 @@
   }
   &__type {
     p {
-      font-size: $font-size-p;
+      font-size: $fsz-mb-body;
       font-weight: $font-medium;
     }
   }
@@ -86,40 +86,21 @@
     border-radius: 6px;
     background-color: $black;
     color: $white;
-    font-size: $font-size-p;
+    font-size: $fsz-mb-body;
     font-weight: $font-medium;
-    @media all and (max-width: 479.98px){
+    @media all and (max-width: $mobile){
       position: absolute;
       top: 800px;
       left: 205px;
       font-size: 13px;
       font-weight: $font-regular;
-      background-color: rgba(0, 0, 0, 0.61);
-      box-shadow: 0px 3.524752378463745px 3.524752378463745px 0px rgba(0, 0, 0, 0.4);
+      background-color: $system-gray-05;
     }
-    @media all and (max-width: 460.98px){
+    @media all and (max-width: $mobile){
       left: 186px;
     }
-    @media all and (max-width: 440.98px){
-      left: 170px;
-    }
-    @media all and (max-width: 430.98px){
-      left: 160px;
-    }
-    @media all and (max-width: 418.98px){
-      left: 140px;
-    }
-    @media all and (max-width: 395.98px){
-      left: 125px;
-    }
-    @media all and (max-width: 380.98px){
-      left: 110px;
-    }
   }
-  @media all and (max-width: 479.98px){
+  @media all and (max-width: $mobile){
     margin: 50px 0;
-  }
-  @media all and (max-width:479.98px) {
-    
   }
 }

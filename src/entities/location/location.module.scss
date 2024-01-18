@@ -6,10 +6,10 @@
   gap: 12px;
   color: $black;
   &__text {
-    font-size: $font-size-p;
+    font-size: $fsz-mb-body;
     font-weight: $font-medium;
-    @media all and (max-width: 479.98px) {
-      font-size: $font-size-h4;
+    @media all and (max-width: $mobile) {
+      font-size: $fsz-mb-headline;
     }
   }
 }

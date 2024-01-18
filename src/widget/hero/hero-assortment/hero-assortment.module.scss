@@ -18,8 +18,8 @@
     justify-content: flex-start;
     align-items: center;
     h1 {
-      font-size: $font-size-h1;
-      line-height: $line-height-h1;
+      font-size: $fsz-mb-title-h1;
+      line-height: $lh-mb-title-h1;
       font-weight: $font-bold;
       color: $black;
     }
@@ -39,11 +39,11 @@
     gap: 32px;
     button {
       width: 100%;
-      border: 1px solid $gray;
+      border: 1px solid $system-gray;
       border-radius: 24px;
       padding: 12px 24px;
       color: $black;
-      font-size: $font-size-p;
+      font-size: $fsz-mb-body;
       font-weight: $font-regular;
     }
   }
@@ -54,7 +54,7 @@
     gap: 12px;
     padding: 0px 35px;
     &_select {
-      border: 1px solid $gray;
+      border: 1px solid $system-gray;
       border-radius: 16px 0 0 16px;
       display: flex;
       align-items: center;
@@ -63,7 +63,7 @@
       flex: 1 1 50%;
     }
     &_input {
-      border: 1px solid $gray;
+      border: 1px solid $system-gray;
       border-radius: 0 16px 16px 0;
       display: flex;
       align-items: center;

@@ -7,7 +7,7 @@
   &__img {
     height: 446px;
     width: 372px;
-    background-color: $gray;
+    background-color: $system-gray;
     img {
       height: 100%;
       width: 100%;
@@ -23,8 +23,8 @@
       flex-direction: column;
       gap: 6px;
       h4 {
-        font-size: $font-size-h4;
-        line-height: $line-height-h4;
+        font-size: $fsz-mb-headline;
+        line-height: $lh-mb-headline;
         font-weight: $font-regular;
       }
     }
@@ -36,7 +36,7 @@
   }
   &__divider {
     width: 100%;
-    background-color: $gray;
+    background-color: $system-gray;
     height: 1px;
   }
   &__price {
@@ -47,7 +47,7 @@
   &__button_wrapper {
     display: flex;
     align-items: center;
-    border: 1px solid $gray;
+    border: 1px solid $system-gray;
   }
   &__button {
     display: flex;
@@ -55,6 +55,6 @@
     justify-content: center;
     padding: 8px 8px;
     width: 100%;
-    border-right: 1px solid $gray;
+    border-right: 1px solid $system-gray;
   }
 }
