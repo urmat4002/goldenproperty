@@ -1,14 +1,8 @@
-import { Component } from 'lucide-react'
+import clsx from 'clsx';
+import { FC } from 'react';
 import styles from './button.module.scss';
-import { ButtonConfig, ButtonProps } from './types/button.types';
-import { FC } from 'react'
-
-const buttonConfigs:ButtonConfig = {
-  primary: { className: 'primary-btn', variant: 'contained' },
-  secondary: { className: 'secondary-btn', variant: 'contained' },
-  link: { className: 'link-btn'},
-  icon: { className: 'icon-btn', icon: <span><Component /></span>},
-}
+import { ButtonProps } from './types/button.types';
+import { buttonConfigs } from './config/button.config';
 
 export const Button: FC<ButtonProps> = ({
   type,
@@ -21,43 +15,42 @@ export const Button: FC<ButtonProps> = ({
   ariaLabel,
   ...props
 }) => {
-  const { className, icon, ...rest } = buttonConfigs[type]
+  const { classes = '', icon, ...rest } = buttonConfigs[type] || {};
+
   const renderButtonContent = () => {
     return (
       <>
-        {isLoading && <span className={styles.loader}>Loading</span>}
+        {isLoading && (
+          <span className={styles.loader}>
+            {props.loadingText || 'Loading'}
+          </span>
+        )}
         {iconPosition === 'left' && icon}
         {props.children}
         {iconPosition === 'right' && icon}
       </>
-    )
-  }
+    );
+  };
 
   const commonProps = {
-    className: `
-      ${styles.button} 
-      ${styles[className]} 
-      ${size ? styles[`btn-${size}`] : ''} 
-      ${variant ? styles[`btn-${variant}`] : ''}
-      ${isLoading ? styles.loading : ''}
-      ${iconPosition === 'right' ? styles['icon-right'] : ''} 
-      ${customClasses}
-    `,
+    className: clsx(
+      styles[classes],
+      size && styles[`btn-${size}`],
+      variant && styles[`btn-${variant}`],
+      isLoading && styles['loading'],
+      iconPosition === 'right' && styles['icon-right'],
+      customClasses
+    ),
     style,
-    'aria-label': ariaLabel,
-    ...rest
+    'aria-label': ariaLabel || 'Button',
+    ...rest,
   };
 
   if (type === 'link') {
     const { href, target, onClick } = props;
 
     return (
-      <a
-        href={href}
-        target={target}
-        onClick={onClick}
-        {...commonProps}
-      >
+      <a href={href} target={target} onClick={onClick} {...commonProps}>
         {renderButtonContent()}
       </a>
     );
@@ -67,12 +60,12 @@ export const Button: FC<ButtonProps> = ({
 
   return (
     <button
-      type='button'
+      type="button"
       disabled={props.disabled || isLoading}
       onClick={onClick}
       {...commonProps}
     >
       {renderButtonContent()}
     </button>
-  )
-} 
+  );
+};

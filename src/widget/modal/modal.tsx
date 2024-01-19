@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../app/lib/store/hooks';
 import { Form } from '../../features/form/form';
 import { Button } from '../../shared/ui/button/button';
 import style from './modal.module.scss';
-import { Typography } from '../../shared/ui/typography/typography'
+import { Typography } from '../../shared/ui/typography/typography';
 
 const Modal = () => {
   const dispatch = useAppDispatch();
@@ -27,14 +27,18 @@ const Modal = () => {
     <div className={`${style.overlay} ${modalClass}`}>
       <div className={`${style.modal} ${modalClass}`}>
         <div className={style.modal__button_close}>
-          <Button onClick={() => dispatch(setClose())} types="icon">
+          <Button onClick={() => dispatch(setClose())} type="icon">
             <X />
           </Button>
         </div>
         <div className={style.modal__container}>
           <div className={style.modal__content}>
-            <Typography variant='h3' weight='bold'>Sell an appartment through our company!</Typography>
-            <Typography variant='label' weight='regular'>Fill form below and our agent will contact you shortly</Typography>
+            <Typography variant="h3" weight="bold">
+              Sell an appartment through our company!
+            </Typography>
+            <Typography variant="label" weight="regular">
+              Fill form below and our agent will contact you shortly
+            </Typography>
           </div>
           <Form />
         </div>

@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react';
 
 interface BaseButtonProps {
   disabled?: boolean;
@@ -9,16 +9,16 @@ type ButtonVariant = 'outlined' | 'contained';
 type ButtonIconPosition = 'left' | 'right';
 type ButtonType = 'primary' | 'secondary' | 'link' | 'icon';
 
-export interface ButtonConfig extends Record<
-  ButtonType,
-  Partial<BaseButtonProps> &
-  {
-    className: string;
-    icon?: ReactNode;
-    size?: ButtonSize;
-    variant?: ButtonVariant;
-  }
-> {}
+export interface ButtonConfig
+  extends Record<
+    ButtonType,
+    Partial<BaseButtonProps> & {
+      classes: string;
+      icon?: ReactNode;
+      size?: ButtonSize;
+      variant?: ButtonVariant;
+    }
+  > {}
 
 export interface ButtonProps extends BaseButtonProps {
   type: Exclude<ButtonType, 'link'> | 'link';
@@ -29,8 +29,9 @@ export interface ButtonProps extends BaseButtonProps {
   iconPosition?: ButtonIconPosition;
   customClasses?: string;
   style?: CSSProperties;
-  ariaLabel?: string; 
+  ariaLabel?: string;
   children?: ReactNode;
   href?: string;
   target?: string;
+  loadingText?: string;
 }

@@ -2,10 +2,10 @@ import { Download, PhoneCall } from 'lucide-react';
 import { FC } from 'react';
 import { Location } from '../../../entities/location/location';
 import { Button } from '../button/button';
-import { WhatsApp } from '../icons/whats-app';
+import { WhatsApp } from '../icons/whats-app/whats-app';
+import { Typography } from '../typography/typography';
 import style from './card.module.scss';
 import { CardProps } from './types/card.types';
-import { Typography } from '../typography/typography'
 
 export const Card: FC<CardProps> = (props) => {
   const { title, location, price, img, type } = props;
@@ -16,7 +16,7 @@ export const Card: FC<CardProps> = (props) => {
       </div>
       <div className={style.card__content}>
         <div className={style.card__content_top}>
-          <Typography variant='h4' weight='regular'>
+          <Typography variant="h4" weight="regular">
             Serena Living Tower
           </Typography>
 
@@ -35,18 +35,17 @@ export const Card: FC<CardProps> = (props) => {
               <Button
                 href={`https://api.whatsapp.com/send/?phone=996700871222&text=${title}`}
                 type="link"
-                types="link"
               >
                 <WhatsApp size={24} color="black" />
               </Button>
             </div>
             <div className={style.card__button}>
-              <Button href="tel:+996111111111 " type="link" types="link">
+              <Button href="tel:+996111111111 " type="link">
                 <PhoneCall />
               </Button>
             </div>
             <div className={style.card__button}>
-              <Button href="catalog.pdf" type="link" types="link">
+              <Button href="catalog.pdf" type="link">
                 <Download />
               </Button>
             </div>

@@ -1,13 +1,15 @@
 import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
-import { WhatsApp } from '../../shared/ui/icons/whats-app';
+import { WhatsApp } from '../../shared/ui/icons/whats-app/whats-app';
+import { Typography } from '../../shared/ui/typography/typography';
 import style from './footer.module.scss';
-import { Typography } from '../../shared/ui/typography/typography'
 
 const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footer__container}>
-        <Typography variant='h1' weight='regular'>Gulsdem</Typography>
+        <Typography variant="h1" weight="regular">
+          Gulsdem
+        </Typography>
         <div className={style.footer__center}>
           <div>
             <ul>
@@ -35,14 +37,20 @@ const Footer = () => {
         </div>
         <div className={style.footer__right}>
           <div className={style.footer__link}>
-            <Typography variant='h2' weight='bold'>Contact us:</Typography>
+            <Typography variant="h2" weight="bold">
+              Contact us:
+            </Typography>
             <a href="info@gulsdem.com">
               <Mail />
-              <Typography variant='caption' weight='regular'>info@gulsdem.com</Typography>
+              <Typography variant="caption" weight="regular">
+                info@gulsdem.com
+              </Typography>
             </a>
             <a href="tel:9021267890900">
               <Phone />
-              <Typography variant='caption' weight='regular'>+90 (212) 67890900</Typography>
+              <Typography variant="caption" weight="regular">
+                +90 (212) 67890900
+              </Typography>
             </a>
           </div>
           <div className={style.footer__contact}>

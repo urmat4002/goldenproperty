@@ -1,6 +1,6 @@
 import { Button } from '../../../shared/ui/button/button';
-import { WhatsApp } from '../../../shared/ui/icons/whats-app';
-import { Typography } from '../../../shared/ui/typography/typography'
+import { WhatsApp } from '../../../shared/ui/icons/whats-app/whats-app';
+import { Typography } from '../../../shared/ui/typography/typography';
 import style from './details-room.module.scss';
 
 const DetailsRoom = () => {
@@ -8,10 +8,12 @@ const DetailsRoom = () => {
     <div className={style.dr}>
       <div className={style.dr__container}>
         <div className={style.dr__title}>
-          <Typography variant='h3' weight='bold'>Description</Typography>
+          <Typography variant="h3" weight="bold">
+            Description
+          </Typography>
         </div>
         <div className={style.dr__content}>
-          <Typography variant='label' weight='regular'>
+          <Typography variant="label" weight="regular">
             Lorem ipsum dolor sit amet consectetur. Elit erat pulvinar
             ullamcorper morbi at amet duis. Feugiat a enim Elit erat pulvinar
             ullamcorper morbi at amet duis. Feugiat a enim r risus euismod nec
@@ -20,7 +22,7 @@ const DetailsRoom = () => {
             consectetur. Elit erat pulvinar ullamcorper morbi at amet duis.
             Feugiat a enim Elit erat pulvinar ullamc.
           </Typography>
-          <Typography variant='label' weight='regular'>
+          <Typography variant="label" weight="regular">
             Lorem ipsum dolor sit amet consectetur. Elit erat pulvinar
             ullamcorper morbi at amet duis. Feugiat a enim Elit erat pulvinar
             ullamcorper morbi at amet duis. Feugiat a enim r risus euismod nec
@@ -31,9 +33,12 @@ const DetailsRoom = () => {
           </Typography>
         </div>
         <div className={style.dr__caption}>
-          <Typography variant='label' weight='regular'>Contact us!</Typography>
-          <Button types="primary" content="WhatsApp">
+          <Typography variant="label" weight="regular">
+            Contact us!
+          </Typography>
+          <Button type="primary" iconPosition="left">
             <WhatsApp color="white" size={32} />
+            WhatsApp
           </Button>
         </div>
       </div>

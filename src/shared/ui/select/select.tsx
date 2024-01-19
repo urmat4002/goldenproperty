@@ -1,7 +1,7 @@
 import { ChevronDown } from 'lucide-react';
 import style from './select.module.scss';
 import { useEffect, useState } from 'react';
-import { Typography } from '../typography/typography'
+import { Typography } from '../typography/typography';
 
 type SelectOption = {
   label: string;
@@ -57,7 +57,7 @@ export const Select = ({ value, options, onChange }: SelectProps) => {
                   isOptionSelected(option) ? style.selected : ''
                 } ${isHighlightedIndex === index ? style.highlighted : ''}`}
               >
-                <Typography variant='caption' weight='regular'>
+                <Typography variant="caption" weight="regular">
                   {option.label}
                 </Typography>
               </li>

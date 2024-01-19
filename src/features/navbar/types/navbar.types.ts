@@ -1,4 +1,4 @@
 export interface INavbar {
-	id: number;
-	title: number;
+  id: number;
+  title: number;
 }

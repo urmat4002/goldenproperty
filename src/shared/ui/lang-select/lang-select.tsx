@@ -7,7 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../app/lib/store/hooks';
 import style from './lang-select.module.scss';
 import { LanguageOptions } from './types/lang-select.types';
-import { Typography } from '../typography/typography'
+import { Typography } from '../typography/typography';
 
 export const LangSelect: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -39,7 +39,9 @@ export const LangSelect: FC = () => {
         className={style['lang-select__label']}
         onClick={() => handleIsOpen(open)}
       >
-        <Typography variant='label' weight='regular'>{currentLanguage}</Typography>
+        <Typography variant="label" weight="regular">
+          {currentLanguage}
+        </Typography>
         {!open ? <ChevronDown /> : <ChevronUp />}
       </div>
       <div className={`${style['lang-select__list']} ${selectClass}`}>
@@ -52,7 +54,7 @@ export const LangSelect: FC = () => {
                 handleLanguageChange(option.lang), setOpen(false)
               )}
             >
-              <Typography variant='label' weight='regular'>
+              <Typography variant="label" weight="regular">
                 {option.lang}
               </Typography>
             </span>

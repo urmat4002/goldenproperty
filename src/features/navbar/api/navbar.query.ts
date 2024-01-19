@@ -1,18 +1,17 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { INavbar } from '../types/navbar.types'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { INavbar } from '../types/navbar.types';
 
-const baseUrl = '/api'
-
+const baseUrl = '/api';
 
 export const navbarApi = createApi({
-	reducerPath: 'navbarApi',
-	baseQuery: fetchBaseQuery({ baseUrl }),
-	endpoints: (builder) => ({
+  reducerPath: 'navbarApi',
+  baseQuery: fetchBaseQuery({ baseUrl }),
+  endpoints: (builder) => ({
     getNavbarData: builder.query<INavbar[], void>({
       query: () => `./navbar.db.json`,
     }),
   }),
-	// omitted
+  // omitted
   // endpoints: (builder) => ({
   //   getNavbarData: builder.query({
   //     query: (user: Record<string, string>) => ({
@@ -24,6 +23,6 @@ export const navbarApi = createApi({
   //       body: user
   //     }),
   //   }),
-})
+});
 
-export const { useGetNavbarDataQuery } = navbarApi
+export const { useGetNavbarDataQuery } = navbarApi;
