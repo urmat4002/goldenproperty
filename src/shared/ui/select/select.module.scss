@@ -1,3 +1,5 @@
+@import '../../../app/style/variables';
+
 .select {
   position: relative;
   display: flex;
@@ -7,8 +9,6 @@
 
   &__text {
     flex: 1 1 100%;
-    color: #000;
-    font-weight: 400;
     margin-right: 8px;
     text-align: center;
     overflow: hidden;
@@ -34,10 +34,9 @@
   width: 100%;
   top: calc(100% + 10px);
   border-radius: 8px;
-  border: 1px solid #787878;
-  background: #fff;
+  border: 1px solid $system-gray;
+  background: $white;
   border-radius: 8px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transition: 0.2s ease;
   z-index: 100;
 
@@ -55,7 +54,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #787878;
+      background: $system-gray;
     }
   }
 
@@ -64,15 +63,15 @@
     user-select: none;
 
     &:not(:last-child) {
-      border-bottom: 1px solid #787878;
+      border-bottom: 1px solid $system-gray;
     }
 
     &.selected {
-      background: #b2b2b2;
+      background: $system-gray-03;
     }
 
     &.highlighted {
-      background: #d3d2d2;
+      background: $system-gray-04;
     }
   }
 }

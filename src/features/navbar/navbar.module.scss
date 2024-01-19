@@ -1,3 +1,5 @@
+@import '../../app/style/mixins';
+
 .nav {
   &__wrapper {
     display: flex;
@@ -8,7 +10,7 @@
     cursor: pointer;
   }
 }
-@media (max-width: 479.98px){
+@include tablet {
   nav{
     display: none;
   }

@@ -1,9 +1,10 @@
 @import '../../../app/style/variables';
+@import '../../../app/style/mixins';
 
 .igh {
   width: 100%;
   padding: 82px 0;
-  @media all and (max-width:479.98px){
+  @include tablet {
     width: 250%;
   }
   &__container {
@@ -15,7 +16,7 @@
     display: flex;
     flex-direction: column;
     gap: 56px;
-    @media all and (max-width:479.98px){
+    @include tablet {
       box-sizing: border-box;
       max-width: 2000px;
     }
@@ -24,18 +25,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    h2 {
-      font-size: $fsz-mb-title-h2;
-      line-height: $lh-mb-title-h2;
-      font-weight: $font-semibold;
-      color: $black;
-    }
   }
   &__img {
     display: flex;
     flex-direction: column;
     gap: 26px;
-    @media all and (max-width: $mobile) {
+    @include tablet {
       position: relative;
       right: 355px;
     }
@@ -44,7 +39,7 @@
     display: flex;
     align-items: center;
     gap: 26px;
-    @media all and (max-width: $mobile){
+    @include tablet {
       display: flex;
       align-items: flex-end;
     }
@@ -59,16 +54,7 @@
       width: 100%;
       width: 100%;
     }
-    h3 {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      font-size: $fsz-mb-title-h3;
-      color: $white;
-    }
-    @media all and (max-width: $mobile) {
+    @include tablet {
       height: 320px;
       width: 120%;
     }
@@ -84,16 +70,7 @@
       width: 100%;
       width: 100%;
     }
-    h3 {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      font-size: $fsz-mb-title-h3;
-      color: $white;
-    }
-    @media all and (max-width: $mobile){
+    @include tablet {
       display: block;
       width: 120%;
       height: 380px;
@@ -109,22 +86,13 @@
       width: 100%;
       width: 100%;
     }
-    h3 {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: block;
-      font-size: $fsz-mb-title-h3;
-      color: $white;
-    }
-    @media all and (max-width: $mobile){
+    @include tablet {
       display: none;
     }
   }
   &__left_right{
     display: none;
-    @media all and (max-width: $mobile){
+    @include tablet {
       display: block;
     }
   }
@@ -137,6 +105,5 @@
     position: absolute;
     top: 133%;
     right: 25px;
-
   }
 }

@@ -7,6 +7,6 @@ export interface ButtonProps {
   content?: string;
   isDisabled?: boolean;
   onClick?: () => void;
-  href: string;
+  href?: string;
   children?: ReactNode;
 }

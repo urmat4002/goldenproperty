@@ -1,6 +1,7 @@
 import style from './button.module.scss';
 import { FC } from 'react';
 import { ButtonProps } from './types/button.types';
+import { Typography } from '../typography/typography'
 
 export const Button: FC<ButtonProps> = ({
   type,
@@ -20,7 +21,7 @@ export const Button: FC<ButtonProps> = ({
         onClick={onClick}
       >
         {children}
-        <p>{content}</p>
+        <Typography variant='label' weight='regular'>{content}</Typography>
       </a>
     );
   }
@@ -32,7 +33,9 @@ export const Button: FC<ButtonProps> = ({
       onClick={onClick}
     >
       {children}
-      <p>{content}</p>
+      <Typography variant='label' weight='regular'>
+        {content}
+      </Typography>
     </button>
   );
 };
