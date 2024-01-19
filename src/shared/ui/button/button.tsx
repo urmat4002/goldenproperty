@@ -1,41 +1,78 @@
-import style from './button.module.scss';
-import { FC } from 'react';
-import { ButtonProps } from './types/button.types';
-import { Typography } from '../typography/typography'
+import { Component } from 'lucide-react'
+import styles from './button.module.scss';
+import { ButtonConfig, ButtonProps } from './types/button.types';
+import { FC } from 'react'
+
+const buttonConfigs:ButtonConfig = {
+  primary: { className: 'primary-btn', variant: 'contained' },
+  secondary: { className: 'secondary-btn', variant: 'contained' },
+  link: { className: 'link-btn'},
+  icon: { className: 'icon-btn', icon: <span><Component /></span>},
+}
 
 export const Button: FC<ButtonProps> = ({
   type,
-  types,
-  children,
-  content,
-  onClick,
-  href,
+  size,
+  variant,
+  isLoading,
+  iconPosition = 'left',
+  customClasses,
+  style,
+  ariaLabel,
+  ...props
 }) => {
-  const typesButton = style[`button--${types}`];
-  if (type == 'link') {
+  const { className, icon, ...rest } = buttonConfigs[type]
+  const renderButtonContent = () => {
+    return (
+      <>
+        {isLoading && <span className={styles.loader}>Loading</span>}
+        {iconPosition === 'left' && icon}
+        {props.children}
+        {iconPosition === 'right' && icon}
+      </>
+    )
+  }
+
+  const commonProps = {
+    className: `
+      ${styles.button} 
+      ${styles[className]} 
+      ${size ? styles[`btn-${size}`] : ''} 
+      ${variant ? styles[`btn-${variant}`] : ''}
+      ${isLoading ? styles.loading : ''}
+      ${iconPosition === 'right' ? styles['icon-right'] : ''} 
+      ${customClasses}
+    `,
+    style,
+    'aria-label': ariaLabel,
+    ...rest
+  };
+
+  if (type === 'link') {
+    const { href, target, onClick } = props;
+
     return (
       <a
         href={href}
-        type={type}
-        className={`${style.button} ${typesButton}`}
+        target={target}
         onClick={onClick}
+        {...commonProps}
       >
-        {children}
-        <Typography variant='label' weight='regular'>{content}</Typography>
+        {renderButtonContent()}
       </a>
     );
   }
 
+  const { onClick } = props;
+
   return (
     <button
-      type={type}
-      className={`${style.button} ${typesButton}`}
+      type='button'
+      disabled={props.disabled || isLoading}
       onClick={onClick}
+      {...commonProps}
     >
-      {children}
-      <Typography variant='label' weight='regular'>
-        {content}
-      </Typography>
+      {renderButtonContent()}
     </button>
-  );
-};
+  )
+} 
