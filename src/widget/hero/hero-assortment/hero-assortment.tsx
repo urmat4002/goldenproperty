@@ -2,8 +2,8 @@ import { Search } from 'lucide-react';
 import { useState } from 'react';
 import { Select } from '../../../shared/ui/select/select';
 import style from './hero-assortment.module.scss';
-import { Typography } from '../../../shared/ui/typography/typography'
-import { Button } from '../../../shared/ui/button/button'
+import { Typography } from '../../../shared/ui/typography/typography';
+import { Button } from '../../../shared/ui/button/button';
 
 const HeroAssortment = () => {
   const cities = [
@@ -29,16 +29,18 @@ const HeroAssortment = () => {
     <div className={style.ha}>
       <div className={style.ha__container}>
         <div className={style.ha__title}>
-          <Typography variant='h1' weight='bold' >Dubai</Typography>
+          <Typography variant="h1" weight="bold">
+            Dubai
+          </Typography>
         </div>
         <div className={style.ha__bottom}>
           <div className={style.ha__tab_list}>
-            <Button>Все</Button>
-            <Button>Квартиры</Button>
-            <Button>Вилы</Button>
-            <Button>Дуплекс</Button>
-            <Button>Магазин</Button>
-            <Button>Участки</Button>
+            <Button type="primary">Все</Button>
+            <Button type="primary">Квартиры</Button>
+            <Button type="primary">Вилы</Button>
+            <Button type="primary">Дуплекс</Button>
+            <Button type="primary">Магазин</Button>
+            <Button type="primary">Участки</Button>
           </div>
           <div className={style.ha__search}>
             <div className={style.ha__search_select}>

@@ -1,5 +1,5 @@
 import CardListReccomend from '../../../features/card-list-reccomend/card-list-reccomend';
-import { Typography } from '../../../shared/ui/typography/typography'
+import { Typography } from '../../../shared/ui/typography/typography';
 import style from './reccomend.module.scss';
 
 const Reccomend = () => {
@@ -7,7 +7,7 @@ const Reccomend = () => {
     <div className={style.reccomend}>
       <div className={style.reccomend__container}>
         <div className={style.reccomend__title}>
-          <Typography variant='h3' weight='bold'>
+          <Typography variant="h3" weight="bold">
             You might like
           </Typography>
         </div>

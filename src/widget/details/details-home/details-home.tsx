@@ -1,4 +1,4 @@
-import { Typography } from '../../../shared/ui/typography/typography'
+import { Typography } from '../../../shared/ui/typography/typography';
 import style from './details-home.module.scss';
 
 const DetailsHome = () => {
@@ -6,14 +6,16 @@ const DetailsHome = () => {
     <div className={style.details}>
       <div className={style.details__container}>
         <div className={style.details__title}>
-          <Typography variant='h2' weight='bold'>О нашей компании</Typography>
+          <Typography variant="h2" weight="bold">
+            О нашей компании
+          </Typography>
         </div>
         <div className={style.details__content}>
           <div className={style.details__image}>
-            <img src='' alt='' />
+            <img src="" alt="" />
           </div>
           <div className={style.details__right}>
-            <Typography variant='label' weight='regular'>
+            <Typography variant="label" weight="regular">
               Lorem ipsum dolor sit amet consectetur. Elit erat pulvinar
               ullamcorper morbi at amet duis. Feugiat a enim Elit erat pulvinar
               ullamcorper morbi at amet duis. Feugiat a enim r risus euismod nec
@@ -26,7 +28,7 @@ const DetailsHome = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default DetailsHome;

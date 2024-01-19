@@ -1,6 +1,5 @@
-import { Left } from '../../../shared/ui/icons/right-left/left';
-import { Right } from '../../../shared/ui/icons/right-left/right';
-import { Typography } from '../../../shared/ui/typography/typography'
+import { AlignLeft } from 'lucide-react'
+import { Typography } from '../../../shared/ui/typography/typography';
 import style from './image-grid-home.module.scss';
 
 const ImageGridHome = () => {
@@ -8,34 +7,44 @@ const ImageGridHome = () => {
     <div className={style['igh']}>
       <div className={style['igh__container']}>
         <div className={style['igh__title']}>
-          <Typography variant='h2' weight='bold'>Наши объекты</Typography>
+          <Typography variant="h2" weight="bold">
+            Наши объекты
+          </Typography>
         </div>
         <div className={style['igh__img']}>
           <div className={style['igh__img_item_pc']}>
             <img src="" alt="" />
-            <Typography variant='h3' weight='bold'>Dubai</Typography>
+            <Typography variant="h3" weight="bold">
+              Dubai
+            </Typography>
           </div>
           <div className={style['igh__img_wrapper']}>
             <div className={style['igh__img_item']}>
               <img src="" alt="" />
-              <Typography variant='h3' weight='bold'>Antalya</Typography>
+              <Typography variant="h3" weight="bold">
+                Antalya
+              </Typography>
             </div>
             <div className={style['igh__img_item_mb']}>
               <img src="" alt="" />
-              <Typography variant='h3' weight='bold'>Dubai</Typography>
+              <Typography variant="h3" weight="bold">
+                Dubai
+              </Typography>
             </div>
             <div className={style['igh__img_item']}>
               <img src="" alt="" />
-              <Typography variant='h3' weight='bold'>Istanbul</Typography>
+              <Typography variant="h3" weight="bold">
+                Istanbul
+              </Typography>
             </div>
           </div>
         </div>
         <div className={style['igh__left_right']}>
           <div className={style['igh__left']}>
-            <Left />
+            <AlignLeft />
           </div>
           <div className={style['igh__right']}>
-            <Right />
+            <AlignLeft />
           </div>
         </div>
       </div>

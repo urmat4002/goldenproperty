@@ -38,11 +38,7 @@ export const Form = () => {
           type="text"
         />
       </div>
-      <Button
-        type="submit"
-        types="primary"
-        onClick={() => dispatch(setClose())}
-      >
+      <Button type="primary" onClick={() => dispatch(setClose())}>
         Send
       </Button>
     </form>

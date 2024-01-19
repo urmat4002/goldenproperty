@@ -1,25 +1,23 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "../../pages/home";
-import Assortment from "../../pages/assortment";
-import Room from "../../pages/room";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from '../../pages/home';
+import Assortment from '../../pages/assortment';
+import Room from '../../pages/room';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (<Home />)
+    element: <Home />,
   },
   {
     path: '/assortment',
-    element: (<Assortment />)
+    element: <Assortment />,
   },
   {
     path: '/room',
-    element: (<Room />)
+    element: <Room />,
   },
-  
-])
+]);
 
 export const RouterProviders = () => {
-  return <RouterProvider router={router} />
-}
-
+  return <RouterProvider router={router} />;
+};

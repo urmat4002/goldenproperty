@@ -7,7 +7,7 @@ import ReduxProvider from './app/provider/redux-provider.tsx';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ReduxProvider>
-      <RouterProviders/>
+      <RouterProviders />
     </ReduxProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

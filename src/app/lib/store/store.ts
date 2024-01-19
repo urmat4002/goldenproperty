@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import modalSlice from '../features/modal/modal-slice';
-import languageSlice from '../features/language/language-slice'
-import { navbarApi } from '../../../features/navbar/api/navbar.query'
-import { setupListeners } from '@reduxjs/toolkit/query'
+import languageSlice from '../features/language/language-slice';
+import { navbarApi } from '../../../features/navbar/api/navbar.query';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
   reducer: {

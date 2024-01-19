@@ -90,18 +90,18 @@
       display: none;
     }
   }
-  &__left_right{
+  &__left_right {
     display: none;
     @include tablet {
       display: block;
     }
   }
-  &__left{
+  &__left {
     position: absolute;
     top: 133%;
     left: 25px;
   }
-  &__right{
+  &__right {
     position: absolute;
     top: 133%;
     right: 25px;

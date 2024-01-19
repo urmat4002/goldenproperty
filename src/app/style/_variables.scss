@@ -15,6 +15,7 @@ $heading4-font-size: 1.4rem;
 $heading5-font-size: 1.2rem;
 
 $regular-weight: 400;
+$medium-weight: 400;
 $bold-weight: 700;
 
 // Responsive Typography
@@ -52,3 +53,6 @@ $system-gray-06: #f2f2f7 !default;
 $mobile-breakpoint: 480px;
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1024px;
+
+// Transitions
+$transition-duration: 0.3s;

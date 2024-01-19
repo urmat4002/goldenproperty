@@ -44,7 +44,7 @@
     padding: 0 24px;
     background: $white;
     cursor: pointer;
-    @include tablet{
+    @include tablet {
       display: none;
     }
   }
@@ -68,7 +68,7 @@
     }
   }
   @include tablet {
-    &__icon{
+    &__icon {
       width: 35px;
     }
   }
