@@ -9,6 +9,9 @@
   &__item {
     cursor: pointer;
   }
+  &__text {
+    color: $white;
+  }
 }
 @include tablet {
   nav {
