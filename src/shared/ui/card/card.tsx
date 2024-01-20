@@ -1,55 +1,47 @@
-import { Download, PhoneCall } from 'lucide-react';
 import { FC } from 'react';
-import { Location } from '../../../entities/location/location';
-import { Button } from '../button/button';
-import { WhatsApp } from '../icons/whats-app/whats-app';
-import { Typography } from '../typography/typography';
-import style from './card.module.scss';
-import { CardProps } from './types/card.types';
+import styles from './card.module.scss';
+import { ProductCardProps } from './types/card.types';
+import { Typography } from '../typography/typography'
+import { ArrowDownToLine, Phone } from 'lucide-react'
+import { WhatsApp } from '../icons/whats-app/whats-app'
+import { Button } from '../button/button'
 
-export const Card: FC<CardProps> = (props) => {
-  const { title, location, price, img, type } = props;
+export const ProductCard: FC<ProductCardProps> = ({
+  image,
+  title,
+  price,
+  geolocation,
+}) => {
   return (
-    <div className={style.card}>
-      <div className={style.card__img}>
-        <img src={img} alt={title} />
+    <div className={styles['product-card']}>
+      <div className={styles['product-image']}>
+        <img src={image} alt={title} />
       </div>
-      <div className={style.card__content}>
-        <div className={style.card__content_top}>
-          <Typography variant="h4" weight="regular">
-            Serena Living Tower
+      <div className={styles['product-details']}>
+        <div className={styles['product-caption']}>
+          <Typography variant='h5' weight='bold'>
+            {title}
           </Typography>
-
-          <Location place={location} />
-          <span className={style.card__type}>
-            <p>{type}</p>
-          </span>
+          <Typography variant='h5' weight='regular'>
+            {geolocation}
+          </Typography>
+          <Typography variant='h5' weight='regular'>
+            {price}
+          </Typography>
         </div>
-        <div className={style.card__divider} />
-        <div className={style.card__content_bottom}>
-          <span className={style.card__price}>
-            <p>{price}</p>
-          </span>
-          <div className={style.card__button_wrapper}>
-            <div className={style.card__button}>
-              <Button
-                href={`https://api.whatsapp.com/send/?phone=996700871222&text=${title}`}
-                type="link"
-              >
-                <WhatsApp size={24} color="black" />
-              </Button>
-            </div>
-            <div className={style.card__button}>
-              <Button href="tel:+996111111111 " type="link">
-                <PhoneCall />
-              </Button>
-            </div>
-            <div className={style.card__button}>
-              <Button href="catalog.pdf" type="link">
-                <Download />
-              </Button>
-            </div>
-          </div>
+        <div className={styles['product-actions']}>
+          <Button 
+            href={`https://api.whatsapp.com/send/?phone=996700871222&text=${title}`}
+            type='icon'
+            customClasses={styles['product-button']}>
+            <WhatsApp color='black' size={24} />
+          </Button>
+          <Button type='icon' customClasses={styles['product-button']}>
+            <Phone />
+          </Button>
+          <Button type='icon' customClasses={styles['product-button']}>
+            <ArrowDownToLine />
+          </Button>
         </div>
       </div>
     </div>
