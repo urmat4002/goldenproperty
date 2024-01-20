@@ -1,9 +1,6 @@
-export interface CardProps {
-  id?: number;
-  title: string;
-  location: string;
-  type: string;
-  price: string;
-  img: string;
-  otherInform?: string;
+export interface ProductCardProps {
+    image: string;
+    title: string;
+    price: string;
+    geolocation: string;
 }

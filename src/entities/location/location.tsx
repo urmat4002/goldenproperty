@@ -11,7 +11,7 @@ export const Location: FC<LocationProps> = ({ place }) => {
   return (
     <div className={style.locate}>
       <MapPin />
-      <Typography variant="caption" weight="regular">
+      <Typography variant="label" weight="regular">
         {place}
       </Typography>
     </div>
