@@ -4,14 +4,17 @@ import { Button } from '../../shared/ui/button/button';
 import { GuldemLogo } from '../../shared/ui/icons/guldem-logo/guldem-logo';
 import { WhatsApp } from '../../shared/ui/icons/whats-app/whats-app';
 import style from './header.module.scss';
-import { Menu } from 'lucide-react'
+import { Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header: FC = () => {
   return (
     <header className={style.header}>
       <div className={style.header__container}>
         <div className={style.header__logo}>
-          <GuldemLogo />
+          <Link to="/">
+            <GuldemLogo />
+          </Link>
         </div>
         <Navbar />
         <div className={style.header__options}>
