@@ -1,8 +1,10 @@
-import { AlignLeft } from 'lucide-react'
+import { AlignLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Typography } from '../../../shared/ui/typography/typography';
 import style from './image-grid-home.module.scss';
 
 const ImageGridHome = () => {
+  const navigate = useNavigate();
   return (
     <div className={style['igh']}>
       <div className={style['igh__container']}>
@@ -12,20 +14,29 @@ const ImageGridHome = () => {
           </Typography>
         </div>
         <div className={style['igh__img']}>
-          <div className={style['igh__img_item_pc']}>
+          <div
+            onClick={() => navigate('/room')}
+            className={style['igh__img_item_pc']}
+          >
             <img src="" alt="" />
             <Typography variant="h3" weight="bold">
               Dubai
             </Typography>
           </div>
           <div className={style['igh__img_wrapper']}>
-            <div className={style['igh__img_item']}>
+            <div
+              onClick={() => navigate('/room')}
+              className={style['igh__img_item']}
+            >
               <img src="" alt="" />
               <Typography variant="h3" weight="bold">
                 Antalya
               </Typography>
             </div>
-            <div className={style['igh__img_item_mb']}>
+            <div
+              onClick={() => navigate('/room')}
+              className={style['igh__img_item_mb']}
+            >
               <img src="" alt="" />
               <Typography variant="h3" weight="bold">
                 Dubai
