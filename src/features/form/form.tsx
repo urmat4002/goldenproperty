@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { setClose } from '../../app/lib/features/modal/modal-slice';
 import { useAppDispatch } from '../../app/lib/store/hooks';
-import { sendUserInfo } from '../../http/sendUserInfo';
 import { Button } from '../../shared/ui/button/button';
 import Input from '../../shared/ui/input/input';
 import form from './form.module.scss';
@@ -23,7 +22,6 @@ export const Form = () => {
 
   const handleButton = () => {
     dispatch(setClose());
-    sendUserInfo(formData);
   };
 
   return (
