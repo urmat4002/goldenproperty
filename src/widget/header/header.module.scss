@@ -5,22 +5,50 @@
   width: 100%;
   padding: 26px 0;
   background-color: $black;
+  height: 110px;
+  @include tablet {
+    height: 76px;
+  }
   &__container {
     max-width: 1170px;
     box-sizing: content-box;
     margin: 0px auto;
     padding: 0px 32px;
-
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include tablet {
+      padding: 0 16px;
+    }
+  }
+  &__logo {
+    @include tablet {
+      svg {
+        width: 46px;
+        height: 36px;
+      }
+    }
   }
   &__options {
     display: flex;
     align-items: center;
     gap: 20px;
   }
+  &__lang {
+    @include desktop {
+      display: none;
+    }
+    @include tablet {
+      font-size: $mobile-font-size;
+    }
+  }
   @include tablet {
     padding: 0px 0;
+  }
+  &__whatsapp {
+    @include tablet {
+      display: none;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, Globe } from 'lucide-react';
 import { FC, useState } from 'react';
 import {
   LanguageCount,
@@ -39,6 +39,7 @@ export const LangSelect: FC = () => {
         className={style['lang-select__label']}
         onClick={() => handleIsOpen(open)}
       >
+        <Globe />
         <Typography variant="label" weight="regular">
           {currentLanguage}
         </Typography>
