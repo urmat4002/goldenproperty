@@ -6,25 +6,23 @@ const DetailsHome = () => {
     <div className={style.details}>
       <div className={style.details__container}>
         <div className={style.details__title}>
-          <Typography variant="h2" weight="bold">
-            О нашей компании
+          <Typography variant="h3" weight="bold">
+            Преимущества Golden house
           </Typography>
         </div>
         <div className={style.details__content}>
-          <div className={style.details__image}>
-            <img src="" alt="" />
-          </div>
-          <div className={style.details__right}>
-            <Typography variant="label" weight="regular">
-              Lorem ipsum dolor sit amet consectetur. Elit erat pulvinar
-              ullamcorper morbi at amet duis. Feugiat a enim Elit erat pulvinar
-              ullamcorper morbi at amet duis. Feugiat a enim r risus euismod nec
-              gravida venenatis. Nulla sed malesuada elementum a. Cras sed
-              congue felis pellentesque tellus vulputate Lorem ipsum dolor sit
-              amet consectetur. Elit erat pulvinar ullamcorper morbi at amet
-              duis. Feugiat a enim Elit erat pulvinar ullamc.
+        <Typography variant="label" weight="regular">
+              Наша компания предлагает широкий выбор недвижимости от эксклюзивных квартир до загородных домов.
             </Typography>
-          </div>
+            <Typography variant="label" weight="regular">
+              Эксклюзивные предложения, виртуальные туры, консультации экспертов – все, чтобы сделать процесс выбора недвижимости удобным и увлекательным.
+            </Typography>
+            <Typography variant="label" weight="regular">
+              Мы гарантируем конфиденциальность ваших данных и сотрудничаем только с проверенными агентами и продавцами.
+            </Typography>
+            <Typography variant="label" weight="regular">
+              Если вам нужна помощь в управлении вашей недвижимостью, мы предоставляем услуги по управлению арендой, гарантируя, что ваша собственность получит максимальную ценность и уход.
+            </Typography>
         </div>
       </div>
     </div>
