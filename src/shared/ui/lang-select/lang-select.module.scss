@@ -1,4 +1,5 @@
 @import '../../../app/style/variables';
+@import '../../../app/style/mixins';
 
 .lang-select {
   position: relative;
@@ -12,6 +13,13 @@
     justify-content: flex-start;
     gap: 8px;
     cursor: pointer;
+    color: $white;
+    font-size: $base-font-size;
+    @include tablet {
+      svg {
+        width: 18px;
+      }
+    }
   }
   &__list {
     position: absolute;
@@ -31,6 +39,7 @@
     align-items: center;
     justify-content: center;
     padding: 6px 0;
+    font-size: $base-font-size;
     &:hover {
       color: $system-gray;
     }

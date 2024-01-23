@@ -4,8 +4,8 @@ import { Button } from '../../shared/ui/button/button';
 import { GuldemLogo } from '../../shared/ui/icons/guldem-logo/guldem-logo';
 import { WhatsApp } from '../../shared/ui/icons/whats-app/whats-app';
 import style from './header.module.scss';
-import { Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { LangSelect } from '../../shared/ui/lang-select/lang-select'
 
 const Header: FC = () => {
   return (
@@ -18,15 +18,19 @@ const Header: FC = () => {
         </div>
         <Navbar />
         <div className={style.header__options}>
-          <Menu />
-          <Button
-            href="https://api.whatsapp.com/send/?phone=996700871222&text=Здравствуйте%2C+у+меня+есть+вопрос"
-            type="link"
-            iconPosition="left"
-          >
-            <WhatsApp color="white" size={32} />
-            Связатся с нами
-          </Button>
+          <div className={style.header__lang}> 
+            <LangSelect />
+          </div>
+          <div className={style.header__whatsapp}>
+            <Button
+              href="https://api.whatsapp.com/send/?phone=996700871222&text=Здравствуйте%2C+у+меня+есть+вопрос"
+              type="link"
+              iconPosition="left"
+            >
+              <WhatsApp color="white" size={32} />
+              Связатся с нами
+            </Button>
+          </div>
         </div>
       </div>
     </header>
