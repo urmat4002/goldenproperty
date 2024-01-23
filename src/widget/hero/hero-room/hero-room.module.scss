@@ -21,6 +21,12 @@
     display: flex;
     align-items: center;
     gap: 56px;
+    @include tablet {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 36px;
+    }
   }
   &__right {
     min-width: 420px;

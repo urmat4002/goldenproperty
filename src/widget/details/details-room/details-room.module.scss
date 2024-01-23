@@ -3,14 +3,19 @@
 .dr {
   margin: 86px 0;
   &__container {
-    max-width: 992px;
     box-sizing: content-box;
     margin: 0px auto;
     padding: 0px 32px;
-
+    max-width: 1170px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
   }
   &__title {
     display: flex;
@@ -19,14 +24,19 @@
   }
   &__content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
+    align-items: flex-start;
+    gap: 36px;
   }
-  &__caption {
+  &__wrapper {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    gap: 12px;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 }
