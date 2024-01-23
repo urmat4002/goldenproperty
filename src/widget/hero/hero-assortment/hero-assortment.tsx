@@ -27,7 +27,7 @@ const HeroAssortment = () => {
     <div className={style.ha}>
       <div className={style.ha__container}>
         <div className={style.ha__search}>
-          <div className={style.ha__search_select}>
+          <div className={style.ha__select}>
             <Select
               value={city}
               options={cities}

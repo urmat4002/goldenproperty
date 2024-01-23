@@ -1,7 +1,7 @@
 @import '../../../app/style/variables';
 
 .ha {
-  margin: 86px 0;
+  margin: 26px 0 86px 0;
   &__container {
     max-width: 1170px;
     box-sizing: content-box;
@@ -28,6 +28,11 @@
     display: flex;
     align-items:center;
     justify-content: flex-start;
+  }
+  &__select {
+    display: flex;
+    align-items: center;
+    gap: 32px;
   }
   &__search {
     width: 100%;
