@@ -5,14 +5,17 @@ import { Typography } from '../typography/typography'
 import { ArrowDownToLine, Phone } from 'lucide-react'
 import { WhatsApp } from '../icons/whats-app/whats-app'
 import { Button } from '../button/button'
+import { Link } from 'react-router-dom'
 
 export const ProductCard: FC<ProductCardProps> = ({
+  id,
   image,
   title,
   price,
   geolocation,
 }) => {
   return (
+    <Link to={`/assortment/${id}`}>
     <div className={styles['product-card']}>
       <div className={styles['product-image']}>
         <img src={image} alt={title} />
@@ -45,5 +48,6 @@ export const ProductCard: FC<ProductCardProps> = ({
         </div>
       </div>
     </div>
+    </Link>
   );
 };

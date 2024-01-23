@@ -1,4 +1,8 @@
 @import '../../../app/style/variables';
+* {
+  text-decoration: none;
+}
+
 .product {
   &-card {
     width: 358px;
