@@ -3,13 +3,12 @@
 
 .search {
   width: 100%;
-
-  &__container {
+  &__contain {
     display: flex;
-    min-height: 60px;
     gap: 2px;
     @include tablet {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 15px;
     }
   }
@@ -19,11 +18,11 @@
     display: flex;
     align-items: center;
     border-radius: 40px 0 0 40px;
-    padding: 0 24px;
+    padding: 16px 16px;
     gap: 4px;
     background: $white;
     @include tablet {
-      border-radius: 20px;
+      border-radius: 16px;
       padding: 20px;
     }
   }
@@ -58,13 +57,19 @@
     background: $white;
     cursor: pointer;
     transition: 0.2s ease;
-    padding: 0 24px;
+    padding: 0 32px 0 24px;
     &:hover {
       background: $white;
     }
     @include tablet {
+      background-color: $black;
+      color: $white;
       border-radius: 20px;
-      background: $system-gray-02;
+      padding: 16px;
+      width: 100%;
+      &:hover {
+        background: $system-gray;
+      }
     }
   }
   @include tablet {
