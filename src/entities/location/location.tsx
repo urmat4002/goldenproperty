@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { Typography } from '../../shared/ui/typography/typography';
 
 interface LocationProps {
-  place: string;
+  place: string | undefined;
 }
 
 export const Location: FC<LocationProps> = ({ place }) => {

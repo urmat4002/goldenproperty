@@ -1,7 +1,8 @@
 @import '../../../app/style/variables';
+@import '../../../app/style/mixins';
 
 .ha {
-  margin: 86px 0;
+  margin: 26px 0 86px 0;
   &__container {
     max-width: 1170px;
     box-sizing: content-box;
@@ -19,6 +20,15 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      h1 {
+        font-size: $heading3-font-size;
+      }
+    }
   }
   &__button_home {
     position: absolute;
@@ -28,6 +38,15 @@
     display: flex;
     align-items:center;
     justify-content: flex-start;
+    @include tablet {
+      position: relative;
+      transform: none;
+    }
+  }
+  &__select {
+    display: flex;
+    align-items: center;
+    gap: 32px;
   }
   &__search {
     width: 100%;
@@ -35,7 +54,8 @@
     align-items: center;
     justify-content: space-between;
     &_input {
-      max-width: 360px;
+      width: 100%;
+      min-width: 360px;
       border: 1px solid $system-gray;
       border-radius: 16px;
       display: flex;
@@ -48,6 +68,13 @@
       input {
         width: 100%;
       }
+    }
+    @include tablet {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
     }
   }
 }

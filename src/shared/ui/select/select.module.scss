@@ -5,8 +5,9 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  width: 138px;
-
+  border: 0.5px solid $system-gray;
+  border-radius: 16px;
+  padding: 16px 32px;
   &__text {
     flex: 1 1 100%;
     margin-right: 8px;
@@ -33,6 +34,7 @@
   overflow: hidden;
   width: 100%;
   top: calc(100% + 10px);
+  left: 0;
   border-radius: 8px;
   border: 1px solid $system-gray;
   background: $white;

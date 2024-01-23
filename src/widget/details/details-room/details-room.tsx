@@ -1,5 +1,3 @@
-import { Button } from '../../../shared/ui/button/button';
-import { WhatsApp } from '../../../shared/ui/icons/whats-app/whats-app';
 import { Typography } from '../../../shared/ui/typography/typography';
 import style from './details-room.module.scss';
 
@@ -7,39 +5,79 @@ const DetailsRoom = () => {
   return (
     <div className={style.dr}>
       <div className={style.dr__container}>
-        <div className={style.dr__title}>
-          <Typography variant="h3" weight="bold">
-            Description
-          </Typography>
+        <div className={style.dr__description}>
+          <div className={style.dr__title}>
+            <Typography variant="h3" weight="bold">
+              Features & Amenites
+            </Typography>
+          </div>
+          <div className={style.dr__content}>
+            <div className={style.dr__list}>
+              <Typography variant="label" weight="regular">
+                Treadmills
+              </Typography>
+              <Typography variant="label" weight="regular">
+                Pool
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Balcony
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Green spaces
+              </Typography>
+              <Typography variant="label" weight="regular">
+              BBQ Area
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Tennis court
+              </Typography>
+            </div>
+            <div className={style.dr__list}>
+              <Typography variant="label" weight="regular">
+              Boutiques and shops
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Security and video surveillance
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Children polyground
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Fitness center and gym 
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Sports grounds
+              </Typography>
+              <Typography variant="label" weight="regular">
+              Parking space
+              </Typography>
+            </div>
+          </div>
         </div>
-        <div className={style.dr__content}>
-          <Typography variant="label" weight="regular">
-            Lorem ipsum dolor sit amet consectetur. Elit erat pulvinar
-            ullamcorper morbi at amet duis. Feugiat a enim Elit erat pulvinar
-            ullamcorper morbi at amet duis. Feugiat a enim r risus euismod nec
-            gravida venenatis. Nulla sed malesuada elementum a. Cras sed congue
-            felis pellentesque tellus vulputate Lorem ipsum dolor sit amet
-            consectetur. Elit erat pulvinar ullamcorper morbi at amet duis.
-            Feugiat a enim Elit erat pulvinar ullamc.
-          </Typography>
-          <Typography variant="label" weight="regular">
-            Lorem ipsum dolor sit amet consectetur. Elit erat pulvinar
-            ullamcorper morbi at amet duis. Feugiat a enim Elit erat pulvinar
-            ullamcorper morbi at amet duis. Feugiat a enim r risus euismod nec
-            gravida venenatis. Nulla sed malesuada elementum a. Cras sed congue
-            felis pellentesque tellus vulputate Lorem ipsum dolor sit amet
-            consectetur. Elit erat pulvinar ullamcorper morbi at amet duis.
-            Feugiat a enim Elit erat pulvinar ullamc.
-          </Typography>
-        </div>
-        <div className={style.dr__caption}>
-          <Typography variant="label" weight="regular">
-            Contact us!
-          </Typography>
-          <Button type="primary" iconPosition="left">
-            <WhatsApp color="white" size={32} />
-            WhatsApp
-          </Button>
+        <div className={style.dr__description}>
+          <div className={style.dr__title}>
+            <Typography variant="h3" weight="bold">
+              Description
+            </Typography>
+          </div>
+          <div className={style.dr__wrapper}>
+            <Typography variant="label" weight="regular">
+              Introducing Aqua Dimore, a contemporary residential building in
+              Science Park that symbolizes elegance and innovation.
+            </Typography>
+            <Typography variant="label" weight="regular">
+            ✅ Installment plan for 5 years!
+            </Typography>
+            <Typography variant="label" weight="regular">
+            ✅Pay only 1% per month
+            </Typography>
+            <Typography variant="label" weight="regular">
+            ✅8% guaranteed income during the construction period
+            </Typography>
+            <Typography variant="label" weight="regular">
+            ✅ 8-10% plus annual rental income after project completion
+            </Typography>
+          </div>
         </div>
       </div>
     </div>

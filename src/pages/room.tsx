@@ -8,8 +8,8 @@ const Room = () => {
     <div>
       <HeroRoom />
       <DetailsRoom />
-      <Reccomend />
       <DetailsCallBack />
+      <Reccomend />
     </div>
   );
 };

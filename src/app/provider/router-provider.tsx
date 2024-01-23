@@ -1,4 +1,3 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from '../../pages/home';
 import Assortment from '../../pages/assortment';
 import Room from '../../pages/room';
@@ -14,7 +13,7 @@ const router = [
     element: <Assortment />,
   },
   {
-    path: '/room',
+    path: `/assortment/:id`,
     element: <Room />,
   },
 ];
