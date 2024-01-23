@@ -33,7 +33,7 @@ const Navbar = () => {
             color="white"
             className={style.nav__text}
           >
-            <Link to="/assortment">Коммерческая</Link>
+            <Link to="/assortment">Вся недвижимость</Link>
           </Typography>
         </li>
         <li className={style.nav__item}>
