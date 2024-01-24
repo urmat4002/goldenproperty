@@ -2,7 +2,7 @@ import { useState } from 'react';
 import style from './navbar.module.scss';
 import { Typography } from '../../shared/ui/typography/typography';
 import { Link } from 'react-router-dom';
-import { LangSelect } from '../../shared/ui/lang-select/lang-select'
+import { LangSelect } from '../../shared/ui/lang-select/lang-select';
 
 interface INavbar {
   id: number;
@@ -10,7 +10,7 @@ interface INavbar {
 }
 
 const Navbar = () => {
-  const [responsible, ] = useState<INavbar | null>(null);
+  const [responsible] = useState<INavbar | null>(null);
 
   console.log(responsible, 'responsible');
 

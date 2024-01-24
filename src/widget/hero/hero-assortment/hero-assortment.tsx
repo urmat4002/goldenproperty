@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { Select } from '../../../shared/ui/select/select';
 import style from './hero-assortment.module.scss';
 import { Typography } from '../../../shared/ui/typography/typography';
-import { Link } from 'react-router-dom'
-import { Button } from '../../../shared/ui/button/button'
+import { Link } from 'react-router-dom';
+import { Button } from '../../../shared/ui/button/button';
 
 const HeroAssortment = () => {
   const cities = [
@@ -48,11 +48,11 @@ const HeroAssortment = () => {
               placeholder="Search"
             />
           </div>
-          </div>
+        </div>
         <div className={style.ha__title}>
           <div className={style.ha__button_home}>
-            <Link to={"/"} >
-              <Button type='icon'>
+            <Link to={'/'}>
+              <Button type="icon">
                 <ArrowLeftIcon />
               </Button>
             </Link>

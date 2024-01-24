@@ -6,7 +6,7 @@ import data from './data/hero.db.json';
 const Hero = () => {
   return (
     <div className={style.hero}>
-      <img src={data.img} alt={''} className={style.hero__img}/> 
+      <img src={data.img} alt={''} className={style.hero__img} />
       <div className={style.hero__container}>
         <div className={style.hero__title}>
           <Typography variant="h1" weight="bold">
@@ -16,7 +16,8 @@ const Hero = () => {
         <div className={style.hero__search}>
           <Search />
         </div>
-      i</div>
+        i
+      </div>
     </div>
   );
 };

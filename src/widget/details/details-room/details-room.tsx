@@ -20,36 +20,36 @@ const DetailsRoom = () => {
                 Pool
               </Typography>
               <Typography variant="label" weight="regular">
-              Balcony
+                Balcony
               </Typography>
               <Typography variant="label" weight="regular">
-              Green spaces
+                Green spaces
               </Typography>
               <Typography variant="label" weight="regular">
-              BBQ Area
+                BBQ Area
               </Typography>
               <Typography variant="label" weight="regular">
-              Tennis court
+                Tennis court
               </Typography>
             </div>
             <div className={style.dr__list}>
               <Typography variant="label" weight="regular">
-              Boutiques and shops
+                Boutiques and shops
               </Typography>
               <Typography variant="label" weight="regular">
-              Security and video surveillance
+                Security and video surveillance
               </Typography>
               <Typography variant="label" weight="regular">
-              Children polyground
+                Children polyground
               </Typography>
               <Typography variant="label" weight="regular">
-              Fitness center and gym 
+                Fitness center and gym
               </Typography>
               <Typography variant="label" weight="regular">
-              Sports grounds
+                Sports grounds
               </Typography>
               <Typography variant="label" weight="regular">
-              Parking space
+                Parking space
               </Typography>
             </div>
           </div>
@@ -66,16 +66,16 @@ const DetailsRoom = () => {
               Science Park that symbolizes elegance and innovation.
             </Typography>
             <Typography variant="label" weight="regular">
-            ✅ Installment plan for 5 years!
+              ✅ Installment plan for 5 years!
             </Typography>
             <Typography variant="label" weight="regular">
-            ✅Pay only 1% per month
+              ✅Pay only 1% per month
             </Typography>
             <Typography variant="label" weight="regular">
-            ✅8% guaranteed income during the construction period
+              ✅8% guaranteed income during the construction period
             </Typography>
             <Typography variant="label" weight="regular">
-            ✅ 8-10% plus annual rental income after project completion
+              ✅ 8-10% plus annual rental income after project completion
             </Typography>
           </div>
         </div>
