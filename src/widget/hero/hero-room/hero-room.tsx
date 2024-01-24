@@ -17,9 +17,9 @@ const HeroRoom = () => {
     if (foundObject) {
       setObject(foundObject);
     }
-  }, [id]) 
+  }, [id]);
 
-  console.log(object)
+  console.log(object);
 
   return (
     <div className={style.hr}>
@@ -29,55 +29,55 @@ const HeroRoom = () => {
             <img src={object?.image} alt="" />
           </div>
           <div className={style.hr__right}>
-            <Typography variant='h4' weight='bold'>
+            <Typography variant="h4" weight="bold">
               Список характеристик
             </Typography>
             <div className={style.hr__option}>
               <span className={style.hr__option_item}>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   Локация
                 </Typography>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   {object?.title}
                 </Typography>
               </span>
               <span className={style.hr__option_item}>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   Цена:
                 </Typography>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   {object?.price}
                 </Typography>
               </span>
               <span className={style.hr__option_item}>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   Меблировано:
                 </Typography>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   {object?.furnished}
                 </Typography>
               </span>
               <span className={style.hr__option_item}>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   Тип недвижимости:
                 </Typography>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   {object?.prototype}
                 </Typography>
               </span>
               <span className={style.hr__option_item}>
-                <Typography variant='label' weight='regular'>
+                <Typography variant="label" weight="regular">
                   Статус выполнение:
                 </Typography>
-                <Typography variant='label' weight='regular'>
-                {object?.completion}
+                <Typography variant="label" weight="regular">
+                  {object?.completion}
                 </Typography>
               </span>
             </div>
             <Button type="primary" iconPosition="right">
-            Download catalogue
-            <Download />
-          </Button>
+              Download catalogue
+              <Download />
+            </Button>
           </div>
         </div>
       </div>
