@@ -23,6 +23,9 @@ $font-size-large: 20px;
       color $transition-duration,
       transform $transition-duration;
     position: relative;
+    @include tablet {
+      border-radius: 50%;
+    }
     &:hover {
     }
 
@@ -61,6 +64,10 @@ $font-size-large: 20px;
     padding: 14px 20px;
     &:hover {
       text-decoration: underline;
+    }
+    @include tablet {
+      padding: 5px 5px;
+      background: linear-gradient(180deg, #114109 0%, #1F880F 100%);
     }
   }
 
