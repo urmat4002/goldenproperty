@@ -8,7 +8,7 @@ import { Button } from '../button/button';
 import { Link } from 'react-router-dom';
 
 export const ProductCard: FC<ProductCardProps> = ({
-  id,
+  id, //id
   image,
   title,
   price,
