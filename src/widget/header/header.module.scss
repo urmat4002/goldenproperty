@@ -48,7 +48,12 @@
   }
   &__whatsapp {
     @include tablet {
-      display: none;
+      display: block;
+      position: fixed;
+      top: 400px;
+      p{
+        display: none;
+      }
     }
   }
 }

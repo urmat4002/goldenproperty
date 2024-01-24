@@ -4,8 +4,9 @@ import './carousel.scss';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-import image1 from './images/image1.svg';
-// FIX: import image1 from './images/image1.svg' - Исправить
+import image1 from './images/image1.svg'
+import image2 from './images/image1.svg'
+import { Typography } from '../../shared/ui/typography/typography';
 
 export const Carousel = () => {
   const IMAGES = [image1, image1, image1, image1, image1];

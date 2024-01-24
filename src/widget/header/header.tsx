@@ -28,7 +28,7 @@ const Header: FC = () => {
               iconPosition="left"
             >
               <WhatsApp color="white" size={32} />
-              Связатся с нами
+               <p>Связатся с нами</p>
             </Button>
           </div>
         </div>
