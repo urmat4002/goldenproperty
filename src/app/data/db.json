@@ -1,68 +1,68 @@
 [
-	{
-		"id": 11212,
-		"title": "Serena Living Tower",
-		"price": "$5000",
-		"geolocation": "İstanbul",
-		"image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		"furnished": "+",
-		"prototype": "Penthous",
-		"completion": "01.2023",
-		"description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation." 
-	},
-	{
-		"id": 11313,
-		"title": "Avrupa ve Asya'nın kucaklaştığı",
-		"price": "$1200000",
-		"geolocation": "Ankara",
-		"image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		"furnished": "+",
-		"prototype": "Penthous",
-		"completion": "01.2023",
-		"description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
-	},
-	{
-		"id": 11414,
-		"title": "Avrupa ve Asya'nın kucaklaştığı",
-		"price": "$1200000",
-		"geolocation": "Ankara",
-		"image": "https://images.unsplash.com/photo-1543489822-c49534f3271f?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		"furnished": "+",
-		"prototype": "Penthous",
-		"completion": "01.2023",
-		"description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
-	},
-	{
-		"id": 11515,
-		"title": "Avrupa ve Asya'nın kucaklaştığı",
-		"price": "$1200000",
-		"geolocation": "Ankara",
-		"image": "https://images.unsplash.com/photo-1623298317883-6b70254edf31?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		"furnished": "+",
-		"prototype": "Penthous",
-		"completion": "01.2023",
-		"description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
-	},
-	{
-		"id": 11616,
-		"title": "Avrupa ve Asya'nın kucaklaştığı",
-		"price": "$1200000",
-		"geolocation": "Ankara",
-		"image": "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		"furnished": "+",
-		"prototype": "Penthous",
-		"completion": "01.2023",
-		"description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
-	},
-	{
-		"id": 11717,
-		"title": "Avrupa ve Asya'nın kucaklaştığı",
-		"price": "$1200000",
-		"geolocation": "Ankara",
-		"image": "https://images.unsplash.com/photo-1623298460174-371443cc45f0?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-		"furnished": "+",
-		"prototype": "Penthous",
-		"completion": "01.2023",
-		"description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
-	}
+  {
+    "id": 11212,
+    "title": "Serena Living Tower",
+    "price": "$5000",
+    "geolocation": "İstanbul",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "furnished": "+",
+    "prototype": "Penthous",
+    "completion": "01.2023",
+    "description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
+  },
+  {
+    "id": 11313,
+    "title": "Avrupa ve Asya'nın kucaklaştığı",
+    "price": "$1200000",
+    "geolocation": "Ankara",
+    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "furnished": "+",
+    "prototype": "Penthous",
+    "completion": "01.2023",
+    "description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
+  },
+  {
+    "id": 11414,
+    "title": "Avrupa ve Asya'nın kucaklaştığı",
+    "price": "$1200000",
+    "geolocation": "Ankara",
+    "image": "https://images.unsplash.com/photo-1543489822-c49534f3271f?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "furnished": "+",
+    "prototype": "Penthous",
+    "completion": "01.2023",
+    "description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
+  },
+  {
+    "id": 11515,
+    "title": "Avrupa ve Asya'nın kucaklaştığı",
+    "price": "$1200000",
+    "geolocation": "Ankara",
+    "image": "https://images.unsplash.com/photo-1623298317883-6b70254edf31?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "furnished": "+",
+    "prototype": "Penthous",
+    "completion": "01.2023",
+    "description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
+  },
+  {
+    "id": 11616,
+    "title": "Avrupa ve Asya'nın kucaklaştığı",
+    "price": "$1200000",
+    "geolocation": "Ankara",
+    "image": "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "furnished": "+",
+    "prototype": "Penthous",
+    "completion": "01.2023",
+    "description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
+  },
+  {
+    "id": 11717,
+    "title": "Avrupa ve Asya'nın kucaklaştığı",
+    "price": "$1200000",
+    "geolocation": "Ankara",
+    "image": "https://images.unsplash.com/photo-1623298460174-371443cc45f0?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "furnished": "+",
+    "prototype": "Penthous",
+    "completion": "01.2023",
+    "description": "Introducing Aqua Dimore, a contemporary residential building in Science Park that symbolizes elegance and innovation."
+  }
 ]

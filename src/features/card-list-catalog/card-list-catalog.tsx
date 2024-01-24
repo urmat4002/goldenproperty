@@ -1,9 +1,8 @@
 import { ProductCard } from '../../shared/ui/card/card';
 import style from './card-list-catalog.module.scss';
-import db from '../../app/data/db.json'
+import db from '../../app/data/db.json';
 
 const CardListCatalog = () => {
-
   return (
     <div className={style.cl}>
       {db.map((item) => (

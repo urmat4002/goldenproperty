@@ -21,9 +21,7 @@ const Search = () => {
           Тип
           <ChevronDown />
         </div>
-        <button className={style.search__button}>
-          Поиск
-        </button>
+        <button className={style.search__button}>Поиск</button>
       </div>
     </div>
   );

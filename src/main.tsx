@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './app/style/index.scss';
-import { RouterProviders } from './app/provider/router-provider.tsx';
-import ReduxProvider from './app/provider/redux-provider.tsx';
 import { Provider } from 'react-redux';
 import { store } from './app/lib/store/store';
 import Header from './widget/header/header';
