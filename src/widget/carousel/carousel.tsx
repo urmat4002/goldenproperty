@@ -4,10 +4,11 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import './carousel.scss';
-import image1 from './images/image1.svg';
+
+const image = ''
 
 export const Carousel = () => {
-  const IMAGES = [image1, image1, image1, image1, image1];
+  const IMAGES = [image, image, image, image];
 
   return (
     <div className="swiper">
