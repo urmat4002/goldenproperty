@@ -2,14 +2,17 @@ import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
 import { WhatsApp } from '../../shared/ui/icons/whats-app/whats-app';
 import { Typography } from '../../shared/ui/typography/typography';
 import style from './footer.module.scss';
+import { Link } from 'react-router-dom';
+import { GuldemLogo } from '../../shared/ui/icons/guldem-logo/guldem-logo';
+
 
 const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footer__container}>
-        <Typography variant="h1" weight="regular">
-          Gulsdem
-        </Typography>
+          <Link to="/">
+            <GuldemLogo />
+          </Link>
         <div className={style.footer__center}>
           <div>
             <ul>
