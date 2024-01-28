@@ -1,5 +1,4 @@
-@import '../../../app/style/variables';
-@import '../../../app/style/mixins';
+@import '../../../app/styles/index.scss';
 
 $font-size-small: 13px;
 $font-size-medium: 17px;
@@ -73,11 +72,11 @@ $font-size-large: 20px;
     }
     @include tablet {
       padding: 5px 5px;
-      background: linear-gradient(180deg, #114109 0%, #1F880F 100%);
+      background: linear-gradient(180deg, #114109 0%, #1f880f 100%);
     }
     @include mobile {
       padding: 5px 5px;
-      background: linear-gradient(180deg, #114109 0%, #1F880F 100%);
+      background: linear-gradient(180deg, #114109 0%, #1f880f 100%);
     }
   }
 

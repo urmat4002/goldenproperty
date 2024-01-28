@@ -1,5 +1,4 @@
-@import '../../app/style/mixins';
-@import '../../app/style/variables';
+@import '../../app/styles/index.scss';
 
 .nav {
   @include mobile {

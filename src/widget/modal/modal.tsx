@@ -1,11 +1,11 @@
 import { X } from 'lucide-react';
 import { useEffect } from 'react';
-import { setClose } from '../../app/lib/features/modal/modal-slice';
+import { setClose } from '../../app/lib/features/modal/ModalSlice';
 import { useAppDispatch, useAppSelector } from '../../app/lib/store/hooks';
-import { Form } from '../../features/form/form';
-import { Button } from '../../shared/ui/button/button';
+import { Form } from '../../features/Form/Form';
+import { Button } from '../../shared/ui/Button/Button';
+import { Typography } from '../../shared/ui/Typography/typography';
 import style from './modal.module.scss';
-import { Typography } from '../../shared/ui/typography/typography';
 
 const Modal = () => {
   const dispatch = useAppDispatch();

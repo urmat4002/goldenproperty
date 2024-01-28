@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { INavbar } from '../types/navbar.types';
+import { INavbar } from '../types/Navbar.types';
 
 const baseUrl = '/api';
 

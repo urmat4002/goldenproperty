@@ -1,5 +1,4 @@
-@import '../../app/style/variables';
-@import '../../app/style/mixins';
+@import '../../app/styles/index.scss';
 
 .header {
   width: 100%;
@@ -52,7 +51,7 @@
       position: fixed;
       top: 400px;
       right: 20px;
-      p{
+      p {
         display: none;
       }
     }
@@ -61,7 +60,7 @@
       position: fixed;
       top: 400px;
       right: 20px;
-      p{
+      p {
         display: none;
       }
     }

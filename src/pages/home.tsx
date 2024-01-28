@@ -1,13 +1,10 @@
-import { Carousel } from '../widget/carousel/carousel';
-import DetailsHome from '../widget/details/details-home/details-home';
-import Hero from '../widget/hero/hero-home/hero';
+import { Carousel } from '../widget/Carousel/Carousel';
 
 const Home = () => {
   return (
     <div>
-      <Hero />
       <Carousel />
-      <DetailsHome />
+      Home
     </div>
   );
 };
