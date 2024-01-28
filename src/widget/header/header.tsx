@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../features/Navbar/Navbar';
 import { Button } from '../../shared/ui/Button/Button';
-import style from './header.module.scss';
+import style from './Header.module.scss';
 
 const Header: FC = () => {
   return (

@@ -1,7 +1,7 @@
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Typography } from '../Typography/Typography';
-import style from './select.module.scss';
+import style from './Select.module.scss';
 
 type SelectOption = {
   label: string;

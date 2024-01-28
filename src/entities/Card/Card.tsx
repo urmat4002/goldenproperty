@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../shared/ui/Button/Button';
 import { Typography } from '../../shared/ui/Typography/Typography';
-import styles from './card.module.scss';
+import styles from './Card.module.scss';
 import { ProductCardProps } from './types/Card.types';
 
 export const ProductCard: FC<ProductCardProps> = ({

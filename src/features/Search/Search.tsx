@@ -1,5 +1,5 @@
 import { ChevronDown, SearchIcon } from 'lucide-react';
-import style from './search.module.scss';
+import style from './Search.module.scss';
 
 const Search = () => {
   return (

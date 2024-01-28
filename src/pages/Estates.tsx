@@ -1,5 +1,7 @@
-const Estates = () => {
-  return <div>Estates</div>;
-};
+import { FC } from 'react'
 
-export default Estates;
+const Estates: FC = () => {
+	return <div>Estates</div>
+}
+
+export default Estates

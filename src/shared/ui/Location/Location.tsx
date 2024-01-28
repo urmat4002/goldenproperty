@@ -1,7 +1,7 @@
 import { MapPin } from 'lucide-react';
 import { FC } from 'react';
 import { Typography } from '../Typography/Typography';
-import style from './location.module.scss';
+import style from './Location.module.scss';
 
 interface LocationProps {
   place: string | undefined;

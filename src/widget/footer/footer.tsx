@@ -1,7 +1,7 @@
 import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Typography } from '../../shared/ui/Typography/Typography';
-import style from './footer.module.scss';
+import style from './Footer.module.scss';
 
 const Footer = () => {
   return (

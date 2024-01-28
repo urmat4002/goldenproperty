@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { FC } from 'react';
-import styles from './button.module.scss';
+import styles from './Button.module.scss';
 import { buttonConfigs } from './config/Button.config';
 import { ButtonProps } from './types/Button.types';
 

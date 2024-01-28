@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from '../../shared/ui/Typography/Typography';
-import style from './navbar.module.scss';
+import style from './Navbar.module.scss';
 
 interface INavbar {
   id: number;
