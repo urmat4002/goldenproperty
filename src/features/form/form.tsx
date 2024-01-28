@@ -3,12 +3,18 @@ import { setClose } from '../../app/lib/features/modal/modal-slice';
 import { useAppDispatch } from '../../app/lib/store/hooks';
 import { Button } from '../../shared/ui/button/button';
 import Input from '../../shared/ui/input/input';
+import { sendEmail } from '../../widget/modal/data/sendEmail';
 import form from './form.module.scss';
 import { FormData } from './types/form.types';
 
 export const Form = () => {
   const dispatch = useAppDispatch();
-  const [formData, setFormData] = useState<FormData>({ name: '', phone: '' });
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    phone: '',
+    city: '',
+    time: '',
+  });
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -20,8 +26,10 @@ export const Form = () => {
     console.log(formData);
   };
 
-  const handleButton = () => {
+  const handleButton = async () => {
     dispatch(setClose());
+    const res = await sendEmail(formData);
+    console.log(res);
   };
 
   return (
@@ -39,6 +47,20 @@ export const Form = () => {
           value={formData.phone}
           onChange={handleInputChange}
           name="phone"
+          type="text"
+        />
+        <Input
+          placeholder="City"
+          value={formData.city}
+          onChange={handleInputChange}
+          name="city"
+          type="text"
+        />
+        <Input
+          placeholder="When to contact you"
+          value={formData.time}
+          onChange={handleInputChange}
+          name="time"
           type="text"
         />
       </div>
