@@ -4,7 +4,7 @@ import { setClose } from '../../app/lib/features/modal/ModalSlice';
 import { useAppDispatch, useAppSelector } from '../../app/lib/store/hooks';
 import { Form } from '../../features/Form/Form';
 import { Button } from '../../shared/ui/Button/Button';
-import { Typography } from '../../shared/ui/Typography/typography';
+import { Typography } from '../../shared/ui/Typography/Typography';
 import style from './modal.module.scss';
 
 const Modal = () => {
