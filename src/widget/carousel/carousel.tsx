@@ -1,12 +1,10 @@
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './carousel.scss';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-import image1 from './images/image1.svg'
-import image2 from './images/image1.svg'
-import { Typography } from '../../shared/ui/typography/typography';
+import './carousel.scss';
+import image1 from './images/image1.svg';
 
 export const Carousel = () => {
   const IMAGES = [image1, image1, image1, image1, image1];

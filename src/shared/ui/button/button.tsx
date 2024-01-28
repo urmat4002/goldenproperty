@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 import styles from './button.module.scss';
-import { ButtonProps } from './types/button.types';
-import { buttonConfigs } from './config/button.config';
+import { buttonConfigs } from './config/Button.config';
+import { ButtonProps } from './types/Button.types';
 
 export const Button: FC<ButtonProps> = ({
   type,

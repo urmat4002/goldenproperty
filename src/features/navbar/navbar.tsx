@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import style from './navbar.module.scss';
-import { Typography } from '../../shared/ui/typography/typography';
 import { Link } from 'react-router-dom';
-import { LangSelect } from '../../shared/ui/lang-select/lang-select';
+import { Typography } from '../../shared/ui/Typography/Typography';
+import style from './navbar.module.scss';
 
 interface INavbar {
   id: number;
@@ -46,9 +45,7 @@ const Navbar = () => {
             Разместить объявление
           </Typography>
         </li>
-        <li className={style.nav__item}>
-          <LangSelect />
-        </li>
+        <li className={style.nav__item}>Lang</li>
       </ul>
     </nav>
   );

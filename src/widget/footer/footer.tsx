@@ -1,18 +1,13 @@
 import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
-import { WhatsApp } from '../../shared/ui/icons/whats-app/whats-app';
-import { Typography } from '../../shared/ui/typography/typography';
+import { Typography } from '../../shared/ui/Typography/Typography';
 import style from './footer.module.scss';
 import { Link } from 'react-router-dom';
-import { GuldemLogo } from '../../shared/ui/icons/guldem-logo/guldem-logo';
-
 
 const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footer__container}>
-          <Link to="/">
-            <GuldemLogo />
-          </Link>
+        <Link to="/">Logo</Link>
         <div className={style.footer__center}>
           <div>
             <ul>
@@ -63,9 +58,7 @@ const Footer = () => {
             <a href="#">
               <Instagram />
             </a>
-            <a href="#">
-              <WhatsApp color="white" size={28} />
-            </a>
+            <a href="#">WhatsApp</a>
           </div>
         </div>
       </div>

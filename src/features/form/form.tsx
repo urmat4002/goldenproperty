@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react';
-import { setClose } from '../../app/lib/features/modal/modal-slice';
+import { setClose } from '../../app/lib/features/modal/ModalSlice';
 import { useAppDispatch } from '../../app/lib/store/hooks';
-import { Button } from '../../shared/ui/button/button';
-import Input from '../../shared/ui/input/input';
-import { sendEmail } from '../../widget/modal/data/sendEmail';
+import { Button } from '../../shared/ui/Button/Button';
+import Input from '../../shared/ui/Input/Input';
+import { sendEmail } from '../../widget/Modal/data/sendEmail';
 import form from './form.module.scss';
-import { FormData } from './types/form.types';
+import { FormData } from './types/Form.types';
 
 export const Form = () => {
   const dispatch = useAppDispatch();
