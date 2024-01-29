@@ -35,18 +35,18 @@ const Footer = () => {
         </div>
         <div className={style.footer__right}>
           <div className={style.footer__link}>
-            <Typography variant="h2" weight="bold">
+            <Typography variant="Title2" weight="bold">
               Contact us:
             </Typography>
             <a href="info@gulsdem.com">
               <Mail />
-              <Typography variant="caption" weight="regular">
+              <Typography variant="Caption1" weight="regular">
                 info@gulsdem.com
               </Typography>
             </a>
             <a href="tel:9021267890900">
               <Phone />
-              <Typography variant="caption" weight="regular">
+              <Typography variant="Caption1" weight="regular">
                 +90 (212) 67890900
               </Typography>
             </a>

@@ -11,19 +11,7 @@
   }
   &__item {
     cursor: pointer;
-    font-size: $base-font-size;
   }
   &__text {
-    color: $white;
-    a {
-      font-size: $base-font-size;
-      text-decoration: none;
-    }
-  }
-}
-
-@include tablet {
-  .nav__item:nth-child(4) {
-    display: none;
   }
 }

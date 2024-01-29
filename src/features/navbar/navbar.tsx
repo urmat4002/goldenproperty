@@ -11,14 +11,12 @@ interface INavbar {
 const Navbar = () => {
   const [responsible] = useState<INavbar | null>(null);
 
-  console.log(responsible, 'responsible');
-
   return (
     <nav className={style.nav}>
       <ul role="list" className={style.nav__wrapper}>
         <li className={style.nav__item}>
           <Typography
-            variant="caption"
+            variant="Caption1"
             weight="regular"
             className={style.nav__text}
           >
@@ -27,7 +25,7 @@ const Navbar = () => {
         </li>
         <li className={style.nav__item}>
           <Typography
-            variant="caption"
+            variant="Caption1"
             weight="regular"
             color="white"
             className={style.nav__text}
@@ -37,7 +35,7 @@ const Navbar = () => {
         </li>
         <li className={style.nav__item}>
           <Typography
-            variant="caption"
+            variant="Caption1"
             weight="regular"
             color="white"
             className={style.nav__text}

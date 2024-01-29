@@ -1,94 +1,61 @@
 @import '../../../app/styles/index.scss';
 
-body {
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-  color: $black;
-
-  @include tablet {
-    font-size: $tablet-font-size;
-  }
-
-  @include desktop {
-    font-size: $desktop-font-size;
-  }
+// Size & Type
+.Large {
+  @include Large;
+}
+.SubLarge {
+  @include SubLarge;
+}
+.Title1 {
+  @include Title1;
+}
+.Title2 {
+  @include Title2;
+}
+.Title3 {
+  @include Title3;
+}
+.Headline {
+  @include Headline;
+}
+.Body {
+  @include Body;
+}
+.Callout {
+  @include Callout;
+}
+.Subhead {
+  @include Subhead;
+}
+.Footnote {
+  @include Footnote;
+}
+.Caption1 {
+  @include Caption1;
+}
+.Caption2 {
+  @include Caption2;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: $heading-font-family;
-  color: $black;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: $heading-font-family;
-  color: $black;
-}
-
-h1 {
-  font-size: $heading1-font-size;
-  font-weight: $bold-weight;
-  line-height: $heading-line-height;
-}
-
-h2 {
-  font-size: $heading2-font-size;
-  font-weight: $bold-weight;
-  line-height: $heading-line-height;
-}
-
-h3 {
-  font-size: $heading3-font-size;
-  font-weight: $bold-weight;
-  line-height: $heading-line-height;
-}
-
-h4 {
-  font-size: $heading4-font-size;
-  font-weight: $bold-weight;
-  line-height: $heading-line-height;
-}
-
-h5 {
-  font-size: $heading5-font-size;
-  font-weight: $bold-weight;
-  line-height: $heading-line-height;
-}
-
+// Weight
 .regular {
-  font-weight: $regular-weight;
+  font-weight: 400;
 }
-
-.bold {
+.medium {
+  font-weight: 500;
+}
+.semibold {
   font-weight: 600;
 }
-
-.large-line-height {
-  line-height: 1.8;
+.bold {
+  font-weight: 700;
 }
 
-.small-line-height {
-  line-height: 1.2;
+// Color
+.black {
+  color: $colorBlack;
 }
-
-.container {
-  max-width: $container-max-width;
-  margin: 0 auto;
-  padding: $container-padding;
-}
-
-.extra-padding {
-  padding: 30px;
-}
-
-.small-padding {
-  padding: 10px;
+.white {
+  color: $colorWhite;
 }
