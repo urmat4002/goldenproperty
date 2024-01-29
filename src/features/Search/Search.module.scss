@@ -19,7 +19,7 @@
     border-radius: 40px 0 0 40px;
     padding: 16px 16px;
     gap: 4px;
-    background: $white;
+    background: $colorWhite;
     @include tablet {
       border-radius: 16px;
       padding: 20px;
@@ -29,7 +29,6 @@
   &__input {
     width: 100%;
     &::placeholder {
-      color: $system-gray;
     }
   }
 
@@ -37,10 +36,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: $system-gray;
     width: 40%;
     padding: 0 24px;
-    background: $white;
+    background: $colorWhite;
     cursor: pointer;
     @include tablet {
       display: none;
@@ -53,21 +51,21 @@
     justify-content: center;
     gap: 16px;
     border-radius: 0 40px 40px 0;
-    background: $white;
+    background: $colorWhite;
     cursor: pointer;
     transition: 0.2s ease;
     padding: 0 32px 0 24px;
     &:hover {
-      background: $white;
+      background: $colorWhite;
     }
     @include tablet {
-      background-color: $black;
-      color: $white;
+      background-color: $colorBlack;
+      color: $colorWhite;
       border-radius: 20px;
       padding: 16px;
       width: 100%;
       &:hover {
-        background: $system-gray;
+
       }
     }
   }

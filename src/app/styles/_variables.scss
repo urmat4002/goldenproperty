@@ -1,58 +1,58 @@
 // Container Dimensions
-$container-max-width: 1200px;
-$container-padding: 16px;
+$containerMaxWidth: 1136px;
+$containerPadding: 16px;
 
 // Typography
-$base-font-family: 'Montserrat', sans-serif;
-$base-font-size: 1rem;
-$base-line-height: 1.5;
+$baseFontFamily: 'Montserrat', sans-serif;
+// Font Size Mobile
+$fontMobileLarge:  2.5rem;
+$fontMobileSubLarge: 2.125rem;
+$fontMobileTitle1: 1.75rem;
+$fontMobileTitle2: 1.375rem;
+$fontMobileTitle3: 1.25rem;
+$fontMobileHeadline: 1.063rem;
+$fontMobileBody: 1.063rem;
+$fontMobileCallout: 1rem;
+$fontMobileSubhead: 0.938rem;
+$fontMobileFootnote: 0.813rem;
+$fontMobileCaption1: 0.75rem;
+$fontMobileCaption2: 0.688rem;
+// Font Size Desktop
+$fontDesktopLarge: 3.75rem;
+$fontDesktopSubLarge: 2.5rem;
+$fontDesktopTitle1: 2.125rem;
+$fontDesktopTitle2: 1.75rem;
+$fontDesktopTitle3: 1.625rem;
+$fontDesktopHeadline: 1.438rem;
+$fontDesktopBody: 1.438rem;
+$fontDesktopCallout: 1.375rem;
+$fontDesktopSubhead: 1.313rem;
+$fontDesktopFootnote: 1.188rem;
+$fontDesktopCaption1: 1.125rem;
+$fontDesktopCaption2: 1.063rem;
+// FontWeight
+$weightRegular: 400;
+$weightMedium: 500;
+$weightSemibold: 600;
+$weightBold: 700;
 
-$heading-font-family: 'Inter', sans-serif;
-$heading1-font-size: 4.5rem;
-$heading2-font-size: 3.8rem;
-$heading3-font-size: 2.6rem;
-$heading4-font-size: 1.4rem;
-$heading5-font-size: 1.2rem;
+// Color
+$colorPrimary:#C6A15B;
+$colorSecondary:#60543D;
+// BaseColor
+$colorWhite:#FFFFFF;
+$colorBlack:#000000;
+// GrayLevel
+$colorGray200:#999999;
+$colorGray300:#4C4C4C;
+$colorGray400:#272727;
+$colorGray500:#1B1B1B;
 
-$regular-weight: 400;
-$medium-weight: 400;
-$bold-weight: 700;
+// Define breakpoints
+$mobileBreakpoint: 576px;
+$tabletBreakpoint: 768px;
+$desktopBreakpoint: 992px;
+$largeDesktopBreakpoint: 1200px;
 
-// Responsive Typography
-$mobile-font-size: 14px;
-$tablet-font-size: 18px;
-$desktop-font-size: $base-font-size;
-
-// Line Heights
-$base-line-height: 1.5;
-$heading-line-height: 1.2;
-
-// Colors
-$white: #ffffff !default;
-$black: #2c2c2e !default;
-
-// System Colors
-$system-red: #ff3b30 !default;
-$system-orange: #ff9500 !default;
-$system-yellow: #ffcc00 !default;
-$system-green: #34c759 !default;
-$system-teal: #5ac8fa !default;
-$system-blue: #007aff !default;
-$system-indigo: #5856d6 !default;
-$system-purple: #af52de !default;
-$system-pink: #ff2d55 !default;
-
-$system-gray: #8e8e93 !default;
-$system-gray-02: #aeaeb2 !default;
-$system-gray-03: #c7c7cc !default;
-$system-gray-04: #d1d1d6 !default;
-$system-gray-05: #e5e5ea !default;
-$system-gray-06: #f2f2f7 !default;
-
-// Media Query Breakpoints
-$mobile-breakpoint: 560px;
-$tablet-breakpoint: 1108px;
-$desktop-breakpoint: 1024px;
-
-// Transitions
-$transition-duration: 0.3s;
+// Animate
+$transitionDuration: .3s;

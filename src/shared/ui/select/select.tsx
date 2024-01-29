@@ -57,7 +57,7 @@ export const Select = ({ value, options, onChange }: SelectProps) => {
                   isOptionSelected(option) ? style.selected : ''
                 } ${isHighlightedIndex === index ? style.highlighted : ''}`}
               >
-                <Typography variant="caption" weight="regular">
+                <Typography variant="Caption1" weight="regular">
                   {option.label}
                 </Typography>
               </li>

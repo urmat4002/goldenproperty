@@ -21,13 +21,13 @@ export const ProductCard: FC<ProductCardProps> = ({
         </div>
         <div className={styles['product-details']}>
           <div className={styles['product-caption']}>
-            <Typography variant="h5" weight="bold">
+            <Typography variant='Body' weight="bold">
               {title}
             </Typography>
-            <Typography variant="h5" weight="regular">
+            <Typography variant="Body" weight="regular">
               {geolocation}
             </Typography>
-            <Typography variant="h5" weight="regular">
+            <Typography variant="Body" weight="regular">
               {price}
             </Typography>
           </div>

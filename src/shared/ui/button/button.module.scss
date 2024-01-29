@@ -5,132 +5,118 @@ $font-size-medium: 17px;
 $font-size-large: 20px;
 
 .button {
-  &-common-styles {
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    border-radius: 14px;
-    font-weight: $medium-weight;
-    font-size: $font-size-medium;
-    outline: none;
-    transition:
-      background-color $transition-duration,
-      color $transition-duration,
-      transform $transition-duration;
-    position: relative;
-    @include desktop {
-      display: none;
-    }
-    @include tablet {
-      border-radius: 50%;
-    }
-    @include mobile {
-      border-radius: 50%;
-    }
-    &:hover {
-    }
+	&-common-styles {
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		text-decoration: none;
+		border-radius: 14px;
+		outline: none;
+		transition: background-color $transitionDuration,
+			color $transitionDuration, transform $transitionDuration;
+		position: relative;
+		@include desktop {
+			display: none;
+		}
+		@include tablet {
+			border-radius: 50%;
+		}
+		@include mobile {
+			border-radius: 50%;
+		}
+		&.loading {
+			pointer-events: none;
+		}
 
-    &.loading {
-      pointer-events: none;
-    }
+		&.icon-right {
+			flex-direction: row-reverse;
+		}
+	}
 
-    &.icon-right {
-      flex-direction: row-reverse;
-    }
-  }
+	&-primary-btn {
+		@extend .button-common-styles;
+		background-color: $colorBlack;
+		color: $colorWhite;
+		padding: 14px 20px;
+		&:hover {
+			background-color: darken($colorBlack, 10%);
+		}
+	}
 
-  &-primary-btn {
-    @extend .button-common-styles;
-    background-color: $black;
-    color: $white;
-    padding: 14px 20px;
-    &:hover {
-      background-color: darken($black, 10%);
-    }
-  }
+	&-secondary-btn {
+		@extend .button-common-styles;
+		color: $colorBlack;
+		padding: 14px 20px;
+		&:hover {
+			background-color: darken($colorWhite, 10%);
+		}
+	}
 
-  &-secondary-btn {
-    @extend .button-common-styles;
-    color: $black;
-    padding: 14px 20px;
-    &:hover {
-      background-color: darken($white, 10%);
-    }
-  }
+	&-link-btn {
+		@extend .button-common-styles;
+		padding: 14px 20px;
+		&:hover {
+			text-decoration: underline;
+		}
+		@include tablet {
+			padding: 5px 5px;
+		}
+		@include mobile {
+			padding: 5px 5px;
+		}
+	}
 
-  &-link-btn {
-    @extend .button-common-styles;
-    background-color: $system-green;
-    color: $white;
-    padding: 14px 20px;
-    &:hover {
-      text-decoration: underline;
-    }
-    @include tablet {
-      padding: 5px 5px;
-      background: linear-gradient(180deg, #114109 0%, #1f880f 100%);
-    }
-    @include mobile {
-      padding: 5px 5px;
-      background: linear-gradient(180deg, #114109 0%, #1f880f 100%);
-    }
-  }
+	&-icon-btn {
+		@extend .button-common-styles;
+		background-color: transparent;
+		color: $colorBlack;
+		padding: 14px 14px;
+		&:hover {
+			background-color: rgba($colorBlack, 0.1);
+		}
+		span {
+			margin-left: 0.5rem;
+		}
+	}
 
-  &-icon-btn {
-    @extend .button-common-styles;
-    background-color: transparent;
-    color: $black;
-    padding: 14px 14px;
-    &:hover {
-      background-color: rgba($black, 0.1);
-    }
-    span {
-      margin-left: 0.5rem;
-    }
-  }
+	&-small {
 
-  &-small {
-    font-size: $font-size-small;
-  }
+	}
 
-  &-medium {
-    font-size: $font-size-medium;
-  }
+	&-medium {
 
-  &-large {
-    font-size: $font-size-large;
-  }
+	}
 
-  &-contained {
-    padding: 0.5rem 1rem;
-  }
+	&-large {
 
-  &-outlined {
-    border: 2px solid;
-    padding: 0.5rem 1rem;
-  }
+	}
 
-  &.loader {
-  }
+	&-contained {
+		padding: 0.5rem 1rem;
+	}
+
+	&-outlined {
+		border: 2px solid;
+		padding: 0.5rem 1rem;
+	}
 }
 
 // Media Queries
 @include tablet {
-  .button {
-    &-common-styles {
-      font-size: $font-size-small;
-    }
-  }
+	.button {
+		&-common-styles {
+			font-size: $fontMobileBody;
+		}
+	}
 }
 
 @include desktop {
-  .button {
-    &-common-styles {
-      font-size: $font-size-medium;
-    }
-  }
+	.button {
+		&-common-styles {
+			font-size: $fontDesktopBody;
+		}
+	}
 }

@@ -1,7 +1,7 @@
 @import '../../app/styles/index.scss';
 
 .footer {
-  background: $black;
+  background: $colorGray500;
   padding: 86px 0;
   &__container {
     max-width: 1170px;
@@ -20,7 +20,7 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
-      color: $white;
+      color: $colorWhite;
       @include tablet {
         gap: 10px;
       }
@@ -45,9 +45,9 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
-    color: $white;
+    color: $colorWhite;
     a {
-      color: $white;
+      color: $colorWhite;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -55,7 +55,7 @@
     }
   }
   &__contact {
-    color: $white;
+    color: $colorWhite;
     display: flex;
     align-items: center;
     justify-content: flex-start;

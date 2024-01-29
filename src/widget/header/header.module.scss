@@ -3,7 +3,7 @@
 .header {
   width: 100%;
   padding: 26px 0;
-  background-color: $black;
+  background-color: $colorGray500;
   height: 110px;
   @include tablet {
     height: 76px;
@@ -39,7 +39,6 @@
       display: none;
     }
     @include tablet {
-      font-size: $mobile-font-size;
     }
   }
   @include tablet {

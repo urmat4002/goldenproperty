@@ -23,13 +23,11 @@ export const Form = () => {
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
   };
 
   const handleButton = async () => {
     dispatch(setClose());
     const res = await sendEmail(formData);
-    console.log(res);
   };
 
   return (

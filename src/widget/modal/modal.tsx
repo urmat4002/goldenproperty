@@ -33,10 +33,10 @@ const Modal = () => {
         </div>
         <div className={style.modal__container}>
           <div className={style.modal__content}>
-            <Typography variant="h3" weight="bold">
+            <Typography variant="Title3" weight="bold">
               Sell an appartment through our company!
             </Typography>
-            <Typography variant="label" weight="regular">
+            <Typography variant="Body" weight="regular">
               Fill form below and our agent will contact you shortly
             </Typography>
           </div>

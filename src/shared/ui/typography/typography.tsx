@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { FC, createElement } from 'react';
 import styles from './Typography.module.scss';
-import { Tags, TypographyProps } from './types/Typography.types';
+import { ITags, Tags, TypographyProps } from './types/Typography.types';
 
 export const Typography: FC<TypographyProps> = (props) => {
   const {
     variant,
-    weight = 'regular',
+    weight,
     children,
     className,
     color = '',
@@ -20,7 +20,7 @@ export const Typography: FC<TypographyProps> = (props) => {
   );
 
   return createElement(
-    Tags[variant],
+    Tags[variant as keyof ITags],
     { className: classNamedGenerated },
     children
   );

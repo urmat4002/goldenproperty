@@ -1,15 +1,17 @@
+@import './variables';
+
 #root {
   min-height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  font-family: $base-font-family;
+  font-family: $baseFontFamily;
 }
 
 [class*='__container'] {
-  max-width: $container-max-width;
+  max-width: $containerMaxWidth;
   margin: 0 auto;
-  padding: $container-padding;
+  padding: $containerPadding;
 }
 
 %smoothscroll {
