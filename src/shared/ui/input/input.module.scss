@@ -3,17 +3,26 @@
 .input-wrapper {
   margin-top: 20px;
   input {
+    color: $colorWhite;
     width: 100%;
-    background: $colorWhite;
-    border: none;
-    border-bottom: 1px solid $colorBlack;
-    padding: 10px 14px;
+    background: $colorGray500;
+    border: .5px solid $colorGray450;
+    border-radius: 24px;
+    padding: 16px 24px;
     outline: none;
+    @include Body;
+    @include tablet {
+      @include MBody;
+    }
     &::placeholder {
       border: none;
     }
+    &:hover {
+			background-color: $colorGray450;
+		}
     &:focus {
-      border-bottom: 1px solid $colorBlack;
+      background-color: $colorGray550;
+      border: .5px solid $colorGray400;
     }
   }
 }
