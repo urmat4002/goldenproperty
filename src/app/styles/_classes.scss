@@ -11,7 +11,7 @@
 [class*='__container'] {
   max-width: $containerMaxWidth;
   margin: 0 auto;
-  padding: $containerPadding;
+  padding: 0 $containerPadding;
 }
 
 %smoothscroll {
