@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/lib/store/hooks'
 import { Form } from '../../../features/Form/Form'
 import { Button } from '../../../shared/ui/Button/Button'
 import { Typography } from '../../../shared/ui/Typography/Typography'
-import style from './modal.module.scss'
+import style from './ModalInput.module.scss'
 
 const Modal = () => {
 	const dispatch = useAppDispatch()
