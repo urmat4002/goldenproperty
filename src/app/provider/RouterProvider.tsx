@@ -11,11 +11,15 @@ const router = [
     element: <Home />,
   },
   {
-    path: '/estates',
+    path: `/estates/city`,
     element: <Assortment />,
   },
   {
-    path: `/estates/:id`,
+    path: `/estates/all`,
+    element: <Assortment />,
+  },
+  {
+    path:  `estate/:id`,
     element: <Room />,
   },
   {

@@ -3,7 +3,7 @@ import { setClose } from '../../app/lib/features/modal/ModalSlice';
 import { useAppDispatch } from '../../app/lib/store/hooks';
 import { Button } from '../../shared/ui/Button/Button';
 import Input from '../../shared/ui/Input/Input';
-import { sendEmail } from '../../widget/Modal/data/sendEmail';
+// import { sendEmail } from '../../widget/Modal/data/sendEmail';
 import form from './Form.module.scss';
 import { FormData } from './types/Form.types';
 
@@ -27,7 +27,7 @@ export const Form = () => {
 
   const handleButton = async () => {
     dispatch(setClose());
-    const res = await sendEmail(formData);
+    // const res = await sendEmail(formData);
   };
 
   return (
