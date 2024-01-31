@@ -1,13 +1,13 @@
 import { CSSProperties, ReactNode } from 'react';
 
-interface BaseButtonProps {
+export interface BaseButtonProps {
   disabled?: boolean;
 }
 
-type ButtonSize = 'small' | 'medium' | 'large';
-type ButtonVariant = 'outlined' | 'contained';
-type ButtonIconPosition = 'left' | 'right';
-type ButtonType = 'primary' | 'secondary' | 'link' | 'icon';
+export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonVariant = 'outlined' | 'contained';
+export type ButtonIconPosition = 'left' | 'right';
+export type ButtonType = 'primary' | 'secondary' | 'link' | 'icon';
 
 export interface ButtonConfig
   extends Record<
