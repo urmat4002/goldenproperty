@@ -3,6 +3,7 @@
 .header {
 	background-color: $colorGray500;
 	height: 60px;
+	border-bottom: .5px solid $colorGray450;
 	&__logo {
 		cursor: pointer;
 	}

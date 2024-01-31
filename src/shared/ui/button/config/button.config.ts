@@ -1,4 +1,4 @@
-import { ButtonConfig } from '../types/Button.types';
+import { ButtonConfig } from '../types/Button.types'
 
 export const buttonConfigs: ButtonConfig = {
   primary: { classes: 'button-primary-btn', variant: 'contained' },

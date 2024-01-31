@@ -88,12 +88,12 @@
   font-size: $fontDesktopBody;
   font-style: normal;
   line-height: 29px; /* 126.087% */
-  @include tablet {
-    font-size: $fontMobileBody;
-    font-style: normal;
-    line-height: 22px; /* 129.412% */
-    letter-spacing: -0.4px;
-  }
+}
+@mixin MBody {
+  font-size: $fontMobileBody;
+  font-style: normal;
+  line-height: 22px; /* 129.412% */
+  letter-spacing: -0.4px;
 }
 @mixin Callout {
   font-size: $fontDesktopCallout;
