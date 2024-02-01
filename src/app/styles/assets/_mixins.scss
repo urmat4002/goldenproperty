@@ -1,0 +1,152 @@
+@import './variables';
+
+// Adaptive
+@mixin mobile {
+  @media (max-width: $mobileBreakpoint) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: $mobileBreakpoint) and (max-width: $tabletBreakpoint) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $tabletBreakpoint) {
+    @content;
+  }
+}
+
+// Fonts
+@mixin Large {
+  font-size: $fontMobileLarge;
+  font-style: normal;
+  line-height: 70px; /* 116.667% */
+  @include tablet {
+    font-size: $fontMobileLarge;
+    font-style: normal;
+    line-height: 48px; /* 120% */
+  }
+} 
+@mixin SubLarge {
+  font-size: $fontDesktopSubhead;
+  font-style: normal;
+  line-height: 48px; /* 120% */
+  @include tablet {
+    font-size: $fontMobileSubhead;
+    font-style: normal;
+    line-height: 41px; /* 120.588% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Title1 {
+  font-size: $fontDesktopTitle1;
+  font-style: normal;
+  line-height: 41px; /* 120.588% */
+  @include tablet {
+    font-size: $fontMobileTitle1;
+    font-style: normal;
+    line-height: 34px; /* 121.429% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Title2 {
+  font-size: $fontDesktopTitle2;
+  font-style: normal;
+  line-height: 34px; /* 121.429% */
+  @include tablet {
+    font-size: $fontMobileTitle2;
+    font-style: normal;
+    line-height: 28px; /* 127.273% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Title3 {
+  font-size: $fontDesktopTitle3;
+  font-style: normal;
+  line-height: 32px; /* 123.077% */
+  @include tablet {
+    font-size: $fontMobileTitle3;
+    font-style: normal;
+    line-height: 25px; /* 125% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Headline {
+  font-size: $fontDesktopHeadline;
+  font-style: normal;
+  line-height: 29px; /* 126.087% */
+  @include tablet {
+    font-size: $fontMobileHeadline;
+    font-style: normal;
+    line-height: 22px; /* 129.412% */
+    letter-spacing: -0.4px;
+  }
+}
+
+@mixin Body {
+  font-size: $fontDesktopBody;
+  font-style: normal;
+  line-height: 29px; /* 126.087% */
+}
+@mixin MBody {
+  font-size: $fontMobileBody;
+  font-style: normal;
+  line-height: 22px; /* 129.412% */
+  letter-spacing: -0.4px;
+}
+@mixin Callout {
+  font-size: $fontDesktopCallout;
+  font-style: normal;
+  line-height: 28px; /* 127.273% */
+  @include tablet {
+    font-size: $fontMobileCallout;
+    font-style: normal;
+    line-height: 21px; /* 131.25% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Subhead {
+  font-size: $fontDesktopSubhead;
+  font-style: normal;
+  line-height: 28px; /* 133.333% */
+  @include tablet {
+    font-size: $fontMobileSubhead;
+    font-style: normal;
+    line-height: 20px; /* 133.333% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Footnote {
+  font-size: $fontDesktopFootnote;
+  font-style: normal;
+  line-height: 24px; /* 126.316% */
+  @include tablet {
+    font-size: $fontMobileFootnote;
+    font-style: normal;
+    line-height: 18px; /* 138.462% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Caption1 {
+  font-size: $fontDesktopCaption1;
+  font-style: normal;
+  line-height: 23px; /* 127.778% */
+  @include tablet {
+    font-size: $fontMobileCaption1;
+    font-style: normal;
+    line-height: 16px; /* 133.333% */
+    letter-spacing: -0.4px;
+  }
+}
+@mixin Caption2 {
+  font-size: $fontDesktopCaption2;
+  font-style: normal;
+  line-height: 22px; /* 129.412% */
+  @include tablet {
+    font-size: $fontMobileCaption2;
+    font-style: normal;
+    line-height: 13px; /* 118.182% */
+    letter-spacing: -0.4px;
+  }
+}

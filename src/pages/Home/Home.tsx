@@ -1,6 +1,11 @@
+import { Button } from '@/shared/ui'
 
 export const Home = () => {
 	return (
-		<div>Home</div>
+		<div>
+			<Button type='primary'>
+				Button
+			</Button>
+		</div>
 	)
 }
