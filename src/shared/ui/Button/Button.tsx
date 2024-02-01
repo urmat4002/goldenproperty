@@ -66,7 +66,7 @@ export const Button: FC<ButtonProps> = ({
   const { icon, ...rest } = buttonConfigs[type] || {};
 
   if (type === 'link') {
-    const { href, target, onClick } = props;
+    const { href, target, onClick } = props; //id
 
     return (
       <a
