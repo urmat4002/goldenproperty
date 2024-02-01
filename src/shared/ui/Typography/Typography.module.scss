@@ -3,39 +3,75 @@
 // Size & Type
 .Large {
   @include Large;
+  @include tablet {
+    @include MLarge;
+  }
 }
 .SubLarge {
   @include SubLarge;
+  @include tablet {
+    @include MSubLarge;
+  }
 }
 .Title1 {
   @include Title1;
+  @include tablet {
+    @include MTitle1;
+  }
 }
 .Title2 {
   @include Title2;
+  @include tablet {
+    @include MTitle2;
+  }
 }
 .Title3 {
   @include Title3;
+  @include tablet {
+    @include MTitle3;
+  }
 }
 .Headline {
   @include Headline;
+  @include tablet {
+    @include MHeadline;
+  }
 }
 .Body {
   @include Body;
+  @include tablet {
+    @include MBody;
+  }
 }
 .Callout {
   @include Callout;
+  @include tablet {
+    @include MCallout;
+  }
 }
 .Subhead {
   @include Subhead;
+  @include tablet {
+    @include MSubhead;
+  }
 }
 .Footnote {
   @include Footnote;
+  @include tablet {
+    @include MFootnote;
+  }
 }
 .Caption1 {
   @include Caption1;
+  @include tablet {
+    @include MCaption1;
+  }
 }
 .Caption2 {
   @include Caption2;
+  @include tablet {
+    @include MCaption2;
+  }
 }
 
 // Weight

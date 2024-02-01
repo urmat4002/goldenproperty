@@ -7,6 +7,11 @@ console.log(path.resolve(__dirname, './src/assets'));
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      '/api': 'http://34.125.198.134',
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
