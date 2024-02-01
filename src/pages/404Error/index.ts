@@ -1,1 +1,1 @@
-export { Error } from './404Error'
+export { Error } from './404Error';

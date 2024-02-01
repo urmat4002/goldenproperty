@@ -1,1 +1,1 @@
-export { Estate } from './Estate'
+export { Estate } from './Estate';

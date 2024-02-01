@@ -1,4 +1,4 @@
-import { AboutUs, Estate, Home, Room } from '@/pages'
+import { AboutUs, Estate, Home, Room } from '@/pages';
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const router = [
     element: <Estate />,
   },
   {
-    path:  `estate/:id`,
+    path: `estate/:id`,
     element: <Room />,
   },
   {

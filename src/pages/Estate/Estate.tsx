@@ -1,3 +1,3 @@
 export const Estate = () => {
-	return <div>Estate</div>
-}
+  return <div>Estate</div>;
+};

@@ -1,20 +1,18 @@
 // vite.config.ts
-import { defineConfig } from "file:///Users/dayanulanov/al_khail-frontend/node_modules/.pnpm/vite@5.0.12_@types+node@20.11.14_sass@1.70.0/node_modules/vite/dist/node/index.js";
-import react from "file:///Users/dayanulanov/al_khail-frontend/node_modules/.pnpm/@vitejs+plugin-react-swc@3.6.0_vite@5.0.12/node_modules/@vitejs/plugin-react-swc/index.mjs";
-import path from "path";
-var __vite_injected_original_dirname = "/Users/dayanulanov/al_khail-frontend";
-console.log(path.resolve(__vite_injected_original_dirname, "./src/assets"));
+import { defineConfig } from 'file:///Users/dayanulanov/al_khail-frontend/node_modules/.pnpm/vite@5.0.12_@types+node@20.11.14_sass@1.70.0/node_modules/vite/dist/node/index.js';
+import react from 'file:///Users/dayanulanov/al_khail-frontend/node_modules/.pnpm/@vitejs+plugin-react-swc@3.6.0_vite@5.0.12/node_modules/@vitejs/plugin-react-swc/index.mjs';
+import path from 'path';
+var __vite_injected_original_dirname = '/Users/dayanulanov/al_khail-frontend';
+console.log(path.resolve(__vite_injected_original_dirname, './src/assets'));
 var vite_config_default = defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__vite_injected_original_dirname, "./src"),
-      "@app": path.resolve(__vite_injected_original_dirname, "./src/app"),
-      "@pages": path.resolve(__vite_injected_original_dirname, "./src/pages")
-    }
-  }
+      '@': path.resolve(__vite_injected_original_dirname, './src'),
+      '@app': path.resolve(__vite_injected_original_dirname, './src/app'),
+      '@pages': path.resolve(__vite_injected_original_dirname, './src/pages'),
+    },
+  },
 });
-export {
-  vite_config_default as default
-};
+export { vite_config_default as default };
 //# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcudHMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCIvVXNlcnMvZGF5YW51bGFub3YvYWxfa2hhaWwtZnJvbnRlbmRcIjtjb25zdCBfX3ZpdGVfaW5qZWN0ZWRfb3JpZ2luYWxfZmlsZW5hbWUgPSBcIi9Vc2Vycy9kYXlhbnVsYW5vdi9hbF9raGFpbC1mcm9udGVuZC92aXRlLmNvbmZpZy50c1wiO2NvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9pbXBvcnRfbWV0YV91cmwgPSBcImZpbGU6Ly8vVXNlcnMvZGF5YW51bGFub3YvYWxfa2hhaWwtZnJvbnRlbmQvdml0ZS5jb25maWcudHNcIjtpbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tICd2aXRlJ1xuaW1wb3J0IHJlYWN0IGZyb20gJ0B2aXRlanMvcGx1Z2luLXJlYWN0LXN3YydcbmltcG9ydCBwYXRoIGZyb20gJ3BhdGgnXG5cbmNvbnNvbGUubG9nKHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsICcuL3NyYy9hc3NldHMnKSlcblxuLy8gaHR0cHM6Ly92aXRlanMuZGV2L2NvbmZpZy9cbmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7XG4gIHBsdWdpbnM6IFtyZWFjdCgpXSxcbiAgcmVzb2x2ZToge1xuICAgIGFsaWFzOiB7XG4gICAgICAnQCc6IHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsICcuL3NyYycpLFxuICAgICAgJ0BhcHAnOiBwYXRoLnJlc29sdmUoX19kaXJuYW1lLCAnLi9zcmMvYXBwJyksXG4gICAgICAnQHBhZ2VzJzogcGF0aC5yZXNvbHZlKF9fZGlybmFtZSwgJy4vc3JjL3BhZ2VzJyksXG4gICAgfVxuICB9XG59KVxuIl0sCiAgIm1hcHBpbmdzIjogIjtBQUE4UixTQUFTLG9CQUFvQjtBQUMzVCxPQUFPLFdBQVc7QUFDbEIsT0FBTyxVQUFVO0FBRmpCLElBQU0sbUNBQW1DO0FBSXpDLFFBQVEsSUFBSSxLQUFLLFFBQVEsa0NBQVcsY0FBYyxDQUFDO0FBR25ELElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQzFCLFNBQVMsQ0FBQyxNQUFNLENBQUM7QUFBQSxFQUNqQixTQUFTO0FBQUEsSUFDUCxPQUFPO0FBQUEsTUFDTCxLQUFLLEtBQUssUUFBUSxrQ0FBVyxPQUFPO0FBQUEsTUFDcEMsUUFBUSxLQUFLLFFBQVEsa0NBQVcsV0FBVztBQUFBLE1BQzNDLFVBQVUsS0FBSyxRQUFRLGtDQUFXLGFBQWE7QUFBQSxJQUNqRDtBQUFBLEVBQ0Y7QUFDRixDQUFDOyIsCiAgIm5hbWVzIjogW10KfQo=

@@ -1,11 +1,9 @@
-import { Button } from '@/shared/ui'
+import { Button } from '@/shared/ui';
 
 export const Home = () => {
-	return (
-		<div>
-			<Button type='primary'>
-				Button
-			</Button>
-		</div>
-	)
-}
+  return (
+    <div>
+      <Button type="primary">Button</Button>
+    </div>
+  );
+};
