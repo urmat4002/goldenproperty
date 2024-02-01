@@ -1,0 +1,21 @@
+@import '@styles';
+
+.header {
+  background-color: $colorGray500;
+  height: 60px;
+  border-bottom: 0.5px solid $colorGray450;
+  &Logo {
+    cursor: pointer;
+  }
+  &Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  &Actions {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+}

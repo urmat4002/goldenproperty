@@ -8,7 +8,7 @@
   font-family: $baseFontFamily;
 }
 
-[class*='__container'] {
+[class*='Container'] {
   max-width: $containerMaxWidth;
   margin: 0 auto;
   padding: 0 $containerPadding;

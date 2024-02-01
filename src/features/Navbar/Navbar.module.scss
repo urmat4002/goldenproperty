@@ -1,0 +1,23 @@
+@import '@styles';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  &Menu {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+  &MenuItem {
+    cursor: pointer;
+    a {
+      text-decoration: none;
+      color: $colorWhite;
+    }
+    :hover {
+      color: $colorPrimary;
+    }
+  }
+}
