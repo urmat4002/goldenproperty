@@ -1,4 +1,4 @@
-import { AboutUs, Estate, Home, Room } from '@/pages';
+import { AboutUs, Estates, Home, Room } from '@/pages';
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -8,11 +8,11 @@ const router = [
     element: <Home />,
   },
   {
-    path: `/estate/city`,
-    element: <Estate />,
+    path: `/estates/city`,
+    element: <Estates />,
   },
   {
-    path: `estate/:id`,
+    path: `estates/:id`,
     element: <Room />,
   },
   {

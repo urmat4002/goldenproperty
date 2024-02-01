@@ -1,0 +1,30 @@
+@import '@styles';
+
+.inputWrapper {
+  margin-top: 20px;
+  input {
+    color: $colorWhite;
+    width: 100%;
+    background: $colorGray500;
+    border: 0.5px solid $colorGray450;
+    border-radius: 56px;
+    padding: 16px 24px;
+    outline: none;
+    transition: 0.3s ease;
+    font-weight: 500;
+    @include Body;
+    @include tablet {
+      @include MBody;
+    }
+    &::placeholder {
+      border: none;
+    }
+    &:hover {
+      background-color: $colorGray450;
+    }
+    &:focus {
+      background-color: $colorGray550;
+      border: 0.5px solid $colorGray400;
+    }
+  }
+}
