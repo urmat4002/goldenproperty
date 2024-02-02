@@ -1,3 +1,1 @@
-export interface ObjectCardProps {
-	
-}
+export interface ObjectCardProps {}

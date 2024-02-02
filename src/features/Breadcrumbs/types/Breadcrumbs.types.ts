@@ -1,3 +1,1 @@
-export interface BreadcrumbsProps {
-	
-}
+export interface BreadcrumbsProps {}

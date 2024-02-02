@@ -1,3 +1,1 @@
-export interface SliderCityProps {
-
-}
+export interface SliderCityProps {}

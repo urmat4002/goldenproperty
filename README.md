@@ -8,6 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Used alias
+
 - @styles: use global scss style in scss module file
 - @app: let up to global variables, redux slices and providers
 - @pages: path to pages

@@ -1,1 +1,1 @@
-export { HeroAboutUs } from './HeroAboutUs'
+export { HeroAboutUs } from './HeroAboutUs';
