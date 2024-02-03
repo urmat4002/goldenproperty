@@ -14,7 +14,7 @@ export type TypographyVariants =
   | 'Caption1'
   | 'Caption2';
 
-export type ColorVariants = 'black' | 'white';
+export type ColorVariants = 'black' | 'white' | 'gold';
 
 export interface TypographyProps {
   children: ReactNode;
