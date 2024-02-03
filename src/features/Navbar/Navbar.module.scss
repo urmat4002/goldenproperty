@@ -7,10 +7,16 @@
   &Menu {
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: 16px;
     list-style: none;
   }
+  &MenuSelect {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
   &MenuItem {
+    padding: 12px 24px;
     cursor: pointer;
     a {
       text-decoration: none;
