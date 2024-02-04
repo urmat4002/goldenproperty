@@ -12,10 +12,10 @@ export const Form: FC<FromProps> = ({ title, subTitle }) => {
 	return (
 		<form className={form.form}>
 			<div className={form.formTitle}>
-				<Typography variant='H3' weight='medium' color='gold'>
+				<Typography variant='h3' weight='medium' color='gold'>
 					{title}
 				</Typography>
-				<Typography variant='Body' weight='medium' color='white'>
+				<Typography variant='body' weight='medium' color='white'>
 					{subTitle}
 				</Typography>
 			</div>
