@@ -31,7 +31,7 @@ export const MenuLeftbar: FC<MenuLeftbarProps> = memo(({
               onClick(item.id)
             }}
           >
-            <Typography variant='Body' weight='medium' 
+            <Typography variant='body' weight='medium' 
             className={clsx(styles.menuBannerTypography, isActive ? styles.active : styles.default)}>
               {item.city__name}
             </Typography>

@@ -21,7 +21,7 @@ export const Section: React.FC<SectionProps> = ({
 			<div className={classNamedGenerated}>
 				{showTitle && title && (
 					<Typography
-						variant='H2'
+						variant='h2'
 						weight='bold'
 						color={color === 'gold' ? 'gold' : 'white'}
 					>
