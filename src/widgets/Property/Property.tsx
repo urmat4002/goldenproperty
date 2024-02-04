@@ -1,7 +1,6 @@
-import { ArrowRight } from 'lucide-react';
-import { SliderCity } from '../../features/Slider/SliderCity/SliderCity';
-import style from './Property.module.scss';
-import { Button } from '@/shared/ui';
+import { ArrowRight } from "lucide-react";
+import style from "./Property.module.scss";
+import { Button } from "@/shared/ui";
 
 export const Property = () => {
   return (
@@ -43,10 +42,6 @@ export const Property = () => {
               alt="Картина"
             />
           </div>
-        </div>
-
-        <div>
-          <SliderCity />
         </div>
       </div>
     </div>
