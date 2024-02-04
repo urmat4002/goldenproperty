@@ -28,7 +28,7 @@ export const MenuDropdown = () => {
       className={styles.menuDropdown}
     >
       <div className={styles.menuDropdownContainer}>
-        {dataCity && <MenuLeftbar data={dataCity} onClick={setCityId} />}
+        {dataCity && <MenuLeftbar data={dataCity} onClick={setCityId} isActive= {cityId} />}
         {city && <MenuBanner data={city} />}
       </div>
     </div>

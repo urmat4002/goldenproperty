@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { ICity } from '../types/MenuDropDown.types';
 import styles from './MenuBanner.module.scss';
 import { Button, Typography } from '@/shared/ui';
@@ -8,7 +8,7 @@ interface MenuBannerProps {
   data: ICity;
 }
 
-export const MenuBanner: FC<MenuBannerProps> = ({ data }) => {
+export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
   return (
     <div className={styles.menuBanner}>
       <div className={styles.menuBannerTop}>
@@ -26,12 +26,12 @@ export const MenuBanner: FC<MenuBannerProps> = ({ data }) => {
           <img src={data.city__img} alt={data.city__name} />
         </div>
       </div>
-      <Button type="primary">
-        <Typography variant="Caption1" weight="medium">
+      <Button type="primary" customClasses={styles.menuBannerButton}>
+        <Typography variant="Caption1" weight="medium" className={styles.menuBannerTypography}>
           See real estates
         </Typography>
         <ArrowRight />
       </Button>
     </div>
   );
-};
+});

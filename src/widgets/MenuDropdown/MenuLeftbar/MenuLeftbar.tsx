@@ -1,18 +1,23 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { ICity } from '../types/MenuDropDown.types';
 import { Button, Typography } from '@/shared/ui'
 import styles from './MenuLeftbar.module.scss';
+import clsx from 'clsx'
 
 
 interface MenuLeftbarProps {
   data: ICity[];
-  onClick: (id: number) => void
+  onClick: (id: number) => void;
+  isActive: number;
 }
 
-export const MenuLeftbar: FC<MenuLeftbarProps> = ({
+export const MenuLeftbar: FC<MenuLeftbarProps> = memo(({
   data,
-  onClick
+  onClick,
+  isActive
 }: MenuLeftbarProps) => {
+
+  console.log(isActive, ": isActive")
 
   return (
     <div className={styles.menuLeft}>
@@ -20,11 +25,14 @@ export const MenuLeftbar: FC<MenuLeftbarProps> = ({
         return (
           <Button
             customClasses={styles.menuLeftButton}
-            type='secondary'
+            type='link'
             key={item.id}
-            onClick={() => onClick(item.id)}
+            onClick={() => {
+              onClick(item.id)
+            }}
           >
-            <Typography variant='Caption1' weight='medium'>
+            <Typography variant='Caption1' weight='medium' 
+            className={clsx(styles.menuBannerTypography, isActive ? styles.active : styles.default)}>
               {item.city__name}
             </Typography>
           </Button>
@@ -32,4 +40,4 @@ export const MenuLeftbar: FC<MenuLeftbarProps> = ({
       })}
     </div>
   );
-};
+});
