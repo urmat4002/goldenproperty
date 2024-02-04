@@ -6,7 +6,7 @@ export const FormCallBack = () => {
 	return (
 		<div className={styles.FormCallBack}>
 			<div className={styles.FormCallBackContainer}>
-				<Typography variant='Title2' weight='bold' color='white'>
+				<Typography variant='H2' weight='bold' color='white'>
 					Contact us
 				</Typography>
 				<Form

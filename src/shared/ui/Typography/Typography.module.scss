@@ -1,100 +1,46 @@
 @import '@styles';
 
 // Size & Type
-.Large {
-  @include Large;
-  @include tablet {
-    @include MLarge;
-  }
+.H1 {
+	font-size: 90px;
 }
-.SubLarge {
-  @include SubLarge;
-  @include tablet {
-    @include MSubLarge;
-  }
+.H2 {
+	font-size: 40px;
 }
-.Title1 {
-  @include Title1;
-  @include tablet {
-    @include MTitle1;
-  }
+.H3 {
+	font-size: 36px;
 }
-.Title2 {
-  @include Title2;
-  @include tablet {
-    @include MTitle2;
-  }
+.H4 {
+	font-size: 28px;
 }
-.Title3 {
-  @include Title3;
-  @include tablet {
-    @include MTitle3;
-  }
-}
-.Headline {
-  @include Headline;
-  @include tablet {
-    @include MHeadline;
-  }
+.Button {
+	font-size: 24px;
 }
 .Body {
-  @include Body;
-  @include tablet {
-    @include MBody;
-  }
-}
-.Callout {
-  @include Callout;
-  @include tablet {
-    @include MCallout;
-  }
-}
-.Subhead {
-  @include Subhead;
-  @include tablet {
-    @include MSubhead;
-  }
-}
-.Footnote {
-  @include Footnote;
-  @include tablet {
-    @include MFootnote;
-  }
-}
-.Caption1 {
-  @include Caption1;
-  @include tablet {
-    @include MCaption1;
-  }
-}
-.Caption2 {
-  @include Caption2;
-  @include tablet {
-    @include MCaption2;
-  }
+	font-size: 20px;
 }
 
 // Weight
 .regular {
-  font-weight: 400;
+	font-weight: 400;
 }
 .medium {
-  font-weight: 500;
+	font-weight: 500;
 }
 .semibold {
-  font-weight: 600;
+	font-weight: 600;
 }
 .bold {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 // Color
 .black {
-  color: $colorBlack;
+	color: $colorBlack;
 }
 .white {
-  color: $colorWhite;
+	color: $colorWhite;
 }
 .gold {
-  color: $colorPrimary;
+	color: $colorPrimary;
 }
