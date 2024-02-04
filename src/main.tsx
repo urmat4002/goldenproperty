@@ -12,12 +12,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <Header />
         <Routing />
         <Footer />
         <Modal />
         <FloatingWhatsApp />
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)
