@@ -1,18 +1,18 @@
 import { ReactNode } from 'react'
 
 export type TypographyVariants =
-	| 'H1'
-	| 'H2'
-	| 'H3'
-	| 'Button'
-	| 'Body'
+	| 'h1'
+	| 'h2'
+	| 'h3'
+	| 'button'
+	| 'body'
 
 export interface ITags {
-	H1: string;
-	H2: string;
-	H3: string;
-	Button: string;
-	Body: string;
+	h1: string;
+	h2: string;
+	h3: string;
+	button: string;
+	body: string;
 }
 
 export type ColorVariants = 'black' | 'white' | 'gold'

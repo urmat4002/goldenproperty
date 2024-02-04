@@ -7,11 +7,11 @@ export const Typography: FC<TypographyProps> = props => {
 	const { variant, weight = 'regular', children, className, color = '' } = props
 
 	const Tags = {
-		'H1': 'h1',
-		'H2': 'h2',
-		'H3': 'h3',
-		'Button': 'p',
-		'Body': 'p',
+		'h1': 'h1',
+		'h2': 'h2',
+		'h3': 'h3',
+		'button': 'p',
+		'body': 'p',
 	}
 
 	const classNamedGenerated = clsx(
