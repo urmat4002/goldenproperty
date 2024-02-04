@@ -7,7 +7,7 @@ export const LangSelect: FC = () => {
   return (
     <div className={styles.langSelect}>
       <Globe color="white" width={20} />
-      <Typography variant="Caption1" weight="medium" color="white">
+      <Typography variant='Body' weight="medium" color="white">
         EN
       </Typography>
       <ChevronDown color="white" width={20} />

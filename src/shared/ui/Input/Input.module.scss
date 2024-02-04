@@ -12,10 +12,7 @@
     outline: none;
     transition: 0.3s ease;
     font-weight: 500;
-    @include Body;
-    @include tablet {
-      @include MBody;
-    }
+    font-size: 20px;
     &::placeholder {
       border: none;
     }
