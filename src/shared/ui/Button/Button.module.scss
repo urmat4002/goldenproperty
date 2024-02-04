@@ -10,10 +10,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    @include Body;
-    @include tablet {
-      @include MBody;
-    }
+    font-size: 20px;
   }
 
   &-primary-btn {

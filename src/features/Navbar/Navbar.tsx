@@ -14,7 +14,7 @@ export const Navbar = () => {
         onMouseLeave={() => dispatch(setClose())}
         className={styles.navbarMenuItem}>
         <Typography 
-          variant="Caption2" 
+          variant='body' 
           weight="medium" 
           color="white"
           className={styles.navbarMenuSelect}
@@ -27,7 +27,7 @@ export const Navbar = () => {
           return (
             <li className={styles.navbarMenuItem} key={link.label}>
               <NavLink to={link.path}>
-                <Typography variant="Caption2" weight="medium">
+                <Typography variant='body' weight="medium">
                   {link.label}
                 </Typography>
               </NavLink>
@@ -36,7 +36,7 @@ export const Navbar = () => {
         })}
       </ul>
       <button onClick={() => {}} className={styles.navbarMenuItem}>
-        <Typography variant="Caption2" weight="medium" color="white">
+        <Typography variant='body' weight="medium" color="white">
           Place ann add
         </Typography>
       </button>

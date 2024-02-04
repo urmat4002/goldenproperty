@@ -9,15 +9,18 @@ interface MenuBannerProps {
 }
 
 export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
+
+  console.log('render')
+
   return (
     <div className={styles.menuBanner}>
       <div className={styles.menuBannerTop}>
         <div className={styles.menuBannerContent}>
-          <Typography variant="Title3" weight="semibold" color="white">
+          <Typography variant='h3' weight="semibold" color="white">
             {data.city__name}
           </Typography>
           <div className={styles.menuBannerDescription}>
-            <Typography variant="Caption2" weight="regular" color="white">
+            <Typography variant='body' weight="regular" color="white">
               {data.city__description}
             </Typography>
           </div>
@@ -27,7 +30,7 @@ export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
         </div>
       </div>
       <Button type="primary" customClasses={styles.menuBannerButton}>
-        <Typography variant="Caption1" weight="medium" className={styles.menuBannerTypography}>
+        <Typography variant='body' weight="medium" className={styles.menuBannerTypography}>
           See real estates
         </Typography>
         <ArrowRight />
