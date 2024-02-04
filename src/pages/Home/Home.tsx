@@ -1,4 +1,4 @@
-import { Form } from '@/features';
+import { Form, Select } from '@/features';
 import { Button, Input } from '@/shared/ui';
 
 export const Home = () => {
@@ -6,6 +6,7 @@ export const Home = () => {
     <div>
       <Button type="primary">Button</Button>
       <Input placeholder="City" />
+      <Select/>
       <Form
         title={'Do you have any questions?'}
         subTitle={'Leave your contacts and we will get in touch'}
