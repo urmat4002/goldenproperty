@@ -23,6 +23,7 @@
 	&Description {
 		height: 340px;
 		overflow-y: scroll;
+		@include scroll;
 	}
 	&Image {
 		img {
