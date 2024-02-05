@@ -1,7 +1,5 @@
-import React from 'react';
-import styles from './HeroHome.module.scss';
-import { Button } from "@shared/ui";
-import { section } from "@features/";
+import styles from './HeroHome.module.scss'
+import { Button } from '@shared/ui'
 
 export const HeroHome = () => {
   return (
@@ -11,9 +9,13 @@ export const HeroHome = () => {
           <div style={{ position: 'relative' }}>
             <div className={styles.white}></div>
           </div>
-          <h1><span>Golden </span> House</h1>
+          <h1>
+            <span>Golden </span> House
+          </h1>
           <div>
-            <p>Find your dream home <span>with us</span></p>
+            <p>
+              Find your dream home <span>with us</span>
+            </p>
           </div>
           <div>
             <Button type="primary">See real estate</Button>
@@ -21,5 +23,5 @@ export const HeroHome = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
