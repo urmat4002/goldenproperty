@@ -1,13 +1,14 @@
-import { BenefitsGH } from '@/features/BenefitsGH';
+import { Select } from '@/features'
+import { Benefits } from '@/widgets/Benefits'
 import { FormCallBack, Property } from '@/widgets'
 
 export const Home = () => {
-  return (
-    <div>
-      <Select/>
-      <Property />
-      <BenefitsGH />
-      <FormCallBack />
-    </div>
-  );
-};
+	return (
+		<div>
+			<Select />
+			<Property />
+			<Benefits />
+			<FormCallBack />
+		</div>
+	)
+}
