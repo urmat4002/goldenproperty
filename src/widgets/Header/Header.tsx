@@ -1,12 +1,12 @@
-import { LangSelect, Navbar, Search } from '@/features';
-import styles from './Header.module.scss';
-import { Link } from 'react-router-dom';
-import { Logo } from '@/shared/ui';
+import { LangSelect, Navbar, Search } from '@/features'
+import styles from './Header.module.scss'
+import { Link } from 'react-router-dom'
+import { Logo } from '@/shared/ui'
 import { MenuDropdown } from '..'
-import { useAppSelector } from '@/app/lib/hooks/hooks'
+import { useAppSelector } from '@/shared/hooks/hooks'
 
 export const Header = () => {
-  const isOpen = useAppSelector(state => state.menuSlice.isOpen)
+  const isOpen = useAppSelector((state) => state.menuSlice.isOpen)
 
   return (
     <header className={styles.header}>
@@ -24,5 +24,5 @@ export const Header = () => {
       </div>
       {isOpen && <MenuDropdown />}
     </header>
-  );
-};
+  )
+}
