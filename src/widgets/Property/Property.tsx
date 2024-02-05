@@ -1,35 +1,35 @@
-import { ArrowRight } from 'lucide-react';
-import style from './Property.module.scss';
-import { Button } from '@/shared/ui';
-import { Section } from '@/features';
+import { ArrowRight } from "lucide-react";
+import style from "./Property.module.scss";
+import { Button } from "@/shared/ui";
+import { Section } from "@/features";
 
 export const Property = () => {
   return (
-    <Section title='Property' container >
+    <Section title="Property" container>
       <div className={style.propertyBody}>
         <div className={style.propertyContent}>
           <div className={style.textBlock}>
             <h1 className={style.textBlockTitle}>Dubai</h1>
 
             <div className={style.textBlockDescription}>
-              Living in Dubai has several advantages: Economic Growth: The
-              city provides ample career opportunities with a vibrant economy
-              and many business opportunities.International character: Dubai
-              is a cultural bridge between East and West, providing unique
-              diversity and intercultural experiences. Infrastructure: The
-              city is known for its modern infrastructure, including tall
-              buildings, innovative transport systems and modern entertainment
-              complexes. Safety: Dubai is considered one of the safest places
-              to live, which provides peace of mind to residents and permanent
-              residents. Tax benefits: The absence of income tax and low tax
-              rates are attractive
+              Living in Dubai has several advantages: Economic Growth: The city
+              provides ample career opportunities with a vibrant economy and
+              many business opportunities.International character: Dubai is a
+              cultural bridge between East and West, providing unique diversity
+              and intercultural experiences. Infrastructure: The city is known
+              for its modern infrastructure, including tall buildings,
+              innovative transport systems and modern entertainment complexes.
+              Safety: Dubai is considered one of the safest places to live,
+              which provides peace of mind to residents and permanent residents.
+              Tax benefits: The absence of income tax and low tax rates are
+              attractive
             </div>
-
-            <Button type="primary">
-              See real estates
-              <ArrowRight />
-            </Button>
           </div>
+
+          <Button type="primary">
+            See real estates
+            <ArrowRight />
+          </Button>
         </div>
 
         <div className={style.propertyImage}>

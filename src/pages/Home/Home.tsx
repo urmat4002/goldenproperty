@@ -1,13 +1,15 @@
-import { Select } from '@/features'
-import { Benefits } from '@/widgets/Benefits'
-import { FormCallBack, Property } from '@/widgets'
+import { Select } from "@/features/Select";
+import { BenefitsGH } from "@/features/BenefitsGH";
+import { FormCallBack, Property } from "@/widgets";
+import { SliderCity } from "@/features/Slider/SliderCity";
 
 export const Home = () => {
   return (
     <div>
-      <Select/>
+      <Select />
       <Property />
-      <Benefits />
+      <SliderCity />
+      <BenefitsGH />
       <FormCallBack />
     </div>
   );
