@@ -1,7 +1,6 @@
-import {ChevronDown} from 'lucide-react'
-import {ChevronRight} from 'lucide-react'
-import {Link} from 'react-router-dom'
-import {useLocation} from 'react-router-dom'
+import { ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import breadcrumbs from './Breadcrumbs.module.scss'
 
 export const Breadcrumbs = () => {
