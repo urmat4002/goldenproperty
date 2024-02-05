@@ -1,39 +1,67 @@
-@import '@styles';
+@import "@styles";
 
 .property {
-	&Body {
-		display: flex;
-		gap: 20px;
-		margin: 40px 0px 100px 0px;
-	}
-	&Content {
-		flex: 1 1 46%;
-	}
-	&Image {
-		flex: 1 1 56%;
+  &Body {
+    display: flex;
+    gap: 20px;
+    margin: 40px 0px 100px 0px;
+  }
 
-		img {
-			object-fit: cover;
-			height: 100%;
-			border-radius: 5px;
-		}
-	}
+  &Content {
+    flex: 1 1 46%;
+  }
+
+  &Image {
+    flex: 1 1 56%;
+    position: relative;
+    padding: 0 0 30% 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 5px;
+    }
+  }
 }
 
 .textBlock {
-	max-width: 580px;
+  &Title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #c6a15b;
+    margin-bottom: 10px;
 
-	&Title {
-		font-size: 36px;
-		font-weight: 700;
-		color: #c6a15b;
-		margin-bottom: 10px;
-	}
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
 
-	&Description {
-		font-size: 20px;
-		font-weight: 500;
-		color: #fff;
-		margin-bottom: 25px;
-	}
+  &Description {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 25px;
+    max-height: 365px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
 }
