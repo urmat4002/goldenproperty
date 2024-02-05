@@ -1,3 +1,10 @@
+import {Breadcrumbs} from '@/features/Breadcrumbs/Breadcrumbs'
+
 export const Estates = () => {
-  return <div>Estates</div>;
-};
+  return (
+    <div>
+      <Breadcrumbs />
+      Estates
+    </div>
+  )
+}
