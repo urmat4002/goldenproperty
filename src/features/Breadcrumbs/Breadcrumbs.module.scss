@@ -1,0 +1,11 @@
+@import '@styles';
+
+.breadcrumbs {
+  display: flex;
+
+  &Link {
+    display: flex;
+    text-decoration: none;
+    color: $colorGray200;
+  }
+}

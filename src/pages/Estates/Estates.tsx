@@ -1,3 +1,8 @@
+
 export const Estates = () => {
-  return <div>Estates</div>;
-};
+  return (
+    <div>
+      Estates
+    </div>
+  )
+}
