@@ -42,6 +42,7 @@
         padding: 10px 0;
         ul{
             display: flex;
+            align-items: center;
             gap: 10px;
         }
         li{
@@ -55,6 +56,10 @@
         ul{
             display: flex;
             gap: 10px;
+            align-items: center;
+            input[type="checkbox"]:checked{
+                background: #1B1B1B;
+            }
         }
         li{
             list-style: none;
