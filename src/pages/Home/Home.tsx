@@ -1,5 +1,5 @@
 import { Select } from "@/features/Select";
-import { BenefitsGH } from "@/features/BenefitsGH";
+import { Benefits } from "@/widgets/Benefits";
 import { FormCallBack, Property } from "@/widgets";
 import { SliderCity } from "@/features/Slider/SliderCity";
 
@@ -9,7 +9,7 @@ export const Home = () => {
       <Select />
       <Property />
       <SliderCity />
-      <BenefitsGH />
+      <Benefits />
       <FormCallBack />
     </div>
   );
