@@ -7,7 +7,7 @@ export const Home = () => {
     <div>
       <Select/>
       <Property />
-      <BenefitsGH />
+      <Benefits />
       <FormCallBack />
     </div>
   );
