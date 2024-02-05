@@ -1,3 +1,10 @@
+import {Breadcrumbs} from '@/features/Breadcrumbs/Breadcrumbs'
+
 export const AboutUs = () => {
-  return <div>AboutUs</div>;
-};
+  return (
+    <div>
+      <Breadcrumbs />
+      AboutUs
+    </div>
+  )
+}
