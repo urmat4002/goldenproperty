@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-export const WhatsApp: FC = () => {
+export const WhatsApp = () => {
   return (
     <svg
       width="36"

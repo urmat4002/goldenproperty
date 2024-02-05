@@ -1,21 +1,22 @@
-import { useAppDispatch } from '@/app/lib/hooks/hooks'
-import styles from './Navbar.module.scss';
-import { NavbarData } from './data/Navbar.data';
-import { Typography } from '@/shared/ui';
-import { NavLink } from 'react-router-dom';
-import { setOpen, setClose } from '@/app/lib/features/MenuCityHover/MenuCityHover'
+import { useAppDispatch } from '@/shared/hooks/hooks'
+import styles from './Navbar.module.scss'
+import { NavbarData } from './data/Navbar.data'
+import { Typography } from '@/shared/ui'
+import { NavLink } from 'react-router-dom'
+import { setOpen, setClose } from '@/shared/slices/MenuCityHover/MenuCityHover'
 
 export const Navbar = () => {
   const dispatch = useAppDispatch()
   return (
     <div className={styles.navbar}>
-      <button 
+      <button
         onMouseEnter={() => dispatch(setOpen())}
         onMouseLeave={() => dispatch(setClose())}
-        className={styles.navbarMenuItem}>
-        <Typography 
-          variant='Body' 
-          weight="medium" 
+        className={styles.navbarMenuItem}
+      >
+        <Typography
+          variant="body"
+          weight="medium"
           color="white"
           className={styles.navbarMenuSelect}
         >
@@ -27,19 +28,19 @@ export const Navbar = () => {
           return (
             <li className={styles.navbarMenuItem} key={link.label}>
               <NavLink to={link.path}>
-                <Typography variant='Body' weight="medium">
+                <Typography variant="body" weight="medium">
                   {link.label}
                 </Typography>
               </NavLink>
             </li>
-          );
+          )
         })}
       </ul>
       <button onClick={() => {}} className={styles.navbarMenuItem}>
-        <Typography variant='Body' weight="medium" color="white">
+        <Typography variant="body" weight="medium" color="white">
           Place ann add
         </Typography>
       </button>
     </div>
-  );
-};
+  )
+}
