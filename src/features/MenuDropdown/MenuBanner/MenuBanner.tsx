@@ -9,8 +9,6 @@ interface MenuBannerProps {
 }
 
 export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
-  console.log('render')
-
   return (
     <div className={styles.menuBanner}>
       <div className={styles.menuBannerTop}>
