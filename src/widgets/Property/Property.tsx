@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react'
 import style from './Property.module.scss'
 import { Button, Typography } from '@/shared/ui'
 import { Section } from '@/features'
+import { TrimLimit } from '@/shared/lib/TrimLimit/TrimLimit'
 
 export const Property = () => {
   return (
@@ -18,8 +19,10 @@ export const Property = () => {
               Dubai
             </Typography>
             <div className={style.textBlockDescription}>
-              <Typography variant="body">
-                Living in Dubai has several advantages: Economic Growth: The
+              <TrimLimit
+                limit={680}
+                more="estates/"
+                text="Living in Dubai has several advantages: Economic Growth: The
                 city provides ample career opportunities with a vibrant economy
                 and many business opportunities.International character: Dubai
                 is a cultural bridge between East and West, providing unique
@@ -29,8 +32,8 @@ export const Property = () => {
                 complexes. Safety: Dubai is considered one of the safest places
                 to live, which provides peace of mind to residents and permanent
                 residents. Tax benefits: The absence of income tax and low tax
-                rates are attractive
-              </Typography>
+                rates are attractive"
+              />
             </div>
           </div>
           <Button type="primary">

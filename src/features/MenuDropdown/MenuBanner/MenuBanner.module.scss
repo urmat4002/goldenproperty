@@ -1,4 +1,5 @@
-@import '@styles';
+@import '@classes';
+@import '@var';
 
 .menuBanner {
 	display: flex;
@@ -22,8 +23,7 @@
 	}
 	&Description {
 		height: 340px;
-		overflow-y: scroll;
-		@include scroll;
+		overflow: hidden;
 	}
 	&Image {
 		img {

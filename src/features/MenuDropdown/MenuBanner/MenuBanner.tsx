@@ -3,6 +3,7 @@ import { ICity } from '../types/MenuDropDown.types'
 import styles from './MenuBanner.module.scss'
 import { Button, Typography } from '@/shared/ui'
 import { ArrowRight } from 'lucide-react'
+import { TrimLimit } from '@/shared/lib/TrimLimit/TrimLimit'
 
 interface MenuBannerProps {
   data: ICity
@@ -17,9 +18,11 @@ export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
             {data.city__name}
           </Typography>
           <div className={styles.menuBannerDescription}>
-            <Typography variant="body" weight="regular" color="white">
-              {data.city__description}
-            </Typography>
+            <TrimLimit
+              text={data.city__description}
+              limit={560}
+              more={`estates/${data.id}`}
+            />
           </div>
         </div>
         <div className={styles.menuBannerImage}>

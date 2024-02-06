@@ -1,4 +1,4 @@
-@import '@styles';
+@import '@var';
 
 .button {
   &-common-styles {
@@ -43,7 +43,10 @@
   }
 
   &-icon-btn {
-    // ... (unchanged)
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
 
   &-small {

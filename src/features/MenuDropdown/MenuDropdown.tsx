@@ -1,3 +1,4 @@
+// MenuDropdown.tsx
 import { useEffect, useState } from 'react'
 import styles from './MenuDropdown.module.scss'
 import data from './data/db.json'
@@ -5,8 +6,7 @@ import { ICity } from './types/MenuDropDown.types'
 import { MenuBanner } from './MenuBanner'
 import { useAppDispatch } from '@/shared/hooks/hooks'
 import { setClose, setOpen } from '@/shared/slices/MenuCityHover/MenuCityHover'
-import { Button, Typography } from '@/shared/ui'
-import clsx from 'clsx'
+import { MenuLeft } from './MenuLeft/MenuLeft'
 
 export const MenuDropdown = () => {
   const [city, setCity] = useState<ICity | undefined>(undefined)
@@ -15,12 +15,16 @@ export const MenuDropdown = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dataCity.map((item) => {
+    dataCity.forEach((item) => {
       if (item.id === cityId) {
         return setCity(item)
       }
     })
   }, [cityId])
+
+  const handleCityClick = (id: number) => {
+    setCityId(id)
+  }
 
   return (
     <div
@@ -29,31 +33,9 @@ export const MenuDropdown = () => {
       className={styles.menuDropdown}
     >
       <div className={styles.menuDropdownContainer}>
-        <div className={styles.menuLeft}>
-          {data.map((item) => {
-            return (
-              <Button
-                customClasses={styles.menuLeftButton}
-                type="link"
-                key={item.id}
-                onClick={() => {
-                  setCityId(item.id)
-                }}
-              >
-                <Typography
-                  variant="body"
-                  weight="medium"
-                  className={clsx(
-                    styles.menuBannerTypography,
-                    cityId ? styles.active : styles.default
-                  )}
-                >
-                  {item.city__name}
-                </Typography>
-              </Button>
-            )
-          })}
-        </div>
+        {dataCity && (
+          <MenuLeft onClick={handleCityClick} data={dataCity} id={cityId} />
+        )}
         {city && <MenuBanner data={city} />}
       </div>
     </div>

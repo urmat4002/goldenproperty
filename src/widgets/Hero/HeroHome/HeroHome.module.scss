@@ -1,4 +1,8 @@
-@keyframes letter-slide-in {
+@import '@var';
+
+$colorGray350: #ccc; // Assuming this is a valid color
+
+@keyframes letterSlideIn {
   0% {
     opacity: 0;
     transform: translateY(-20px);
@@ -9,12 +13,7 @@
   }
 }
 
-.letter {
-  display: inline-block;
-  animation: letter-slide-in 0.5s ease-out forwards;
-}
-
-@keyframes line-slide-down {
+@keyframes lineSlideDown {
   0% {
     height: 0;
     transform: translateY(-30px);
@@ -25,7 +24,7 @@
   }
 }
 
-@keyframes text-slide-in {
+@keyframes textSlideIn {
   0% {
     opacity: 0;
     transform: translateX(-500px);
@@ -36,7 +35,7 @@
   }
 }
 
-@keyframes line-and-text-slide-in {
+@keyframes lineAndTextSlideIn {
   0% {
     opacity: 0;
     transform: translateX(-500px);
@@ -51,7 +50,7 @@
   }
 }
 
-.HeroHome {
+.heroHome {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,33 +61,29 @@
   background-position: center;
   padding-left: 20%;
 
-  .HeroHomeText {
-    color: white;
-    .white {
-      border-left: 2px solid white;
+  &Content { 
+    &Line {
+      border-left: 2px solid $colorGray350;
       height: 262px;
       position: absolute;
       left: 50%;
       margin-left: -355px;
       top: 0;
-      animation: line-slide-down 4s ease-out;
+      animation: lineSlideDown 4s ease-out;
     }
-
     h1 {
       font-size: 90px;
       margin-bottom: 10px;
       opacity: 0;
-      animation: text-slide-in 0.5s ease-out 0.5s forwards;
+      animation: textSlideIn 0.5s ease-out 0.5s forwards;
     }
-
     p {
       font-size: 28px;
       font-weight: 600;
       position: relative;
       opacity: 0;
-      animation: text-slide-in 1s ease-out 1s forwards;
+      animation: textSlideIn 1s ease-out 1s forwards;
     }
-
     button {
       display: flex;
       flex-direction: column;
@@ -99,15 +94,14 @@
       opacity: 0;
       width: 258px;
       height: 60px; /* Set the height as needed */
-      animation: text-slide-in 1.5s ease-out 1.5s forwards;
+      animation: textSlideIn 1.5s ease-out 1.5s forwards;
     }
-
     span {
-      color: #C6A15B;
+      color: $colorPrimary;
     }
   }
 }
 
-.HeroHomeText .line-and-text {
-  animation: line-and-text-slide-in 2s ease-out 0.5s forwards;
+.heroHomeContent.lineAndText {
+  animation: lineAndTextSlideIn 2s ease-out 0.5s forwards;
 }
