@@ -2,8 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
-console.log(path.resolve(__dirname, './src/assets'));
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -21,7 +19,9 @@ export default defineConfig({
       '@features': path.resolve(__dirname, './src/features'),
       '@entities': path.resolve(__dirname, './src/entities'),
       '@shared': path.resolve(__dirname, './src/shared'),
-      '@styles': path.resolve(__dirname, './src/app/styles/index.scss'),
+      '@var': path.resolve(__dirname, './src/app/styles/assets/_variables.scss'),
+      '@mixin': path.resolve(__dirname, './src/app/styles/assets/_mixins.scss'),
+      '@classes': path.resolve(__dirname, './src/app/styles/assets/_classes.scss'),
     },
   },
 });

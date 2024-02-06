@@ -17,6 +17,9 @@
       "@entities/*": ["src/entities/*"],
       "@shared/*": ["src/shared/*"],
       "@styles/*": ["src/app/styles/index.scss"],
+      "@var/*": ["src/app/styles/assets/_variables.scss"],
+      "@mixin/*": ["src/app/styles/assets/_mixins.scss"],
+      "@classes/*": ["src/app/styles/assets/_classes.scss"],
     },
 
     /* Bundler mode */

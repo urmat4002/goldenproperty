@@ -1,25 +1,21 @@
 import styles from './HeroHome.module.scss'
-import { Button } from '@shared/ui'
+import { Button, Typography } from '@shared/ui'
 
 export const HeroHome = () => {
   return (
     <section>
-      <div className={styles.HeroHome}>
-        <div className={styles.HeroHomeText}>
+      <div className={styles.heroHome}>
+        <div className={styles.heroHomeContent}>
           <div style={{ position: 'relative' }}>
-            <div className={styles.white}></div>
+            <div className={styles.heroHomeLine} />
           </div>
-          <h1>
-            <span>Golden </span> House
-          </h1>
-          <div>
-            <p>
-              Find your dream home <span>with us</span>
-            </p>
-          </div>
-          <div>
-            <Button type="primary">See real estate</Button>
-          </div>
+          <Typography variant='h1' weight='bold'>
+            <span>Golden</span> House
+          </Typography>
+          <Typography variant='body' color='white' weight='medium'>
+            Find your dream home with us
+          </Typography>
+          <Button type="primary">See real estate</Button>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-@import "@styles";
+@import "@var";
 
 .slider {
   display: flex !important;
@@ -17,7 +17,7 @@
       font-size: 36px;
       font-weight: 700;
       line-height: 1.2;
-      color: #fff;
+      color: $colorWhite;
       max-width: 300px;
 
       @media (max-width: 768px) {
