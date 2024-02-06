@@ -1,20 +1,26 @@
 import { BtnDown } from '@/shared/ui';
 import style from './Select.module.scss';
-import { useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Options } from './type/type'
-import { Checkbox } from './type/type'
 
-export const Select = () => {
+export const Select: FC = () => {
   
   const [city, setCity] = useState<boolean>(true)
   const [type, setType] = useState<boolean>(true)
   const [popular, setPopular] = useState<boolean>(true)
+  const [checkboxDubai,setCheckboxDubai] = useState<boolean>(false)
+  const [checkboxIstambul,setCheckboxIstambul] = useState<boolean>(false)
+  const [checkboxAntalya,setCheckboxAntalya] = useState<boolean>(false)
+  const [checkboxAll,setCheckboxAll] = useState<boolean>(false)
   const [optionsCity, setOptionsCity] = useState<Options>({
     city:'City',dubai:'Dubai', istanbul: 'Istanbul',antalya:'Antalya', all:'All',
   })
-  const [checkbox,setCheckbox] = useState<Checkbox>({
-    chboxDubay: false, chboxIstanbul: false, chboxAntalya: false, ChboxAll: false,
-  })
+  const [result, setResult] = useState<object>({results: ''})
+
+  useEffect(() => {
+    console.log(result);
+  },[result])
+
   const showOptions = () => {
     if(city){
       setCity(false)
@@ -39,37 +45,53 @@ export const Select = () => {
   
   const ChangeValue = () => {
     setOptionsCity({...optionsCity, city: optionsCity.dubai})
+    setCheckboxDubai(true)
+    setCheckboxIstambul(false)
+    setCheckboxAntalya(false)
+    setCheckboxAll(false)
     setCity(true)
   }
   const ChangeValue2 = () => {
     setOptionsCity({...optionsCity, city: optionsCity.istanbul})
+    setCheckboxDubai(false)
+    setCheckboxIstambul(true)
+    setCheckboxAntalya(false)
+    setCheckboxAll(false)
     setCity(true)
   }
   const ChangeValue3 = () => {
     setOptionsCity({...optionsCity, city: optionsCity.antalya})
-    setCheckbox({...checkbox, chboxAntalya: true})
+    setCheckboxDubai(false)
+    setCheckboxIstambul(false)
+    setCheckboxAntalya(true)
+    setCheckboxAll(false)
     setCity(true)
   }
   const ChangeValue4 = () => {
     setOptionsCity({...optionsCity, city: optionsCity.all})
-    setCheckbox({...checkbox, ChboxAll: true})
+    setCheckboxIstambul(false)
+    setCheckboxAntalya(false)
+    setCheckboxAll(true)
     setCity(true)
   }
-  // const showResults = () => {
-  //   if(optionsCity.city === optionsCity.dubai){
-  //     setCheckbox({...checkbox, chboxDubay: true})
-  //   }else if(optionsCity.city === optionsCity.istanbul){
-  //     setCheckbox({...checkbox, chboxIstanbul: true})
-  //   }else if(optionsCity.city === optionsCity.antalya){
-  //     setCheckbox({...checkbox, chboxAntalya: true})
-  //   }else if(optionsCity.city === optionsCity.all){
-  //     setCheckbox({...checkbox, chboxAntalya: true})
-  //   }
-  // } 
+  const showResults = () => {
+    if(checkboxDubai === true){
+      setResult({...result, results: optionsCity.dubai})
+    }
+    if(checkboxIstambul === true){
+      setResult({...result, results: optionsCity.istanbul})
+    }
+    if(checkboxAntalya === true){
+      setResult({...result, results: optionsCity.antalya})
+    }
+    if(checkboxAntalya === true){
+      setResult({...result, results: optionsCity.all})
+    }
+  } 
 
   return (
-    <div className={style.Select}>
-      <div className={city ? style.Select__city : style.Select__city__active}>
+    <div className={style.Select} onClick={() => setCity(true)} >
+      <div className={city ? style.Select__city : style.Select__city__active} onClick={(e) => e.stopPropagation()}>
         <button className={style.Select__title} onClick={showOptions}>
           {optionsCity.city}
           <p><BtnDown/></p>
@@ -77,28 +99,28 @@ export const Select = () => {
         <div className={city ? style.Select__options : style.Select__options__active}>
           <ul onClick={ChangeValue}>
             <input 
-              checked={checkbox.chboxDubay}
+              checked={checkboxDubai}
               type="checkbox"
             />
             <li>{optionsCity.dubai}</li>
           </ul>
-          <ul>
-            <input 
+          <ul onClick={ChangeValue2}>
+            <input
               type="checkbox"
-              checked={optionsCity.chboxIstanbul}
+              checked={checkboxIstambul}
             />
-            <li onClick={ChangeValue2}>{optionsCity.istanbul}</li>
+            <li>{optionsCity.istanbul}</li>
           </ul>
           <ul>
             <input 
               type="checkbox"
-              checked={optionsCity.chboxAntalya}
+              checked={checkboxAntalya}
             />
             <li onClick={ChangeValue3}>{optionsCity.antalya}</li>
           </ul>
           <ul>
             <input 
-              checked={optionsCity.ChboxAll}
+              checked={checkboxAll}
               type="checkbox"
             />
             <li onClick={ChangeValue4}>{optionsCity.all}</li>
@@ -153,7 +175,7 @@ export const Select = () => {
           </ul>
         </div>
       </div>
-      <button className={style.Select__btn}>Show results</button>
+      <button onClick={showResults} className={style.Select__btn}>Show results</button>
     </div>
   ) 
 };
