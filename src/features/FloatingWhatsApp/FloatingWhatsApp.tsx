@@ -3,8 +3,7 @@ import styles from "./FloatingWhatsApp.module.scss";
 
 export const FloatingWhatsApp: FC = () => {
   const messageText = encodeURI("");
-  const phoneNumber = "+111222333444".replace("+", "");
-// hi
+  const phoneNumber = "+111222333444".replace("+", ""); //c
   return (
     <a
       className={styles.FloatingWhatsApp}
