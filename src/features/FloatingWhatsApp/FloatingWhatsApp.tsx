@@ -3,12 +3,11 @@ import styles from "./FloatingWhatsApp.module.scss";
 
 export const FloatingWhatsApp: FC = () => {
   const messageText = encodeURI("");
-  const phoneNumber = "+111222333444".replace("+", "");
-
+  const phoneNumber = "+111222333444".replace("+", ""); //c
   return (
     <a
       className={styles.FloatingWhatsApp}
-      aria-label="Chat on WhatsApp"
+      aria-label="Chat on WhatsdApp"
       href={`https://wa.me/${phoneNumber}?text=${messageText}`}
       target="_blank"
     >
