@@ -20,7 +20,7 @@ export const MenuDropdown = () => {
         return setCity(item)
       }
     })
-  }, [cityId])
+  }, [cityId, dataCity])
 
   const handleCityClick = (id: number) => {
     setCityId(id)

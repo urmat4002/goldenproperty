@@ -6,6 +6,7 @@ import { ICity } from '../types/MenuDropDown.types'
 
 interface MenuLeftProps {
   data: ICity[]
+  // eslint-disable-next-line no-unused-vars
   onClick: (id: number) => void
   id: number
 }

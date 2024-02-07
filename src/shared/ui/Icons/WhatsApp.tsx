@@ -1,5 +1,3 @@
-import { FC } from "react";
-
 export const WhatsApp = () => {
   return (
     <svg
@@ -14,5 +12,5 @@ export const WhatsApp = () => {
         fill="white"
       />
     </svg>
-  );
-};
+  )
+}

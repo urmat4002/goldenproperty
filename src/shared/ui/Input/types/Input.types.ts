@@ -8,5 +8,6 @@ export interface InputProps {
   placeholder?: string;
   isDisabled?: boolean;
   className?: string;
+  // eslint-disable-next-line no-unused-vars
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
