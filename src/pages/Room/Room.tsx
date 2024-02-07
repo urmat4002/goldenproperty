@@ -1,10 +1,16 @@
-import {Breadcrumbs} from '@/features/Breadcrumbs/Breadcrumbs'
+import { Form } from '@/features/Form/Form'
+import { ArrowDownToLine } from 'lucide-react'
 
 export const Room = () => {
   return (
     <div>
-      <Breadcrumbs />
-      <div>Room</div>{' '}
+      <div>Room</div>
+      <Form
+        btnTitle={'Catalog'}
+        inputPlaceholder1="Email"
+        inputPlaceholder2="Select Role"
+        icon={<ArrowDownToLine />}
+      />
     </div>
   )
 }
