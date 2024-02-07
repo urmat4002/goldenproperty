@@ -1,0 +1,25 @@
+// Room.module.scss
+.container {
+  width: 1180px;
+  margin: auto;
+}
+
+.section {
+  margin-bottom: 20px;
+  color: white;
+  span{
+    font-size: 22px;
+    font-weight: 700;
+  }
+  h2 {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  h4{
+    display: flex;
+    font-weight: 700;
+    width: 1180px;
+    font-size: 20px;;
+  }
+}
