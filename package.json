@@ -10,19 +10,9 @@
     "preview": "vite preview",
     "prepare": "husky install"
   },
-  "engines" : {
-    "yarn" : "please-use-npm",
-    "pnpm" : "please-use-npm"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm precommit"
-    }
+  "engines": {
+    "yarn": "please-use-npm",
+    "pnpm": "please-use-npm"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
