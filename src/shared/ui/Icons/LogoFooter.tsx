@@ -72,5 +72,5 @@ export const LogoFooter = () => {
         </linearGradient>
       </defs>
     </svg>
-  )
-}
+  );
+};

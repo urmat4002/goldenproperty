@@ -1,12 +1,12 @@
-import { useAppDispatch } from '@/shared/hooks/hooks'
-import styles from './Navbar.module.scss'
-import { NavbarData } from './data/Navbar.data'
-import { Typography } from '@/shared/ui'
-import { NavLink } from 'react-router-dom'
-import { setOpen, setClose } from '@/shared/slices/MenuCityHover/MenuCityHover'
+import { useAppDispatch } from "@/shared/hooks/hooks";
+import styles from "./Navbar.module.scss";
+import { NavbarData } from "./data/Navbar.data";
+import { Typography } from "@/shared/ui";
+import { NavLink } from "react-router-dom";
+import { setOpen, setClose } from "@/shared/slices/MenuCityHover/MenuCityHover";
 
 export const Navbar = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   return (
     <div className={styles.navbar}>
       <button
@@ -33,7 +33,7 @@ export const Navbar = () => {
                 </Typography>
               </NavLink>
             </li>
-          )
+          );
         })}
       </ul>
       <button onClick={() => {}} className={styles.navbarMenuItem}>
@@ -42,5 +42,5 @@ export const Navbar = () => {
         </Typography>
       </button>
     </div>
-  )
-}
+  );
+};

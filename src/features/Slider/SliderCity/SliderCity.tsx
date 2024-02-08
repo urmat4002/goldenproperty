@@ -1,20 +1,20 @@
-import { FreeMode, Navigation } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import style from './SliderCity.module.scss'
-import 'swiper/scss'
-import 'swiper/scss/navigation'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { FreeMode, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import style from "./SliderCity.module.scss";
+import "swiper/scss";
+import "swiper/scss/navigation";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const SliderCity = () => {
-  const [swiperWidth, setSwiperWidth] = useState()
-  const [highlitedIndex, setHighlitedIndex] = useState<number | null>(null)
+  const [swiperWidth, setSwiperWidth] = useState();
+  const [highlitedIndex, setHighlitedIndex] = useState<number | null>(null);
 
   const images = [
     {
       id: 1,
-      src: 'https://cdnn21.img.ria.ru/images/152275/56/1522755601_0:0:1286:724_1920x0_80_0_0_5c15a33dbdf9a2a9e89e6f70b0b57166.jpg',
-      title: 'Dubai',
+      src: "https://cdnn21.img.ria.ru/images/152275/56/1522755601_0:0:1286:724_1920x0_80_0_0_5c15a33dbdf9a2a9e89e6f70b0b57166.jpg",
+      title: "Dubai",
       description: `Dubai is a modern metropolis in the UAE with changing
       skyscrapers, luxury, innovation. The economic center,
       cultural diversity, safety and standard of living attract
@@ -25,24 +25,24 @@ export const SliderCity = () => {
     },
     {
       id: 2,
-      src: 'https://img.freepik.com/premium-photo/burj-khalifa-at-night-in-dubai_141438-942.jpg',
-      title: 'Antalya',
+      src: "https://img.freepik.com/premium-photo/burj-khalifa-at-night-in-dubai_141438-942.jpg",
+      title: "Antalya",
       description: `Dubai is a modern metropolis in the UAE with changing
       skyscrapers.`,
     },
     {
       id: 3,
-      src: 'https://img.freepik.com/premium-photo/a-night-view-of-dubai-with-a-burj-khalifa-and-the-burj-khalifa_7023-22207.jpg',
-      title: 'Bishkek',
+      src: "https://img.freepik.com/premium-photo/a-night-view-of-dubai-with-a-burj-khalifa-and-the-burj-khalifa_7023-22207.jpg",
+      title: "Bishkek",
       description: null,
     },
     {
       id: 4,
-      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-9hg3jEQjQ8xuL3XAu0kHhnsmKciZHLAWA&usqp=CAU',
-      title: 'Osh',
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-9hg3jEQjQ8xuL3XAu0kHhnsmKciZHLAWA&usqp=CAU",
+      title: "Osh",
       description: null,
     },
-  ]
+  ];
 
   return (
     <>
@@ -94,7 +94,7 @@ export const SliderCity = () => {
                 <div className="swiper-lazy-preloader" />
                 <div
                   className={`${style.sliderDescription}  ${
-                    highlitedIndex === index ? style.show : ''
+                    highlitedIndex === index ? style.show : ""
                   }`}
                 >
                   <div className={style.sliderDescriptionTitle}>
@@ -106,9 +106,9 @@ export const SliderCity = () => {
                 </div>
               </Link>
             </SwiperSlide>
-          )
+          );
         })}
       </Swiper>
     </>
-  )
-}
+  );
+};

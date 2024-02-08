@@ -1,46 +1,46 @@
-@import '@var';
+@import "@var";
 
 // Size & Type
 .H1 {
-	font-size: 90px;
+  font-size: 90px;
 }
 .H2 {
-	font-size: 40px;
+  font-size: 40px;
 }
 .H3 {
-	font-size: 36px;
+  font-size: 36px;
 }
 .H4 {
-	font-size: 28px;
+  font-size: 28px;
 }
 .Button {
-	font-size: 24px;
+  font-size: 24px;
 }
 .Body {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 // Weight
 .regular {
-	font-weight: 400;
+  font-weight: 400;
 }
 .medium {
-	font-weight: 500;
+  font-weight: 500;
 }
 .semibold {
-	font-weight: 600;
+  font-weight: 600;
 }
 .bold {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 // Color
 .black {
-	color: $colorBlack;
+  color: $colorBlack;
 }
 .white {
-	color: $colorWhite;
+  color: $colorWhite;
 }
 .gold {
-	color: $colorPrimary;
+  color: $colorPrimary;
 }

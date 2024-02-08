@@ -1,5 +1,5 @@
-import { Section } from '@/features'
-import styles from './Description.module.scss'
+import { Section } from "@/features";
+import styles from "./Description.module.scss";
 
 export const Description = () => {
   return (
@@ -31,9 +31,9 @@ export const Description = () => {
         children's room and a swimming pool of 100 sq.m. Prices start from
         $388,000 2 rooms with a pool area of 114 sq.m. Prices start from
         $492,000 2 rooms with a children's room and a swimming pool with an area
-        of 128 sq.m. Prices start from $562,000 3 rooms with a pool area of
-        165 sq.m. Prices start from $656,000
+        of 128 sq.m. Prices start from $562,000 3 rooms with a pool area of 165
+        sq.m. Prices start from $656,000
       </div>
     </Section>
-  )
-}
+  );
+};

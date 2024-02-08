@@ -1,15 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 interface MenuSlice {
   isOpen: boolean;
 }
 
 const initialState: MenuSlice = {
-	isOpen: false
-}
+  isOpen: false,
+};
 
 const menuSlice = createSlice({
-  name: 'menuSlice',
+  name: "menuSlice",
   initialState,
   reducers: {
     setOpen: (state) => {

@@ -1,4 +1,4 @@
-@import '@var';
+@import "@var";
 
 $colorGray350: #ccc; // Assuming this is a valid color
 
@@ -59,7 +59,7 @@ $colorGray350: #ccc; // Assuming this is a valid color
   background-size: cover;
   background-position: center;
 
-  &Content { 
+  &Content {
     &Line {
       border-left: 2px solid $colorGray350;
       height: 262px;

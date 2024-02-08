@@ -1,7 +1,7 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent } from "react";
 
 export interface InputProps {
-  type?: 'text' | 'number';
+  type?: "text" | "number";
   label?: string;
   value?: string | number;
   name?: string;

@@ -1,5 +1,5 @@
-import {Typography} from '@/shared/ui/Typography/Typography'
-import error from './404Error.module.scss'
+import { Typography } from "@/shared/ui/Typography/Typography";
+import error from "./404Error.module.scss";
 
 export const Error = () => {
   return (
@@ -16,5 +16,5 @@ export const Error = () => {
         temporarily unavailable; check that the address you entered is correct.
       </Typography>
     </div>
-  )
-}
+  );
+};

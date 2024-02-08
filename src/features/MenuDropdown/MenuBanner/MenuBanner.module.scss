@@ -1,34 +1,34 @@
-@import '@classes';
-@import '@var';
+@import "@classes";
+@import "@var";
 
 .menuBanner {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	justify-content: flex-start;
-	gap: 16px;
-	padding: 16px 0 16px 16px;
-	width: 80%;
-	&Top {
-		height: 100%;
-		width: 100%;
-		display: flex;
-		gap: 16px;
-	}
-	&Content {
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
-		width: 100%;
-	}
-	&Description {
-		height: 340px;
-		overflow: hidden;
-	}
-	&Image {
-		img {
-			max-width: 386px;
-			height: 386px;
-		}
-	}
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 16px 0 16px 16px;
+  width: 80%;
+  &Top {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+  }
+  &Content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+  &Description {
+    height: 340px;
+    overflow: hidden;
+  }
+  &Image {
+    img {
+      max-width: 386px;
+      height: 386px;
+    }
+  }
 }

@@ -1,23 +1,23 @@
-import { Button } from '@/shared/ui/Button/Button'
-import { FC, ReactNode } from 'react'
-import form from './Form.module.scss'
-import { Input, Typography } from '@/shared/ui'
+import { Button } from "@/shared/ui/Button/Button";
+import { FC, ReactNode } from "react";
+import form from "./Form.module.scss";
+import { Input, Typography } from "@/shared/ui";
 
 interface FromProps {
-  title?: string
-  subTitle?: string
-  btnTitle?: string
-  inputPlaceholder1?: string
-  inputPlaceholder2?: string
-  icon?: ReactNode
+  title?: string;
+  subTitle?: string;
+  btnTitle?: string;
+  inputPlaceholder1?: string;
+  inputPlaceholder2?: string;
+  icon?: ReactNode;
 }
 
 export const Form: FC<FromProps> = ({
   title,
   subTitle,
-  btnTitle = 'Send',
-  inputPlaceholder1 = 'City',
-  inputPlaceholder2 = 'Date',
+  btnTitle = "Send",
+  inputPlaceholder1 = "City",
+  inputPlaceholder2 = "Date",
   icon,
 }) => {
   return (
@@ -47,5 +47,5 @@ export const Form: FC<FromProps> = ({
         </Button>
       </div>
     </form>
-  )
-}
+  );
+};

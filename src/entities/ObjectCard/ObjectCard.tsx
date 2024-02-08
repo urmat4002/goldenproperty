@@ -1,6 +1,6 @@
-import styles from './ObjectCard.module.scss'
-import { MapPin } from 'lucide-react'
-import { WhatsApp } from '@shared/ui/Icons'
+import styles from "./ObjectCard.module.scss";
+import { MapPin } from "lucide-react";
+import { WhatsApp } from "@shared/ui/Icons";
 
 export const ObjectCard = () => {
   return (
@@ -25,5 +25,5 @@ export const ObjectCard = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

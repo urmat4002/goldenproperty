@@ -1,2 +1,2 @@
-export * from './ObjectCard';
-export * from './Location';
+export * from "./ObjectCard";
+export * from "./Location";

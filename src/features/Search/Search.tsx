@@ -1,7 +1,7 @@
-import { SearchIcon } from 'lucide-react';
-import { FC } from 'react';
-import styles from './Search.module.scss';
-import { Button } from '@/shared/ui'
+import { SearchIcon } from "lucide-react";
+import { FC } from "react";
+import styles from "./Search.module.scss";
+import { Button } from "@/shared/ui";
 
 export const Search: FC = () => {
   return (
@@ -11,7 +11,7 @@ export const Search: FC = () => {
         placeholder="Search"
         className={styles.search__input}
       />
-      <Button type='icon' onClick={() => {}}>
+      <Button type="icon" onClick={() => {}}>
         <SearchIcon color="#B9BCBE" />
       </Button>
     </div>

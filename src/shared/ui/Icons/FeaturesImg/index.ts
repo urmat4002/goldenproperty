@@ -1,12 +1,12 @@
-export {Featuresimg1} from './Featuresimg1'
-export {Featuresimg2} from './Featuresimg2'
-export {Featuresimg3} from './Featuresimg3'
-export {Featuresimg4} from './Featuresimg4'
-export {Featuresimg5} from './Featuresimg5'
-export {Featuresimg6} from './Featuresimg6'
-export {Featuresimg7} from './Featuresimg7'
-export {Featuresimg8} from './Featuresimg8'
-export {Featuresimg9} from './Featuresimg9'
-export {Featuresimg10} from './Featuresimg10'
-export {Featuresimg11} from './Featuresimg11'
-export {Featuresimg12} from './Featuresimg12'
+export { Featuresimg1 } from "./Featuresimg1";
+export { Featuresimg2 } from "./Featuresimg2";
+export { Featuresimg3 } from "./Featuresimg3";
+export { Featuresimg4 } from "./Featuresimg4";
+export { Featuresimg5 } from "./Featuresimg5";
+export { Featuresimg6 } from "./Featuresimg6";
+export { Featuresimg7 } from "./Featuresimg7";
+export { Featuresimg8 } from "./Featuresimg8";
+export { Featuresimg9 } from "./Featuresimg9";
+export { Featuresimg10 } from "./Featuresimg10";
+export { Featuresimg11 } from "./Featuresimg11";
+export { Featuresimg12 } from "./Featuresimg12";

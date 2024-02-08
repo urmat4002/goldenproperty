@@ -1,8 +1,8 @@
-import { LogoFooter } from '@/shared/ui/Icons/LogoFooter'
-import styles from './Footer.module.scss'
-import { Geeks } from '@/shared/ui/Icons/Geeks'
-import { Facebook, Instagram, Mail, Phone } from 'lucide-react'
-import { Typography, WhatsApp } from '@/shared/ui'
+import { LogoFooter } from "@/shared/ui/Icons/LogoFooter";
+import styles from "./Footer.module.scss";
+import { Geeks } from "@/shared/ui/Icons/Geeks";
+import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import { Typography, WhatsApp } from "@/shared/ui";
 
 export const Footer = () => {
   return (
@@ -100,5 +100,5 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};

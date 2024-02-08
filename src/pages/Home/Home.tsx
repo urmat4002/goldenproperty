@@ -6,7 +6,7 @@ import { SliderCity } from "@/features/Slider/SliderCity";
 export const Home = () => {
   return (
     <div>
-      <HeroHome/>
+      <HeroHome />
       <Select />
       <Property />
       <SliderCity />

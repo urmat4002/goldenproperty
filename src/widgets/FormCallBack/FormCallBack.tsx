@@ -1,5 +1,5 @@
-import { Form } from '@/features'
-import { Section } from '@/features'
+import { Form } from "@/features";
+import { Section } from "@/features";
 
 export const FormCallBack = () => {
   return (
@@ -9,5 +9,5 @@ export const FormCallBack = () => {
         subTitle="Leave your contacts and we will get in touch"
       />
     </Section>
-  )
-}
+  );
+};

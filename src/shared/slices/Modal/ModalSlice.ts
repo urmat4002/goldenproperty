@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 interface ModalSlice {
   isOpen: boolean;
@@ -9,7 +9,7 @@ const initialState: ModalSlice = {
 };
 
 const modalSlice = createSlice({
-  name: 'modal',
+  name: "modal",
   initialState,
   reducers: {
     setOpen: (state) => {

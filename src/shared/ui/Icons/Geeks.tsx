@@ -20,5 +20,5 @@ export const Geeks = () => {
         fill="#FCE900"
       />
     </svg>
-  )
-}
+  );
+};

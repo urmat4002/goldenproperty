@@ -1,12 +1,12 @@
-import style from './Benefits.module.scss'
-import { Section } from '@/features'
-import { Typography } from '@/shared/ui'
+import style from "./Benefits.module.scss";
+import { Section } from "@/features";
+import { Typography } from "@/shared/ui";
 import {
   BenefitsImg1,
   BenefitsImg2,
   BenefitsImg3,
   BenefitsImg4,
-} from '@/shared/ui/Icons/BenefitsImg'
+} from "@/shared/ui/Icons/BenefitsImg";
 
 export const Benefits = () => {
   return (
@@ -40,5 +40,5 @@ export const Benefits = () => {
         </div>
       </div>
     </Section>
-  )
-}
+  );
+};

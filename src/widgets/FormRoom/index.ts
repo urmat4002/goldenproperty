@@ -1,1 +1,1 @@
-export { FormRoom } from './FormRoom'
+export { FormRoom } from "./FormRoom";

@@ -1,12 +1,12 @@
-import { FC, memo } from 'react'
-import { ICity } from '../types/MenuDropDown.types'
-import styles from './MenuBanner.module.scss'
-import { Button, Typography } from '@/shared/ui'
-import { ArrowRight } from 'lucide-react'
-import { TrimLimit } from '@/shared/lib/TrimLimit/TrimLimit'
+import { FC, memo } from "react";
+import { ICity } from "../types/MenuDropDown.types";
+import styles from "./MenuBanner.module.scss";
+import { Button, Typography } from "@/shared/ui";
+import { ArrowRight } from "lucide-react";
+import { TrimLimit } from "@/shared/lib/TrimLimit/TrimLimit";
 
 interface MenuBannerProps {
-  data: ICity
+  data: ICity;
 }
 
 export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
@@ -40,5 +40,5 @@ export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
         <ArrowRight />
       </Button>
     </div>
-  )
-})
+  );
+});

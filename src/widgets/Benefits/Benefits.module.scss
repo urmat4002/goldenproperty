@@ -1,20 +1,20 @@
-@import '@var';
-@import '@classes';
+@import "@var";
+@import "@classes";
 
 .benefits {
-	width: 100%;
-	padding: 66px;
-	background-color: $colorGray500;
-	&Container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 36px;
-	}
-	&Item {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 36px;
-	}
+  width: 100%;
+  padding: 66px;
+  background-color: $colorGray500;
+  &Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+  }
+  &Item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
 }

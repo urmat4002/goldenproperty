@@ -1,8 +1,8 @@
-import {AboutUs, Estates, Home, Room} from '@/pages'
-import {FC} from 'react'
-import {Route, Routes} from 'react-router-dom'
-import {Layout} from './Layout'
-import {Error} from '../../pages'
+import { AboutUs, Estates, Home, Room } from "@/pages";
+import { FC } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./Layout";
+import { Error } from "../../pages";
 
 const router = [
   {
@@ -10,14 +10,14 @@ const router = [
     element: <Estates />,
   },
   {
-    path: 'estates/:id',
+    path: "estates/:id",
     element: <Room />,
   },
   {
     path: `/about-us`,
     element: <AboutUs />,
   },
-]
+];
 
 export const Routing: FC = () => {
   return (
@@ -30,5 +30,5 @@ export const Routing: FC = () => {
       </Route>
       <Route path="*" element={<Error />} />
     </Routes>
-  )
-}
+  );
+};

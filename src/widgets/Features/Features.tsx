@@ -1,5 +1,5 @@
-import style from './Features.module.scss'
-import { Section } from '@/features'
+import style from "./Features.module.scss";
+import { Section } from "@/features";
 import {
   Featuresimg1,
   Featuresimg2,
@@ -13,61 +13,61 @@ import {
   Featuresimg10,
   Featuresimg11,
   Featuresimg12,
-} from '@shared/ui/Icons/FeaturesImg'
+} from "@shared/ui/Icons/FeaturesImg";
 
 export const Features = () => {
   const ftrsObject = [
     {
       img: <Featuresimg1 />,
-      title: 'Treadmills',
+      title: "Treadmills",
     },
     {
       img: <Featuresimg2 />,
-      title: 'Balcony',
+      title: "Balcony",
     },
     {
       img: <Featuresimg3 />,
-      title: 'Green spaces',
+      title: "Green spaces",
     },
     {
       img: <Featuresimg4 />,
-      title: 'Children playground',
+      title: "Children playground",
     },
     {
       img: <Featuresimg5 />,
-      title: 'Tennis court',
+      title: "Tennis court",
     },
     {
       img: <Featuresimg6 />,
-      title: 'Fitness center and gym',
+      title: "Fitness center and gym",
     },
     {
       img: <Featuresimg7 />,
-      title: 'Parking space',
+      title: "Parking space",
     },
     {
       img: <Featuresimg8 />,
-      title: 'Boutiques and shops',
+      title: "Boutiques and shops",
     },
     {
       img: <Featuresimg9 />,
-      title: 'Pool',
+      title: "Pool",
     },
     {
       img: <Featuresimg10 />,
-      title: 'BBQ area',
+      title: "BBQ area",
     },
     {
       img: <Featuresimg11 />,
-      title: 'Security ',
+      title: "Security ",
     },
     {
       img: <Featuresimg12 />,
-      title: 'Sports grounds',
+      title: "Sports grounds",
     },
-  ]
+  ];
   return (
-    <Section title="Features & amenities" >
+    <Section title="Features & amenities">
       <div className={style.features}>
         <div className={style.featuresContainer}>
           {ftrsObject.map((features) => (
@@ -79,5 +79,5 @@ export const Features = () => {
         </div>
       </div>
     </Section>
-  )
-}
+  );
+};

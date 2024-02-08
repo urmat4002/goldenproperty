@@ -1,8 +1,8 @@
-import { ArrowRight } from 'lucide-react'
-import style from './Property.module.scss'
-import { Button, Typography } from '@/shared/ui'
-import { Section } from '@/features'
-import { TrimLimit } from '@/shared/lib/TrimLimit/TrimLimit'
+import { ArrowRight } from "lucide-react";
+import style from "./Property.module.scss";
+import { Button, Typography } from "@/shared/ui";
+import { Section } from "@/features";
+import { TrimLimit } from "@/shared/lib/TrimLimit/TrimLimit";
 
 export const Property = () => {
   return (
@@ -49,5 +49,5 @@ export const Property = () => {
         </div>
       </div>
     </Section>
-  )
-}
+  );
+};

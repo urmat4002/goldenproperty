@@ -1,14 +1,14 @@
-import { Button, Typography } from '@/shared/ui'
-import styles from './MenuLeft.module.scss'
-import clsx from 'clsx'
-import { FC } from 'react'
-import { ICity } from '../types/MenuDropDown.types'
+import { Button, Typography } from "@/shared/ui";
+import styles from "./MenuLeft.module.scss";
+import clsx from "clsx";
+import { FC } from "react";
+import { ICity } from "../types/MenuDropDown.types";
 
 interface MenuLeftProps {
-  data: ICity[]
+  data: ICity[];
   // eslint-disable-next-line no-unused-vars
-  onClick: (id: number) => void
-  id: number
+  onClick: (id: number) => void;
+  id: number;
 }
 
 export const MenuLeft: FC<MenuLeftProps> = ({ data, onClick, id }) => {
@@ -21,7 +21,7 @@ export const MenuLeft: FC<MenuLeftProps> = ({ data, onClick, id }) => {
             type="link"
             key={item.id}
             onClick={() => {
-              onClick(item.id)
+              onClick(item.id);
             }}
           >
             <Typography
@@ -35,8 +35,8 @@ export const MenuLeft: FC<MenuLeftProps> = ({ data, onClick, id }) => {
               {item.city__name}
             </Typography>
           </Button>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
