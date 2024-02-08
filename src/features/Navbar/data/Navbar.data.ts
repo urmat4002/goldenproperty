@@ -1,6 +1,6 @@
-import { INavbar } from "../types/Navbar.types";
+import { NavbarProps } from "../types/Navbar.types";
 
-export const NavbarData: INavbar[] = [
+export const NavbarData: NavbarProps[] = [
   {
     label: "All real estates",
     path: "/estates",
