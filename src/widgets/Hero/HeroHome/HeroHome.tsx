@@ -1,9 +1,10 @@
+import { Section } from '@/features'
 import styles from './HeroHome.module.scss'
 import { Button, Typography } from '@shared/ui'
 
 export const HeroHome = () => {
   return (
-    <section>
+    <Section container>
       <div className={styles.heroHome}>
         <div className={styles.heroHomeContent}>
           <div style={{ position: 'relative' }}>
@@ -18,6 +19,6 @@ export const HeroHome = () => {
           <Button type="primary">See real estate</Button>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

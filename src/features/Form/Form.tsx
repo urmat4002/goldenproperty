@@ -1,16 +1,15 @@
 import { Button } from '@/shared/ui/Button/Button'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import form from './Form.module.scss'
 import { Input, Typography } from '@/shared/ui'
-import { ArrowDownToLine } from 'lucide-react'
 
 interface FromProps {
-  title: string
-  subTitle: string
-  btnTitle: string
-  inputPlaceholder1: string
-  inputPlaceholder2: string
-  icon: FC
+  title?: string
+  subTitle?: string
+  btnTitle?: string
+  inputPlaceholder1?: string
+  inputPlaceholder2?: string
+  icon?: ReactNode
 }
 
 export const Form: FC<FromProps> = ({

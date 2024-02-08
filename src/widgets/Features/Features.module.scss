@@ -1,20 +1,21 @@
-.features{
-    .featuresSection{
-        background-color: #1B1B1B;
-        padding: 45px 175px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        height: 370px;
-        gap: 20px 10px;
-    }
-    .FeaturesBlocks{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border: 0.5px solid #FFFFFF;
-        padding: 6px 6px;
-        border-radius: 5px;
-        width: 350px;
-    }
+@import '../../app/styles/assets/variables';
+@import '../../app/styles/assets/classes';
+
+.features {
+  background-color: $colorGray500;
+  padding: 40px 0;
+  &Container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 16px;
+  }
+  &Item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    border: 1.5px solid $colorGray350;
+    border-radius: 6px;
+    padding: 6px;
+  }
 }
