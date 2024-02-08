@@ -5,13 +5,13 @@ import { SliderCity } from "@/features/Slider/SliderCity";
 
 export const Home = () => {
   return (
-    <div>
+    <>
       <HeroHome />
       <Select />
       <Property />
       <SliderCity />
       <Benefits />
       <FormCallBack />
-    </div>
+    </>
   );
 };
