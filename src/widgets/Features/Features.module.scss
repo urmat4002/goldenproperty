@@ -1,5 +1,6 @@
 @import "../../app/styles/assets/variables";
 @import "../../app/styles/assets/classes";
+@import "../../app/styles/assets/mixins";
 
 .features {
   background-color: $colorGray500;
@@ -8,6 +9,11 @@
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 16px;
+    @include tablet {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 16px;
+    }
   }
   &Item {
     display: flex;
