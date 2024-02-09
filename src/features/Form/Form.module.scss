@@ -1,9 +1,10 @@
 @import "@var";
+@import "@mixin";
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 900px;
   border-radius: 3px;
   gap: 20px;
   background-color: $colorGray500;
@@ -31,5 +32,15 @@
     width: 100%;
     justify-content: flex-end;
     align-items: center;
+  }
+
+  @include mobile {
+    padding: 10px;
+    &Inputs {
+      display: block;
+    }
+    &Button {
+      justify-content: flex-start;
+    }
   }
 }
