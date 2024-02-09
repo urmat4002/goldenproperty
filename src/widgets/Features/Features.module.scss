@@ -14,6 +14,11 @@
       grid-template-columns: auto auto;
       gap: 16px;
     }
+    @include mobile {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 16px;
+    }
   }
   &Item {
     display: flex;
@@ -23,5 +28,8 @@
     border: 1.5px solid $colorGray350;
     border-radius: 6px;
     padding: 6px;
+    @include mobile {
+      font-size: 10px;
+    }
   }
 }
