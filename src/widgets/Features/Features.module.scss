@@ -7,16 +7,16 @@
   padding: 40px 0;
   &Container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     @include tablet {
       display: grid;
-      grid-template-columns: auto auto;
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
     @include mobile {
       display: grid;
-      grid-template-columns: auto auto;
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
   }
