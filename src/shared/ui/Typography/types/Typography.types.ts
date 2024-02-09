@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
 
-export type TypographyVariants = "h1" | "h2" | "h3" | "button" | "body";
+export type TypographyVariants = "h1" | "large" | "h2" | "h3" | "button" | "body";
 
 export interface ITags {
+  large: string;
   h1: string;
   h2: string;
   h3: string;

@@ -13,6 +13,7 @@ export const Typography: FC<TypographyProps> = (props) => {
   } = props;
 
   const Tags = {
+    large: "h1",
     h1: "h1",
     h2: "h2",
     h3: "h3",
