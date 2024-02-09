@@ -4,39 +4,27 @@
 @import "../../app/styles/assets/mixins";
 .benefits {
   width: 100%;
-  padding: 66px;
-  background-color: $colorGray500;
   &Container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 36px;
+    justify-content: center;
+    gap: 15px;
     flex-wrap: wrap;
   }
   &Item {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 36px;
-    @include tablet{
-      width: 200px;
-    }
-    @media all and (max-width: 599px) {
-      width: 160px;
-    }
-    @include mobile{
-      width: 160px;
-    }
-    @media all and (max-width: 519px) {
-      width: 100px;
-      font-size: 10px;
-    }
-    @media all and (max-width: 400px) {
-      width: 100px;
-    }
-    @media all and (max-width: 399px) {
-      width: 60px;
-      font-size: 8px;
-    }
+    gap: 20px;
+    background: $colorGray500;
+    border-radius: 20px;
+    width: 435px;
+    padding: 20px 20px;
+  }
+  &Title {
+    color: $colorPrimary;
+  }
+  &Body{
+    text-align: center;
   }
 }
