@@ -2,6 +2,9 @@ import { Button } from "@/shared/ui/Button/Button";
 import { FC, ReactNode } from "react";
 import form from "./Form.module.scss";
 import { Input, Typography } from "@/shared/ui";
+import { CloseBtnIcon } from "@/shared/ui/Icons/closeBtnIcon";
+import { useAppDispatch } from "@/shared/hooks/hooks";
+import { setCloseModal } from "@/shared/slices/Modal/ModalSlice";
 
 interface FromProps {
   title?: string;
@@ -19,9 +22,20 @@ export const Form: FC<FromProps> = ({
   inputPlaceholder1 = "City",
   inputPlaceholder2 = "Date",
   icon,
+  closeBtn,
 }) => {
+  const dispatch = useAppDispatch();
   return (
     <form className={form.form}>
+      {closeBtn && (
+        <Button
+          onClick={() => dispatch(setCloseModal())}
+          customClasses={form.formBtn}
+          type="icon"
+        >
+          <CloseBtnIcon />
+        </Button>
+      )}
       <div className={form.formTitle}>
         <Typography variant="h3" weight="medium" color="gold">
           {title}

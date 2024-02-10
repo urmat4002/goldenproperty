@@ -3,7 +3,8 @@ import styles from "./Navbar.module.scss";
 import { NavbarData } from "./data/Navbar.data";
 import { Typography } from "@/shared/ui";
 import { NavLink } from "react-router-dom";
-import { setOpen, setClose } from "@/shared/slices/MenuCityHover/MenuCityHover";
+import { setClose } from "@/shared/slices/MenuCityHover/MenuCityHover";
+import { setOpenModal } from "@/shared/slices/Modal/ModalSlice";
 
 export const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +37,12 @@ export const Navbar = () => {
           );
         })}
       </ul>
-      <button onClick={() => {}} className={styles.navbarMenuItem}>
+      <button
+        onClick={() => {
+          dispatch(setOpenModal());
+        }}
+        className={styles.navbarMenuItem}
+      >
         <Typography variant="body" weight="medium" color="white">
           Place ann add
         </Typography>
