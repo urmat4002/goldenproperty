@@ -1,6 +1,12 @@
 import { ReactNode } from "react";
 
-export type TypographyVariants = "h1" | "large" | "h2" | "h3" | "button" | "body";
+export type TypographyVariants =
+  | "h1"
+  | "large"
+  | "h2"
+  | "h3"
+  | "button"
+  | "body";
 
 export interface ITags {
   large: string;
@@ -19,4 +25,5 @@ export interface TypographyProps {
   className?: string;
   weight?: "bold" | "semibold" | "medium" | "regular";
   color?: ColorVariants;
+  truncate?: number;
 }
