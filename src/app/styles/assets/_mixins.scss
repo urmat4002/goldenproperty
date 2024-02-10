@@ -30,3 +30,9 @@
     background: #888;
   }
 }
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

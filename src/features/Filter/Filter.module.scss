@@ -1,0 +1,68 @@
+@import "../../app/styles/assets/variables";
+@import "../../app/styles/assets/mixins";
+
+.filter {
+  position: absolute;
+  width: 100%;
+  bottom: -50px;
+  left: 0;
+  z-index: 99;
+
+  @include tablet {
+    bottom: -240px;
+  }
+
+  @include mobile {
+    position: static;
+  }
+
+  &Block {
+    display: flex;
+    max-width: calc($containerMaxWidth + 40px);
+    background: $colorGray400;
+    border-radius: 15px;
+    padding: 40px;
+    margin: 0 auto;
+    box-shadow: -0px 8px 12px 0 rgba(0, 0, 0, 0.22);
+
+    @include tablet {
+      display: block;
+      padding: 20px;
+      max-width: calc($containerMaxWidth - 500px);
+    }
+
+    @include mobile {
+      display: block;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 15px;
+      background: #1b1b1b;
+    }
+  }
+
+  &Select {
+    flex: 1 1 auto;
+    display: flex;
+
+    > div {
+      flex: 1 1 100%;
+      margin-right: 20px;
+    }
+
+    @include tablet {
+      flex-direction: column;
+
+      > div {
+        margin: 0 0 20px 0;
+      }
+    }
+
+    @include mobile {
+      flex-direction: column;
+
+      > div {
+        margin: 0 0 15px 0;
+      }
+    }
+  }
+}

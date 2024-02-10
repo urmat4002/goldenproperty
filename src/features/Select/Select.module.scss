@@ -1,101 +1,66 @@
-@import "@var";
+@import "../../app/styles/assets/variables";
+@import "../../app//styles/assets/mixins";
 
-.Select {
-  max-width: $containerMaxWidth;
-  margin: 0 auto;
+.select {
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  background-color: #272727;
-  margin-bottom: 60px;
-  box-shadow: 0px 0.5740740895271301px 3.1481480598449707px 0px #1b1b1b;
-  padding: 20px;
-  border-radius: 12px;
-  height: 75px;
-  &__city {
-    color: white;
-    background: #3c3c3c;
-    padding: 5px 10px;
-    border-radius: 20px;
-    height: 35px;
-    button {
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      width: 170px;
-    }
-  }
-  &__city__active {
-    color: white;
-    background: #3c3c3c;
-    padding: 5px 10px;
-    border-radius: 20px;
-    height: 140px;
-    button {
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      width: 170px;
-    }
-  }
-  &__options__active {
-    display: block;
-    padding: 10px 0;
-    ul {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    li {
-      list-style: none;
-    }
-  }
-  &__options {
-    display: none;
-    padding: 10px 0;
+  align-items: center;
+  border-radius: 25px;
+  padding: 10px 25px;
+  background: #4c4c4c;
+  user-select: none;
+  cursor: pointer;
 
-    ul {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      input[type="checkbox"]:checked {
-        background: #1b1b1b;
-      }
-    }
-    li {
-      list-style: none;
-    }
+  svg {
+    transition: transform 0.3s ease;
   }
 
-  &__type {
-    color: white;
-    background: #3c3c3c;
-    padding: 5px 10px;
-    border-radius: 20px;
-    height: 35px;
-    button {
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      width: 170px;
-    }
+  &Label {
+    flex: 1 1 auto;
   }
-  &__popular {
-    color: white;
-    background: #3c3c3c;
-    padding: 5px 10px;
-    border-radius: 20px;
-    height: 35px;
-    button {
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      width: 170px;
-    }
+
+  &Content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
   }
-  &__btn {
-    background-color: #c6a15b;
-    width: 170px;
-    height: 40px;
-    border-radius: 50px;
+
+  &.active .option {
+    max-height: 500px;
+  }
+
+  &.active svg {
+    transform: rotateZ(180deg);
+  }
+}
+
+.option {
+  position: absolute;
+  top: calc(100% - 22px);
+  left: 0;
+  width: 100%;
+  border-radius: 0 0 25px 25px;
+  overflow: hidden;
+  max-height: 0;
+  background: #4c4c4c;
+  transition: max-height 0.3s ease;
+  z-index: 99;
+
+  &List {
+    list-style: none;
+    padding-top: 20px;
+  }
+
+  &Item {
+    padding: 10px 25px;
+  }
+
+  .selected {
+    background: #3f3f3f;
+  }
+
+  .highlighted {
+    background: #5f5f5f;
   }
 }
