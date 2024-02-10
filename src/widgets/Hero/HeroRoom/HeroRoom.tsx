@@ -1,3 +1,3 @@
 export const HeroRoom = () => {
-  return <div>HeroRoom</div>;
+  return <div>HeroRoom</div>
 };

@@ -1,0 +1,12 @@
+@import '../../../app/styles/assets/variables';
+
+.HeroEstates{
+  &HeroEstatesItem {
+    p {
+      display: flex;
+    }
+  }
+  span{
+    color: $colorPrimary;
+  }
+}

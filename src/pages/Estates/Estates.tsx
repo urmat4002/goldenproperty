@@ -1,3 +1,7 @@
+import { HeroEstates } from "@/widgets";
+
 export const Estates = () => {
-  return <div>Estates</div>;
+  return <div>Estates
+    <HeroEstates />
+  </div>;
 };
