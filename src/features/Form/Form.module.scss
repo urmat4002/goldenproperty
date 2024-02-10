@@ -9,6 +9,9 @@
   gap: 20px;
   background-color: $colorGray500;
   padding: 40px 100px;
+  &Btn {
+    align-self: end;
+  }
   &Title {
     display: flex;
     flex-direction: column;
