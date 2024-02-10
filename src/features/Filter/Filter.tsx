@@ -1,6 +1,5 @@
-import { Select } from "@features/Select";
 import style from "./Filter.module.scss";
-import { Button } from "@/shared/ui";
+import { Button, Select } from "@/shared/ui";
 import { useState } from "react";
 
 export const Filter = () => {

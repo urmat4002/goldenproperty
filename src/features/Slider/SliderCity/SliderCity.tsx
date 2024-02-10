@@ -5,6 +5,7 @@ import "swiper/scss";
 import "swiper/scss/navigation";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import clsx from "clsx";
 
 export const SliderCity = () => {
   const [swiperWidth, setSwiperWidth] = useState();
@@ -80,32 +81,35 @@ export const SliderCity = () => {
           </div>
         </div>
 
-        <SwiperSlide className={style.sliderSlide}></SwiperSlide>
+        <SwiperSlide className={style.sliderSlide} />
         {images.map((image, index) => {
           return (
-            <SwiperSlide
-              className={style.sliderSlide}
-              onMouseEnter={() => setHighlitedIndex(index)}
-              onMouseLeave={() => setHighlitedIndex(null)}
-              key={image.id}
-            >
-              <Link to={`estates/${image.id}`}>
-                <img src={image.src} alt="Cities" loading="eager" />
-                <div className="swiper-lazy-preloader" />
-                <div
-                  className={`${style.sliderDescription}  ${
-                    highlitedIndex === index ? style.show : ""
-                  }`}
-                >
-                  <div className={style.sliderDescriptionTitle}>
-                    {image.title}
+            <>
+              <SwiperSlide
+                className={style.sliderSlide}
+                onMouseEnter={() => setHighlitedIndex(index)}
+                onMouseLeave={() => setHighlitedIndex(null)}
+                key={image.id}
+              >
+                <Link to={`estates/${image.id}`}>
+                  <img src={image.src} alt="Cities" loading="eager" />
+                  <div className="swiper-lazy-preloader" />
+                  <div
+                    className={clsx(
+                      style.sliderDescription,
+                      highlitedIndex === index ? style.show : ""
+                    )}
+                  >
+                    <div className={style.sliderDescriptionTitle}>
+                      {image.title}
+                    </div>
+                    <div className={style.sliderDescriptionText}>
+                      {image?.description}
+                    </div>
                   </div>
-                  <div className={style.sliderDescriptionText}>
-                    {image?.description}
-                  </div>
-                </div>
-              </Link>
-            </SwiperSlide>
+                </Link>
+              </SwiperSlide>
+            </>
           );
         })}
       </Swiper>

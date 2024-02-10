@@ -1,5 +1,5 @@
-@import "../../app/styles/assets/variables";
-@import "../../app//styles/assets/mixins";
+@import "@var";
+@import "@mixin";
 
 .select {
   position: relative;
@@ -10,26 +10,21 @@
   background: #4c4c4c;
   user-select: none;
   cursor: pointer;
-
   svg {
     transition: transform 0.3s ease;
   }
-
   &Label {
     flex: 1 1 auto;
   }
-
   &Content {
     display: flex;
     align-items: center;
     width: 100%;
     z-index: 100;
   }
-
   &.active .option {
     max-height: 500px;
   }
-
   &.active svg {
     transform: rotateZ(180deg);
   }
@@ -46,20 +41,16 @@
   background: #4c4c4c;
   transition: max-height 0.3s ease;
   z-index: 99;
-
   &List {
     list-style: none;
     padding-top: 20px;
   }
-
   &Item {
     padding: 10px 25px;
   }
-
   .selected {
     background: #3f3f3f;
   }
-
   .highlighted {
     background: #5f5f5f;
   }
