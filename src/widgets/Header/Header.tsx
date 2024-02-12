@@ -16,7 +16,9 @@ export const Header = () => {
             <Logo />
           </Link>
         </div>
-        <Navbar />
+        <div className={styles.headerNavbar}>
+          <Navbar />
+        </div>
         <div className={styles.headerActions}>
           <Search />
           <LangSelect />

@@ -1,7 +1,7 @@
 export const WhatsApp = () => {
   return (
     <svg
-      width="36"
+      width="24"
       height="36"
       viewBox="0 0 25 24"
       fill="none"

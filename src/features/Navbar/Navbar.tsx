@@ -3,7 +3,7 @@ import styles from "./Navbar.module.scss";
 import { NavbarData } from "./data/Navbar.data";
 import { Typography } from "@/shared/ui";
 import { NavLink } from "react-router-dom";
-import { setClose } from "@/shared/slices/MenuCityHover/MenuCityHover";
+import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
 import { setOpenModal } from "@/shared/slices/Modal/ModalSlice";
 
 export const Navbar = () => {

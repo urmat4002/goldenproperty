@@ -2,14 +2,20 @@
 @import "@mixin";
 
 .form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  max-width: 900px;
   border-radius: 3px;
   gap: 20px;
   background-color: $colorGray500;
   padding: 40px 100px;
   margin: 0 auto;
+  @include tablet {
+    padding: 20px 62px;
+  }
+  @include mobile {
+    padding: 20px 16px;
+  }
   &Btn {
     align-self: end;
   }

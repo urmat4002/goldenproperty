@@ -9,16 +9,22 @@ export const Section: React.FC<SectionProps> = ({
   showTitle = true,
   color = "white",
   customClassName,
+  hero,
   children,
 }: SectionProps) => {
-  const classNamedGenerated = clsx(
-    container ? styles.sectionContainer : styles.sectionDefault,
-    customClassName
-  );
-
   return (
-    <section className={styles.section}>
-      <div className={classNamedGenerated}>
+    <section
+      className={clsx(
+        styles.section,
+        customClassName,
+        hero ? styles.sectionHero : ""
+      )}
+    >
+      <div
+        className={clsx(
+          container ? styles.sectionContainer : styles.sectionDefault
+        )}
+      >
         {showTitle && title && (
           <Typography
             variant="h2"

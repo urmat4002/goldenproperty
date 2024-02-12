@@ -1,68 +1,55 @@
+import { Feather } from "lucide-react";
 import style from "./Features.module.scss";
 import { Section } from "@/features";
-import {
-  Featuresimg1,
-  Featuresimg2,
-  Featuresimg3,
-  Featuresimg4,
-  Featuresimg5,
-  Featuresimg6,
-  Featuresimg7,
-  Featuresimg8,
-  Featuresimg9,
-  Featuresimg10,
-  Featuresimg11,
-  Featuresimg12,
-} from "@shared/ui/Icons/FeaturesImg";
 
 export const Features = () => {
   const ftrsObject = [
     {
-      img: <Featuresimg1 />,
+      img: <Feather />,
       title: "Treadmills",
     },
     {
-      img: <Featuresimg2 />,
+      img: <Feather />,
       title: "Balcony",
     },
     {
-      img: <Featuresimg3 />,
+      img: <Feather />,
       title: "Green spaces",
     },
     {
-      img: <Featuresimg4 />,
+      img: <Feather />,
       title: "Children playground",
     },
     {
-      img: <Featuresimg5 />,
+      img: <Feather />,
       title: "Tennis court",
     },
     {
-      img: <Featuresimg6 />,
+      img: <Feather />,
       title: "Fitness center and gym",
     },
     {
-      img: <Featuresimg7 />,
+      img: <Feather />,
       title: "Parking space",
     },
     {
-      img: <Featuresimg8 />,
+      img: <Feather />,
       title: "Boutiques and shops",
     },
     {
-      img: <Featuresimg9 />,
+      img: <Feather />,
       title: "Pool",
     },
     {
-      img: <Featuresimg10 />,
+      img: <Feather />,
       title: "BBQ area",
     },
     {
-      img: <Featuresimg11 />,
+      img: <Feather />,
       title: "Security ",
     },
     {
-      img: <Featuresimg12 />,
+      img: <Feather />,
       title: "Sports grounds",
     },
   ];
@@ -71,7 +58,7 @@ export const Features = () => {
       <div className={style.features}>
         <div className={style.featuresContainer}>
           {ftrsObject.map((features) => (
-            <div className={style.featuresItem}>
+            <div className={style.featuresItem} key={features.title}>
               {features.img}
               <p>{features.title}</p>
             </div>

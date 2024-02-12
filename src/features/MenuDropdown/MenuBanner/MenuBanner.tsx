@@ -3,7 +3,7 @@ import { ICity } from "../types/MenuDropDown.types";
 import styles from "./MenuBanner.module.scss";
 import { Button, Typography } from "@/shared/ui";
 import { ArrowRight } from "lucide-react";
-import { TrimLimit } from "@/shared/lib/TrimLimit/TrimLimit";
+import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
 
 interface MenuBannerProps {
   data: ICity;
@@ -30,11 +30,7 @@ export const MenuBanner: FC<MenuBannerProps> = memo(({ data }) => {
         </div>
       </div>
       <Button type="primary" customClasses={styles.menuBannerButton}>
-        <Typography
-          variant="body"
-          weight="medium"
-          className={styles.menuBannerTypography}
-        >
+        <Typography variant="button" className={styles.menuBannerTypography}>
           See real estates
         </Typography>
         <ArrowRight />

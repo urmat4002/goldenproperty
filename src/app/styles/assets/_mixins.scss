@@ -11,6 +11,11 @@
     @content;
   }
 }
+@mixin isDesktop {
+  @media (max-width: $tabletBreakpoint) and (max-width: $desktopBreakpoint) {
+    @content;
+  }
+}
 @mixin desktop {
   @media (min-width: $tabletBreakpoint) {
     @content;

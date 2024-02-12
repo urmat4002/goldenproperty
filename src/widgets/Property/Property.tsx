@@ -2,11 +2,20 @@ import { ArrowRight } from "lucide-react";
 import style from "./Property.module.scss";
 import { Button, Typography } from "@/shared/ui";
 import { Section } from "@/features";
-import { TrimLimit } from "@/shared/lib/TrimLimit/TrimLimit";
+import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
+import { useInnerWidthExceedsDefault } from "@/shared/helper/ScreenWidthTracker";
+import { FC, useEffect, useState } from "react";
 
-export const Property = () => {
+export const Property: FC = () => {
+  const state = useInnerWidthExceedsDefault({ defaultThreshold: 992 });
+  const [value, setValue] = useState<number>(0);
+
+  useEffect(() => {
+    setValue(state ? 520 : 320);
+  }, [state, value]);
+
   return (
-    <Section title="Property" container>
+    <Section title="Property" customClassName={style.property} container>
       <div className={style.propertyBody}>
         <div className={style.propertyContent}>
           <div className={style.textBlock}>
@@ -20,7 +29,7 @@ export const Property = () => {
             </Typography>
             <div className={style.textBlockDescription}>
               <TrimLimit
-                limit={680}
+                limit={value}
                 more="estates/"
                 text="Living in Dubai has several advantages: Economic Growth: The
                 city provides ample career opportunities with a vibrant economy
@@ -37,7 +46,7 @@ export const Property = () => {
             </div>
           </div>
           <Button type="primary">
-            See real estates
+            <Typography variant="button">See real estates</Typography>
             <ArrowRight />
           </Button>
         </div>

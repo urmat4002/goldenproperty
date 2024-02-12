@@ -1,4 +1,5 @@
 @import "@var";
+@import "@mixin";
 
 $colorGray350: #ccc; // Assuming this is a valid color
 
@@ -49,55 +50,82 @@ $colorGray350: #ccc; // Assuming this is a valid color
     transform: translateX(0);
   }
 }
-
+.sectionHero {
+  margin: 0;
+}
 .heroHome {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
-  position: relative;
   background-color: #4c4c4c;
-
+  @include tablet {
+    height: 50vh;
+  }
+  @include mobile {
+    height: 30vh;
+  }
+  &Background {
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
   &Content {
-    &Line {
-      border-left: 2px solid $colorGray350;
-      height: 262px;
-      position: absolute;
-      left: 50%;
-      margin-left: -355px;
-      top: 0;
-      animation: lineSlideDown 4s ease-out;
+    position: absolute;
+    left: 12%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 52px;
+    @include tablet {
+      gap: 32px;
+      left: 6%;
     }
-    h1 {
-      font-size: 90px;
-      margin-bottom: 10px;
-      opacity: 0;
-      animation: textSlideIn 0.5s ease-out 0.5s forwards;
-    }
-    p {
-      font-size: 28px;
-      font-weight: 600;
-      position: relative;
-      opacity: 0;
-      animation: textSlideIn 1s ease-out 1s forwards;
+    @include mobile {
+      gap: 12px;
+      left: 4%;
     }
     button {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center horizontally */
-      justify-content: center; /* Center vertically */
-      margin-top: 51px;
       position: relative;
       opacity: 0;
-      width: 258px;
-      height: 60px; /* Set the height as needed */
       animation: textSlideIn 1.5s ease-out 1.5s forwards;
     }
     span {
       color: $colorPrimary;
+    }
+  }
+  &Text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    h1 {
+      opacity: 0;
+      animation: textSlideIn 0.5s ease-out 0.5s forwards;
+    }
+    p {
+      position: relative;
+      opacity: 0;
+      animation: textSlideIn 1s ease-out 1s forwards;
+    }
+  }
+  &Filter {
+    position: absolute;
+    bottom: -7%;
+    left: 2%;
+    right: 2%;
+    @include tablet {
+      bottom: -16%;
+    }
+    @include mobile {
+      margin-top: 52px;
+      position: static;
     }
   }
 }

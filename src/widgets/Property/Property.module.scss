@@ -2,6 +2,7 @@
 @import "@classes";
 
 .property {
+  margin-top: 156px;
   &Body {
     display: flex;
     gap: 20px;
@@ -33,6 +34,6 @@
     margin-bottom: 25px;
     height: 100%;
     max-height: 365px;
-    overflow: auto;
+    overflow: hidden;
   }
 }

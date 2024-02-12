@@ -1,5 +1,5 @@
 import style from "./Filter.module.scss";
-import { Button, Select } from "@/shared/ui";
+import { Button, Select, Typography } from "@/shared/ui";
 import { useState } from "react";
 
 export const Filter = () => {
@@ -90,9 +90,10 @@ export const Filter = () => {
             placeholder={"Popular"}
             onChange={(option) => setRatingValue(option)}
           />
+          <Button type="primary">
+            <Typography variant="button">Show results</Typography>
+          </Button>
         </div>
-
-        <Button type="primary">Show results</Button>
       </div>
     </div>
   );

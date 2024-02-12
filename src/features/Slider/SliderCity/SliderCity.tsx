@@ -84,32 +84,30 @@ export const SliderCity = () => {
         <SwiperSlide className={style.sliderSlide} />
         {images.map((image, index) => {
           return (
-            <>
-              <SwiperSlide
-                className={style.sliderSlide}
-                onMouseEnter={() => setHighlitedIndex(index)}
-                onMouseLeave={() => setHighlitedIndex(null)}
-                key={image.id}
-              >
-                <Link to={`estates/${image.id}`}>
-                  <img src={image.src} alt="Cities" loading="eager" />
-                  <div className="swiper-lazy-preloader" />
-                  <div
-                    className={clsx(
-                      style.sliderDescription,
-                      highlitedIndex === index ? style.show : ""
-                    )}
-                  >
-                    <div className={style.sliderDescriptionTitle}>
-                      {image.title}
-                    </div>
-                    <div className={style.sliderDescriptionText}>
-                      {image?.description}
-                    </div>
+            <SwiperSlide
+              className={style.sliderSlide}
+              onMouseEnter={() => setHighlitedIndex(index)}
+              onMouseLeave={() => setHighlitedIndex(null)}
+              key={image.id}
+            >
+              <Link to={`estates/${image.id}`}>
+                <img src={image.src} alt="Cities" loading="eager" />
+                <div className="swiper-lazy-preloader" />
+                <div
+                  className={clsx(
+                    style.sliderDescription,
+                    highlitedIndex === index ? style.show : ""
+                  )}
+                >
+                  <div className={style.sliderDescriptionTitle}>
+                    {image.title}
                   </div>
-                </Link>
-              </SwiperSlide>
-            </>
+                  <div className={style.sliderDescriptionText}>
+                    {image?.description}
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
           );
         })}
       </Swiper>

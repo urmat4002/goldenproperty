@@ -1,17 +1,39 @@
+@import "@mixin";
+
 .section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 52px;
   margin: 100px 0;
   width: 100%;
   position: relative;
+  @include tablet {
+    margin: 50px 0;
+  }
+  @include mobile {
+    margin: 50px 0;
+  }
   &Container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 52px;
     width: 100%;
+    @include tablet {
+      gap: 20px;
+    }
+    @include mobile {
+      gap: 20px;
+    }
+  }
+  &Hero {
+    margin: 0;
+    @include tablet {
+      gap: 20px;
+    }
+    @include mobile {
+      gap: 20px;
+    }
   }
   &Default {
     display: flex;

@@ -1,0 +1,1 @@
+export { useInnerWidthExceedsDefault } from "./useInnerWidthExceedsDefault";

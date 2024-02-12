@@ -25,8 +25,7 @@ export const MenuLeft: FC<MenuLeftProps> = ({ data, onClick, id }) => {
             }}
           >
             <Typography
-              variant="body"
-              weight="medium"
+              variant="button"
               className={clsx(
                 styles.menuBannerTypography,
                 id ? styles.active : styles.default

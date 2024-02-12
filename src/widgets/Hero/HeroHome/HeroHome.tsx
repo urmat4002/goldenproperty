@@ -5,23 +5,28 @@ import { Filter } from "@/features/Filter";
 
 export const HeroHome = () => {
   return (
-    <Section color="white">
+    <Section color="white" hero>
       <div className={styles.heroHome}>
+        <img
+          className={styles.heroHomeBackground}
+          src="https://images.unsplash.com/photo-1597659840241-37e2b9c2f55f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="background"
+        />
         <div className={styles.heroHomeContent}>
-          <div style={{ position: "relative" }}>
-            <div className={styles.heroHomeLine} />
+          <div className={styles.heroHomeText}>
+            <Typography variant="large">
+              <span>Golden</span> House
+            </Typography>
+            <Typography variant="body">Find your dream home with us</Typography>
           </div>
-          <Typography variant="h1" weight="bold">
-            <span>Golden</span> House
-          </Typography>
-          <Typography variant="body" color="white" weight="medium">
-            Find your dream home with us
-          </Typography>
-          <Button type="primary">See real estate</Button>
+          <Button type="primary">
+            <Typography variant="button">See real estate</Typography>
+          </Button>
         </div>
       </div>
-
-      <Filter />
+      <div className={styles.heroHomeFilter}>
+        <Filter />
+      </div>
     </Section>
   );
 };

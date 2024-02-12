@@ -8,13 +8,15 @@ export const Layout: FC = () => {
   const location = useLocation();
 
   return (
-    <main className={styles.main}>
+    <>
       <Header />
       {location.pathname !== "/" && <Breadcrumbs />}
-      <Outlet />
+      <main className={styles.main}>
+        <Outlet />
+      </main>
       <Footer />
       <FloatingWhatsApp />
       <Modal />
-    </main>
+    </>
   );
 };

@@ -28,7 +28,7 @@ export const Select = ({
     >
       <div className={style.selectContent}>
         <div className={style.selectLabel}>
-          <Typography variant="body" weight="bold" truncate={15}>
+          <Typography variant="body" weight="medium" truncate={15}>
             {value ? value.label : placeholder}
           </Typography>
         </div>

@@ -2,9 +2,9 @@ import { Button } from "@/shared/ui/Button/Button";
 import { FC, ReactNode } from "react";
 import form from "./Form.module.scss";
 import { Input, Typography } from "@/shared/ui";
-import { CloseBtnIcon } from "@/shared/ui/Icons/closeBtnIcon";
 import { useAppDispatch } from "@/shared/hooks/hooks";
 import { setCloseModal } from "@/shared/slices/Modal/ModalSlice";
+import { XCircle } from "lucide-react";
 
 interface FromProps {
   title?: string;
@@ -13,6 +13,7 @@ interface FromProps {
   inputPlaceholder1?: string;
   inputPlaceholder2?: string;
   icon?: ReactNode;
+  closeBtn?: boolean;
 }
 
 export const Form: FC<FromProps> = ({
@@ -33,7 +34,7 @@ export const Form: FC<FromProps> = ({
           customClasses={form.formBtn}
           type="icon"
         >
-          <CloseBtnIcon />
+          <XCircle />
         </Button>
       )}
       <div className={form.formTitle}>
@@ -56,8 +57,10 @@ export const Form: FC<FromProps> = ({
       </div>
       <div className={form.formButton}>
         <Button type="primary">
-          {btnTitle}
-          {icon}
+          <Typography variant="button">
+            {btnTitle}
+            {icon}
+          </Typography>
         </Button>
       </div>
     </form>

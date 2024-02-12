@@ -1,36 +1,26 @@
 import { Section } from "@/features";
-import style from './HeroEstates.module.scss'
-
+import style from "./HeroEstates.module.scss";
+import { Filter } from "@/features/Filter";
+import { Typography } from "@/shared/ui";
 
 export const HeroEstates = () => {
-  const objectEstates = [
-    {
-      title: 'Living in Dubai has several advantages:',
-    },
-    {
-      id:1,
-      body: '.Economic Growth: The city provides ample career opportunities with a vibrant economy and many business opportunities.'
-    },
-    {
-      id:2,
-      body: '.International character: Dubai is a cultural bridge between East and West, providing unique diversity and intercultural experiences.'
-    },
-    {
-      id: 3,
-      body: '.Infrastructure: The city is known for its modern infrastructure '
-    },
-  ]
-  
   return (
-    <Section title="Dubai estates" container>
+    <Section container hero>
       <div className={style.HeroEstates}>
-        {objectEstates.map(item => 
-          <div className={style.HeroEstatesItem}>
-            <p>{item.title}</p>
-            <p>{item.id}{item.body}</p>
-          </div>
-        )}
+        <div className={style.HeroEstatesContent}>
+          <Typography variant="h1">Dubai</Typography>
+          <Typography variant="body">
+            Dubai is a city and emirate in the United Arab Emirates known for
+            luxury shopping, ultramodern architecture and a lively nightlife
+            scene. Burj Khalifa, an 830m-tall tower, dominates the
+            skyscraper-filled skyline. At its foot lies Dubai Fountain, with
+            jets and lights choreographed to music. On artificial islands just
+            offshore is Atlantis, The Palm, a resort with water and
+            marine-animal parks.
+          </Typography>
+        </div>
+        <Filter />
       </div>
     </Section>
-  )
+  );
 };

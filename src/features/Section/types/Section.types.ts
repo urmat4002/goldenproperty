@@ -6,5 +6,6 @@ export interface SectionProps {
   showTitle?: boolean;
   color?: "white" | "gold";
   customClassName?: string;
+  hero?: boolean;
   children: ReactNode;
 }
