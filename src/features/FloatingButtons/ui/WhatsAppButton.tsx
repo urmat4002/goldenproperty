@@ -1,25 +1,27 @@
 import { FC } from "react";
-import styles from "./FloatingWhatsApp.module.scss";
 
-export const FloatingWhatsApp: FC = () => {
+export const WhatsAppButton: FC<{ styles: CSSModuleClasses }> = ({
+  styles,
+}) => {
   const messageText = encodeURI("");
   const phoneNumber = "+111222333444".replace("+", ""); //c
   return (
     <a
-      className={styles.FloatingWhatsApp}
+      className={styles.button}
       aria-label="Chat on WhatsdApp"
       href={`https://wa.me/${phoneNumber}?text=${messageText}`}
       target="_blank"
     >
       <svg
+        className={styles.icon}
         width="70"
         height="70"
         viewBox="0 0 70 70"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <circle cx="35" cy="35" r="35" fill="white" />
-        <circle cx="35" cy="35" r="35" fill="#1CC600" />
+        <circle cx="35.5" cy="34.5" r="27.5" fill="#1CC600" />
+        <circle cx="35.5" cy="34.5" r="27.5" fill="#1CC600" />
         <path
           d="M17.5 52.5L20.0132 43.1712C17.9864 39.5371 17.3425 35.2964 18.1996 31.2274C19.0567 27.1583 21.3573 23.5338 24.6793 21.0189C28.0014 18.5041 32.122 17.2675 36.285 17.5361C40.448 17.8048 44.3742 19.5607 47.343 22.4816C50.312 25.4024 52.1244 29.2924 52.4478 33.4377C52.7712 37.5829 51.5839 41.7054 49.1038 45.0486C46.6236 48.3917 43.0169 50.7314 38.9457 51.6382C34.8744 52.5451 30.6115 51.9582 26.9394 49.9854L17.5 52.5ZM27.3945 46.4944L27.9783 46.8395C30.6381 48.4108 33.7447 49.0611 36.8141 48.6889C39.8834 48.3167 42.743 46.9431 44.9473 44.7821C47.1515 42.621 48.5766 39.794 49.0004 36.7415C49.4242 33.6889 48.8229 30.5824 47.2903 27.906C45.7577 25.2296 43.3798 23.1336 40.5272 21.9447C37.6746 20.7559 34.5076 20.5409 31.5195 21.3333C28.5315 22.1256 25.8905 23.8809 24.0079 26.3255C22.1253 28.77 21.1069 31.7665 21.1115 34.8481C21.109 37.4033 21.818 39.9091 23.1596 42.0864L23.5258 42.688L22.1208 47.8948L27.3945 46.4944Z"
           fill="white"
@@ -31,6 +33,7 @@ export const FloatingWhatsApp: FC = () => {
           fill="white"
         />
       </svg>
+      <div className={styles.pulse} />
     </a>
   );
 };

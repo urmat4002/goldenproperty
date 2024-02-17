@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Footer, Header, Modal } from "../../widgets";
-import { Breadcrumbs, FloatingWhatsApp } from "@/features";
+import { Breadcrumbs, FloatingButtons } from "@/features";
 import styles from "./style/Layout.module.scss";
 
 export const Layout: FC = () => {
@@ -15,7 +15,7 @@ export const Layout: FC = () => {
         <Outlet />
       </main>
       <Footer />
-      <FloatingWhatsApp />
+      <FloatingButtons />
       <Modal />
     </>
   );
