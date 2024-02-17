@@ -5,6 +5,6 @@ export * from "./Section";
 export * from "./Breadcrumbs";
 export * from "./Slider";
 export * from "./Form";
-export * from "./FloatingWhatsApp";
+export * from "./FloatingButtons";
 export * from "./Section";
 export * from "./MenuDropdown";

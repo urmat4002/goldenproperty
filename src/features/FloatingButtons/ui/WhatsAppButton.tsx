@@ -1,12 +1,13 @@
 import { FC } from "react";
-import styles from "./FloatingWhatsApp.module.scss";
 
-export const FloatingWhatsApp: FC = () => {
+export const WhatsAppButton: FC<{ styles: CSSModuleClasses }> = ({
+  styles,
+}) => {
   const messageText = encodeURI("");
   const phoneNumber = "+111222333444".replace("+", ""); //c
   return (
     <a
-      className={styles.FloatingWhatsApp}
+      className={styles.button}
       aria-label="Chat on WhatsdApp"
       href={`https://wa.me/${phoneNumber}?text=${messageText}`}
       target="_blank"
