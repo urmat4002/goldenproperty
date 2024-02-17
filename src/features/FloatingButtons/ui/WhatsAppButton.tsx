@@ -13,6 +13,7 @@ export const WhatsAppButton: FC<{ styles: CSSModuleClasses }> = ({
       target="_blank"
     >
       <svg
+        className={styles.icon}
         width="70"
         height="70"
         viewBox="0 0 70 70"

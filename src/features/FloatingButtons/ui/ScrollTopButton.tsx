@@ -10,6 +10,7 @@ export const ScrollTopButton: FC<{ styles: CSSModuleClasses }> = ({
       href="#"
     >
       <svg
+        className={styles.icon}
         width="70"
         height="70"
         viewBox="0 0 70 70"
