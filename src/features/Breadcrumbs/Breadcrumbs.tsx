@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import breadcrumbs from "./Breadcrumbs.module.scss";
+import { Typography } from "@/shared/ui";
 
 export const Breadcrumbs = () => {
   const location = useLocation();
@@ -14,24 +15,36 @@ export const Breadcrumbs = () => {
       if (item == "estates") item = "All real estates";
       if (item == "about-us") item = "About us";
       return (
-        <Link className={breadcrumbs.breadcrumbsLink} key={index} to={linkAdr}>
-          {"  " + item + "  "}
+        <>
+          <Link
+            className={breadcrumbs.breadcrumbsLink}
+            key={index}
+            to={linkAdr}
+          >
+            <Typography variant="body" weight="regular">
+              {item}
+            </Typography>
+          </Link>
           <ChevronRight color="#999999" width={20} />
-        </Link>
+        </>
       );
     });
 
   return (
     <div className={breadcrumbs.breadcrumbs}>
-      <Link className={breadcrumbs.breadcrumbsLink} to="/">
-        Main{"  "}
+      <div className={breadcrumbs.breadcrumbsContent}>
+        <Link className={breadcrumbs.breadcrumbsLink} to="/">
+          <Typography variant="body" weight="regular">
+            Main
+          </Typography>
+        </Link>
         <ChevronRight
           className={breadcrumbs.breadcrumbsChevron}
           color="#999999"
           width={20}
         />
-      </Link>
-      {data}
+        {data}
+      </div>
     </div>
   );
 };
