@@ -12,10 +12,10 @@ export const Breadcrumbs = () => {
     .filter((item) => item != "")
     .map((item, index) => {
       linkAdr += `/${item}`;
-      if (item == "estates") item = "All real estates";
-      if (item == "about-us") item = "About us";
+      if (item === "estates") item = "All real estates";
+      if (item === "about-us") item = "About us";
       return (
-        <>
+        <div className={breadcrumbs.breadcrumbsContentBlock} key={index}>
           <Link
             className={breadcrumbs.breadcrumbsLink}
             key={index}
@@ -26,23 +26,25 @@ export const Breadcrumbs = () => {
             </Typography>
           </Link>
           <ChevronRight color="#999999" width={20} />
-        </>
+        </div>
       );
     });
 
   return (
     <div className={breadcrumbs.breadcrumbs}>
       <div className={breadcrumbs.breadcrumbsContent}>
-        <Link className={breadcrumbs.breadcrumbsLink} to="/">
-          <Typography variant="body" weight="regular">
-            Main
-          </Typography>
-        </Link>
-        <ChevronRight
-          className={breadcrumbs.breadcrumbsChevron}
-          color="#999999"
-          width={20}
-        />
+        <div className={breadcrumbs.breadcrumbsContentBlock}>
+          <Link className={breadcrumbs.breadcrumbsLink} to="/">
+            <Typography variant="body" weight="regular">
+              Main
+            </Typography>
+          </Link>
+          <ChevronRight
+            className={breadcrumbs.breadcrumbsChevron}
+            color="#999999"
+            width={20}
+          />
+        </div>
         {data}
       </div>
     </div>
