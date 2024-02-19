@@ -1,10 +1,11 @@
 import { Button } from "@/shared/ui/Button/Button";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState } from "react";
 import form from "./Form.module.scss";
 import { Input, Typography } from "@/shared/ui";
 import { useAppDispatch } from "@/shared/hooks/hooks";
 import { setCloseModal } from "@/shared/slices/Modal/ModalSlice";
 import { XCircle } from "lucide-react";
+import { Calendar } from "@/shared/ui/Calendar";
 
 interface FromProps {
   title?: string;
@@ -25,7 +26,10 @@ export const Form: FC<FromProps> = ({
   icon,
   closeBtn,
 }) => {
+  const [calendarActive, setCalendarActive] = useState(false);
+  const [date, setDate] = useState("");
   const dispatch = useAppDispatch();
+  console.log(typeof setDate);
   return (
     <form className={form.form}>
       {closeBtn && (
@@ -52,7 +56,17 @@ export const Form: FC<FromProps> = ({
         </div>
         <div className={form.formWrapper}>
           <Input placeholder={inputPlaceholder1} />
-          <Input placeholder={inputPlaceholder2} />
+          <Input
+            onFocus={() => setCalendarActive(true)}
+            placeholder={inputPlaceholder2}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <Calendar
+            calendarActive={calendarActive}
+            setCalendarActive={() => setCalendarActive(false)}
+            setDate={setDate}
+          />
         </div>
       </div>
       <div className={form.formButton}>

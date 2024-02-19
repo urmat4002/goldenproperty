@@ -9,6 +9,7 @@ export const Input: FC<InputProps> = ({
   name,
   placeholder,
   onChange,
+  onFocus,
 }) => {
   return (
     <div className={style.inputWrapper}>
@@ -19,6 +20,7 @@ export const Input: FC<InputProps> = ({
         name={name}
         placeholder={placeholder}
         onChange={onChange}
+        onFocus={onFocus}
       />
     </div>
   );

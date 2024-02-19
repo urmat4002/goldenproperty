@@ -5,10 +5,18 @@ import close from "../Icons/close.png";
 import { Button } from "@/shared/ui/Button/Button";
 import clsx from "clsx";
 
-export const Calendar: FC = (props) => {
+interface CalendarProps {
+  calendarActive?: boolean;
+  setCalendarActive?: () => void;
+  // eslint-disable-next-line no-unused-vars
+  setDate: (data: string) => void;
+}
+
+export const Calendar: FC<CalendarProps> = (props) => {
   const { setCalendarActive, calendarActive, setDate } = props;
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedDay, setSelectedDay] = useState(currentDate.getDate());
+
   const date = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth() + 1,
@@ -29,7 +37,7 @@ export const Calendar: FC = (props) => {
     setCurrentDate(new Date(year, month - 1));
   };
 
-  const handleClick = (day) => {
+  const handleClick = (day: number) => {
     setSelectedDay(day);
     setDate(
       `${day} ${currentDate.toLocaleString("default", { month: "long" })}`
@@ -69,7 +77,7 @@ export const Calendar: FC = (props) => {
             <ChevronRight onClick={nextMonth} color="white" width={20} />
           </div>
           <div className={calendarCustom.calendarCustomTitleBtn}>
-            <Button onClick={() => setCalendarActive(false)} type="icon">
+            <Button onClick={setCalendarActive} type="icon">
               <img src={close} />
             </Button>
           </div>
