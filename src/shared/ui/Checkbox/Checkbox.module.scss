@@ -1,0 +1,27 @@
+.checkboxWrapper {
+  pointer-events: none;
+
+  .check {
+    display: flex;
+    align-items: center;
+    padding-left: 1.2rem;
+
+    &Input {
+      position: absolute;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    p {
+      margin-left: 10px;
+    }
+
+    svg {
+      position: absolute;
+      margin-left: -1.2rem;
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+}
