@@ -22,7 +22,7 @@ export interface ButtonConfig
 
 export interface ButtonProps extends BaseButtonProps {
   type: Exclude<ButtonType, "link"> | "link";
-  onClick?: () => void;
+  onClick?: (_event: Event) => void;
   size?: ButtonSize;
   variant?: ButtonVariant;
   isLoading?: boolean;

@@ -1,17 +1,42 @@
-import style from "./Filter.module.scss";
-import { Button, Select, Typography } from "@/shared/ui";
 import { useState } from "react";
+import { FilterValue, FiltertItem } from "./types/Filter.types";
+import { Button, Select, Typography } from "@/shared/ui";
+import style from "./Filter.module.scss";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const Filter = () => {
-  const [cityValue, setCityValue] = useState<
-    (typeof dataCity)[0] | undefined
-  >();
-  const [typeValue, setTypeValue] = useState<
-    (typeof dataCity)[0] | undefined
-  >();
-  const [ratingValue, setRatingValue] = useState<
-    (typeof dataCity)[0] | undefined
-  >();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams({});
+
+  const [selectValue, setSelectValue] = useState<FilterValue>({
+    city: [],
+    type: [],
+    rating: [],
+  });
+
+  const handleSearchParams = (option: FiltertItem[], paramType: string) => {
+    setSearchParams((prev) => {
+      prev.set(paramType, convertToString(option));
+
+      const params = prev.get(paramType);
+
+      if (!params) prev.delete(paramType);
+
+      return prev;
+    });
+  };
+
+  const convertToString = (option: FiltertItem[]) => {
+    const converted = option.map((obj) => obj.label);
+
+    return converted.join(",");
+  };
+
+  const handleFilter = (event: Event) => {
+    event.preventDefault();
+
+    navigate(`/estates/${searchParams}`);
+  };
 
   const dataCity = [
     {
@@ -73,24 +98,34 @@ export const Filter = () => {
       <div className={style.filterBlock}>
         <div className={style.filterSelect}>
           <Select
-            value={cityValue}
+            value={selectValue.city}
             options={dataCity}
             placeholder={"City"}
-            onChange={(option) => setCityValue(option)}
+            checkbox={true}
+            onChange={(option) => {
+              handleSearchParams(option, "city");
+              setSelectValue({ ...selectValue, city: option });
+            }}
           />
           <Select
-            value={typeValue}
+            value={selectValue.type}
             options={types}
             placeholder={"Type"}
-            onChange={(option) => setTypeValue(option)}
+            onChange={(option) => {
+              handleSearchParams(option, "type");
+              setSelectValue({ ...selectValue, type: option });
+            }}
           />
           <Select
-            value={ratingValue}
+            value={selectValue.rating}
             options={ratings}
             placeholder={"Popular"}
-            onChange={(option) => setRatingValue(option)}
+            onChange={(option) => {
+              handleSearchParams(option, "rating");
+              setSelectValue({ ...selectValue, rating: option });
+            }}
           />
-          <Button type="primary">
+          <Button type="primary" onClick={handleFilter}>
             <Typography variant="button">Show results</Typography>
           </Button>
         </div>
