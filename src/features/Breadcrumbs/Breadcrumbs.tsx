@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import breadcrumbs from "./Breadcrumbs.module.scss";
+import { Typography } from "@/shared/ui";
 
 export const Breadcrumbs = () => {
   const location = useLocation();
@@ -11,27 +12,41 @@ export const Breadcrumbs = () => {
     .filter((item) => item != "")
     .map((item, index) => {
       linkAdr += `/${item}`;
-      if (item == "estates") item = "All real estates";
-      if (item == "about-us") item = "About us";
+      if (item === "estates") item = "All real estates";
+      if (item === "about-us") item = "About us";
       return (
-        <Link className={breadcrumbs.breadcrumbsLink} key={index} to={linkAdr}>
-          {"  " + item + "  "}
+        <div className={breadcrumbs.breadcrumbsContentBlock} key={index}>
+          <Link
+            className={breadcrumbs.breadcrumbsLink}
+            key={index}
+            to={linkAdr}
+          >
+            <Typography variant="body" weight="regular">
+              {item}
+            </Typography>
+          </Link>
           <ChevronRight color="#999999" width={20} />
-        </Link>
+        </div>
       );
     });
 
   return (
     <div className={breadcrumbs.breadcrumbs}>
-      <Link className={breadcrumbs.breadcrumbsLink} to="/">
-        Main{"  "}
-        <ChevronRight
-          className={breadcrumbs.breadcrumbsChevron}
-          color="#999999"
-          width={20}
-        />
-      </Link>
-      {data}
+      <div className={breadcrumbs.breadcrumbsContent}>
+        <div className={breadcrumbs.breadcrumbsContentBlock}>
+          <Link className={breadcrumbs.breadcrumbsLink} to="/">
+            <Typography variant="body" weight="regular">
+              Main
+            </Typography>
+          </Link>
+          <ChevronRight
+            className={breadcrumbs.breadcrumbsChevron}
+            color="#999999"
+            width={20}
+          />
+        </div>
+        {data}
+      </div>
     </div>
   );
 };

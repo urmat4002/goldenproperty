@@ -1,0 +1,46 @@
+@import "@var";
+.calendarCustom {
+  position: absolute;
+  top: 300px;
+  left: 40%;
+  max-width: 350px;
+  transform: scale(0);
+  background-color: #4c4c4c;
+  border-radius: 10px;
+  padding: 10px;
+
+  &Chevron:hover {
+    cursor: pointer;
+  }
+  &Active {
+    transform: scale(1);
+  }
+
+  &Title {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    &Btn {
+      justify-self: start;
+    }
+  }
+  &Week {
+    display: flex;
+  }
+  &Day {
+    display: flex;
+    margin: 7px;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    &Active {
+      background-color: $colorPrimary;
+    }
+  }
+  &Day:hover {
+    cursor: pointer;
+  }
+}

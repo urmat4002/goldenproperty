@@ -1,11 +1,12 @@
-export type SelectItem = {
+export interface SelectItem {
   id: number;
   label: string;
-};
+}
 
-export type SelectProps = {
-  value?: SelectItem;
+export interface SelectProps {
+  value: SelectItem[];
   options?: SelectItem[];
   placeholder: string;
-  onChange: (_value: SelectItem | undefined) => void;
-};
+  checkbox?: boolean;
+  onChange: (_option: SelectItem[]) => void;
+}

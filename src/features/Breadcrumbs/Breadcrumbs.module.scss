@@ -3,8 +3,21 @@
 .breadcrumbs {
   display: flex;
 
-  &Link {
+  &Content {
     display: flex;
+
+    max-width: $containerMaxWidth;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px $containerPadding;
+    &Block {
+      display: flex;
+      align-items: center;
+      margin-right: 5px;
+    }
+  }
+  &Link {
+    margin-right: 5px;
     text-decoration: none;
     color: $colorGray200;
   }
