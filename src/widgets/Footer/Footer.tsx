@@ -16,61 +16,61 @@ export const Footer = () => {
             <ul className={styles.footerOption}>
               <li>
                 <Typography variant="body" weight="bold">
-                  City
+                  Город
                 </Typography>
               </li>
               <li>
-                <Typography variant="body">Dubai</Typography>
+                <Typography variant="body">Дубай</Typography>
               </li>
               <li>
-                <Typography variant="body">Antalya </Typography>
+                <Typography variant="body">Анталья</Typography>
               </li>
               <li>
-                <Typography variant="body">Istanbul </Typography>
+                <Typography variant="body">Стамбул</Typography>
               </li>
             </ul>
             <ul className={styles.footerOption}>
               <li>
                 <Typography variant="body" weight="bold">
-                  Type
+                  Тип
                 </Typography>
               </li>
               <li>
-                <Typography variant="body">Villas</Typography>
+                <Typography variant="body">Виллы</Typography>
               </li>
               <li>
-                <Typography variant="body">Apartments</Typography>
+                <Typography variant="body">Квартиры</Typography>
               </li>
               <li>
-                <Typography variant="body">Duplex</Typography>
+                <Typography variant="body">Дуплексы</Typography>
               </li>
               <li>
-                <Typography variant="body">Plots</Typography>
+                <Typography variant="body">Участки</Typography>
               </li>
               <li>
-                <Typography variant="body">Stores</Typography>
+                <Typography variant="body">Магазины</Typography>
               </li>
             </ul>
             <ul className={styles.footerOption}>
               <li>
                 <Typography variant="body" weight="bold">
-                  Page
+                  Страница
                 </Typography>
               </li>
               <li>
-                <Typography variant="body">All real estates</Typography>
+                <Typography variant="body">Вся недвижимость</Typography>
               </li>
               <li>
-                <Typography variant="body">About us</Typography>
+                <Typography variant="body">О нас</Typography>
               </li>
               <li>
-                <Typography variant="body">Place an ad</Typography>
+                <Typography variant="body">Разместить объявление</Typography>
               </li>
             </ul>
             <ul className={styles.footerOption}>
               <li>
                 <Typography variant="body" weight="bold">
-                  Contact us
+                  Связаться с нами
                 </Typography>
               </li>
               <li>
@@ -81,13 +81,13 @@ export const Footer = () => {
                 <Phone strokeWidth={1} size={24} />
                 <Typography variant="body">+90(212)67890900</Typography>
               </li>
+              <li className={styles.icons}>
+                <Facebook strokeWidth={1} size={24} />
+                <Instagram strokeWidth={1} size={24} />
+                <WhatsApp />
+              </li>
             </ul>
           </div>
-        </div>
-        <div className={styles.footerSocials}>
-          <Facebook strokeWidth={1} size={24} />
-          <Instagram strokeWidth={1} size={24} />
-          <WhatsApp />
         </div>
         <div className={styles.footerBottom}>
           <a
@@ -102,3 +102,4 @@ export const Footer = () => {
     </footer>
   );
 };
+
