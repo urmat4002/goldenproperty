@@ -16,6 +16,9 @@
   @include mobile {
     padding: 20px 16px;
   }
+  &Select {
+    margin-top: 20px;
+  }
   &Btn {
     align-self: end;
   }
@@ -29,9 +32,7 @@
     display: flex;
     gap: 16px;
   }
-  &Input {
-    width: 100%;
-  }
+
   &Wrapper {
     width: 100%;
     display: flex;

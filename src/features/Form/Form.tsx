@@ -1,9 +1,13 @@
 import { Button } from "@/shared/ui/Button/Button";
 import { FC, ReactNode, useState } from "react";
 import form from "./Form.module.scss";
-import { Input, Typography } from "@/shared/ui";
-import { useAppDispatch } from "@/shared/hooks/hooks";
-import { setCloseModal } from "@/shared/slices/Modal/ModalSlice";
+import { Input, Select, Typography } from "@/shared/ui";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
+import {
+  setCloseModal,
+  showFormMessage,
+  setOpenModal,
+} from "@/shared/slices/Modal/ModalSlice";
 import { XCircle } from "lucide-react";
 import { Calendar } from "@/shared/ui/Calendar";
 
@@ -11,8 +15,8 @@ interface FromProps {
   title?: string;
   subTitle?: string;
   btnTitle?: string;
+
   inputPlaceholder1?: string;
-  inputPlaceholder2?: string;
   icon?: ReactNode;
   closeBtn?: boolean;
 }
@@ -21,15 +25,41 @@ export const Form: FC<FromProps> = ({
   title,
   subTitle,
   btnTitle = "Send",
-  inputPlaceholder1 = "City",
-  inputPlaceholder2 = "Date",
+
+  inputPlaceholder1 = "Date",
   icon,
   closeBtn,
 }) => {
   const [calendarActive, setCalendarActive] = useState(false);
   const [date, setDate] = useState("");
+  const isCatalog = useAppSelector((state) => state.formSlice.isCatalog);
   const dispatch = useAppDispatch();
-  console.log(typeof setDate);
+  const handleClick = () => {
+    dispatch(showFormMessage());
+    dispatch(setOpenModal());
+  };
+  ////////////////////////////////////////
+  const [roleValue, setRolValue] = useState([
+    {
+      id: 1,
+      label: "I am an agent",
+    },
+  ]);
+  const role = [
+    {
+      id: 1,
+      label: "I am an agent",
+    },
+    {
+      id: 2,
+      label: "I am an potintial Buyer",
+    },
+    {
+      id: 3,
+      label: "A potential Buyer I just exploring",
+    },
+  ];
+
   return (
     <form className={form.form}>
       {closeBtn && (
@@ -38,7 +68,7 @@ export const Form: FC<FromProps> = ({
           customClasses={form.formBtn}
           type="icon"
         >
-          <XCircle />
+          <XCircle color="white" />
         </Button>
       )}
       <div className={form.formTitle}>
@@ -51,26 +81,39 @@ export const Form: FC<FromProps> = ({
       </div>
       <div className={form.formInputs}>
         <div className={form.formWrapper}>
-          <Input placeholder="Name" className={form.formInput} />
+          <Input placeholder="Name" />
           <Input placeholder="Phone number" />
         </div>
         <div className={form.formWrapper}>
-          <Input placeholder={inputPlaceholder1} />
-          <Input
-            onFocus={() => setCalendarActive(true)}
-            placeholder={inputPlaceholder2}
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-          <Calendar
-            calendarActive={calendarActive}
-            setCalendarActive={() => setCalendarActive(false)}
-            setDate={setDate}
-          />
+          <Input placeholder="City" />
+          {isCatalog ? (
+            <div className={form.formSelect}>
+              <Select
+                value={roleValue}
+                options={role}
+                onChange={(val) => setRolValue(val)}
+                placeholder={"Select role"}
+              />
+            </div>
+          ) : (
+            <>
+              <Input
+                onFocus={() => setCalendarActive(true)}
+                placeholder={inputPlaceholder1}
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+              <Calendar
+                calendarActive={calendarActive}
+                setCalendarActive={() => setCalendarActive(false)}
+                setDate={setDate}
+              />
+            </>
+          )}
         </div>
       </div>
       <div className={form.formButton}>
-        <Button type="primary">
+        <Button onClick={handleClick} type="primary">
           <Typography variant="button">
             {btnTitle}
             {icon}

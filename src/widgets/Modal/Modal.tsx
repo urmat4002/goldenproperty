@@ -5,9 +5,11 @@ import { setCloseModal } from "@/shared/slices/Modal/ModalSlice";
 import clsx from "clsx";
 
 import modal from "./Modal.module.scss";
+import { FormMessage } from "@/features/Form/FormMessage/FormMessage";
 
 export const Modal = () => {
   const isOpen = useAppSelector((state) => state.modalSlice.isOpen);
+  const isForm = useAppSelector((state) => state.modalSlice.isForm);
   const dispatch = useAppDispatch();
 
   return (
@@ -16,7 +18,7 @@ export const Modal = () => {
       className={clsx(modal.modal, isOpen && modal.active)}
     >
       <div onClick={(e) => e.stopPropagation()}>
-        <Form closeBtn />
+        {isForm ? <Form closeBtn /> : <FormMessage />}
       </div>
     </div>
   );
