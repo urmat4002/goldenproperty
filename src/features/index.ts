@@ -8,3 +8,4 @@ export * from "./Form";
 export * from "./FloatingButtons";
 export * from "./Section";
 export * from "./MenuDropdown";
+export * from "./SlideCard";
