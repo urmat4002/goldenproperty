@@ -1,35 +1,118 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FilterValue, FiltertItem } from "./types/Filter.types";
 import { Button, Select, Typography } from "@/shared/ui";
-import style from "./Filter.module.scss";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import style from "./Filter.module.scss";
+
+const dataCity = [
+  {
+    id: 1,
+    label: "Istanbul",
+  },
+  {
+    id: 2,
+    label: "Dubai",
+  },
+  {
+    id: 3,
+    label: "Bishkek",
+  },
+];
+const dataTypes = [
+  {
+    id: 1,
+    label: "Apartments",
+  },
+  {
+    id: 2,
+    label: "Duplexes",
+  },
+  {
+    id: 3,
+    label: "Penthouses",
+  },
+  {
+    id: 4,
+    label: "Cottages",
+  },
+  {
+    id: 5,
+    label: "Townhouses",
+  },
+  {
+    id: 6,
+    label: "Commercial propertiesfdffdsdfdf",
+  },
+];
+const dataRatings = [
+  {
+    id: 1,
+    label: "Recently",
+  },
+  {
+    id: 2,
+    label: "Popular",
+  },
+  {
+    id: 3,
+    label: "All",
+  },
+];
+
+const data = {
+  city: dataCity,
+  type: dataTypes,
+  rating: dataRatings,
+};
 
 export const Filter = () => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams({});
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectValue, setSelectValue] = useState<FilterValue>({
     city: [],
     type: [],
     rating: [],
   });
 
+  useEffect(() => {
+    getOptionsFromQuery();
+  }, []);
+
+  const getOptionsFromQuery = () => {
+    const selectedOptions: FilterValue = {
+      city: [],
+      type: [],
+      rating: [],
+    };
+
+    (Object.keys(selectValue) as Array<keyof FilterValue>).forEach(
+      (selectKey) => {
+        const optionIds = searchParams.get(selectKey);
+
+        if (optionIds) {
+          const optionArrayIds = optionIds.split(",").map((id) => parseInt(id));
+          const foundOptions = (data as { [key: string]: FiltertItem[] })[
+            selectKey
+          ].filter((option) => optionArrayIds.includes(option.id));
+          selectedOptions[selectKey] = foundOptions;
+        }
+      }
+    );
+
+    setSelectValue(selectedOptions);
+  };
+
   const handleSearchParams = (option: FiltertItem[], paramType: string) => {
+    const optionIds = option.map((obj) => obj.id);
+
     setSearchParams((prev) => {
-      prev.set(paramType, convertToString(option));
+      prev.set(paramType, optionIds.join(","));
 
       const params = prev.get(paramType);
 
       if (!params) prev.delete(paramType);
-
       return prev;
     });
-  };
-
-  const convertToString = (option: FiltertItem[]) => {
-    const converted = option.map((obj) => obj.label);
-
-    return converted.join(",");
   };
 
   const handleFilter = (event: Event) => {
@@ -37,61 +120,6 @@ export const Filter = () => {
 
     navigate(`/estates/${searchParams}`);
   };
-
-  const dataCity = [
-    {
-      id: 1,
-      label: "Istanbul",
-    },
-    {
-      id: 2,
-      label: "Dubai",
-    },
-    {
-      id: 3,
-      label: "Bishkek",
-    },
-  ];
-  const types = [
-    {
-      id: 1,
-      label: "Apartments",
-    },
-    {
-      id: 2,
-      label: "Duplexes",
-    },
-    {
-      id: 3,
-      label: "Penthouses",
-    },
-    {
-      id: 4,
-      label: "Cottages",
-    },
-    {
-      id: 5,
-      label: "Townhouses",
-    },
-    {
-      id: 6,
-      label: "Commercial propertiesfdffdsdfdf",
-    },
-  ];
-  const ratings = [
-    {
-      id: 1,
-      label: "Recently",
-    },
-    {
-      id: 2,
-      label: "Popular",
-    },
-    {
-      id: 3,
-      label: "All",
-    },
-  ];
 
   return (
     <div className={style.filter}>
@@ -109,7 +137,7 @@ export const Filter = () => {
           />
           <Select
             value={selectValue.type}
-            options={types}
+            options={dataTypes}
             placeholder={"Type"}
             onChange={(option) => {
               handleSearchParams(option, "type");
@@ -118,7 +146,7 @@ export const Filter = () => {
           />
           <Select
             value={selectValue.rating}
-            options={ratings}
+            options={dataRatings}
             placeholder={"Popular"}
             onChange={(option) => {
               handleSearchParams(option, "rating");
