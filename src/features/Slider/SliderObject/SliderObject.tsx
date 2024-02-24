@@ -1,3 +1,3 @@
 export const SliderObject = () => {
-  return <div>SliderObject</div>;
+  return <div>SliderObject</div>
 };
