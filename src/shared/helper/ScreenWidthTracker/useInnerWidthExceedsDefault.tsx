@@ -8,7 +8,7 @@ export const useInnerWidthExceedsDefault = ({
 }: Props): boolean => {
   const [exceedsDefault, setExceedsDefault] = useState<boolean>(
     window.innerWidth > defaultThreshold
-  ); // ? 
+  ); // ?
 
   useEffect(() => {
     const handleResize = () => {

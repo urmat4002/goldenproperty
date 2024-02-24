@@ -4,17 +4,20 @@
 .footer {
   background-color: $colorGray500;
   margin-top: 100px;
+
   &Container {
     display: flex;
     flex-direction: column;
   }
+
   &Top {
     padding: 40px 0 20px 0;
     display: flex;
-    gap: 96px;
+    gap: 64px; /* Adjust gap for better spacing at 1050px */
     justify-content: space-between;
     align-items: flex-start;
   }
+
   &Navigate {
     display: flex;
     align-items: flex-start;
@@ -22,20 +25,26 @@
     gap: 32px;
     width: 100%;
   }
+
   &Option {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     list-style: none;
     gap: 18px;
+
     li {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       gap: 12px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 14px;
     }
   }
-  &Socials {
+
+  .footerSocials {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -43,13 +52,19 @@
     border-bottom: 1px solid $colorGray400;
     padding-bottom: 16px;
     width: 100%;
+
+    li {
+      margin-right: 5px; /* Optional: Add margin to adjust icon spacing */
+    }
   }
+
   &Bottom {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 26px 0;
   }
+
   &Link {
     display: flex;
     align-items: center;
@@ -57,5 +72,62 @@
     gap: 12px;
     text-decoration: underline;
     color: $colorWhite;
+  }
+
+  @media (max-width: 768px) {
+    .footerLogo {
+      display: none;
+    }
+    .footerContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+    .footerTop {
+      display: flex;
+      justify-content: space-between;
+    }
+    .footerNavigate {
+      display: flex;
+      justify-content: space-between;
+    }
+    .footerSocials {
+      margin: 20px 0;
+    }
+  }
+
+  @media (max-width: 465px) {
+    .footerLogo {
+      display: none;
+    }
+    .footerTop {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .footerNavigate {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .footerSocials {
+      margin: 10px 0;
+    }
+  }
+
+  @media (max-width: 1050px) {
+  .footerOption {
+    font-size: 14px;
+    width: auto;
+    gap: 10px;
+    li {
+      margin-top: 3px;
+      margin-bottom: 3px;
+      font-size: 12px; // Уменьшаем размер шрифта до 12px
+    }
+  }
+    .footerLogo{
+      display: none;
+    }
+
   }
 }
