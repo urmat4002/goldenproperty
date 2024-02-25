@@ -1,0 +1,58 @@
+@import "@var";
+
+.description {
+  display: flex;
+
+  padding: 20px 0;
+  justify-content: space-between;
+  &Item {
+    padding: 10px 0;
+  }
+}
+
+.text {
+  margin: 20px 0;
+}
+
+.price {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  &Btns {
+    display: flex;
+    &Item {
+      margin-left: 10px;
+    }
+  }
+}
+
+.slider {
+  background-color: #60543d;
+
+  &Slide {
+    &Img {
+      height: 555px;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.slider2 {
+  margin-top: 10px;
+  &Slide2 {
+    &Img {
+      height: 200px;
+      width: 370px;
+
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
