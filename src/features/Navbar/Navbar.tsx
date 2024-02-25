@@ -29,7 +29,7 @@ export const Navbar = () => {
           return (
             <li className={styles.navbarMenuItem} key={link.label}>
               <NavLink to={link.path}>
-                <Typography variant="body" weight="medium">
+                <Typography variant="body" weight="regular">
                   {link.label}
                 </Typography>
               </NavLink>

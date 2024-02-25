@@ -18,6 +18,9 @@
     height: 100%;
   }
   &Navbar {
+    @include isDesktop {
+      display: none;
+    }
     @include tablet {
       display: none;
     }
