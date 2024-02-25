@@ -16,7 +16,7 @@ export const SlideCard = () => {
       });
   }, [id]);
   return (
-    <Section container>
+    <Section title="Similar properties" container>
       <Swiper spaceBetween={20} slidesPerView={2.5}>
         <div className={style.Sliders}>
           {estates.map((item) => (
