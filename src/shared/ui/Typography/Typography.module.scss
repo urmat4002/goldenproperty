@@ -6,10 +6,10 @@
   font-size: 90px;
   @extend .bold;
   @include tablet {
-    font-size: 40px;
+    font-size: 44px;
   }
   @include mobile {
-    font-size: 24px;
+    font-size: 44px;
   }
 }
 .h1 {
@@ -26,10 +26,10 @@
   font-size: 36px;
   @extend .bold;
   @include tablet {
-    font-size: 18px;
+    font-size: 26px;
   }
   @include mobile {
-    font-size: 18px;
+    font-size: 26px;
   }
 }
 .h3 {
@@ -37,10 +37,10 @@
   @extend .semibold;
   @extend .gold;
   @include tablet {
-    font-size: 16px;
+    font-size: 23px;
   }
   @include mobile {
-    font-size: 16px;
+    font-size: 23px;
   }
 }
 .button {
@@ -58,10 +58,10 @@
   @extend .regular;
   @extend .white;
   @include tablet {
-    font-size: 12px;
+    font-size: 14px;
   }
   @include mobile {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 

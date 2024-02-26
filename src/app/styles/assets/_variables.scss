@@ -4,32 +4,6 @@ $containerPadding: 16px;
 
 // Typography
 $baseFontFamily: "Montserrat", sans-serif;
-// Font Size Mobile
-$fontMobileLarge: 2.5rem;
-$fontMobileSubLarge: 2.125rem;
-$fontMobileTitle1: 1.75rem;
-$fontMobileTitle2: 1.375rem;
-$fontMobileTitle3: 1.25rem;
-$fontMobileHeadline: 1.063rem;
-$fontMobileBody: 1.063rem;
-$fontMobileCallout: 1rem;
-$fontMobileSubhead: 0.938rem;
-$fontMobileFootnote: 0.813rem;
-$fontMobileCaption1: 0.75rem;
-$fontMobileCaption2: 0.688rem;
-// Font Size Desktop
-$fontDesktopLarge: 3.75rem;
-$fontDesktopSubLarge: 2.5rem;
-$fontDesktopTitle1: 2.125rem;
-$fontDesktopTitle2: 1.75rem;
-$fontDesktopTitle3: 1.625rem;
-$fontDesktopHeadline: 1.438rem;
-$fontDesktopBody: 1.438rem;
-$fontDesktopCallout: 1.375rem;
-$fontDesktopSubhead: 1.313rem;
-$fontDesktopFootnote: 1.188rem;
-$fontDesktopCaption1: 1.125rem;
-$fontDesktopCaption2: 1.063rem;
 // FontWeight
 $weightRegular: 400;
 $weightMedium: 500;
@@ -54,8 +28,8 @@ $colorGray550: #1f1f1f;
 
 // Define breakpoints
 $mobileBreakpoint: 576px;
-$tabletBreakpoint: 768px;
-$desktopBreakpoint: 992px;
+$tabletBreakpoint: 834px;
+$desktopBreakpoint: 1128px;
 $largeDesktopBreakpoint: 1200px;
 
 // Animate
