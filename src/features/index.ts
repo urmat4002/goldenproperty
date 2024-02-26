@@ -1,5 +1,5 @@
 export * from "./Search";
-export * from "./LangSelect";
+export * from "./LanguageSelector";
 export * from "./Navbar";
 export * from "./Section";
 export * from "./Breadcrumbs";
