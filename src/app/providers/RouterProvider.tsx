@@ -10,7 +10,7 @@ const router = [
     element: <Estates />,
   },
   {
-    path: "estates/:id",
+    path: "/estates/:id",
     element: <Room />,
   },
   {
