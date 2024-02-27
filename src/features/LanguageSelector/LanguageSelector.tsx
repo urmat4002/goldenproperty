@@ -5,12 +5,20 @@ import { Typography } from "@/shared/ui";
 import styles from "./LanguageSelector.module.scss";
 
 enum Language {
-  Arabic 	= "ar",
+  Arabic = "ar",
   Turkish = "tr",
   English = "en",
   Russian = "ru",
 }
 
+const userLocale =
+  navigator.languages &&
+  (navigator.languages.length
+    ? navigator.languages[0]
+    : navigator.language
+  ).substring(0, 2);
+
+//FIX_ME
 // Notification: При реверсе страницы заголовок не меняет положение! нужно исправить
 
 export const LanguageSelector: FC = () => {
@@ -19,16 +27,16 @@ export const LanguageSelector: FC = () => {
   // Dayan: строгая типизация с помощью enum и отображение актуального языка
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(() => {
     const storeLanguage = localStorage.getItem("language") as Language;
-    return storeLanguage || Language.English;
+    if (storeLanguage) return storeLanguage;
+    if (Object.values(Language).includes(userLocale as Language))
+      return userLocale as Language;
+    return Language.English;
   });
+
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     localStorage.setItem("language", selectedLanguage);
-    updateDirections(selectedLanguage);
-  }, [selectedLanguage]);
-
-  useEffect(() => {
     updateDirections(selectedLanguage);
   }, [selectedLanguage]);
 
@@ -49,7 +57,7 @@ export const LanguageSelector: FC = () => {
 
   const handleLanguageChange = (language: Language) => {
     setSelectedLanguage(language);
-    setIsOpen(true);
+    //setIsOpen(true);
   };
 
   // Dayan: Реверс страницы при выборе арабского языка
@@ -77,9 +85,8 @@ export const LanguageSelector: FC = () => {
               key={lang}
               className={styles.languageOption}
               onClick={() => {
-                handleLanguageChange(lang),
-                setIsOpen(!isOpen)}
-              }
+                handleLanguageChange(lang), setIsOpen(!isOpen);
+              }}
             >
               <Typography variant="body" weight="regular">
                 {lang}
