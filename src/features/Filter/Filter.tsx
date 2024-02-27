@@ -118,7 +118,7 @@ export const Filter = () => {
   const handleFilter = (event: Event) => {
     event.preventDefault();
 
-    navigate(`/estates/${searchParams}`);
+    navigate(`/estates/?${searchParams}`);
   };
 
   return (

@@ -9,7 +9,6 @@
   border: 0.5px solid $colorGray350;
   border-radius: 24px;
   padding: 4px 8px;
-  max-width: 220px;
   transition: 0.3s ease;
   &:hover {
     background-color: $colorGray350;
@@ -17,6 +16,10 @@
   &:focus {
     background-color: $colorGray350;
     border: 0.5px solid $colorGray200;
+  }
+  &__form {
+    display: flex;
+    max-width: 220px;
   }
   &__input {
     font-size: 20px;
