@@ -1,5 +1,13 @@
+@import "@mixin";
 .main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: 100px;
+  @include tablet {
+    gap: 50px;
+  }
+  @include mobile {
+    gap: 50px;
+  }
 }

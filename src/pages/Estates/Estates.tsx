@@ -27,10 +27,7 @@ export const Estates = () => {
               <ObjectCard
                 key={item.id}
                 id={item.id}
-                images={
-                  item.images
-                  //Array.isArray(item.images) ? item.images : [item.images]
-                }
+                images={item.images}
                 price_usd={item.price_usd}
                 city={item.city}
                 project={item.project}
