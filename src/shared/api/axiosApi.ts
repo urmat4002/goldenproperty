@@ -8,9 +8,7 @@ axiosAPI.interceptors.request.use(
   async (config) => {
     const userLanguage = localStorage.getItem("language");
     if (userLanguage) {
-      //FIX_ME
-      //config.headers["Accept-Language"] = userLanguage;
-      config.headers.Authorization = userLanguage;
+      config.headers["Accept-Language"] = userLanguage;
     }
     return config;
   },
