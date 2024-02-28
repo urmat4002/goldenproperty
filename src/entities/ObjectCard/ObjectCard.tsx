@@ -1,12 +1,17 @@
 import { useState, FC } from "react";
 import styles from "./ObjectCard.module.scss";
-import { MapPin } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { WhatsApp } from "@shared/ui/Icons";
 import { Link } from "react-router-dom";
-import { ObjectCardProps } from ".";
+import { Estate } from "@/shared/api/types";
 
-export const ObjectCard: FC<ObjectCardProps> = (props) => {
-  const { images, price_usd, city, project, id } = props;
+export const ObjectCard: FC<Estate> = ({
+  images,
+  price_usd,
+  city,
+  project,
+  id,
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handlePrev = () => {
@@ -25,18 +30,22 @@ export const ObjectCard: FC<ObjectCardProps> = (props) => {
 
   return (
     <div className={styles.objectCard}>
-      <div className={styles.imageContainer}>
+      <div className={styles.imageWrapper}>
         <img
-          className={styles.imageContainerReal}
+          className={styles.image}
           src={images[currentSlide]}
-          alt="Serena Living Tower"
+          alt={project.name}
         />
-        <button className={styles.buttonSliderPrev} onClick={handlePrev}>
-          ‹
-        </button>
-        <button className={styles.buttonSliderNext} onClick={handleNext}>
-          ›
-        </button>
+
+        <div className={styles.buttonWrapper}>
+          <button className={styles.arrowButton} onClick={handlePrev}>
+            <ChevronLeft />
+          </button>
+          <button className={styles.arrowButton} onClick={handleNext}>
+            <ChevronRight />
+          </button>
+        </div>
+
         <div className={styles.dots}>
           {images.map((_, index) => (
             <span

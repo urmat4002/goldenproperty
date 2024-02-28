@@ -2,17 +2,19 @@ type Response = {
   language: string;
 };
 
+export type Estate = {
+  id: number;
+  price_usd: number;
+  city: string;
+  project: {
+    name: string;
+    location: string;
+  };
+  images: string[];
+};
+
 export type EstatesResponse = Response & {
-  estates: {
-    id: number;
-    price_usd: number;
-    city: string;
-    project: {
-      name: string;
-      location: string;
-    };
-    images: string[];
-  }[];
+  estates: Estate[];
 };
 
 export type EstateIdResponse = Response & {
