@@ -41,7 +41,7 @@ export const LanguageSelector: FC = () => {
     localStorage.setItem("language", selectedLanguage);
     updateDirections(selectedLanguage);
     queryClient.invalidateQueries();
-  }, [selectedLanguage]);
+  }, [selectedLanguage, queryClient]);
 
   // Dayan: Закрытие при нажатии вне опций языка
   useEffect(() => {

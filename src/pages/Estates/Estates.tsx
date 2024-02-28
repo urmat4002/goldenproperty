@@ -4,12 +4,12 @@ import { HeroEstates } from "@/widgets";
 import { useAppSelector } from "@/shared/hooks/hooks";
 import { Filter } from "@/features/Filter";
 import styles from "./Estates.module.scss";
-import { useEstates } from "@/shared/api/hooks";
+import { useGetEstates } from "@/shared/api/hooks";
 
 export const Estates = () => {
   const isOpen = useAppSelector((state) => state.citySlice.isOpen);
 
-  const { data, isSuccess } = useEstates();
+  const { data, isSuccess } = useGetEstates();
 
   return (
     <>
