@@ -24,8 +24,10 @@ export const HeroHome = () => {
           </Button>
         </div>
       </div>
-      <div className={styles.heroHomeFilter}>
-        <Filter />
+      <div className={styles.heroHomeFilterSubsection}>
+        <div className={styles.heroHomeFilterWrapper}>
+          <Filter />
+        </div>
       </div>
     </Section>
   );

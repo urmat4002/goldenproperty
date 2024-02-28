@@ -115,16 +115,22 @@ $colorGray350: #ccc; // Assuming this is a valid color
       animation: textSlideIn 1s ease-out 1s forwards;
     }
   }
-  &Filter {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    right: 0;
+  &FilterSubsection {
+    height: 48px;
+    position: relative;
     @include tablet {
-      bottom: -90px;
+      height: 80px;
     }
     @include mobile {
-      margin-top: 50px;
+      height: auto;
+    }
+  }
+  &FilterWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include mobile {
       position: static;
     }
   }

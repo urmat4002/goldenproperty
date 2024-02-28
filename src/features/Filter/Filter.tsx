@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FilterValue, FiltertItem } from "./types/Filter.types";
 import { Button, Select, Typography } from "@/shared/ui";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import style from "./Filter.module.scss";
+import styles from "./Filter.module.scss";
 
 const dataCity = [
   {
@@ -122,9 +122,9 @@ export const Filter = () => {
   };
 
   return (
-    <div className={style.filter}>
-      <div className={style.filterBlock}>
-        <div className={style.filterSelect}>
+    <div className={styles.filter}>
+      <div className={styles.filterBlock}>
+        <div className={styles.filterSelect}>
           <Select
             value={selectValue.city}
             options={dataCity}
