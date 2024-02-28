@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 type Estate = {
   id: number;
   price_usd: number;
-  //FIX_ME can we tighten this type?
+  //FIX_ME can we narrow this type?
   city: string;
   project: {
     name: string;
@@ -14,21 +14,21 @@ type Estate = {
   images: string[];
 };
 
-type EstateResponse = {
+type Response<T> = {
   //FIX_ME
   language: string;
-  estates: Estate[];
+  estates: T[];
 };
 
 export const useEstates = () => {
   const [searchParams] = useSearchParams();
   const { data, isSuccess } = useQuery({
-    retry: 0,
     queryKey: ["estates"],
     queryFn: async () => {
-      const response = await axiosAPI<EstateResponse>("/estate/", {
+      const response = await axiosAPI<Response<Estate>>("/estate/", {
         params: {
           search: searchParams.get("search"),
+          //FIX_ME add other filter params
         },
       });
       return response.data;

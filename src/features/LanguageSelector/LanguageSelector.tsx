@@ -3,6 +3,7 @@ import { FC, useEffect, useRef, useState } from "react";
 import { ChevronDown, Globe } from "lucide-react";
 import { Typography } from "@/shared/ui";
 import styles from "./LanguageSelector.module.scss";
+import { useQueryClient } from "@tanstack/react-query";
 
 enum Language {
   Arabic = "ar",
@@ -23,6 +24,7 @@ const userLocale =
 
 export const LanguageSelector: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const queryClient = useQueryClient();
 
   // Dayan: строгая типизация с помощью enum и отображение актуального языка
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(() => {
@@ -38,6 +40,7 @@ export const LanguageSelector: FC = () => {
   useEffect(() => {
     localStorage.setItem("language", selectedLanguage);
     updateDirections(selectedLanguage);
+    queryClient.invalidateQueries();
   }, [selectedLanguage]);
 
   // Dayan: Закрытие при нажатии вне опций языка

@@ -6,7 +6,14 @@ import "@app/styles/index.scss";
 import { Provider } from "react-redux";
 import { store } from "./app/lib/store";
 
-const client = new QueryClient();
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      retry: 0,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
