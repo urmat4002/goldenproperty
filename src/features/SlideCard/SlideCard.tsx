@@ -9,7 +9,7 @@ export const SlideCard = () => {
   const [estates, setEstates] = useState<ObjectCardProps[]>([]);
   const { id } = useParams();
   useEffect(() => {
-    fetch(`/api/v1/estate/${id}/similar`)
+    fetch(`http://209.38.228.54/api/v1/estate/1/similar/`)
       .then((response) => response.json())
       .then((json) => {
         setEstates(json.estates);

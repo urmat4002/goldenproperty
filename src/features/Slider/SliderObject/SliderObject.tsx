@@ -7,6 +7,7 @@ import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Button, Typography } from "@/shared/ui";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useGetEstateById } from "@/shared/api/hooks";
 
 interface Project {
   name: string;
@@ -32,8 +33,9 @@ export const SliderObject: FC = () => {
   const [estate, setEstate] = useState<SliderObjectProps>(
     {} as SliderObjectProps
   );
+
   useEffect(() => {
-    fetch(`/api/v1/estate/${id}`)
+    fetch(`http://209.38.228.54/api/v1/estate/1/`)
       .then((res) => res.json())
       .then((json) => {
         setEstate(json.estate);
@@ -54,7 +56,7 @@ export const SliderObject: FC = () => {
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             slidesPerView={1}
           >
-            {estate.images &&
+            {estate?.images &&
               estate.images.map((image) => {
                 return (
                   <SwiperSlide className={style.sliderSlide} key={image}>
