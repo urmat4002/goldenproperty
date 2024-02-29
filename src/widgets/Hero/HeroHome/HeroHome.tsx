@@ -2,6 +2,7 @@ import { Section } from "@/features";
 import styles from "./HeroHome.module.scss";
 import { Button, Typography } from "@shared/ui";
 import { Filter } from "@/features/Filter";
+import { Link } from "react-router-dom";
 
 export const HeroHome = () => {
   return (
@@ -19,9 +20,11 @@ export const HeroHome = () => {
             </Typography>
             <Typography variant="body">Find your dream home with us</Typography>
           </div>
-          <Button type="primary">
-            <Typography variant="button">See real estate</Typography>
-          </Button>
+          <Link to="/estates">
+            <Button type="primary">
+              <Typography variant="button">See real estates</Typography>
+            </Button>
+          </Link>
         </div>
       </div>
       <div className={styles.heroHomeFilterSubsection}>
