@@ -27,7 +27,7 @@ export const Search: FC = () => {
           value={searchText}
           onChange={(event) => setSearchText(event.target.value)}
         />
-        <Button type="icon" onClick={handleSearch}>
+        <Button type="icon" onClick={() => handleSearch}>
           <SearchIcon color="#B9BCBE" />
         </Button>
       </form>

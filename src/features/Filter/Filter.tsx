@@ -76,6 +76,7 @@ export const Filter = () => {
 
   useEffect(() => {
     getOptionsFromQuery();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getOptionsFromQuery = () => {
@@ -153,7 +154,7 @@ export const Filter = () => {
               setSelectValue({ ...selectValue, rating: option });
             }}
           />
-          <Button type="primary" onClick={handleFilter}>
+          <Button type="primary" onClickEvent={handleFilter}>
             <Typography variant="button">Show results</Typography>
           </Button>
         </div>
