@@ -20,6 +20,7 @@ export const useGetEstates = () => {
         params: {
           search: searchParams.get("search"),
           //FIX_ME add other filter params
+          limit: 9,
         },
       });
       return response.data;
