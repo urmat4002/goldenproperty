@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { axiosAPI } from "./axiosApi";
 import { useSearchParams } from "react-router-dom";
 import {
@@ -11,22 +11,32 @@ import {
   StaticDataResponse,
 } from "./types";
 
-export const useGetEstates = () => {
+export const useGetEstates = (limit: number) => {
   const [searchParams] = useSearchParams();
-  const { data, isSuccess } = useQuery({
-    queryKey: ["estates"],
-    queryFn: async () => {
-      const response = await axiosAPI<EstatesResponse>("/estate/", {
-        params: {
-          search: searchParams.get("search"),
-          //FIX_ME add other filter params
-          limit: 9,
-        },
-      });
-      return response.data;
-    },
-  });
-  return { data, isSuccess };
+  const { status, data, isFetching, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ["estates"],
+      queryFn: async ({ pageParam }) => {
+        const response = await axiosAPI<EstatesResponse>("/estate/", {
+          params: {
+            search: searchParams.get("search"),
+            //FIX_ME add other filter params
+            limit: limit > 0 ? limit : 0,
+            offset: pageParam,
+          },
+        });
+        return response.data;
+      },
+      initialPageParam: 0,
+      getPreviousPageParam: () => undefined,
+      getNextPageParam: (lastPage) => {
+        if (!lastPage.next) return undefined;
+        const searchParams = new URLSearchParams(lastPage.next);
+        const offset = parseInt(searchParams.get("offset") || "");
+        return offset ?? undefined;
+      },
+    });
+  return { data, status, fetchNextPage, isFetching, hasNextPage };
 };
 
 export const useGetEstateById = (id: number) => {

@@ -15,6 +15,7 @@ export type Estate = {
 
 export type EstatesResponse = Response & {
   estates: Estate[];
+  next?: string;
 };
 
 export type EstateIdResponse = Response & {

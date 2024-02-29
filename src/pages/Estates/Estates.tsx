@@ -5,11 +5,14 @@ import { useAppSelector } from "@/shared/hooks/hooks";
 import { Filter } from "@/features/Filter";
 import styles from "./Estates.module.scss";
 import { useGetEstates } from "@/shared/api/hooks";
+import { Button } from "@/shared/ui";
+import { Fragment } from "react";
 
 export const Estates = () => {
   const isOpen = useAppSelector((state) => state.citySlice.isOpen);
 
-  const { data, isSuccess } = useGetEstates();
+  const { data, status, fetchNextPage, isFetching, hasNextPage } =
+    useGetEstates(3);
 
   return (
     <>
@@ -22,18 +25,34 @@ export const Estates = () => {
       )}
       <Section container>
         <div className={styles.estates}>
-          {isSuccess &&
-            data?.estates.map((item) => (
-              <ObjectCard
-                key={item.id}
-                id={item.id}
-                images={item.images}
-                price_usd={item.price_usd}
-                city={item.city}
-                project={item.project}
-              />
+          {status === "success" &&
+            data?.pages.map((page) => (
+              <Fragment key={page.next}>
+                {page.estates.map((item) => (
+                  <ObjectCard
+                    key={item.id}
+                    id={item.id}
+                    images={item.images}
+                    price_usd={item.price_usd}
+                    city={item.city}
+                    project={item.project}
+                  />
+                ))}
+              </Fragment>
             ))}
         </div>
+
+        {hasNextPage && (
+          <div className={styles.viewMore}>
+            <Button
+              type="primary"
+              disabled={isFetching}
+              onClick={() => fetchNextPage()}
+            >
+              View more
+            </Button>
+          </div>
+        )}
       </Section>
     </>
   );
