@@ -11,6 +11,11 @@
   gap: 10px;
   @include tablet {
     width: 52px;
+    right: 20px;
+  }
+  @include mobile {
+    width: 52px;
+    right: 16px;
   }
 }
 
