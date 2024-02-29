@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { WhatsApp } from "@shared/ui/Icons";
 import { Link } from "react-router-dom";
 import { Estate } from "@/shared/api/types";
+import clsx from "clsx";
 
 export const ObjectCard: FC<Estate> = ({
   images,
@@ -31,13 +32,15 @@ export const ObjectCard: FC<Estate> = ({
   return (
     <div className={styles.objectCard}>
       <div className={styles.imageWrapper}>
-        <img
-          className={styles.image}
-          src={images[currentSlide]}
-          alt={project.name}
-        />
+        <Link to={`${id}`}>
+          <img
+            className={styles.image}
+            src={images[currentSlide]}
+            alt={project.name}
+          />
+        </Link>
 
-        <div className={styles.buttonWrapper}>
+        <div className={styles.arrowButtonWrapper}>
           <button className={styles.arrowButton} onClick={handlePrev}>
             <ChevronLeft />
           </button>
@@ -45,34 +48,39 @@ export const ObjectCard: FC<Estate> = ({
             <ChevronRight />
           </button>
         </div>
+      </div>
 
-        <div className={styles.dots}>
-          {images.map((_, index) => (
-            <span
-              key={index}
-              className={currentSlide === index ? styles.activeDot : styles.dot}
-            />
-          ))}
-        </div>
+      <div className={styles.dotsWrapper}>
+        {images.map((_, index) => (
+          <span
+            key={index}
+            className={clsx(
+              styles.dot,
+              currentSlide === index && styles.activeDot
+            )}
+          />
+        ))}
       </div>
+
       <div className={styles.content}>
-        <div className={styles.content_1}>
-          <h1>
-            <Link to={`${id}`}>{project.name}</Link>
-          </h1>
-          <p>
-            <MapPin />
-            {`${city},  ${name}`}
-          </p>
-          <p className={styles.price}>AED {price_usd}</p>
-        </div>
-        <div className={styles.content_2}>
-          <button className={styles.button_1}>
-            Whatsapp
-            <WhatsApp />
-          </button>
-        </div>
+        <Link to={`${id}`}>
+          <h3 className={styles.projectName}>{project.name}</h3>
+        </Link>
+
+        <p className={styles.city}>
+          <MapPin height={16} />
+          {`${city},  ${project.location}`}
+        </p>
+
+        <p className={styles.price}>USD {price_usd.toLocaleString("us")}</p>
       </div>
+
+      <Link to={"http://wa.me/996000000000"} target="_blank">
+        <button className={styles.buttonWhatsapp}>
+          Whatsapp
+          <WhatsApp />
+        </button>
+      </Link>
     </div>
   );
 };
