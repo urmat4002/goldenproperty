@@ -1,4 +1,4 @@
-export interface ObjectCard {
+export interface ObjectCardProps {
   id: number;
   price_usd: number;
   city: string;
@@ -10,5 +10,5 @@ export interface ObjectCardState {
   count?: number;
   next?: string;
   previos?: string;
-  estates: ObjectCard[];
+  estates: ObjectCardProps[];
 }

@@ -7,7 +7,6 @@ import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Button, Typography } from "@/shared/ui";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetEstateById } from "@/shared/api/hooks";
 
 interface Project {
   name: string;
