@@ -1,19 +1,20 @@
 import { useState, FC } from "react";
-import styles from "./ObjectCard.module.scss";
-import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
-import { WhatsApp } from "@shared/ui/Icons";
-import { Link } from "react-router-dom";
-import { Estate } from "@/shared/api/types";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import styles from "./ObjectCard.module.scss";
+import { WhatsApp } from "@shared/ui/Icons";
+import { Estate } from "@/shared/api/types";
 
 export const ObjectCard: FC<Estate> = ({
-  images,
+  images: originalImages,
   price_usd,
   city,
   project,
   id,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const images = originalImages.slice(0, 15);
 
   const handlePrev = () => {
     setCurrentSlide((oldSlide) => {
@@ -67,7 +68,7 @@ export const ObjectCard: FC<Estate> = ({
           <h3 className={styles.projectName}>{project.name}</h3>
         </Link>
 
-        <p className={styles.city}>
+        <p className={styles.location}>
           <MapPin height={16} />
           {`${city},  ${project.location}`}
         </p>
@@ -75,9 +76,10 @@ export const ObjectCard: FC<Estate> = ({
         <p className={styles.price}>USD {price_usd.toLocaleString("us")}</p>
       </div>
 
+      {/* FIX_ME get whatsapp link from api */}
       <Link to={"http://wa.me/996000000000"} target="_blank">
         <button className={styles.buttonWhatsapp}>
-          Whatsapp
+          WhatsApp
           <WhatsApp />
         </button>
       </Link>
