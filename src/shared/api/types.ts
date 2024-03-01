@@ -92,8 +92,8 @@ export type StaticDataResponse = Response & {
   };
 };
 
-export type StaticDataHeader = Response & {
-  static_data: {
+export type StaticHeaderResponse = Response & {
+  header: {
     city: string;
     all_real_estates: string;
     place_ad: string;
