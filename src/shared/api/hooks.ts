@@ -8,6 +8,7 @@ import {
   EstateIdResponse,
   EstateTypesResponse,
   EstatesResponse,
+  StaticDataHeader,
   StaticDataResponse,
 } from "./types";
 
@@ -112,6 +113,17 @@ export const useGetStaticData = () => {
     queryKey: ["static_data"],
     queryFn: async () => {
       const response = await axiosAPI<StaticDataResponse>("/static_data/all/");
+      return response.data;
+    },
+  });
+  return { data, isSuccess };
+};
+
+export const useGetStaticHeader = () => {
+  const { data, isSuccess } = useQuery({
+    queryKey: ["header"],
+    queryFn: async () => {
+      const response = await axiosAPI<StaticDataHeader>("/static_data/header/");
       return response.data;
     },
   });

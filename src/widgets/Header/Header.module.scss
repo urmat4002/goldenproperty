@@ -33,4 +33,17 @@
     align-items: center;
     gap: 36px;
   }
+  &Menu {
+    color: $colorWhite;
+    display: none;
+    @include isDesktop {
+      display: flex;
+    }
+    @include tablet {
+      display: flex;
+    }
+    @include mobile {
+      display: flex;
+    }
+  }
 }

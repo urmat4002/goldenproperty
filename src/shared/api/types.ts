@@ -91,3 +91,12 @@ export type StaticDataResponse = Response & {
     error: Record<string, string>;
   };
 };
+
+export type StaticDataHeader = Response & {
+  static_data: {
+    city: string;
+    all_real_estates: string;
+    place_ad: string;
+    about_us: string;
+  };
+};

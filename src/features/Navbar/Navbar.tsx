@@ -28,10 +28,13 @@ export const Navbar = () => {
         {NavbarData.map((link) => {
           return (
             <li className={styles.navbarMenuItem} key={link.label}>
-              <NavLink to={link.path}>
-                <Typography variant="body" weight="regular">
-                  {link.label}
-                </Typography>
+              <NavLink
+                to={link.path}
+                style={({ isActive }) => {
+                  return isActive ? { color: "#c6a15b" } : {};
+                }}
+              >
+                {link.label}
               </NavLink>
             </li>
           );

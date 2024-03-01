@@ -1,9 +1,10 @@
 import { LanguageSelector, Navbar, Search } from "@/features";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
-import { Logo } from "@/shared/ui";
+import { Button, Logo } from "@/shared/ui";
 import { MenuDropdown } from "..";
 import { useAppSelector } from "@/shared/hooks/hooks";
+import { MenuIcon } from 'lucide-react'
 
 export const Header = () => {
   const isOpen = useAppSelector((state) => state.menuSlice.isOpen);
@@ -22,6 +23,9 @@ export const Header = () => {
         <div className={styles.headerActions}>
           <Search />
           <LanguageSelector />
+          <Button type='icon' customClasses={styles.headerMenu}>
+            <MenuIcon />
+          </Button>
         </div>
       </div>
       {isOpen && <MenuDropdown />}
