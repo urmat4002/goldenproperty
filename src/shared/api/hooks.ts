@@ -11,17 +11,21 @@ import {
   StaticDataHeader,
   StaticDataResponse,
 } from "./types";
+import { capitalize } from "../helper/utils";
 
 export const useGetEstates = (limit: number) => {
   const [searchParams] = useSearchParams();
-  const { status, data, isFetching, fetchNextPage, hasNextPage } =
+  const { status, data, isFetching, fetchNextPage, hasNextPage, refetch } =
     useInfiniteQuery({
       queryKey: ["estates"],
+      //queryFn: async ({ pageParam }) => {
       queryFn: async ({ pageParam }) => {
+        const cityParams = searchParams.get("city");
         const response = await axiosAPI<EstatesResponse>("/estate/", {
           params: {
             search: searchParams.get("search"),
-            //FIX_ME add other filter params
+            estate_type_id: searchParams.get("type"),
+            city_id: cityParams && encodeURIComponent(cityParams),
             limit: limit > 0 ? limit : 0,
             offset: pageParam,
           },
@@ -37,7 +41,7 @@ export const useGetEstates = (limit: number) => {
         return offset ?? undefined;
       },
     });
-  return { data, status, fetchNextPage, isFetching, hasNextPage };
+  return { data, status, fetchNextPage, refetch, isFetching, hasNextPage };
 };
 
 export const useGetEstateById = (id: number) => {
@@ -72,7 +76,15 @@ export const useGetEstateTypes = () => {
       return response.data;
     },
   });
-  return { data, isSuccess };
+
+  const briefData =
+    data &&
+    data.estate_types.map((estate_type) => ({
+      id: estate_type.id,
+      label: capitalize(estate_type.type),
+    }));
+
+  return { data, briefData, isSuccess };
 };
 
 export const useGetCities = () => {
@@ -83,7 +95,15 @@ export const useGetCities = () => {
       return response.data;
     },
   });
-  return { data, isSuccess };
+
+  const briefData =
+    data &&
+    data.cities.map((city) => ({
+      id: city.id,
+      label: capitalize(city.city_name),
+    }));
+
+  return { data, briefData, isSuccess };
 };
 
 export const useGetCityById = (id: number) => {
