@@ -2,7 +2,7 @@ import { Button } from "@/shared/ui/Button/Button";
 import { FC, ReactNode, useState } from "react";
 import form from "./Form.module.scss";
 import { Input, Select, Typography } from "@/shared/ui";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
+import { useAppDispatch } from "@/shared/hooks/hooks";
 import {
   setCloseModal,
   showFormMessage,
@@ -15,7 +15,7 @@ interface FromProps {
   title?: string;
   subTitle?: string;
   btnTitle?: string;
-
+  catalog?: boolean;
   inputPlaceholder1?: string;
   icon?: ReactNode;
   closeBtn?: boolean;
@@ -25,14 +25,14 @@ export const Form: FC<FromProps> = ({
   title,
   subTitle,
   btnTitle = "Send",
-
+  catalog = false,
   inputPlaceholder1 = "Date",
   icon,
   closeBtn,
 }) => {
   const [calendarActive, setCalendarActive] = useState(false);
   const [date, setDate] = useState("");
-  const isCatalog = useAppSelector((state) => state.formSlice.isCatalog);
+
   const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(showFormMessage());
@@ -86,7 +86,7 @@ export const Form: FC<FromProps> = ({
         </div>
         <div className={form.formWrapper}>
           <Input placeholder="City" />
-          {isCatalog ? (
+          {catalog ? (
             <div className={form.formSelect}>
               <Select
                 value={roleValue}
