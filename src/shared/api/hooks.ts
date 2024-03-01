@@ -8,8 +8,8 @@ import {
   EstateIdResponse,
   EstateTypesResponse,
   EstatesResponse,
-  StaticDataHeader,
   StaticDataResponse,
+  StaticHeaderResponse,
 } from "./types";
 
 export const useGetEstates = (limit: number) => {
@@ -123,7 +123,7 @@ export const useGetStaticHeader = () => {
   const { data, isSuccess } = useQuery({
     queryKey: ["header"],
     queryFn: async () => {
-      const response = await axiosAPI<StaticDataHeader>("/static_data/header/");
+      const response = await axiosAPI<StaticHeaderResponse>("/static_data/header/");
       return response.data;
     },
   });
