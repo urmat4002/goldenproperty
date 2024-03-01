@@ -85,11 +85,11 @@ $colorGray350: #ccc; // Assuming this is a valid color
     gap: 52px;
     @include tablet {
       gap: 32px;
-      left: 6%;
+      left: 12%;
     }
     @include mobile {
       gap: 12px;
-      left: 4%;
+      left: 8%;
     }
     button {
       position: relative;
