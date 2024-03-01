@@ -1,9 +1,9 @@
 @import "@mixin";
 .main {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 100px;
+  section {
+    margin-bottom: 100px;
+  }
+
   @include tablet {
     gap: 50px;
   }
