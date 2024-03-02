@@ -1,9 +1,9 @@
-export interface FiltertItem {
+/* export interface FiltertItem {
   id: number;
   label: string;
-}
-export interface FilterValue {
-  city: FiltertItem[];
-  type: FiltertItem[];
-  rating: FiltertItem[];
+} */
+export interface FilterValues {
+  city: number[];
+  type: number[];
+  rating: number[];
 }

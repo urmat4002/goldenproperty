@@ -1,9 +1,21 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Typography } from "@/shared/ui";
-import { SelectItem, SelectProps } from "./type/type";
 import { Checkbox } from "../Checkbox";
 import style from "./Select.module.scss";
+
+interface SelectItem {
+  id: number;
+  label: string;
+}
+
+interface SelectProps {
+  value: number[];
+  options?: SelectItem[];
+  placeholder: string;
+  checkbox?: boolean;
+  onChange: (value: number[]) => void;
+}
 
 export const Select = ({
   value,
@@ -13,8 +25,30 @@ export const Select = ({
   onChange,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  //FIX_ME is highlightedIndex just for hover styles?
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const valueOptions: SelectItem[] =
+    options?.filter((option) => value.includes(option.id)) || [];
 
+  const handleSelectOption = (option: SelectItem) => {
+    const { id } = option;
+
+    if (checkbox) {
+      const match = valueOptions.find((obj) => obj.id === id);
+
+      if (match) {
+        const filteredValue = valueOptions
+          .filter((obj) => obj.id !== id)
+          .map((obj) => obj.id);
+        return onChange(filteredValue);
+      }
+
+      const newValue = [...valueOptions, option].map((obj) => obj.id);
+      return onChange(newValue);
+    }
+    return onChange([option.id]);
+  };
+  /* 
   const handleOption = (option: SelectItem) => {
     const { id } = option;
 
@@ -29,7 +63,7 @@ export const Select = ({
       return onChange(newValue);
     }
     return onChange([option]);
-  };
+  }; */
 
   return (
     <div
@@ -40,8 +74,8 @@ export const Select = ({
       <div className={style.selectContent} onClick={() => setIsOpen(!isOpen)}>
         <div className={style.selectLabel}>
           <Typography variant="body" weight="medium" truncate={15}>
-            {value.length > 0
-              ? value.map((obj) => obj.label).join(", ")
+            {valueOptions.length > 0
+              ? valueOptions.map((obj) => obj.label).join(", ")
               : placeholder}
           </Typography>
         </div>
@@ -57,17 +91,17 @@ export const Select = ({
                 className={`
                   ${style.optionItem}
                   ${highlightedIndex === index ? style.highlighted : ""}
-                  ${value.some((obj) => obj.id === option.id) ? style.selected : ""}
+                  ${valueOptions.some((obj) => obj.id === option.id) ? style.selected : ""}
                 `}
                 key={option.id}
                 onMouseEnter={() => setHighlightedIndex(index)}
                 onMouseLeave={() => setHighlightedIndex(-1)}
-                onClick={() => handleOption(option)}
+                onClick={() => handleSelectOption(option)}
               >
                 {checkbox ? (
                   <Checkbox
                     label={option.label}
-                    isChecked={value.some((obj) => obj.id === option.id)}
+                    isChecked={valueOptions.some((obj) => obj.id === option.id)}
                   />
                 ) : (
                   <Typography variant="body" truncate={18}>
