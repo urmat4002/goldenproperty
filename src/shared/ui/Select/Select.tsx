@@ -47,9 +47,10 @@ export const Select = ({
       const newValue = [...valueOptions, option].map((obj) => obj.id);
       return onChange(newValue);
     }
+
+    setIsOpen(false);
     return onChange([option.id]);
   };
-
   return (
     <div
       className={`${style.select} ${isOpen ? style.active : ""}`}
