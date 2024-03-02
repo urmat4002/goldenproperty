@@ -77,14 +77,14 @@ export const useGetEstateTypes = () => {
     },
   });
 
-  const briefData =
-    data &&
-    data.estate_types.map((estate_type) => ({
-      id: estate_type.id,
-      label: capitalize(estate_type.type),
-    }));
+  const typeOptions = data
+    ? data.estate_types.map((estate_type) => ({
+        id: estate_type.id,
+        label: capitalize(estate_type.type),
+      }))
+    : [];
 
-  return { data, briefData, isSuccess };
+  return { data, typeOptions, isSuccess };
 };
 
 export const useGetCities = () => {
@@ -96,14 +96,14 @@ export const useGetCities = () => {
     },
   });
 
-  const briefData =
-    data &&
-    data.cities.map((city) => ({
-      id: city.id,
-      label: capitalize(city.city_name),
-    }));
+  const cityOptions = data
+    ? data.cities.map((city) => ({
+        id: city.id,
+        label: capitalize(city.city_name),
+      }))
+    : [];
 
-  return { data, briefData, isSuccess };
+  return { data, cityOptions, isSuccess };
 };
 
 export const useGetCityById = (id: number) => {
@@ -143,7 +143,9 @@ export const useGetStaticHeader = () => {
   const { data, isSuccess } = useQuery({
     queryKey: ["header"],
     queryFn: async () => {
-      const response = await axiosAPI<StaticHeaderResponse>("/static_data/header/");
+      const response = await axiosAPI<StaticHeaderResponse>(
+        "/static_data/header/"
+      );
       return response.data;
     },
   });
