@@ -14,8 +14,7 @@ interface SelectProps {
   options?: SelectItem[];
   placeholder: string;
   checkbox?: boolean;
-  //FIX_ME linter doesn't like value
-  onChange: (value: number[]) => void;
+  onChange: (_value: number[]) => void;
 }
 
 export const Select = ({

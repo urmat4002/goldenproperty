@@ -3,6 +3,12 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Select, Typography } from "@/shared/ui";
 import { useGetCities, useGetEstateTypes } from "@/shared/api/hooks";
 import styles from "./Filter.module.scss";
+import {
+  InfiniteData,
+  QueryObserverResult,
+  RefetchOptions,
+} from "@tanstack/react-query";
+import { EstatesResponse } from "@/shared/api/types";
 
 interface FilterValues {
   city: number[];
@@ -46,7 +52,13 @@ const getOptionsFromQueryparams = (searchParams: URLSearchParams) => {
   return selectedOptions;
 };
 
-export const Filter = ({ refetch }: { refetch?: () => Promise<any> }) => {
+type RefetchFn = (
+  _options?: RefetchOptions | undefined
+) => Promise<
+  QueryObserverResult<InfiniteData<EstatesResponse, unknown>, Error>
+>;
+
+export const Filter = ({ refetch }: { refetch?: RefetchFn }) => {
   const { cityOptions } = useGetCities();
   const { typeOptions } = useGetEstateTypes();
   const navigate = useNavigate();

@@ -14,11 +14,6 @@ export const Estates = () => {
   const { data, status, fetchNextPage, refetch, isFetching, hasNextPage } =
     useGetEstates(3);
 
-  /*   useEffect(() => {
-    console.log(searchParams.toString());
-    if (data) refetch();
-  }, [searchParams]); */
-
   return (
     <>
       {isOpen ? (
