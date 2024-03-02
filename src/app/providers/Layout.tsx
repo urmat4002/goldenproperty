@@ -1,11 +1,12 @@
 import { FC, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Footer, Header, Modal } from "../../widgets";
 import { Breadcrumbs, FloatingButtons } from "@/features";
+import ScrollToTop from "@/features/ScrollToTop/ScrollToTop";
+import { ModalContext } from "./Context";
 import styles from "./style/Layout.module.scss";
-import { Context } from "./Context";
+
 export const Layout: FC = () => {
-  const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -17,16 +18,17 @@ export const Layout: FC = () => {
 
   return (
     <>
-      <Context.Provider value={{ closeModal, openModal }}>
+      <ModalContext.Provider value={{ closeModal, openModal }}>
         <Header />
-        {location.pathname !== "/" && <Breadcrumbs />}
+        <Breadcrumbs />
         <main className={styles.main}>
           <Outlet />
         </main>
         <Footer />
         <FloatingButtons />
         <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      </Context.Provider>
+        <ScrollToTop />
+      </ModalContext.Provider>
     </>
   );
 };

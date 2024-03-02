@@ -4,9 +4,9 @@ import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Section } from "@/features";
 import { useGetCities } from "@/shared/api/hooks";
-import style from "./SliderCity.module.scss";
 import "swiper/scss";
 import "swiper/scss/navigation";
+import style from "./SliderCity.module.scss";
 
 export const SliderCity: FC = () => {
   const [swiperWidth, setSwiperWidth] = useState();
@@ -23,6 +23,7 @@ export const SliderCity: FC = () => {
         watchOverflow
         freeMode
         onSlidesUpdated={(swiper) =>
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setSwiperWidth((swiper as any).slidesSizesGrid[0])
         }
         breakpoints={{
@@ -53,30 +54,28 @@ export const SliderCity: FC = () => {
         {isSuccess &&
           data?.cities.map((image, index) => {
             return (
-              <>
-                <SwiperSlide
-                  className={style.sliderSlide}
-                  onMouseEnter={() => setHighlitedIndex(index)}
-                  onMouseLeave={() => setHighlitedIndex(null)}
-                  key={image.id}
-                >
-                  <Link to={`estates/${image.id}`}>
-                    <img src={image.city_img} alt="City" loading="eager" />
+              <SwiperSlide
+                className={style.sliderSlide}
+                onMouseEnter={() => setHighlitedIndex(index)}
+                onMouseLeave={() => setHighlitedIndex(null)}
+                key={image.id}
+              >
+                <Link to={`estates/${image.id}`}>
+                  <img src={image.city_img} alt="City" loading="eager" />
 
-                    <div className="swiper-lazy-preloader"></div>
-                    <div
-                      className={`${style.sliderDescription}  ${highlitedIndex === index ? style.show : ""}`}
-                    >
-                      <div className={style.sliderDescriptionTitle}>
-                        {image.city_name}
-                      </div>
-                      <div className={style.sliderDescriptionText}>
-                        {image.city_description}
-                      </div>
+                  <div className="swiper-lazy-preloader"></div>
+                  <div
+                    className={`${style.sliderDescription}  ${highlitedIndex === index ? style.show : ""}`}
+                  >
+                    <div className={style.sliderDescriptionTitle}>
+                      {image.city_name}
                     </div>
-                  </Link>
-                </SwiperSlide>
-              </>
+                    <div className={style.sliderDescriptionText}>
+                      {image.city_description}
+                    </div>
+                  </div>
+                </Link>
+              </SwiperSlide>
             );
           })}
       </Swiper>

@@ -1,2 +1,2 @@
 export { Filter } from "./Filter";
-export type { FilterValue } from "./types/Filter.types";
+export type { FilterValues as FilterValue } from "./types/Filter.types";

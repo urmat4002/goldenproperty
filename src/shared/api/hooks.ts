@@ -11,17 +11,38 @@ import {
   StaticDataResponse,
   StaticHeaderResponse,
 } from "./types";
+import { capitalize } from "../helper/utils";
+
+export type FilterOption = {
+  id: number;
+  label: string;
+};
+
+const composeOrdering = (searchParams: URLSearchParams) => {
+  const orderParam = searchParams.get("order");
+  switch (orderParam) {
+    case "1":
+      return "visits";
+    case "2":
+      return "create_at";
+    default:
+      return null;
+  }
+};
 
 export const useGetEstates = (limit: number) => {
   const [searchParams] = useSearchParams();
-  const { status, data, isFetching, fetchNextPage, hasNextPage } =
+  const { status, data, isFetching, fetchNextPage, hasNextPage, refetch } =
     useInfiniteQuery({
       queryKey: ["estates"],
       queryFn: async ({ pageParam }) => {
+        const cityParams = searchParams.get("city");
         const response = await axiosAPI<EstatesResponse>("/estate/", {
           params: {
             search: searchParams.get("search"),
-            //FIX_ME add other filter params
+            estate_type_id: searchParams.get("type"),
+            city_id: cityParams && encodeURIComponent(cityParams),
+            ordering: composeOrdering(searchParams),
             limit: limit > 0 ? limit : 0,
             offset: pageParam,
           },
@@ -37,10 +58,10 @@ export const useGetEstates = (limit: number) => {
         return offset ?? undefined;
       },
     });
-  return { data, status, fetchNextPage, isFetching, hasNextPage };
+  return { data, status, fetchNextPage, refetch, isFetching, hasNextPage };
 };
 
-export const useGetEstateById = (id: number) => {
+export const useGetEstateById = (id?: number | string) => {
   const { data, isSuccess } = useQuery({
     queryKey: ["estate"],
     queryFn: async () => {
@@ -51,7 +72,7 @@ export const useGetEstateById = (id: number) => {
   return { data, isSuccess };
 };
 
-export const useGetSimilarEstates = (id: number) => {
+export const useGetSimilarEstates = (id?: number) => {
   const { data, isSuccess } = useQuery({
     queryKey: ["similar_estates"],
     queryFn: async () => {
@@ -72,7 +93,15 @@ export const useGetEstateTypes = () => {
       return response.data;
     },
   });
-  return { data, isSuccess };
+
+  const typeOptions: FilterOption[] = data
+    ? data.estate_types.map((estate_type) => ({
+        id: estate_type.id,
+        label: capitalize(estate_type.type),
+      }))
+    : [];
+
+  return { data, typeOptions, isSuccess };
 };
 
 export const useGetCities = () => {
@@ -83,7 +112,15 @@ export const useGetCities = () => {
       return response.data;
     },
   });
-  return { data, isSuccess };
+
+  const cityOptions: FilterOption[] = data
+    ? data.cities.map((city) => ({
+        id: city.id,
+        label: capitalize(city.city_name),
+      }))
+    : [];
+
+  return { data, cityOptions, isSuccess };
 };
 
 export const useGetCityById = (id: number) => {
@@ -116,14 +153,25 @@ export const useGetStaticData = () => {
       return response.data;
     },
   });
-  return { data, isSuccess };
+
+  const orderOptions: FilterOption[] = data
+    ? [
+        { id: 3, label: data.static_data.body.all },
+        { id: 2, label: data.static_data.body.new_add },
+        { id: 1, label: data.static_data.body.popular },
+      ]
+    : [];
+
+  return { data, orderOptions, isSuccess };
 };
 
 export const useGetStaticHeader = () => {
   const { data, isSuccess } = useQuery({
     queryKey: ["header"],
     queryFn: async () => {
-      const response = await axiosAPI<StaticHeaderResponse>("/static_data/header/");
+      const response = await axiosAPI<StaticHeaderResponse>(
+        "/static_data/header/"
+      );
       return response.data;
     },
   });
