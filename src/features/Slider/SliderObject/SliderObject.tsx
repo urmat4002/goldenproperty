@@ -46,7 +46,7 @@ export const SliderObject: FC = () => {
   }, [id]);
 
   return (
-    <Section title={isLoading ? "" : estate.project.name} container>
+    <Section title={isLoading ? "" : estate?.project.name} container>
       {isLoading ? (
         <h2>Loading</h2>
       ) : (
@@ -73,7 +73,7 @@ export const SliderObject: FC = () => {
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             slidesPerView={3}
           >
-            {estate.images &&
+            {estate?.images &&
               estate.images.map((image) => {
                 return (
                   <SwiperSlide className={style.slider2Slide2} key={image}>
@@ -86,20 +86,20 @@ export const SliderObject: FC = () => {
           </Swiper>
           <div className={style.text}>
             <Typography variant="body" weight="medium" color="white">
-              {estate.description}
+              {estate?.description}
             </Typography>
           </div>
           <div className={style.description}>
             <div>
               <div className={style.descriptionItem}>
                 <Typography variant="body" weight="medium" color="white">
-                  {`${estate.city}, ${estate.project.name}`}
+                  {`${estate?.city}, ${estate?.project.name}`}
                 </Typography>
               </div>
               <div className={style.descriptionItem}>
                 <Typography variant="body" weight="medium" color="white">
                   Furnished:
-                  {estate.project.is_furnished ? (
+                  {estate?.project.is_furnished ? (
                     <span> yes</span>
                   ) : (
                     <span> no</span>
@@ -110,33 +110,33 @@ export const SliderObject: FC = () => {
             <div>
               <div className={style.descriptionItem}>
                 <Typography variant="body" weight="medium" color="white">
-                  Type: {estate.estate_type}
+                  Type: {estate?.estate_type}
                 </Typography>
               </div>
 
               <div className={style.descriptionItem}>
                 <Typography variant="body" weight="medium" color="white">
-                  Area: {estate.area}
+                  Area: {estate?.area}
                 </Typography>
               </div>
             </div>
             <div>
               <div className={style.descriptionItem}>
                 <Typography variant="body" weight="medium" color="white">
-                  Completion: {estate.project.completion}
+                  Completion: {estate?.project.completion}
                 </Typography>
               </div>
               <div className={style.descriptionItem}>
                 <Typography variant="body" weight="medium" color="white">
                   Is secondary:{" "}
-                  {estate.is_secondary ? <span>yes</span> : <span>no</span>}{" "}
+                  {estate?.is_secondary ? <span>yes</span> : <span>no</span>}{" "}
                 </Typography>
               </div>
             </div>
           </div>
           <div className={style.price}>
             <Typography variant="h2" color="gold" weight="bold">
-              Price at: {estate.price_usd} USD
+              Price at: {estate?.price_usd} USD
             </Typography>
             <div className={style.priceBtns}>
               <Button
