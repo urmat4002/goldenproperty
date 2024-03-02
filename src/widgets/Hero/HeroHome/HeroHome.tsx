@@ -14,17 +14,21 @@ export const HeroHome = () => {
           alt="background"
         />
         <div className={styles.heroHomeContent}>
-          <div className={styles.heroHomeText}>
-            <Typography variant="large">
-              <span>Golden</span> House
-            </Typography>
-            <Typography variant="body">Find your dream home with us</Typography>
+          <div className={styles.heroHomeContainer}>
+            <div className={styles.heroHomeText}>
+              <Typography variant="large">
+                <span>Golden</span> House
+              </Typography>
+              <Typography variant="body">
+                Find your dream home with us
+              </Typography>
+            </div>
+            <Link to="/estates">
+              <Button type="primary">
+                <Typography variant="button">See real estates</Typography>
+              </Button>
+            </Link>
           </div>
-          <Link to="/estates">
-            <Button type="primary">
-              <Typography variant="button">See real estates</Typography>
-            </Button>
-          </Link>
         </div>
       </div>
       <div className={styles.heroHomeFilterSubsection}>

@@ -7,6 +7,9 @@ import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Button, Typography } from "@/shared/ui";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAppDispatch } from "@/shared/hooks/hooks";
+import { setOpenModal } from "@/shared/slices/Modal/ModalSlice";
+import { showCatalog } from "@/shared/slices/FormSlice/FormSlice";
 
 interface Project {
   name: string;
@@ -27,6 +30,7 @@ interface SliderObjectProps {
 }
 
 export const SliderObject: FC = () => {
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [estate, setEstate] = useState<SliderObjectProps>(
@@ -137,7 +141,14 @@ export const SliderObject: FC = () => {
               Price at: {estate.price_usd} USD
             </Typography>
             <div className={style.priceBtns}>
-              <Button customClasses={style.priceBtnsItem} type="primary">
+              <Button
+                customClasses={style.priceBtnsItem}
+                onClick={() => {
+                  dispatch(setOpenModal());
+                  dispatch(showCatalog());
+                }}
+                type="primary"
+              >
                 Catalog
               </Button>
               <Button customClasses={style.priceBtnsItem} type="primary">

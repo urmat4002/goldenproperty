@@ -14,14 +14,24 @@
     background: #60543d;
 
     &Text {
-      font-size: 36px;
-      font-weight: 700;
       line-height: 1.2;
       color: $colorWhite;
-      max-width: 300px;
+      max-width: 100px;
+      font-size: 14px;
 
-      @media (max-width: 768px) {
-        font-size: 28px;
+      @media (min-width: 375px) {
+        max-width: 150px;
+        font-size: 19px;
+      }
+
+      @media (min-width: 768px) {
+        max-width: 200px;
+        font-size: 26px;
+      }
+
+      @media (min-width: 1440px) {
+        font-size: 36px;
+        max-width: 300px;
       }
     }
   }
@@ -62,43 +72,58 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    max-height: 80px;
-    bottom: 0;
-    padding: 20px;
     transition: 0.2s ease;
+    max-height: 40px;
+    padding: 10px;
+    gap: 10px;
+    bottom: 0;
     background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.168) 0%,
       rgba(0, 0, 0, 0.8) 100%
     );
 
-    &.show {
-      max-height: 250px;
+    @media (min-width: 375px) {
+      max-height: 50px;
+    }
 
-      @media (max-width: 768px) {
-        max-height: 150px;
-        gap: 15px;
+    @media (min-width: 768px) {
+      max-height: 70px;
+    }
+
+    @media (min-width: 1024px) {
+      max-height: 80px;
+      padding: 20px;
+
+      &.show {
+        max-height: 250px;
       }
     }
 
     &Title {
       color: #fff;
-      font-size: 36px;
+      font-size: 14px;
       font-weight: 500;
 
-      @media (max-width: 768px) {
-        font-size: 28px;
+      @media (min-width: 375px) {
+        font-size: 24px;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 33px;
       }
     }
 
     &Text {
       color: #fff;
-      font-size: 20px;
-      font-weight: 500;
-      // overflow: hidden;
+      font-size: 14px;
 
-      @media (max-width: 768px) {
-        font-size: 16px;
+      @media (min-width: 375px) {
+        font-size: 14px;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 23px;
       }
     }
   }

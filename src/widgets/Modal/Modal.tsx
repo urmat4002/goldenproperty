@@ -10,6 +10,7 @@ import { FormMessage } from "@/features/Form/FormMessage/FormMessage";
 export const Modal = () => {
   const isOpen = useAppSelector((state) => state.modalSlice.isOpen);
   const isForm = useAppSelector((state) => state.modalSlice.isForm);
+  const isCatalog = useAppSelector((state) => state.formSlice.isCatalog);
   const dispatch = useAppDispatch();
 
   return (
@@ -18,7 +19,7 @@ export const Modal = () => {
       className={clsx(modal.modal, isOpen && modal.active)}
     >
       <div onClick={(e) => e.stopPropagation()}>
-        {isForm ? <Form closeBtn /> : <FormMessage />}
+        {isForm ? <Form closeBtn catalog={isCatalog} /> : <FormMessage />}
       </div>
     </div>
   );
