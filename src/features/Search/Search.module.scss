@@ -1,12 +1,13 @@
 @import "@var";
 
 .searchForm {
-  --input-size: 30px;
+  --input-size: 40px;
   position: relative;
-  // max-width: 220px;
+  max-width: 220px;
 }
 
 .searchInput {
+  width: 100%;
   height: var(--input-size);
   padding-left: 15px;
   padding-right: 50px;
@@ -30,11 +31,10 @@
 
 .searchButton {
   position: absolute;
-  right: 0;
+  right: 18px;
   top: 0;
-  padding-right: 18px;
   height: var(--input-size);
-  width: calc(var(--input-size) + 18px);
+  width: var(--input-size);
   border-radius: var(--input-size);
   border: none;
   color: inherit;
