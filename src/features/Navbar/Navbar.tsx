@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
 import styles from "./Navbar.module.scss";
-import { NavbarData } from "./data/Navbar.data";
 import { Typography } from "@/shared/ui";
 import { NavLink } from "react-router-dom";
 import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
@@ -66,31 +65,53 @@ export const Navbar = () => {
         <MenuLeft onClick={handleCityClick} data={dataCity} id={cityId} />
       ) : null}
       <ul className={styles.navbarMenu}>
-        {NavbarData.map((link) => {
-          return (
-            <li className={styles.navbarMenuItem} key={link.label}>
-              <NavLink
-                to={link.path}
-                style={({ isActive }) => {
-                  return isActive ? { color: "#c6a15b" } : {};
-                }}
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          );
-        })}
+        <li className={styles.navbarMenuItem}>
+          <button
+            onMouseEnter={() => dispatch(setOpen())}
+            onMouseLeave={() => dispatch(setClose())}
+          >
+            <Typography
+              variant="body"
+              weight="regular"
+              color="white"
+              className={styles.navbarMenuSelect}
+            >
+              {data?.header.city}
+            </Typography>
+          </button>
+        </li>
+        <li className={styles.navbarMenuItem}>
+          <NavLink
+            to={"/estates"}
+            style={({ isActive }) => {
+              return isActive ? { color: "#c6a15b" } : {};
+            }}
+          >
+            {data?.header.all_real_estates}
+          </NavLink>
+        </li>
+        <li className={styles.navbarMenuItem}>
+          <NavLink
+            to={"/about-us"}
+            style={({ isActive }) => {
+              return isActive ? { color: "#c6a15b" } : {};
+            }}
+          >
+            {data?.header.about_us}
+          </NavLink>
+        </li>
+        <li className={styles.navbarMenuItem}>
+          <button
+            onClick={() => {
+              dispatch(setOpenModal());
+            }}
+          >
+            <Typography variant="body" weight="regular" color="white">
+              {data?.header.place_ad}
+            </Typography>
+          </button>
+        </li>
       </ul>
-      <button
-        onClick={() => {
-          dispatch(setOpenModal());
-        }}
-        className={styles.navbarMenuItem}
-      >
-        <Typography variant="body" weight="medium" color="white">
-          Place ann add
-        </Typography>
-      </button>
     </div>
   );
 };

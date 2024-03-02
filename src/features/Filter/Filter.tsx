@@ -1,125 +1,74 @@
-import { useEffect, useState } from "react";
-import { FilterValue, FiltertItem } from "./types/Filter.types";
-import { Button, Select, Typography } from "@/shared/ui";
+import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Button, Select, Typography } from "@/shared/ui";
+import {
+  useGetCities,
+  useGetEstateTypes,
+  useGetStaticData,
+} from "@/shared/api/hooks";
 import styles from "./Filter.module.scss";
+import {
+  InfiniteData,
+  QueryObserverResult,
+  RefetchOptions,
+} from "@tanstack/react-query";
+import { EstatesResponse } from "@/shared/api/types";
 
-const dataCity = [
-  {
-    id: 1,
-    label: "Istanbul",
-  },
-  {
-    id: 2,
-    label: "Dubai",
-  },
-  {
-    id: 3,
-    label: "Bishkek",
-  },
-];
-const dataTypes = [
-  {
-    id: 1,
-    label: "Apartments",
-  },
-  {
-    id: 2,
-    label: "Duplexes",
-  },
-  {
-    id: 3,
-    label: "Penthouses",
-  },
-  {
-    id: 4,
-    label: "Cottages",
-  },
-  {
-    id: 5,
-    label: "Townhouses",
-  },
-  {
-    id: 6,
-    label: "Commercial propertiesfdffdsdfdf",
-  },
-];
-const dataRatings = [
-  {
-    id: 1,
-    label: "Recently",
-  },
-  {
-    id: 2,
-    label: "Popular",
-  },
-  {
-    id: 3,
-    label: "All",
-  },
-];
+interface FilterValues {
+  city: number[];
+  type: number[];
+  order: number[];
+}
 
-const data = {
-  city: dataCity,
-  type: dataTypes,
-  rating: dataRatings,
-};
-
-export const Filter = () => {
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [selectValue, setSelectValue] = useState<FilterValue>({
+const getOptionsFromQueryparams = (searchParams: URLSearchParams) => {
+  const selectedOptions: FilterValues = {
     city: [],
     type: [],
-    rating: [],
-  });
+    order: [],
+  };
 
-  useEffect(() => {
-    getOptionsFromQuery();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const getOptionsFromQuery = () => {
-    const selectedOptions: FilterValue = {
-      city: [],
-      type: [],
-      rating: [],
-    };
-
-    (Object.keys(selectValue) as Array<keyof FilterValue>).forEach(
-      (selectKey) => {
-        const optionIds = searchParams.get(selectKey);
-
-        if (optionIds) {
-          const optionArrayIds = optionIds.split(",").map((id) => parseInt(id));
-          const foundOptions = (data as { [key: string]: FiltertItem[] })[
-            selectKey
-          ].filter((option) => optionArrayIds.includes(option.id));
-          selectedOptions[selectKey] = foundOptions;
-        }
+  (Object.keys(selectedOptions) as Array<keyof FilterValues>).forEach(
+    (selectKey) => {
+      const optionIds = searchParams.get(selectKey);
+      if (optionIds) {
+        selectedOptions[selectKey] = optionIds
+          .split(",")
+          .map((id) => parseInt(id));
       }
-    );
+    }
+  );
+  return selectedOptions;
+};
 
-    setSelectValue(selectedOptions);
-  };
+type RefetchFn = (
+  _options?: RefetchOptions | undefined
+) => Promise<
+  QueryObserverResult<InfiniteData<EstatesResponse, unknown>, Error>
+>;
 
-  const handleSearchParams = (option: FiltertItem[], paramType: string) => {
-    const optionIds = option.map((obj) => obj.id);
+export const Filter = ({ refetch }: { refetch?: RefetchFn }) => {
+  const { cityOptions } = useGetCities();
+  const { typeOptions } = useGetEstateTypes();
+  const { orderOptions } = useGetStaticData();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [filterValues, setFilterValues] = useState<FilterValues>(
+    getOptionsFromQueryparams(searchParams)
+  );
 
-    setSearchParams((prev) => {
-      prev.set(paramType, optionIds.join(","));
+  const handleFilter = () => {
+    const newSearchParams = new window.URLSearchParams();
+    filterValues.city.length > 0 &&
+      newSearchParams.append("city", filterValues.city.join(","));
+    filterValues.type.length > 0 &&
+      newSearchParams.append("type", filterValues.type[0]?.toString());
+    filterValues.order.length > 0 &&
+      newSearchParams.append("order", filterValues.order[0]?.toString());
 
-      const params = prev.get(paramType);
-
-      if (!params) prev.delete(paramType);
-      return prev;
-    });
-  };
-
-  const handleFilter = (event: Event) => {
-    event.preventDefault();
-
-    navigate(`/estates/?${searchParams}`);
+    setTimeout(() => {
+      if (refetch) refetch();
+    }, 0);
+    navigate(`/estates/?${newSearchParams}`);
   };
 
   return (
@@ -127,34 +76,31 @@ export const Filter = () => {
       <div className={styles.filterBlock}>
         <div className={styles.filterSelect}>
           <Select
-            value={selectValue.city}
-            options={dataCity}
+            value={filterValues.city}
+            options={cityOptions}
             placeholder={"City"}
             checkbox={true}
             onChange={(option) => {
-              handleSearchParams(option, "city");
-              setSelectValue({ ...selectValue, city: option });
+              setFilterValues({ ...filterValues, city: option });
             }}
           />
           <Select
-            value={selectValue.type}
-            options={dataTypes}
+            value={filterValues.type}
+            options={typeOptions}
             placeholder={"Type"}
             onChange={(option) => {
-              handleSearchParams(option, "type");
-              setSelectValue({ ...selectValue, type: option });
+              setFilterValues({ ...filterValues, type: option });
             }}
           />
           <Select
-            value={selectValue.rating}
-            options={dataRatings}
+            value={filterValues.order}
+            options={orderOptions}
             placeholder={"Popular"}
             onChange={(option) => {
-              handleSearchParams(option, "rating");
-              setSelectValue({ ...selectValue, rating: option });
+              setFilterValues({ ...filterValues, order: option });
             }}
           />
-          <Button type="primary" onClickEvent={handleFilter}>
+          <Button type="primary" onClick={handleFilter}>
             <Typography variant="button">Show results</Typography>
           </Button>
         </div>

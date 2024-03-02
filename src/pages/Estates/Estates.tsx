@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { ObjectCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
@@ -6,12 +7,11 @@ import { Filter } from "@/features/Filter";
 import styles from "./Estates.module.scss";
 import { useGetEstates } from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
-import { Fragment } from "react";
 
 export const Estates = () => {
   const isOpen = useAppSelector((state) => state.citySlice.isOpen);
 
-  const { data, status, fetchNextPage, isFetching, hasNextPage } =
+  const { data, status, fetchNextPage, refetch, isFetching, hasNextPage } =
     useGetEstates(3);
 
   return (
@@ -20,7 +20,7 @@ export const Estates = () => {
         <HeroEstates />
       ) : (
         <Section title="All real estates" container>
-          <Filter />
+          <Filter refetch={refetch} />
         </Section>
       )}
       <Section container>

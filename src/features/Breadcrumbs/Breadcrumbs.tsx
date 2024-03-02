@@ -30,6 +30,8 @@ export const Breadcrumbs = () => {
       );
     });
 
+  if (location.pathname === "/") return null;
+
   return (
     <div className={breadcrumbs.breadcrumbs}>
       <div className={breadcrumbs.breadcrumbsContent}>

@@ -78,8 +78,8 @@
   .selected {
     background: #3f3f3f;
   }
+}
 
-  .highlighted {
-    background: #5f5f5f;
-  }
+.optionItem:hover {
+  background: #5f5f5f;
 }

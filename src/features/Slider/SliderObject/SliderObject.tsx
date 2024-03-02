@@ -5,8 +5,9 @@ import style from "./SliderObject.module.scss";
 
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Button, Typography } from "@/shared/ui";
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ModalContext } from "@/app/providers/Context";
 
 interface Project {
   name: string;
@@ -27,6 +28,7 @@ interface SliderObjectProps {
 }
 
 export const SliderObject: FC = () => {
+  const { openModal } = useContext(ModalContext);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [estate, setEstate] = useState<SliderObjectProps>(
@@ -137,7 +139,11 @@ export const SliderObject: FC = () => {
               Price at: {estate.price_usd} USD
             </Typography>
             <div className={style.priceBtns}>
-              <Button customClasses={style.priceBtnsItem} type="primary">
+              <Button
+                customClasses={style.priceBtnsItem}
+                onClick={openModal}
+                type="primary"
+              >
                 Catalog
               </Button>
               <Button customClasses={style.priceBtnsItem} type="primary">

@@ -1,24 +1,29 @@
 import { Form } from "@/features/Form/Form";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
-import { setCloseModal } from "@/shared/slices/Modal/ModalSlice";
-
 import clsx from "clsx";
-
 import modal from "./Modal.module.scss";
 import { FormMessage } from "@/features/Form/FormMessage/FormMessage";
+import { useAppSelector } from "@/shared/hooks/hooks";
+import { FC } from "react";
 
-export const Modal = () => {
-  const isOpen = useAppSelector((state) => state.modalSlice.isOpen);
+interface ModalProps {
+  title?: string;
+  isModalOpen?: boolean;
+  // eslint-disable-next-line no-unused-vars
+  setIsModalOpen: (bool: boolean) => void;
+}
+
+export const Modal: FC<ModalProps> = (props) => {
+  const { isModalOpen, setIsModalOpen } = props;
   const isForm = useAppSelector((state) => state.modalSlice.isForm);
-  const dispatch = useAppDispatch();
+  const isCatalog = useAppSelector((state) => state.formSlice.isCatalog);
 
   return (
     <div
-      onClick={() => dispatch(setCloseModal())}
-      className={clsx(modal.modal, isOpen && modal.active)}
+      onClick={() => setIsModalOpen(false)}
+      className={clsx(modal.modal, isModalOpen && modal.active)}
     >
       <div onClick={(e) => e.stopPropagation()}>
-        {isForm ? <Form closeBtn /> : <FormMessage />}
+        {isForm ? <Form closeBtn catalog={isCatalog} /> : <FormMessage />}
       </div>
     </div>
   );

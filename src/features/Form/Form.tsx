@@ -1,21 +1,21 @@
 import { Button } from "@/shared/ui/Button/Button";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useContext, useState } from "react";
 import form from "./Form.module.scss";
 import { Input, Select, Typography } from "@/shared/ui";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
+import { useAppDispatch } from "@/shared/hooks/hooks";
 import {
-  setCloseModal,
   showFormMessage,
   setOpenModal,
 } from "@/shared/slices/Modal/ModalSlice";
 import { XCircle } from "lucide-react";
 import { Calendar } from "@/shared/ui/Calendar";
+import { ModalContext } from "@/app/providers/Context";
 
 interface FromProps {
   title?: string;
   subTitle?: string;
   btnTitle?: string;
-
+  catalog?: boolean;
   inputPlaceholder1?: string;
   icon?: ReactNode;
   closeBtn?: boolean;
@@ -25,27 +25,22 @@ export const Form: FC<FromProps> = ({
   title,
   subTitle,
   btnTitle = "Send",
-
+  catalog = false,
   inputPlaceholder1 = "Date",
   icon,
   closeBtn,
 }) => {
+  const { closeModal } = useContext(ModalContext);
   const [calendarActive, setCalendarActive] = useState(false);
   const [date, setDate] = useState("");
-  const isCatalog = useAppSelector((state) => state.formSlice.isCatalog);
   const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(showFormMessage());
     dispatch(setOpenModal());
   };
   ////////////////////////////////////////
-  const [roleValue, setRolValue] = useState([
-    {
-      id: 1,
-      label: "I am an agent",
-    },
-  ]);
-  const role = [
+  const [roleValue, setRolValue] = useState([1]);
+  const roleOptions = [
     {
       id: 1,
       label: "I am an agent",
@@ -63,11 +58,7 @@ export const Form: FC<FromProps> = ({
   return (
     <form className={form.form}>
       {closeBtn && (
-        <Button
-          onClick={() => dispatch(setCloseModal())}
-          customClasses={form.formBtn}
-          type="icon"
-        >
+        <Button onClick={closeModal} customClasses={form.formBtn} type="icon">
           <XCircle color="white" />
         </Button>
       )}
@@ -86,11 +77,11 @@ export const Form: FC<FromProps> = ({
         </div>
         <div className={form.formWrapper}>
           <Input placeholder="City" />
-          {isCatalog ? (
+          {catalog ? (
             <div className={form.formSelect}>
               <Select
                 value={roleValue}
-                options={role}
+                options={roleOptions}
                 onChange={(val) => setRolValue(val)}
                 placeholder={"Select role"}
               />
