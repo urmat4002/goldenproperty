@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Select, Typography } from "@/shared/ui";
-import { useGetCities, useGetEstateTypes } from "@/shared/api/hooks";
+import {
+  useGetCities,
+  useGetEstateTypes,
+  useGetStaticData,
+} from "@/shared/api/hooks";
 import styles from "./Filter.module.scss";
 import {
   InfiniteData,
@@ -13,30 +17,14 @@ import { EstatesResponse } from "@/shared/api/types";
 interface FilterValues {
   city: number[];
   type: number[];
-  rating: number[];
+  order: number[];
 }
-
-//FIX_ME get from static data api
-const ratingOptions = [
-  {
-    id: 1,
-    label: "Recently",
-  },
-  {
-    id: 2,
-    label: "Popular",
-  },
-  {
-    id: 3,
-    label: "All",
-  },
-];
 
 const getOptionsFromQueryparams = (searchParams: URLSearchParams) => {
   const selectedOptions: FilterValues = {
     city: [],
     type: [],
-    rating: [],
+    order: [],
   };
 
   (Object.keys(selectedOptions) as Array<keyof FilterValues>).forEach(
@@ -61,6 +49,7 @@ type RefetchFn = (
 export const Filter = ({ refetch }: { refetch?: RefetchFn }) => {
   const { cityOptions } = useGetCities();
   const { typeOptions } = useGetEstateTypes();
+  const { orderOptions } = useGetStaticData();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [filterValues, setFilterValues] = useState<FilterValues>(
@@ -73,7 +62,8 @@ export const Filter = ({ refetch }: { refetch?: RefetchFn }) => {
       newSearchParams.append("city", filterValues.city.join(","));
     filterValues.type.length > 0 &&
       newSearchParams.append("type", filterValues.type[0]?.toString());
-    //FIX_ME add third filter
+    filterValues.order.length > 0 &&
+      newSearchParams.append("order", filterValues.order[0]?.toString());
 
     setTimeout(() => {
       if (refetch) refetch();
@@ -103,11 +93,11 @@ export const Filter = ({ refetch }: { refetch?: RefetchFn }) => {
             }}
           />
           <Select
-            value={filterValues.rating}
-            options={ratingOptions}
+            value={filterValues.order}
+            options={orderOptions}
             placeholder={"Popular"}
             onChange={(option) => {
-              setFilterValues({ ...filterValues, rating: option });
+              setFilterValues({ ...filterValues, order: option });
             }}
           />
           <Button type="primary" onClick={handleFilter}>

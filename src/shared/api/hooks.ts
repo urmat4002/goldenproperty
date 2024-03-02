@@ -13,6 +13,23 @@ import {
 } from "./types";
 import { capitalize } from "../helper/utils";
 
+export type FilterOption = {
+  id: number;
+  label: string;
+};
+
+const composeOrdering = (searchParams: URLSearchParams) => {
+  const orderParam = searchParams.get("order");
+  switch (orderParam) {
+    case "1":
+      return "visits";
+    case "2":
+      return "create_at";
+    default:
+      return null;
+  }
+};
+
 export const useGetEstates = (limit: number) => {
   const [searchParams] = useSearchParams();
   const { status, data, isFetching, fetchNextPage, hasNextPage, refetch } =
@@ -25,6 +42,7 @@ export const useGetEstates = (limit: number) => {
             search: searchParams.get("search"),
             estate_type_id: searchParams.get("type"),
             city_id: cityParams && encodeURIComponent(cityParams),
+            ordering: composeOrdering(searchParams),
             limit: limit > 0 ? limit : 0,
             offset: pageParam,
           },
@@ -76,7 +94,7 @@ export const useGetEstateTypes = () => {
     },
   });
 
-  const typeOptions = data
+  const typeOptions: FilterOption[] = data
     ? data.estate_types.map((estate_type) => ({
         id: estate_type.id,
         label: capitalize(estate_type.type),
@@ -95,7 +113,7 @@ export const useGetCities = () => {
     },
   });
 
-  const cityOptions = data
+  const cityOptions: FilterOption[] = data
     ? data.cities.map((city) => ({
         id: city.id,
         label: capitalize(city.city_name),
@@ -135,7 +153,16 @@ export const useGetStaticData = () => {
       return response.data;
     },
   });
-  return { data, isSuccess };
+
+  const orderOptions: FilterOption[] = data
+    ? [
+        { id: 3, label: data.static_data.body.all },
+        { id: 2, label: data.static_data.body.new_add },
+        { id: 1, label: data.static_data.body.popular },
+      ]
+    : [];
+
+  return { data, orderOptions, isSuccess };
 };
 
 export const useGetStaticHeader = () => {

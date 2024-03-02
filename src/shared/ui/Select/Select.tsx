@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Typography } from "@/shared/ui";
 import { Checkbox } from "../Checkbox";
 import style from "./Select.module.scss";
+import { capitalize } from "@/shared/helper/utils";
 
 interface SelectItem {
   id: number;
@@ -60,8 +61,8 @@ export const Select = ({
         <div className={style.selectLabel}>
           <Typography variant="body" weight="medium" truncate={15}>
             {valueOptions.length > 0
-              ? valueOptions.map((obj) => obj.label).join(", ")
-              : placeholder}
+              ? valueOptions.map((obj) => capitalize(obj.label)).join(", ")
+              : capitalize(placeholder)}
           </Typography>
         </div>
         <ChevronDown />
@@ -90,7 +91,7 @@ export const Select = ({
                   />
                 ) : (
                   <Typography variant="body" truncate={18}>
-                    {option.label}
+                    {capitalize(option.label)}
                   </Typography>
                 )}
               </li>
