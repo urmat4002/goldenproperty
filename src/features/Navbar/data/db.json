@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "city__name": "Dubai",
+    "city__description": "Dubai'de yaşamanın birçok avantajı vardır:\r\n\r\n1. Ekonomik Büyüme: Şehir, canlı bir ekonomi ve birçok iş fırsatıyla birlikte geniş kariyer fırsatları sunmaktadır.\r\n2. Uluslararası karakter: Dubai, Doğu ile Batı arasında benzersiz çeşitlilik ve kültürlerarası deneyimler sağlayan kültürel bir köprüdür.\r\n3. Altyapı: Şehir, yüksek binalar, yenilikçi ulaşım sistemleri ve modern eğlence komplekslerini içeren modern altyapısıyla tanınmaktadır.\r\n4. Güvenlik: Dubai, yaşamak için en güvenli yerlerden biri olarak kabul edilir; bu, sakinlere ve daimi sakinlere gönül rahatlığı sağlar.\r\n5. Vergi avantajları: Gelir vergisinin olmaması ve düşük vergi oranları, girişimciler ve yüksek maaşlı profesyoneller için cazip faktörlerdir.\r\n6. Eğitim ve Sağlık Hizmetinin Kalitesi: Şehir, yüksek kalitede eğitim ve sağlık hizmetleri sunarak aileler için cazip hale gelmektedir.\r\n7. Lüks yaşam tarzı: Dubai, çeşitli restoranlar, kültürel etkinlikler ve eğlence kompleksleriyle lüks dinlenme, alışveriş ve eğlence fırsatları sunmaktadır.\r\n8. İklim: Dubai'nin sıcak iklimi yılın büyük bölümünde güneşli olup, aktif bir yaşam tarzına ve açık havada dinlenmeye olanak sağlar.",
+    "city__img": "https://images.unsplash.com/photo-1628859017536-c2f1d69f3c84?q=80&w=1837&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 1,
+    "city__name": "Antalya",
+    "city__description": "Antalya is a Turkish resort city with a yacht-filled Old Harbor and beaches flanked by large hotels. It's a gateway to Turkey's southern Mediterranean region, known as the Turquoise Coast for its blue waters. Remnants remain from Antalya's time as a major Roman port. These include Hadrian’s Gate, built to honor the Roman emperor’s visit in 130 A.D and 2nd-century Hidirlik Tower, with harbor views.",
+    "city__img": "https://images.unsplash.com/photo-1625402780041-5d12b7887913?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 2,
+    "city__name": "New York",
+    "city__description": "New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that’s among the world’s major commercial, financial and cultural centers. Its iconic sites include skyscrapers such as the Empire State Building and sprawling Central Park. Broadway theater is staged in neon-lit Times Square.",
+    "city__img": "https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 3,
+    "city__name": "Tokyo",
+    "city__description": "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum)",
+    "city__img": "https://images.unsplash.com/photo-1531219572328-a0171b4448a3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 4,
+    "city__name": "Madrid",
+    "city__description": "Madrid, Spain's central capital, is a city of elegant boulevards and expansive, manicured parks such as the Buen Retiro. It’s renowned for its rich repositories of European art, including the Prado Museum’s works by Goya, Velázquez and other Spanish masters. The heart of old Hapsburg Madrid is the portico-lined Plaza Mayor, and nearby is the baroque Royal Palace and Armory, displaying historic weaponry.",
+    "city__img": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+]

@@ -1,5 +1,6 @@
 @import "@var";
 @import "@classes";
+@import "@mixin";
 
 .menuDropdown {
   padding: 24px 0;
@@ -10,13 +11,33 @@
   left: 0;
   right: 0;
   z-index: 998;
+
   &Container {
     display: flex;
     gap: 16px;
+
+    @include tablet {
+      display: none;
+    }
+    @include mobile {
+      display: none;
+    }
   }
+
+  &Navbar {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+    @include mobile {
+      display: block;
+    }
+  }
+
   &.open {
     visibility: visible;
   }
+
   &.close {
     visibility: hidden;
   }
