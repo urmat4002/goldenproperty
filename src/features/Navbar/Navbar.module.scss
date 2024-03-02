@@ -10,8 +10,15 @@
     align-items: center;
     gap: 16px;
     list-style: none;
-    @include isDesktop {
-      gap: 12px;
+    @include tablet {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+    @include mobile {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
     }
   }
   &MenuSelect {
@@ -22,8 +29,28 @@
   &MenuItem {
     padding: 18px 24px;
     cursor: pointer;
-    @include isDesktop {
-      padding: 12px 24px;
+
+    &.city2 {
+      display: none;
+    }
+
+    @include tablet {
+      &.city1 {
+        display: none;
+      }
+      &.city2 {
+        display: block;
+      }
+      padding: 0;
+    }
+    @include mobile {
+      &.city1 {
+        display: none;
+      }
+      &.city2 {
+        display: block;
+      }
+      padding: 0;
     }
     a {
       text-decoration: none;
@@ -37,8 +64,27 @@
         font-size: 14px;
       }
     }
+    svg {
+      transition: transform 0.3s ease;
+    }
     :hover {
       color: $colorPrimary;
     }
+    &.active svg {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  @include tablet {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  @include mobile {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
   }
 }
