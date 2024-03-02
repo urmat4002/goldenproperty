@@ -7,7 +7,6 @@ import { Filter } from "@/features/Filter";
 import styles from "./Estates.module.scss";
 import { useGetEstates } from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
-import { useSearchParams } from "react-router-dom";
 
 export const Estates = () => {
   const isOpen = useAppSelector((state) => state.citySlice.isOpen);
