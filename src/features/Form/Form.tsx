@@ -9,7 +9,7 @@ import {
 } from "@/shared/slices/Modal/ModalSlice";
 import { XCircle } from "lucide-react";
 import { Calendar } from "@/shared/ui/Calendar";
-import { Context } from "@/app/providers/Context";
+import { ModalContext } from "@/app/providers/Context";
 
 interface FromProps {
   title?: string;
@@ -30,7 +30,7 @@ export const Form: FC<FromProps> = ({
   icon,
   closeBtn,
 }) => {
-  const { closeModal } = useContext(Context);
+  const { closeModal } = useContext(ModalContext);
   const [calendarActive, setCalendarActive] = useState(false);
   const [date, setDate] = useState("");
   const dispatch = useAppDispatch();
@@ -39,13 +39,8 @@ export const Form: FC<FromProps> = ({
     dispatch(setOpenModal());
   };
   ////////////////////////////////////////
-  const [roleValue, setRolValue] = useState([
-    {
-      id: 1,
-      label: "I am an agent",
-    },
-  ]);
-  const role = [
+  const [roleValue, setRolValue] = useState([1]);
+  const roleOptions = [
     {
       id: 1,
       label: "I am an agent",
@@ -86,7 +81,7 @@ export const Form: FC<FromProps> = ({
             <div className={form.formSelect}>
               <Select
                 value={roleValue}
-                options={role}
+                options={roleOptions}
                 onChange={(val) => setRolValue(val)}
                 placeholder={"Select role"}
               />

@@ -7,7 +7,7 @@ import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Button, Typography } from "@/shared/ui";
 import { FC, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Context } from "@/app/providers/Context";
+import { ModalContext } from "@/app/providers/Context";
 
 interface Project {
   name: string;
@@ -28,7 +28,7 @@ interface SliderObjectProps {
 }
 
 export const SliderObject: FC = () => {
-  const { openModal } = useContext(Context);
+  const { openModal } = useContext(ModalContext);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [estate, setEstate] = useState<SliderObjectProps>(
