@@ -76,7 +76,7 @@ export const Navbar = () => {
               color="white"
               className={styles.navbarMenuSelect}
             >
-              {data?.header.city}
+              fix me{/* {data?.header.city} */}
             </Typography>
           </button>
         </li>
@@ -87,7 +87,7 @@ export const Navbar = () => {
               return isActive ? { color: "#c6a15b" } : {};
             }}
           >
-            {data?.header.all_real_estates}
+            {/* {data?.header.all_real_estates} */}
           </NavLink>
         </li>
         <li className={styles.navbarMenuItem}>
@@ -97,7 +97,7 @@ export const Navbar = () => {
               return isActive ? { color: "#c6a15b" } : {};
             }}
           >
-            {data?.header.about_us}
+            {/*  {data?.header.about_us} */}
           </NavLink>
         </li>
         <li className={styles.navbarMenuItem}>
@@ -107,7 +107,7 @@ export const Navbar = () => {
             }}
           >
             <Typography variant="body" weight="regular" color="white">
-              {data?.header.place_ad}
+              fix me{/* {data?.header.place_ad} */}
             </Typography>
           </button>
         </li>
