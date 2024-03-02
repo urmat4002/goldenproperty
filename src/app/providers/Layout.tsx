@@ -3,6 +3,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Footer, Header, Modal } from "../../widgets";
 import { Breadcrumbs, FloatingButtons } from "@/features";
 import styles from "./style/Layout.module.scss";
+import ScrollToTop from "@/features/ScrollToTop/ScrollToTop";
+
 export const Layout: FC = () => {
   const location = useLocation();
 
@@ -16,6 +18,7 @@ export const Layout: FC = () => {
       <Footer />
       <FloatingButtons />
       <Modal />
+      <ScrollToTop />
     </>
   );
 };
