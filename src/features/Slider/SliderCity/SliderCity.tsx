@@ -4,9 +4,9 @@ import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Section } from "@/features";
 import { useGetCities } from "@/shared/api/hooks";
-import style from "./SliderCity.module.scss";
 import "swiper/scss";
 import "swiper/scss/navigation";
+import style from "./SliderCity.module.scss";
 
 export const SliderCity: FC = () => {
   const [swiperWidth, setSwiperWidth] = useState();

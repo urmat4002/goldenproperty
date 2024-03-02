@@ -1,10 +1,10 @@
+import { FC, useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import style from "./Property.module.scss";
 import { Button, Typography } from "@/shared/ui";
 import { Section } from "@/features";
 import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
 import { useInnerWidthExceedsDefault } from "@/shared/helper/ScreenWidthTracker";
-import { FC, useEffect, useState } from "react";
+import style from "./Property.module.scss";
 
 export const Property: FC = () => {
   const state = useInnerWidthExceedsDefault({ defaultThreshold: 992 });
