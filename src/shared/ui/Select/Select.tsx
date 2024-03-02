@@ -1,9 +1,10 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import clsx from "clsx";
 import { Typography } from "@/shared/ui";
 import { Checkbox } from "../Checkbox";
-import style from "./Select.module.scss";
 import { capitalize } from "@/shared/helper/utils";
+import style from "./Select.module.scss";
 
 interface SelectItem {
   id: number;
@@ -26,8 +27,6 @@ export const Select = ({
   onChange,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  //FIX_ME is highlightedIndex just for hover styles?
-  const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const valueOptions: SelectItem[] =
     options?.filter((option) => value.includes(option.id)) || [];
 
@@ -71,17 +70,16 @@ export const Select = ({
       <div className={style.option}>
         <ul className={style.optionList}>
           <li className={`${style.optionItem} ${style.shape}`}></li>
-          {options?.map((option, index) => {
+          {options?.map((option) => {
             return (
               <li
-                className={`
-                  ${style.optionItem}
-                  ${highlightedIndex === index ? style.highlighted : ""}
-                  ${valueOptions.some((obj) => obj.id === option.id) ? style.selected : ""}
-                `}
+                className={clsx(
+                  style.optionItem,
+                  valueOptions.some((obj) => obj.id === option.id)
+                    ? style.selected
+                    : ""
+                )}
                 key={option.id}
-                onMouseEnter={() => setHighlightedIndex(index)}
-                onMouseLeave={() => setHighlightedIndex(-1)}
                 onClick={() => handleSelectOption(option)}
               >
                 {checkbox ? (
