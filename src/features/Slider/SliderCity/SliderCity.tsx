@@ -23,6 +23,7 @@ export const SliderCity: FC = () => {
         watchOverflow
         freeMode
         onSlidesUpdated={(swiper) =>
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setSwiperWidth((swiper as any).slidesSizesGrid[0])
         }
         breakpoints={{
