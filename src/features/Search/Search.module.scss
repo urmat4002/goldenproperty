@@ -1,30 +1,52 @@
 @import "@var";
 
-.search {
+.searchForm {
+  --input-size: 30px;
+  position: relative;
+  // max-width: 220px;
+}
+
+.searchInput {
+  height: var(--input-size);
+  padding-left: 15px;
+  padding-right: 50px;
+  background-color: $colorGray300;
+  border: 1px solid $colorGray300;
+  border-radius: 24px;
+  font-size: 20px;
+  color: $colorGray100;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.searchInput:hover {
+  background-color: $colorGray350;
+}
+
+.searchInput:focus {
+  background-color: $colorGray350;
+  border: 1px solid $colorGray200;
+}
+
+.searchButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 18px;
+  height: var(--input-size);
+  width: calc(var(--input-size) + 18px);
+  border-radius: var(--input-size);
+  border: none;
+  color: inherit;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 4px;
-  background-color: $colorGray300;
-  border: 0.5px solid $colorGray350;
-  border-radius: 24px;
-  padding: 4px 8px;
-  transition: 0.3s ease;
-  &:hover {
-    background-color: $colorGray350;
-  }
-  &:focus {
-    background-color: $colorGray350;
-    border: 0.5px solid $colorGray200;
-  }
-  &__form {
-    display: flex;
-    max-width: 220px;
-  }
-  &__input {
-    font-size: 20px;
-    color: $colorGray100;
-    font-weight: 500;
-    width: 100%;
-  }
+  justify-content: center;
+}
+
+.searchButton:hover {
+  background-color: $colorGray200;
+}
+
+.searchButton:active {
+  opacity: 0.5;
 }
