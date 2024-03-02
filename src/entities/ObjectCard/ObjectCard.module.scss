@@ -33,6 +33,7 @@
   display: flex;
   justify-content: space-between;
   padding-inline: 10px;
+  pointer-events: none;
 }
 
 .arrowButton {
@@ -46,6 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: all;
   cursor: pointer;
 }
 
