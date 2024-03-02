@@ -1,15 +1,15 @@
 import { Button } from "@/shared/ui/Button/Button";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useContext, useState } from "react";
 import form from "./Form.module.scss";
 import { Input, Select, Typography } from "@/shared/ui";
 import { useAppDispatch } from "@/shared/hooks/hooks";
 import {
-  setCloseModal,
   showFormMessage,
   setOpenModal,
 } from "@/shared/slices/Modal/ModalSlice";
 import { XCircle } from "lucide-react";
 import { Calendar } from "@/shared/ui/Calendar";
+import { Context } from "@/app/providers/Context";
 
 interface FromProps {
   title?: string;
@@ -30,9 +30,9 @@ export const Form: FC<FromProps> = ({
   icon,
   closeBtn,
 }) => {
+  const { closeModal } = useContext(Context);
   const [calendarActive, setCalendarActive] = useState(false);
   const [date, setDate] = useState("");
-
   const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(showFormMessage());
@@ -63,11 +63,7 @@ export const Form: FC<FromProps> = ({
   return (
     <form className={form.form}>
       {closeBtn && (
-        <Button
-          onClick={() => dispatch(setCloseModal())}
-          customClasses={form.formBtn}
-          type="icon"
-        >
+        <Button onClick={closeModal} customClasses={form.formBtn} type="icon">
           <XCircle color="white" />
         </Button>
       )}

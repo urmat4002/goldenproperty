@@ -5,11 +5,9 @@ import style from "./SliderObject.module.scss";
 
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import { Button, Typography } from "@/shared/ui";
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAppDispatch } from "@/shared/hooks/hooks";
-import { setOpenModal } from "@/shared/slices/Modal/ModalSlice";
-import { showCatalog } from "@/shared/slices/FormSlice/FormSlice";
+import { Context } from "@/app/providers/Context";
 
 interface Project {
   name: string;
@@ -30,7 +28,7 @@ interface SliderObjectProps {
 }
 
 export const SliderObject: FC = () => {
-  const dispatch = useAppDispatch();
+  const { openModal } = useContext(Context);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [estate, setEstate] = useState<SliderObjectProps>(
@@ -143,10 +141,7 @@ export const SliderObject: FC = () => {
             <div className={style.priceBtns}>
               <Button
                 customClasses={style.priceBtnsItem}
-                onClick={() => {
-                  dispatch(setOpenModal());
-                  dispatch(showCatalog());
-                }}
+                onClick={openModal}
                 type="primary"
               >
                 Catalog
