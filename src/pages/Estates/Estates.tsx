@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { ObjectCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
@@ -11,7 +11,6 @@ import { useSearchParams } from "react-router-dom";
 
 export const Estates = () => {
   const isOpen = useAppSelector((state) => state.citySlice.isOpen);
-  const [searchParams] = useSearchParams();
 
   const { data, status, fetchNextPage, refetch, isFetching, hasNextPage } =
     useGetEstates(3);
