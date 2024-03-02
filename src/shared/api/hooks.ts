@@ -61,7 +61,7 @@ export const useGetEstates = (limit: number) => {
   return { data, status, fetchNextPage, refetch, isFetching, hasNextPage };
 };
 
-export const useGetEstateById = (id: number) => {
+export const useGetEstateById = (id?: number | string) => {
   const { data, isSuccess } = useQuery({
     queryKey: ["estate"],
     queryFn: async () => {
@@ -72,7 +72,7 @@ export const useGetEstateById = (id: number) => {
   return { data, isSuccess };
 };
 
-export const useGetSimilarEstates = (id: number) => {
+export const useGetSimilarEstates = (id?: number) => {
   const { data, isSuccess } = useQuery({
     queryKey: ["similar_estates"],
     queryFn: async () => {
