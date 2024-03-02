@@ -14,6 +14,7 @@ interface SelectProps {
   options?: SelectItem[];
   placeholder: string;
   checkbox?: boolean;
+  //FIX_ME linter doesn't like value
   onChange: (value: number[]) => void;
 }
 
@@ -48,22 +49,6 @@ export const Select = ({
     }
     return onChange([option.id]);
   };
-  /* 
-  const handleOption = (option: SelectItem) => {
-    const { id } = option;
-
-    if (checkbox) {
-      const match = value.find((obj) => obj.id === id);
-
-      if (match) {
-        const filteredValue = value.filter((obj) => obj.id !== id);
-        return onChange(filteredValue);
-      }
-      const newValue = [...value, option];
-      return onChange(newValue);
-    }
-    return onChange([option]);
-  }; */
 
   return (
     <div

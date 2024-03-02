@@ -18,7 +18,6 @@ export const useGetEstates = (limit: number) => {
   const { status, data, isFetching, fetchNextPage, hasNextPage, refetch } =
     useInfiniteQuery({
       queryKey: ["estates"],
-      //queryFn: async ({ pageParam }) => {
       queryFn: async ({ pageParam }) => {
         const cityParams = searchParams.get("city");
         const response = await axiosAPI<EstatesResponse>("/estate/", {
