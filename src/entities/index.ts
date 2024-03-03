@@ -1,2 +1,2 @@
-export * from "./ObjectCard";
-export * from "./Location";
+export { PropertyCard } from "./PropertyCard/PropertyCard";
+export { Location } from "./Location/Location";

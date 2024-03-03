@@ -82,7 +82,7 @@ export const useGetEstateById = (id?: number | string) => {
   return { data, isSuccess };
 };
 
-export const useGetSimilarEstates = (id?: number) => {
+export const useGetSimilarEstates = (id?: number | string) => {
   const { data, isSuccess } = useQuery({
     queryKey: ["similar_estates"],
     queryFn: async () => {

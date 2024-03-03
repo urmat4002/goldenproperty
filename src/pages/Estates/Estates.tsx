@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { ObjectCard } from "@/entities";
+import { PropertyCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
 import { useAppSelector } from "@/shared/hooks/hooks";
@@ -33,7 +33,7 @@ export const Estates = () => {
             data?.pages.map((page) => (
               <Fragment key={page.next}>
                 {page.estates.map((item) => (
-                  <ObjectCard
+                  <PropertyCard
                     key={item.id}
                     id={item.id}
                     images={item.images}
