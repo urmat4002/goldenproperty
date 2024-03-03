@@ -1,9 +1,9 @@
+import { useParams } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Section } from "..";
 import { PropertyCard } from "@/entities";
-import style from "./SlideCard.module.scss";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useParams } from "react-router-dom";
 import { useGetSimilarEstates } from "@/shared/api/hooks";
+import style from "./SlideCard.module.scss";
 
 export const SlideCard = () => {
   const { id } = useParams();
