@@ -7,12 +7,16 @@ import { Filter } from "@/features/Filter";
 import styles from "./Estates.module.scss";
 import { useGetEstates } from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
+import { useSearchParams } from "react-router-dom";
 
 export const Estates = () => {
+  //FIX_ME was is das?
   const isOpen = useAppSelector((state) => state.citySlice.isOpen);
 
-  const { data, status, fetchNextPage, refetch, isFetching, hasNextPage } =
-    useGetEstates(3);
+  const [searchParams] = useSearchParams();
+
+  const { data, status, fetchNextPage, isFetching, hasNextPage } =
+    useGetEstates(9, searchParams);
 
   return (
     <>
@@ -20,7 +24,7 @@ export const Estates = () => {
         <HeroEstates />
       ) : (
         <Section title="All real estates" container>
-          <Filter refetch={refetch} />
+          <Filter />
         </Section>
       )}
       <Section container>

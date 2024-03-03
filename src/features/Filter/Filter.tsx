@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Select, Typography } from "@/shared/ui";
 import {
@@ -7,12 +7,6 @@ import {
   useGetStaticData,
 } from "@/shared/api/hooks";
 import styles from "./Filter.module.scss";
-import {
-  InfiniteData,
-  QueryObserverResult,
-  RefetchOptions,
-} from "@tanstack/react-query";
-import { EstatesResponse } from "@/shared/api/types";
 
 interface FilterValues {
   city: number[];
@@ -20,12 +14,14 @@ interface FilterValues {
   order: number[];
 }
 
+const getinitialFilterParams = (): FilterValues => ({
+  city: [],
+  type: [],
+  order: [],
+});
+
 const getOptionsFromQueryparams = (searchParams: URLSearchParams) => {
-  const selectedOptions: FilterValues = {
-    city: [],
-    type: [],
-    order: [],
-  };
+  const selectedOptions = getinitialFilterParams();
 
   (Object.keys(selectedOptions) as Array<keyof FilterValues>).forEach(
     (selectKey) => {
@@ -40,20 +36,14 @@ const getOptionsFromQueryparams = (searchParams: URLSearchParams) => {
   return selectedOptions;
 };
 
-type RefetchFn = (
-  _options?: RefetchOptions | undefined
-) => Promise<
-  QueryObserverResult<InfiniteData<EstatesResponse, unknown>, Error>
->;
-
-export const Filter = ({ refetch }: { refetch?: RefetchFn }) => {
+export const Filter = () => {
   const { cityOptions } = useGetCities();
   const { typeOptions } = useGetEstateTypes();
   const { orderOptions } = useGetStaticData();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [filterValues, setFilterValues] = useState<FilterValues>(
-    getOptionsFromQueryparams(searchParams)
+    getinitialFilterParams()
   );
 
   const handleFilter = () => {
@@ -65,11 +55,12 @@ export const Filter = ({ refetch }: { refetch?: RefetchFn }) => {
     filterValues.order.length > 0 &&
       newSearchParams.append("order", filterValues.order[0]?.toString());
 
-    setTimeout(() => {
-      if (refetch) refetch();
-    }, 0);
     navigate(`/estates/?${newSearchParams}`);
   };
+
+  useEffect(() => {
+    setFilterValues(getOptionsFromQueryparams(searchParams));
+  }, [searchParams]);
 
   return (
     <div className={styles.filter}>

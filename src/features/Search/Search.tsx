@@ -1,24 +1,26 @@
 import { SearchIcon } from "lucide-react";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./Search.module.scss";
-import { useQuery } from "@tanstack/react-query";
+//import { useQuery } from "@tanstack/react-query";
 
 export const Search: FC = () => {
-  const { refetch } = useQuery({ queryKey: ["estates"] });
+  //const { refetch } = useQuery({ queryKey: ["estates"] });
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [searchText, setSearchText] = useState(
-    searchParams.get("search") || ""
-  );
+  const [searchText, setSearchText] = useState("");
 
   const handleSearch: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    setTimeout(() => {
+    /* setTimeout(() => {
       if (refetch) refetch();
-    }, 0);
+    }, 0); */
     navigate(`/estates/?search=${searchText}`);
   };
+
+  useEffect(() => {
+    setSearchText(searchParams.get("search") || "");
+  }, [searchParams]);
 
   return (
     <form className={styles.searchForm} onSubmit={handleSearch}>

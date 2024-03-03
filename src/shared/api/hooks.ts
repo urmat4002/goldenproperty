@@ -1,6 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { axiosAPI } from "./axiosApi";
-import { useSearchParams } from "react-router-dom";
 import {
   CityIdResponse,
   CityResponse,
@@ -30,19 +29,30 @@ const composeOrdering = (searchParams: URLSearchParams) => {
   }
 };
 
-export const useGetEstates = (limit: number) => {
-  const [searchParams] = useSearchParams();
-  const { status, data, isFetching, fetchNextPage, hasNextPage, refetch } =
+export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
+  const search = searchParams.get("search");
+  const estate_type_id = searchParams.get("type");
+  const cityParams = searchParams.get("city");
+  const city_id = cityParams && encodeURIComponent(cityParams);
+  const ordering = composeOrdering(searchParams);
+  const { status, data, isFetching, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ["estates"],
+      queryKey: [
+        "estates",
+        {
+          search,
+          estate_type_id,
+          city_id,
+          ordering,
+        },
+      ],
       queryFn: async ({ pageParam }) => {
-        const cityParams = searchParams.get("city");
         const response = await axiosAPI<EstatesResponse>("/estate/", {
           params: {
-            search: searchParams.get("search"),
-            estate_type_id: searchParams.get("type"),
-            city_id: cityParams && encodeURIComponent(cityParams),
-            ordering: composeOrdering(searchParams),
+            search,
+            estate_type_id,
+            city_id,
+            ordering,
             limit: limit > 0 ? limit : 0,
             offset: pageParam,
           },
@@ -58,7 +68,7 @@ export const useGetEstates = (limit: number) => {
         return offset ?? undefined;
       },
     });
-  return { data, status, fetchNextPage, refetch, isFetching, hasNextPage };
+  return { data, status, fetchNextPage, isFetching, hasNextPage };
 };
 
 export const useGetEstateById = (id?: number | string) => {
