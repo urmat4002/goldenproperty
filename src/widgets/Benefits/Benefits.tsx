@@ -47,7 +47,11 @@ const BenefitsCard = ({
 }) => (
   <div className={style.benefitsItem}>
     {icon}
-    <Typography variant="h3">{title}</Typography>
-    <Typography variant="body">{description}</Typography>
+    <Typography variant="h3" capitalize>
+      {title}
+    </Typography>
+    <Typography variant="body" capitalize>
+      {description}
+    </Typography>
   </div>
 );

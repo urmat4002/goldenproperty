@@ -27,4 +27,5 @@ export interface TypographyProps {
   color?: ColorVariants;
   truncate?: number;
   ellipsis?: boolean;
+  capitalize?: boolean;
 }

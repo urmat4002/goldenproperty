@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { FC, createElement } from "react";
 import styles from "./Typography.module.scss";
 import { ITags, TypographyProps } from "./types/Typography.types";
+import { capitalize as cap } from "@/shared/helper/utils";
 
 export const Typography: FC<TypographyProps> = (props) => {
   const {
@@ -11,6 +12,7 @@ export const Typography: FC<TypographyProps> = (props) => {
     className,
     color = "",
     ellipsis,
+    capitalize,
   } = props;
 
   const Tags = {
@@ -33,6 +35,6 @@ export const Typography: FC<TypographyProps> = (props) => {
   return createElement(
     Tags[variant as keyof ITags],
     { className: classNamedGenerated },
-    children
+    capitalize ? cap(children) : children
   );
 };
