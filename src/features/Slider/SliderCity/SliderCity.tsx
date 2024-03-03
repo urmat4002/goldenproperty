@@ -60,7 +60,7 @@ export const SliderCity: FC = () => {
                 onMouseLeave={() => setHighlitedIndex(null)}
                 key={image.id}
               >
-                <Link to={`estates/${image.id}`}>
+                <Link to={`estates/?city=${image.id}`}>
                   <img src={image.city_img} alt="City" loading="eager" />
 
                   <div className="swiper-lazy-preloader"></div>

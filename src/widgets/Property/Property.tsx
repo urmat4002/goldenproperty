@@ -5,6 +5,7 @@ import { Section } from "@/features";
 import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
 import { useInnerWidthExceedsDefault } from "@/shared/helper/ScreenWidthTracker";
 import style from "./Property.module.scss";
+import { Link } from "react-router-dom";
 
 export const Property: FC = () => {
   const state = useInnerWidthExceedsDefault({ defaultThreshold: 992 });
@@ -45,10 +46,12 @@ export const Property: FC = () => {
               />
             </div>
           </div>
-          <Button type="primary">
-            <Typography variant="button">See real estates</Typography>
-            <ArrowRight />
-          </Button>
+          <Link to="/estates/">
+            <Button type="primary">
+              <Typography variant="button">See real estates</Typography>
+              <ArrowRight />
+            </Button>
+          </Link>
         </div>
         <div className={style.propertyImage}>
           <img
