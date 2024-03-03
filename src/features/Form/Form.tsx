@@ -2,11 +2,6 @@ import { Button } from "@/shared/ui/Button/Button";
 import { FC, ReactNode, useContext, useState } from "react";
 import form from "./Form.module.scss";
 import { Input, Select, Typography } from "@/shared/ui";
-import { useAppDispatch } from "@/shared/hooks/hooks";
-import {
-  showFormMessage,
-  setOpenModal,
-} from "@/shared/slices/Modal/ModalSlice";
 import { XCircle } from "lucide-react";
 import { Calendar } from "@/shared/ui/Calendar";
 import { ModalContext } from "@/app/providers/Context";
@@ -31,14 +26,12 @@ export const Form: FC<FromProps> = ({
   closeBtn,
 }) => {
   const { closeModal } = useContext(ModalContext);
+  const { showFormMessage } = useContext(ModalContext);
   const [calendarActive, setCalendarActive] = useState(false);
   const [date, setDate] = useState("");
-  const dispatch = useAppDispatch();
-  const handleClick = () => {
-    dispatch(showFormMessage());
-    dispatch(setOpenModal());
-  };
+
   ////////////////////////////////////////
+
   const [roleValue, setRolValue] = useState([1]);
   const roleOptions = [
     {
@@ -84,6 +77,7 @@ export const Form: FC<FromProps> = ({
                 options={roleOptions}
                 onChange={(val) => setRolValue(val)}
                 placeholder={"Select role"}
+                backgroundColor={false}
               />
             </div>
           ) : (
@@ -104,7 +98,7 @@ export const Form: FC<FromProps> = ({
         </div>
       </div>
       <div className={form.formButton}>
-        <Button onClick={handleClick} type="primary">
+        <Button onClick={showFormMessage} type="primary">
           <Typography variant="button">
             {btnTitle}
             {icon}

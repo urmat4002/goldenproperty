@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface CitySlice {
-  isCatalog: boolean;
+  isCatalog?: boolean;
 }
 
 const initialState: CitySlice = {

@@ -9,6 +9,7 @@ import {
   EstateTypesResponse,
   EstatesResponse,
   StaticDataResponse,
+  StaticFormsResponse,
   StaticHeaderResponse,
 } from "./types";
 import { capitalize } from "../helper/utils";
@@ -171,6 +172,19 @@ export const useGetStaticHeader = () => {
     queryFn: async () => {
       const response = await axiosAPI<StaticHeaderResponse>(
         "/static_data/header/"
+      );
+      return response.data;
+    },
+  });
+  return { data, isSuccess };
+};
+
+export const useGetStaticForms = () => {
+  const { data, isSuccess } = useQuery({
+    queryKey: ["forms"],
+    queryFn: async () => {
+      const response = await axiosAPI<StaticFormsResponse>(
+        "/static_data/forms/"
       );
       return response.data;
     },
