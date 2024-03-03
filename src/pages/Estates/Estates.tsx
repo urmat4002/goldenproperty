@@ -3,21 +3,27 @@ import { useSearchParams } from "react-router-dom";
 import { PropertyCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
-import { useAppSelector } from "@/shared/hooks/hooks";
 import { Filter } from "@/features/Filter";
 import { useGetEstates } from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
 import styles from "./Estates.module.scss";
 
+const getCitySearchParam = (searchParams: URLSearchParams): string | null => {
+  const cityParams = searchParams.get("city");
+  if (!cityParams || cityParams.includes(",")) return null;
+  return cityParams;
+};
+
 export const Estates = () => {
   const [searchParams] = useSearchParams();
-  //FIX_ME was is das?
-  const isOpen = useAppSelector((state) => state.citySlice.isOpen);
+  const singleCity = getCitySearchParam(searchParams);
 
   const gridRef = useRef(null);
   const [cardPageLimit, setCardPageLimit] = useState(9);
-  const { data, status, fetchNextPage, isFetching, hasNextPage } =
-    useGetEstates(cardPageLimit, searchParams);
+  const { data, fetchNextPage, isFetching, hasNextPage } = useGetEstates(
+    cardPageLimit,
+    searchParams
+  );
 
   useEffect(() => {
     if (!gridRef.current) return;
@@ -31,7 +37,7 @@ export const Estates = () => {
 
   return (
     <>
-      {isOpen ? (
+      {singleCity ? (
         <HeroEstates />
       ) : (
         <Section title="All real estates" container>
@@ -40,8 +46,8 @@ export const Estates = () => {
       )}
       <Section container>
         <div ref={gridRef} className={styles.estates}>
-          {status === "success" &&
-            data?.pages.map((page) => (
+          {data &&
+            data.pages.map((page) => (
               <Fragment key={page.next}>
                 {page.estates.map((item) => (
                   <PropertyCard

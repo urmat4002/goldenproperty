@@ -35,41 +35,40 @@ export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
   const cityParams = searchParams.get("city");
   const city_id = cityParams && encodeURIComponent(cityParams);
   const ordering = composeOrdering(searchParams);
-  const { status, data, isFetching, fetchNextPage, hasNextPage } =
-    useInfiniteQuery({
-      queryKey: [
-        "estates",
-        {
+  const { data, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
+    queryKey: [
+      "estates",
+      {
+        search,
+        estate_type_id,
+        city_id,
+        ordering,
+        limit,
+      },
+    ],
+    queryFn: async ({ pageParam }) => {
+      const response = await axiosAPI<EstatesResponse>("/estate/", {
+        params: {
           search,
           estate_type_id,
           city_id,
           ordering,
-          limit,
+          limit: limit > 0 ? limit : 0,
+          offset: pageParam,
         },
-      ],
-      queryFn: async ({ pageParam }) => {
-        const response = await axiosAPI<EstatesResponse>("/estate/", {
-          params: {
-            search,
-            estate_type_id,
-            city_id,
-            ordering,
-            limit: limit > 0 ? limit : 0,
-            offset: pageParam,
-          },
-        });
-        return response.data;
-      },
-      initialPageParam: 0,
-      getPreviousPageParam: () => undefined,
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.next) return undefined;
-        const searchParams = new URLSearchParams(lastPage.next);
-        const offset = parseInt(searchParams.get("offset") || "");
-        return offset ?? undefined;
-      },
-    });
-  return { data, status, fetchNextPage, isFetching, hasNextPage };
+      });
+      return response.data;
+    },
+    initialPageParam: 0,
+    getPreviousPageParam: () => undefined,
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.next) return undefined;
+      const searchParams = new URLSearchParams(lastPage.next);
+      const offset = parseInt(searchParams.get("offset") || "");
+      return offset ?? undefined;
+    },
+  });
+  return { data, fetchNextPage, isFetching, hasNextPage };
 };
 
 export const useGetEstateById = (id?: number | string) => {
