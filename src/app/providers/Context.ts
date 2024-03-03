@@ -2,8 +2,11 @@ import { createContext } from "react";
 
 interface ContextProps {
   isModalOpen?: boolean;
+  isCatalog?: boolean;
+  isForm?: boolean;
   closeModal?: () => void;
-  openModal?: () => void;
+  downloadCatalog?: () => void;
+  showFormMessage?: () => void;
 }
 
 export const ModalContext = createContext<ContextProps>({});
