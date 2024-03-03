@@ -44,6 +44,7 @@ export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
           estate_type_id,
           city_id,
           ordering,
+          limit,
         },
       ],
       queryFn: async ({ pageParam }) => {

@@ -1,22 +1,33 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { PropertyCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
 import { useAppSelector } from "@/shared/hooks/hooks";
 import { Filter } from "@/features/Filter";
-import styles from "./Estates.module.scss";
 import { useGetEstates } from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
-import { useSearchParams } from "react-router-dom";
+import styles from "./Estates.module.scss";
 
 export const Estates = () => {
+  const [searchParams] = useSearchParams();
   //FIX_ME was is das?
   const isOpen = useAppSelector((state) => state.citySlice.isOpen);
 
-  const [searchParams] = useSearchParams();
-
+  const gridRef = useRef(null);
+  const [cardPageLimit, setCardPageLimit] = useState(9);
   const { data, status, fetchNextPage, isFetching, hasNextPage } =
-    useGetEstates(9, searchParams);
+    useGetEstates(cardPageLimit, searchParams);
+
+  useEffect(() => {
+    if (!gridRef.current) return;
+    const gridComputedStyle = window.getComputedStyle(gridRef.current);
+    const gridColumnCount = gridComputedStyle
+      .getPropertyValue("grid-template-columns")
+      .split(" ").length;
+    const cardPageLimit = gridColumnCount === 2 ? 8 : 9;
+    setCardPageLimit(cardPageLimit);
+  }, []);
 
   return (
     <>
@@ -28,7 +39,7 @@ export const Estates = () => {
         </Section>
       )}
       <Section container>
-        <div className={styles.estates}>
+        <div ref={gridRef} className={styles.estates}>
           {status === "success" &&
             data?.pages.map((page) => (
               <Fragment key={page.next}>
