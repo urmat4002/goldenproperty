@@ -46,7 +46,8 @@ export const Property: FC = () => {
               />
             </div>
           </div>
-          <Link to="/estates/">
+          {/* FIX_ME Dubai may end up having different id than 3, should consider that */}
+          <Link to="/estates/?city=3">
             <Button type="primary">
               <Typography variant="button">See real estates</Typography>
               <ArrowRight />
