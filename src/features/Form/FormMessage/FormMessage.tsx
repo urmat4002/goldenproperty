@@ -1,9 +1,7 @@
-import { FC } from "react";
-
+import { FC, useContext } from "react";
 import formMessage from "../Form.module.scss";
 import { Button, Typography } from "@/shared/ui";
-import { useAppDispatch } from "@/shared/hooks/hooks";
-import { setCloseModal, showForm } from "@/shared/slices/Modal/ModalSlice";
+import { ModalContext } from "@/app/providers/Context";
 
 interface FromProps {
   title?: string;
@@ -14,11 +12,7 @@ export const FormMessage: FC<FromProps> = ({
   title = "The application has been successfully accepted!",
   subTitle = "Thank you for contacting us! Our specialist will contact you soon.",
 }) => {
-  const dispatch = useAppDispatch();
-  const handleClick = () => {
-    dispatch(setCloseModal());
-    dispatch(showForm());
-  };
+  const { closeModal } = useContext(ModalContext);
 
   return (
     <div className={formMessage.form}>
@@ -29,7 +23,7 @@ export const FormMessage: FC<FromProps> = ({
         {subTitle}
       </Typography>
       <div className={formMessage.formBtn}>
-        <Button onClick={handleClick} type="primary">
+        <Button onClick={closeModal} type="primary">
           <Typography variant="button">Close</Typography>
         </Button>
       </div>

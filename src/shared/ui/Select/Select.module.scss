@@ -1,12 +1,20 @@
 @import "@var";
 @import "@mixin";
 
+.backgroundColorFilter {
+  background: #4c4c4c;
+}
+
+.backgroundColorForm {
+  background: $colorGray400;
+}
+
 .select {
   position: relative;
   display: flex;
   align-items: center;
   border-radius: 25px;
-  background: #4c4c4c;
+
   user-select: none;
   cursor: pointer;
 
@@ -55,7 +63,6 @@
 
   &Item {
     padding: 10px 25px;
-    background: #4c4c4c;
 
     &.shape {
       clip-path: polygon(

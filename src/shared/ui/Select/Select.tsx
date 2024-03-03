@@ -16,10 +16,12 @@ interface SelectProps {
   options?: SelectItem[];
   placeholder: string;
   checkbox?: boolean;
+  backgroundColor?: boolean;
   onChange: (_value: number[]) => void;
 }
 
 export const Select = ({
+  backgroundColor = true,
   value,
   options,
   placeholder,
@@ -52,7 +54,13 @@ export const Select = ({
   };
   return (
     <div
-      className={`${style.select} ${isOpen ? style.active : ""}`}
+      className={clsx(
+        style.select,
+        backgroundColor
+          ? style.backgroundColorFilter
+          : style.backgroundColorForm,
+        isOpen && style.active
+      )}
       onBlur={() => setIsOpen(false)}
       tabIndex={0}
     >
@@ -69,12 +77,23 @@ export const Select = ({
 
       <div className={style.option}>
         <ul className={style.optionList}>
-          <li className={`${style.optionItem} ${style.shape}`}></li>
+          <li
+            className={clsx(
+              style.optionItem,
+              style.shape,
+              backgroundColor
+                ? style.backgroundColorFilter
+                : style.backgroundColorForm
+            )}
+          ></li>
           {options?.map((option) => {
             return (
               <li
                 className={clsx(
                   style.optionItem,
+                  backgroundColor
+                    ? style.backgroundColorFilter
+                    : style.backgroundColorForm,
                   valueOptions.some((obj) => obj.id === option.id)
                     ? style.selected
                     : ""

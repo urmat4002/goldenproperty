@@ -28,7 +28,7 @@ interface SliderObjectProps {
 }
 
 export const SliderObject: FC = () => {
-  const { openModal } = useContext(ModalContext);
+  const { downloadCatalog } = useContext(ModalContext);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [estate, setEstate] = useState<SliderObjectProps>(
@@ -141,7 +141,7 @@ export const SliderObject: FC = () => {
             <div className={style.priceBtns}>
               <Button
                 customClasses={style.priceBtnsItem}
-                onClick={openModal}
+                onClick={downloadCatalog}
                 type="primary"
               >
                 Catalog
