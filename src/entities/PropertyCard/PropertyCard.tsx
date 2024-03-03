@@ -2,9 +2,9 @@ import { useState, FC } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
-import styles from "./PropertyCard.module.scss";
 import { WhatsApp } from "@shared/ui/Icons";
 import { Estate } from "@/shared/api/types";
+import styles from "./PropertyCard.module.scss";
 
 export const PropertyCard: FC<Estate> = ({
   images: originalImages,
