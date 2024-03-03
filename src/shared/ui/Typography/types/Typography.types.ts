@@ -26,4 +26,5 @@ export interface TypographyProps {
   weight?: "bold" | "semibold" | "medium" | "regular";
   color?: ColorVariants;
   truncate?: number;
+  ellipsis?: boolean;
 }

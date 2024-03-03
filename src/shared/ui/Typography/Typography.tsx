@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, ReactNode, createElement } from "react";
+import { FC, createElement } from "react";
 import styles from "./Typography.module.scss";
 import { ITags, TypographyProps } from "./types/Typography.types";
 
@@ -10,7 +10,7 @@ export const Typography: FC<TypographyProps> = (props) => {
     children,
     className,
     color = "",
-    truncate,
+    ellipsis,
   } = props;
 
   const Tags = {
@@ -26,19 +26,13 @@ export const Typography: FC<TypographyProps> = (props) => {
     styles[variant],
     styles[weight],
     styles[color],
+    ellipsis && styles.ellipsis,
     className
   );
-
-  const truncateString = (str: ReactNode, maxNumber: number) => {
-    if (typeof str === "string") {
-      return str.length <= maxNumber ? str : str.slice(0, maxNumber) + "...";
-    }
-    return str;
-  };
 
   return createElement(
     Tags[variant as keyof ITags],
     { className: classNamedGenerated },
-    !truncate ? children : truncateString(children, truncate)
+    children
   );
 };

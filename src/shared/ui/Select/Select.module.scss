@@ -14,13 +14,15 @@
     transition: transform 0.3s ease;
   }
 
-  &Label {
+  /* &Label {
     flex: 1 1 auto;
-  }
+  } */
 
   &Content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 5px;
     width: 100%;
     padding: 10px 25px;
   }

@@ -2,21 +2,21 @@ import { FC } from "react";
 import { CheckboxProps } from "./type/Checkbox.types";
 import { Typography } from "@shared/ui";
 import { Checkbox as CheckboxIcon } from "@shared/ui/Icons";
-import style from "./Checkbox.module.scss";
+import styles from "./Checkbox.module.scss";
 
 export const Checkbox: FC<CheckboxProps> = ({ isChecked, label }) => {
   return (
-    <div className={style.checkboxWrapper}>
-      <label className={style.check}>
+    <div className={styles.checkboxWrapper}>
+      <label className={styles.check}>
         <input
           checked={isChecked}
-          className={style.checkInput}
+          className={styles.checkInput}
           type="checkbox"
           readOnly
         />
         <CheckboxIcon checked={isChecked} />
 
-        <Typography variant="body" truncate={20}>
+        <Typography variant="body" ellipsis>
           {label}
         </Typography>
       </label>
