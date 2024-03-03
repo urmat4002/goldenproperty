@@ -1,22 +1,20 @@
 import { Section } from "@/features";
-import style from "./HeroEstates.module.scss";
 import { Filter } from "@/features/Filter";
 import { Typography } from "@/shared/ui";
+import { useGetCityById } from "@/shared/api/hooks";
+import styles from "./HeroEstates.module.scss";
 
-export const HeroEstates = () => {
+export const HeroEstates = ({ cityId }: { cityId: string }) => {
+  const { data } = useGetCityById(cityId);
+  const city = data?.city;
+
   return (
     <Section container hero>
-      <div className={style.HeroEstates}>
-        <div className={style.HeroEstatesContent}>
-          <Typography variant="h1">Dubai</Typography>
+      <div className={styles.HeroEstates}>
+        <div className={styles.HeroEstatesContent}>
+          <Typography variant="h1">{city?.city_name || "..."}</Typography>
           <Typography variant="body">
-            Dubai is a city and emirate in the United Arab Emirates known for
-            luxury shopping, ultramodern architecture and a lively nightlife
-            scene. Burj Khalifa, an 830m-tall tower, dominates the
-            skyscraper-filled skyline. At its foot lies Dubai Fountain, with
-            jets and lights choreographed to music. On artificial islands just
-            offshore is Atlantis, The Palm, a resort with water and
-            marine-animal parks.
+            {city?.city_description || "..."}
           </Typography>
         </div>
         <Filter />

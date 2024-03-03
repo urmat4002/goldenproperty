@@ -16,8 +16,7 @@ const getCitySearchParam = (searchParams: URLSearchParams): string | null => {
 
 export const Estates = () => {
   const [searchParams] = useSearchParams();
-  const singleCity = getCitySearchParam(searchParams);
-
+  const singleCityId = getCitySearchParam(searchParams);
   const gridRef = useRef(null);
   const [cardPageLimit, setCardPageLimit] = useState(9);
   const { data, fetchNextPage, isFetching, hasNextPage } = useGetEstates(
@@ -37,8 +36,8 @@ export const Estates = () => {
 
   return (
     <>
-      {singleCity ? (
-        <HeroEstates />
+      {singleCityId ? (
+        <HeroEstates cityId={singleCityId} />
       ) : (
         <Section title="All real estates" container>
           <Filter />

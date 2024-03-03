@@ -133,15 +133,15 @@ export const useGetCities = () => {
   return { data, cityOptions, isSuccess };
 };
 
-export const useGetCityById = (id: number) => {
-  const { data, isSuccess } = useQuery({
+export const useGetCityById = (id: number | string) => {
+  const { data } = useQuery({
     queryKey: ["city"],
     queryFn: async () => {
-      const response = await axiosAPI<CityIdResponse>(`/city/${id}/`);
+      const response = await axiosAPI<CityIdResponse>(`/cities/${id}/`);
       return response.data;
     },
   });
-  return { data, isSuccess };
+  return { data };
 };
 
 export const useGetCompany = () => {
