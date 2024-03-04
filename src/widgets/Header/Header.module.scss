@@ -17,23 +17,10 @@
     justify-content: space-between;
     height: 100%;
   }
-  &Input {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-
-    @include tablet {
-      &.active {
-        display: none;
-      }
-    }
-    @include mobile {
-      &.active {
-        display: none;
-      }
-    }
-  }
   &Navbar {
+    @include isDesktop {
+      display: none;
+    }
     @include tablet {
       display: none;
     }
@@ -45,15 +32,62 @@
     display: flex;
     align-items: center;
     gap: 36px;
+
+    .main {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+
+      @include isDesktop {
+        &.active {
+          display: none;
+        }
+      }
+      @include tablet {
+        &.active {
+          display: none;
+        }
+      }
+      @include mobile {
+        &.active {
+          display: none;
+        }
+      }
+    }
   }
   &Menu {
     color: $colorWhite;
     display: none;
+    @include isDesktop {
+      display: flex;
+    }
     @include tablet {
       display: flex;
     }
     @include mobile {
       display: flex;
+    }
+  }
+
+  @include isDesktop {
+    .menuDropdown {
+      display: none;
+    }
+  }
+  @include tablet {
+    .menuDropdown {
+      display: none;
+    }
+  }
+  @include mobile {
+    .menuDropdown {
+      display: none;
+    }
+  }
+
+  @include desktop {
+    .menuDropdownMobile {
+      display: none;
     }
   }
 }
