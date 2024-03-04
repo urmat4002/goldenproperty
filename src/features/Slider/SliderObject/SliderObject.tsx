@@ -1,49 +1,18 @@
-import { Section } from "@/features";
-
 import { SwiperSlide, Swiper } from "swiper/react";
-import style from "./SliderObject.module.scss";
-
-import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
-import { Button, Typography } from "@/shared/ui";
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Section } from "@/features";
+import { Button, Typography } from "@/shared/ui";
 import { ModalContext } from "@/app/providers/Context";
-
-interface Project {
-  name: string;
-  is_furnished: boolean;
-  completion: string;
-}
-interface SliderObjectProps {
-  images?: [];
-  price_usd?: number;
-  area?: number;
-  city?: string;
-  estate_type?: string;
-  is_secondary?: boolean;
-  completion?: string;
-  is_furnished?: boolean;
-  description?: string;
-  project: Project;
-}
+import style from "./SliderObject.module.scss";
+import { useGetEstateById } from "@/shared/api/hooks";
 
 export const SliderObject: FC = () => {
   const { downloadCatalog } = useContext(ModalContext);
-  const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  const [estate, setEstate] = useState<SliderObjectProps>(
-    {} as SliderObjectProps
-  );
-
-  useEffect(() => {
-    fetch(`http://209.38.228.54/api/v1/estate/1/`)
-      .then((res) => res.json())
-      .then((json) => {
-        setEstate(json.estate);
-        setIsLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+  const { data, isLoading } = useGetEstateById(id);
+  const estate = data?.estate;
 
   return (
     <Section title={isLoading ? "" : estate?.project.name} container>
