@@ -8,6 +8,7 @@ import { useGetStaticHeader } from "@/shared/api/hooks";
 
 export const Navbar = () => {
   const dispatch = useAppDispatch();
+  
   const { data } = useGetStaticHeader();
   return (
     <div className={styles.navbar}>
@@ -23,7 +24,7 @@ export const Navbar = () => {
               color="white"
               className={styles.navbarMenuSelect}
             >
-              {data?.header.city}
+              City
             </Typography>
           </button>
         </li>

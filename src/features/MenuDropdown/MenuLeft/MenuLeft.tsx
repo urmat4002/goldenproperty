@@ -1,17 +1,18 @@
 import { Button, Typography } from "@/shared/ui";
 import styles from "./MenuLeft.module.scss";
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, memo, useState } from "react";
 import { ICity } from "../types/MenuDropDown.types";
 
 interface MenuLeftProps {
   data: ICity[];
   // eslint-disable-next-line no-unused-vars
   onClick: (id: number) => void;
-  id: number;
 }
 
-export const MenuLeft: FC<MenuLeftProps> = ({ data, onClick, id }) => {
+export const MenuLeft: FC<MenuLeftProps> = memo(({ data, onClick }) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
   return (
     <div className={styles.menuLeft}>
       {data.map((item) => {
@@ -22,13 +23,15 @@ export const MenuLeft: FC<MenuLeftProps> = ({ data, onClick, id }) => {
             key={item.id}
             onClick={() => {
               onClick(item.id);
+              setIsActive(true)
             }}
           >
             <Typography
               variant="button"
+              color={isActive ? 'gold' : 'white'}
               className={clsx(
                 styles.menuBannerTypography,
-                id ? styles.active : styles.default
+                isActive ? styles.active : styles.default
               )}
             >
               {item.city__name}
@@ -38,4 +41,4 @@ export const MenuLeft: FC<MenuLeftProps> = ({ data, onClick, id }) => {
       })}
     </div>
   );
-};
+});
