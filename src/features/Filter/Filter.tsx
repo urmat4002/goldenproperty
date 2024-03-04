@@ -63,35 +63,37 @@ export const Filter = () => {
   }, [searchParams]);
 
   return (
-    <div className={styles.filter}>
-      <Select
-        value={filterValues.city}
-        options={cityOptions}
-        placeholder={"City"}
-        checkbox={true}
-        onChange={(option) => {
-          setFilterValues({ ...filterValues, city: option });
-        }}
-      />
-      <Select
-        value={filterValues.type}
-        options={typeOptions}
-        placeholder={"Type"}
-        onChange={(option) => {
-          setFilterValues({ ...filterValues, type: option });
-        }}
-      />
-      <Select
-        value={filterValues.order}
-        options={orderOptions}
-        placeholder={"Popular"}
-        onChange={(option) => {
-          setFilterValues({ ...filterValues, order: option });
-        }}
-      />
-      <Button type="primary" onClick={handleFilter}>
-        <Typography variant="button">Show results</Typography>
-      </Button>
+    <div className="filterContainer">
+      <div className={styles.filter}>
+        <Select
+          value={filterValues.city}
+          options={cityOptions}
+          placeholder={"City"}
+          checkbox={true}
+          onChange={(option) => {
+            setFilterValues({ ...filterValues, city: option });
+          }}
+        />
+        <Select
+          value={filterValues.type}
+          options={typeOptions}
+          placeholder={"Type"}
+          onChange={(option) => {
+            setFilterValues({ ...filterValues, type: option });
+          }}
+        />
+        <Select
+          value={filterValues.order}
+          options={orderOptions}
+          placeholder={"Popular"}
+          onChange={(option) => {
+            setFilterValues({ ...filterValues, order: option });
+          }}
+        />
+        <Button type="primary" onClick={handleFilter}>
+          <Typography variant="button">Show results</Typography>
+        </Button>
+      </div>
     </div>
   );
 };
