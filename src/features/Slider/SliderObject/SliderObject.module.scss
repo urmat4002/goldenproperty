@@ -2,57 +2,52 @@
 
 .description {
   display: flex;
-
-  padding: 20px 0;
   justify-content: space-between;
-  &Item {
-    padding: 10px 0;
-  }
+  padding-block: 20px;
+}
+
+.descriptionItem {
+  padding-block: 10px;
 }
 
 .text {
-  margin: 20px 0;
-}
-
-.price {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  &Btns {
-    display: flex;
-    &Item {
-      margin-left: 10px;
-    }
-  }
+  padding-block: 20px;
 }
 
 .slider {
   background-color: #60543d;
-
-  &Slide {
-    &Img {
-      height: 555px;
-    }
-    img {
-      height: 100%;
-      width: 100%;
-    }
-  }
 }
 
-.slider2 {
-  margin-top: 10px;
-  &Slide2 {
-    &Img {
-      height: 200px;
-      width: 370px;
+.sliderImg {
+  height: 555px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    img {
-      height: 100%;
-      width: 100%;
-    }
-  }
+.carousel {
+  margin-top: 10px;
+}
+
+.carouselSlide {
+  width: auto;
+}
+
+.carouselImg {
+  height: 200px;
+  width: 370px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.priceRow {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
 }
