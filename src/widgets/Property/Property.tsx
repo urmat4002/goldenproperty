@@ -6,17 +6,22 @@ import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
 import { useInnerWidthExceedsDefault } from "@/shared/helper/ScreenWidthTracker";
 import style from "./Property.module.scss";
 import { Link } from "react-router-dom";
+import { useGetCityById, useGetStaticData } from "@/shared/api/hooks";
 
 export const Property: FC = () => {
   const state = useInnerWidthExceedsDefault({ defaultThreshold: 992 });
   const [value, setValue] = useState<number>(0);
-
+  const { data } = useGetCityById(3)
+  const { data: staticData } = useGetStaticData()
+  console.log(staticData);
+  
+  
   useEffect(() => {
     setValue(state ? 520 : 320);
   }, [state, value]);
 
   return (
-    <Section title="Property" customClassName={style.property} container>
+    <Section title='Property' customClassName={style.property} container>
       <div className={style.propertyBody}>
         <div className={style.propertyContent}>
           <div className={style.textBlock}>
@@ -26,7 +31,7 @@ export const Property: FC = () => {
               weight="bold"
               className={style.textBlockTitle}
             >
-              Dubai
+              {data?.city.city_name}
             </Typography>
             <div className={style.textBlockDescription}>
               <TrimLimit
@@ -49,14 +54,14 @@ export const Property: FC = () => {
           {/* FIX_ME Dubai may end up having different id than 3, should consider that */}
           <Link to="/estates/?city=3">
             <Button type="primary">
-              <Typography variant="button">See real estates</Typography>
+              <Typography variant="button">{staticData?.static_data.body.see_real_estates}</Typography>
               <ArrowRight />
             </Button>
           </Link>
         </div>
         <div className={style.propertyImage}>
           <img
-            src="https://cdnn21.img.ria.ru/images/152275/56/1522755601_0:0:1286:724_1920x0_80_0_0_5c15a33dbdf9a2a9e89e6f70b0b57166.jpg"
+            src={data?.city.city_img}
             alt="Картина"
           />
         </div>
