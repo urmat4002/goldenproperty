@@ -10,7 +10,7 @@ export const Room = () => {
 
   return (
     <>
-      <SliderObject />
+      <SliderObject isMobile={isMobile} />
       <Description />
       <Features />
       {!isMobile && <SlideCard />}
