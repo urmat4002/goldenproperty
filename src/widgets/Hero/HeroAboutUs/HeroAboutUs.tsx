@@ -16,23 +16,20 @@ export const HeroAboutUs: FC = () => {
     >
       <div className={styles.HeroAboutUsWrapper}>
         <HeroSubsection
-          key={data?.about_company.company_name}
           imageUrl={data?.about_company.company_img}
-          title={staticData?.static_data.body.mission}
+          title={capitalize(staticData?.static_data.body.mission)}
           content={data?.about_company.mission}
           styles={styles}
         />
         <HeroSubsection
-          key={data?.about_company.company_name}
           imageUrl={data?.about_company.company_img}
-          title={staticData?.static_data.body.history}
+          title={capitalize(staticData?.static_data.body.history)}
           content={data?.about_company.history}
           styles={styles}
         />
         <HeroSubsection
-          key={data?.about_company.company_name}
           imageUrl={data?.about_company.company_img}
-          title={staticData?.static_data.body.company}
+          title={capitalize(staticData?.static_data.body.company)}
           content={data?.about_company.company}
           styles={styles}
         />
