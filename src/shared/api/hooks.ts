@@ -136,7 +136,7 @@ export const useGetCities = () => {
 
 export const useGetCityById = (id: number | string) => {
   const { data } = useQuery({
-    queryKey: ["city"],
+    queryKey: ["city", { id }],
     queryFn: async () => {
       const response = await axiosAPI<CityIdResponse>(`/cities/${id}/`);
       return response.data;
