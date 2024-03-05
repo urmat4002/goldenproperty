@@ -11,7 +11,7 @@ import { MenuLeft } from "../MenuDropdown/MenuLeft";
 import { ChevronDown } from "lucide-react";
 import { ModalContext } from "@/app/providers/Context";
 
-export const Navbar = ({ isMobile }: any) => {
+export const Navbar = ({ isMobile }: { isMobile: boolean }) => {
   const { sellEstate } = useContext(ModalContext);
   const dispatch = useAppDispatch();
   const [openCity, setOpenCity] = useState(false);

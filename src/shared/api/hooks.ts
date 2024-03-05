@@ -74,7 +74,7 @@ export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
 
 export const useGetEstateById = (id?: number | string) => {
   const { data, isLoading } = useQuery({
-    queryKey: ["estate"],
+    queryKey: ["estate", { id }],
     queryFn: async () => {
       const response = await axiosAPI<EstateIdResponse>(`/estate/${id}/`);
       return response.data;
@@ -85,7 +85,7 @@ export const useGetEstateById = (id?: number | string) => {
 
 export const useGetSimilarEstates = (id?: number | string) => {
   const { data, isSuccess } = useQuery({
-    queryKey: ["similar_estates"],
+    queryKey: ["similar_estates", { id }],
     queryFn: async () => {
       const response = await axiosAPI<EstatesResponse>(
         `/estate/${id}/similar/`
