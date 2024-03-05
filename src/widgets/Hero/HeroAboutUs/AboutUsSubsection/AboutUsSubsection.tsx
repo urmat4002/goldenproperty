@@ -3,7 +3,7 @@ import { Typography } from "@/shared/ui";
 
 interface Props {
   imageUrl: string | undefined;
-  title: string;
+  title?: string;
   content: string | undefined;
   styles: CSSModuleClasses;
 }

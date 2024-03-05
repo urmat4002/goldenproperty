@@ -18,21 +18,21 @@ export const HeroAboutUs: FC = () => {
         <HeroSubsection
           key={data?.about_company.company_name}
           imageUrl={data?.about_company.company_img}
-          title={"Mission"}
+          title={staticData?.static_data.body.mission}
           content={data?.about_company.mission}
           styles={styles}
         />
         <HeroSubsection
           key={data?.about_company.company_name}
           imageUrl={data?.about_company.company_img}
-          title={"History"}
+          title={staticData?.static_data.body.history}
           content={data?.about_company.history}
           styles={styles}
         />
         <HeroSubsection
           key={data?.about_company.company_name}
           imageUrl={data?.about_company.company_img}
-          title={"Company"}
+          title={staticData?.static_data.body.company}
           content={data?.about_company.company}
           styles={styles}
         />
