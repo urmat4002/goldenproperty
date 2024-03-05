@@ -5,13 +5,14 @@ import data from "./data/db.json";
 import { Typography } from "@/shared/ui";
 import { NavLink } from "react-router-dom";
 import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
-import { setOpenModal } from "@/shared/slices/Modal/ModalSlice";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ICity } from "./types/Navbar.types";
 import { MenuLeft } from "../MenuDropdown/MenuLeft";
 import { ChevronDown } from "lucide-react";
+import { ModalContext } from "@/app/providers/Context";
 
 export const Navbar = ({ isMobile }: any) => {
+  const { sellEstate } = useContext(ModalContext);
   const dispatch = useAppDispatch();
   const [openCity, setOpenCity] = useState(false);
   const [cityId, setCityId] = useState<number>(0);
@@ -67,12 +68,7 @@ export const Navbar = ({ isMobile }: any) => {
           );
         })}
       </ul>
-      <button
-        onClick={() => {
-          dispatch(setOpenModal());
-        }}
-        className={styles.navbarMenuItem}
-      >
+      <button onClick={sellEstate} className={styles.navbarMenuItem}>
         <Typography variant="body" weight="medium" color="white">
           Place ann add
         </Typography>
