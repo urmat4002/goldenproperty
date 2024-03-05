@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import styles from "./TrimLimit.module.scss";
 
 interface TrimmedText {
-  text: string;
+  text?: string;
   limit: number;
   more: string;
 }
 
 export const TrimLimit: FC<TrimmedText> = ({ text, limit, more }) => {
+  if (!text) return null;
   const trimmedText = text.length > limit ? `${text.slice(0, limit)}...` : text;
 
   return (
