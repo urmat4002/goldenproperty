@@ -34,7 +34,7 @@ export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
   const search = searchParams.get("search");
   const estate_type_id = searchParams.get("type");
   const cityParams = searchParams.get("city");
-  const city_id = cityParams && encodeURIComponent(cityParams);
+  const city_id = cityParams; //&& encodeURIComponent(cityParams);
   const ordering = composeOrdering(searchParams);
   const { data, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: [
