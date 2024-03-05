@@ -7,22 +7,24 @@ import { ModalContext } from "./Context";
 import styles from "./style/Layout.module.scss";
 
 export const Layout: FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isCatalog, setIsCatalog] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState("");
   const [isForm, setIsForm] = useState(true);
 
   const showFormMessage = () => {
-    setIsModalOpen(true);
+    setIsModalOpen("open");
     setIsForm(false);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen("");
     setIsForm(true);
   };
   const downloadCatalog = () => {
-    setIsModalOpen(true);
-    setIsCatalog(true);
+    setIsModalOpen("download_catalog");
+    // setIsCatalog(true);
+  };
+  const sellEstate = () => {
+    setIsModalOpen("sell");
   };
 
   return (
@@ -32,7 +34,7 @@ export const Layout: FC = () => {
           closeModal,
           downloadCatalog,
           showFormMessage,
-          isCatalog,
+          sellEstate,
           isModalOpen,
           isForm,
         }}

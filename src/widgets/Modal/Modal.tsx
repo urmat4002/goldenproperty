@@ -4,15 +4,14 @@ import modal from "./Modal.module.scss";
 import { FormMessage } from "@/features/Form/FormMessage/FormMessage";
 import { FC, useContext } from "react";
 import { ModalContext } from "@/app/providers/Context";
-import { useGetStaticForms } from "@/shared/api/hooks";
+import { useGetStaticData } from "@/shared/api/hooks";
 
 export const Modal: FC = () => {
-  const { isCatalog } = useContext(ModalContext);
   const { isModalOpen } = useContext(ModalContext);
   const { closeModal } = useContext(ModalContext);
   const { isForm } = useContext(ModalContext);
 
-  const { data } = useGetStaticForms();
+  const { data } = useGetStaticData();
 
   return (
     <div
@@ -23,8 +22,12 @@ export const Modal: FC = () => {
         {isForm ? (
           <Form
             closeBtn
-            catalog={isCatalog}
-            title={data?.forms?.download_catalog}
+            catalog={isModalOpen}
+            title={
+              isModalOpen === "download_catalog"
+                ? data?.static_data.forms?.download_catalog
+                : data?.static_data.forms.sell_with_us
+            }
             subTitle="Can you answer the following questions?"
           />
         ) : (

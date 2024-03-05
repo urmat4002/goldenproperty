@@ -8,6 +8,7 @@ export const FormRoom = () => {
       <Form
         title={data?.forms.submit_application}
         subTitle={data?.forms.fill_form}
+        catalog="buy"
       />
     </Section>
   );
