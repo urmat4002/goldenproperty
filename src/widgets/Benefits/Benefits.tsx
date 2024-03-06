@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import { capitalize } from "@/shared/helper/utils";
 import { Сonfidentiality } from "../../shared/ui/Icons/Сonfidentiality"
 import { WideSelection } from "../../shared/ui/Icons/WideSelection"
-import { Feedback } from "../../shared/ui/Icons/feedback"
+import { Feedback } from "../../shared/ui/Icons/Feedback"
 import { ExclusiveOffers } from "../../shared/ui/Icons/ExclusiveOffers"
 
 export const Benefits = () => {
