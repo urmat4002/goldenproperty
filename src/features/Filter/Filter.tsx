@@ -45,6 +45,7 @@ export const Filter = () => {
   const [filterValues, setFilterValues] = useState<FilterValues>(
     getinitialFilterParams()
   );
+  const { data } = useGetStaticData();
 
   const handleFilter = () => {
     const newSearchParams = new window.URLSearchParams();
@@ -91,7 +92,9 @@ export const Filter = () => {
           }}
         />
         <Button type="primary" onClick={handleFilter}>
-          <Typography variant="button">Show results</Typography>
+          <Typography variant="button">
+            {data?.static_data.body.show_result}
+          </Typography>
         </Button>
       </div>
     </div>
