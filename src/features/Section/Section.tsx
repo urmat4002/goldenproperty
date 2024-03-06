@@ -30,6 +30,7 @@ export const Section: React.FC<SectionProps> = ({
             variant="h2"
             weight="bold"
             color={color === "gold" ? "gold" : "white"}
+            capitalize
           >
             {title}
           </Typography>

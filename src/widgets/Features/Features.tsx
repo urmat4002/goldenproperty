@@ -1,66 +1,28 @@
+import { useParams } from "react-router-dom";
 import { Feather } from "lucide-react";
-import style from "./Features.module.scss";
 import { Section } from "@/features";
+import { useGetEstateById, useGetStaticData } from "@/shared/api/hooks";
+import { Typography } from "@/shared/ui";
+import { capitalize } from "@/shared/helper/utils";
+import style from "./Features.module.scss";
 
 export const Features = () => {
-  const ftrsObject = [
-    {
-      img: <Feather />,
-      title: "Treadmills",
-    },
-    {
-      img: <Feather />,
-      title: "Balcony",
-    },
-    {
-      img: <Feather />,
-      title: "Green spaces",
-    },
-    {
-      img: <Feather />,
-      title: "Children playground",
-    },
-    {
-      img: <Feather />,
-      title: "Tennis court",
-    },
-    {
-      img: <Feather />,
-      title: "Fitness center and gym",
-    },
-    {
-      img: <Feather />,
-      title: "Parking space",
-    },
-    {
-      img: <Feather />,
-      title: "Boutiques and shops",
-    },
-    {
-      img: <Feather />,
-      title: "Pool",
-    },
-    {
-      img: <Feather />,
-      title: "BBQ area",
-    },
-    {
-      img: <Feather />,
-      title: "Security ",
-    },
-    {
-      img: <Feather />,
-      title: "Sports grounds",
-    },
-  ];
+  const { id } = useParams();
+  const { data } = useGetEstateById(id);
+  const { data: staticData } = useGetStaticData();
+
   return (
-    <Section title="Features & amenities">
+    <Section
+      title={capitalize(staticData?.static_data.body.features_and_amenities)}
+    >
       <div className={style.features}>
         <div className={style.featuresContainer}>
-          {ftrsObject.map((features) => (
-            <div className={style.featuresItem} key={features.title}>
-              {features.img}
-              <p>{features.title}</p>
+          {data?.estate.project.facilities.map((features) => (
+            <div className={style.featuresItem} key={features.type}>
+              {features.icon ? <img src={features.icon} alt="" /> : <Feather />}
+              <Typography variant="body" capitalize>
+                {features.type}
+              </Typography>
             </div>
           ))}
         </div>

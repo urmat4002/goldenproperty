@@ -34,7 +34,7 @@ export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
   const search = searchParams.get("search");
   const estate_type_id = searchParams.get("type");
   const cityParams = searchParams.get("city");
-  const city_id = cityParams && encodeURIComponent(cityParams);
+  const city_id = cityParams; //&& encodeURIComponent(cityParams);
   const ordering = composeOrdering(searchParams);
   const { data, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: [
@@ -74,7 +74,7 @@ export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
 
 export const useGetEstateById = (id?: number | string) => {
   const { data, isLoading } = useQuery({
-    queryKey: ["estate"],
+    queryKey: ["estate", { id }],
     queryFn: async () => {
       const response = await axiosAPI<EstateIdResponse>(`/estate/${id}/`);
       return response.data;
@@ -85,7 +85,7 @@ export const useGetEstateById = (id?: number | string) => {
 
 export const useGetSimilarEstates = (id?: number | string) => {
   const { data, isSuccess } = useQuery({
-    queryKey: ["similar_estates"],
+    queryKey: ["similar_estates", { id }],
     queryFn: async () => {
       const response = await axiosAPI<EstatesResponse>(
         `/estate/${id}/similar/`
@@ -136,7 +136,7 @@ export const useGetCities = () => {
 
 export const useGetCityById = (id: number | string) => {
   const { data } = useQuery({
-    queryKey: ["city"],
+    queryKey: ["city", { id }],
     queryFn: async () => {
       const response = await axiosAPI<CityIdResponse>(`/cities/${id}/`);
       return response.data;

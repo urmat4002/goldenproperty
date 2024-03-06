@@ -1,19 +1,16 @@
 import { LanguageSelector, Navbar, Search } from "@/features";
+import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { Button, Logo } from "@/shared/ui";
 import { MenuDropdown } from "..";
+import { useAppSelector } from "@/shared/hooks/hooks";
 import { MenuIcon, X } from "lucide-react";
-import styles from "./Header.module.scss";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
-import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
+import { useState } from "react";
+import { MenuDropdownMobile } from "@/features/MenuDropdownMobile";
 
 export const Header = () => {
-  const dispatch = useAppDispatch();
+  const [isOpenMobileMD, setIsOpenMobileMD] = useState(false);
   const isOpen = useAppSelector((state) => state.menuSlice.isOpen);
-
-  const toggleOpen = () => {
-    isOpen ? dispatch(setClose()) : dispatch(setOpen());
-  };
 
   return (
     <header className={styles.header}>
@@ -28,21 +25,25 @@ export const Header = () => {
         </div>
         <div className={styles.headerActions}>
           <div
-            className={`${styles.headerInput} ${isOpen ? styles.active : ""}`}
+            className={`${styles.main} ${isOpenMobileMD ? styles.active : ""}`}
           >
             <Search />
             <LanguageSelector />
           </div>
+
           <Button
             type="icon"
             customClasses={styles.headerMenu}
-            onClick={() => toggleOpen()}
+            onClick={() => setIsOpenMobileMD(!isOpenMobileMD)}
           >
-            {isOpen ? <X /> : <MenuIcon />}
+            {isOpenMobileMD ? <X /> : <MenuIcon />}
           </Button>
         </div>
       </div>
-      {isOpen && <MenuDropdown />}
+      <div className={styles.menuDropdown}>{isOpen && <MenuDropdown />}</div>
+      <div className={styles.menuDropdownMobile}>
+        {isOpenMobileMD && <MenuDropdownMobile />}
+      </div>
     </header>
   );
 };

@@ -11,11 +11,11 @@ export const SlideCard = () => {
 
   return (
     <Section title="Similar properties" container>
-      <Swiper spaceBetween={20} slidesPerView={2.5}>
+      <Swiper spaceBetween={20} slidesPerView="auto">
         <div className={style.Sliders}>
           {data &&
             data.estates.map((item) => (
-              <SwiperSlide key={item.id} className={style.SlideCard}>
+              <SwiperSlide key={item.id} className={style.slideCard}>
                 <PropertyCard
                   id={item.id}
                   images={

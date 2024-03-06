@@ -1,15 +1,19 @@
 import { FC, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button, Typography } from "@/shared/ui";
 import { Section } from "@/features";
-import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
 import { useInnerWidthExceedsDefault } from "@/shared/helper/ScreenWidthTracker";
+import { useGetCityById, useGetStaticData } from "@/shared/api/hooks";
 import style from "./Property.module.scss";
-import { Link } from "react-router-dom";
 
 export const Property: FC = () => {
   const state = useInnerWidthExceedsDefault({ defaultThreshold: 992 });
   const [value, setValue] = useState<number>(0);
+  const { data } = useGetCityById(3);
+  const { data: staticData } = useGetStaticData();
+
+  console.log(data?.city.city_description);
 
   useEffect(() => {
     setValue(state ? 520 : 320);
@@ -26,39 +30,26 @@ export const Property: FC = () => {
               weight="bold"
               className={style.textBlockTitle}
             >
-              Dubai
+              {data?.city.city_name}
             </Typography>
             <div className={style.textBlockDescription}>
-              <TrimLimit
-                limit={value}
-                more="estates/"
-                text="Living in Dubai has several advantages: Economic Growth: The
-                city provides ample career opportunities with a vibrant economy
-                and many business opportunities.International character: Dubai
-                is a cultural bridge between East and West, providing unique
-                diversity and intercultural experiences. Infrastructure: The
-                city is known for its modern infrastructure, including tall
-                buildings, innovative transport systems and modern entertainment
-                complexes. Safety: Dubai is considered one of the safest places
-                to live, which provides peace of mind to residents and permanent
-                residents. Tax benefits: The absence of income tax and low tax
-                rates are attractive"
-              />
+              <Typography variant="body" weight="regular" color="white">
+                {data?.city.city_description}
+              </Typography>
             </div>
           </div>
           {/* FIX_ME Dubai may end up having different id than 3, should consider that */}
           <Link to="/estates/?city=3">
             <Button type="primary">
-              <Typography variant="button">See real estates</Typography>
+              <Typography variant="button" capitalize>
+                {staticData?.static_data.body.see_real_estates}
+              </Typography>
               <ArrowRight />
             </Button>
           </Link>
         </div>
         <div className={style.propertyImage}>
-          <img
-            src="https://cdnn21.img.ria.ru/images/152275/56/1522755601_0:0:1286:724_1920x0_80_0_0_5c15a33dbdf9a2a9e89e6f70b0b57166.jpg"
-            alt="Картина"
-          />
+          <img src={data?.city.city_img} alt="Картина" />
         </div>
       </div>
     </Section>

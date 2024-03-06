@@ -4,12 +4,13 @@ import { Section } from "@/features";
 import { Typography } from "@/shared/ui";
 import style from "./Benefits.module.scss";
 import { ReactNode } from "react";
+import { capitalize } from "@/shared/helper/utils";
 
 export const Benefits = () => {
   const { data } = useGetStaticData();
 
   return (
-    <Section title="Benefits of Golden House" container>
+    <Section title={capitalize(data?.static_data.body.benefits)} container>
       <div className={style.benefits}>
         <BenefitsCard
           icon={<Columns3 />}
