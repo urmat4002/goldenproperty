@@ -6,12 +6,11 @@ import {useParams} from "react-router-dom"
 export const Description = () => {
   const {id} = useParams()
   const {data} = useGetStaticData();
-  const {data:data1} = useGetEstateById()
-    console.log(data1)
+  const {data:dataDescription} = useGetEstateById()
   return (
     <Section title = {data?.static_data.body.description} container>
       <div className={styles.description}>
-          {data1?.estate.description}
+          {dataDescription?.estate.description}
       </div>
     </Section>
   );
