@@ -7,6 +7,7 @@ import { useGetCities, useGetStaticData } from "@/shared/api/hooks";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import style from "./SliderCity.module.scss";
+import { capitalize } from "@/shared/helper/utils";
 
 export const SliderCity: FC = () => {
   const [swiperWidth, setSwiperWidth] = useState();
@@ -46,7 +47,7 @@ export const SliderCity: FC = () => {
           style={{ width: swiperWidth }}
         >
           <div className={style.sliderInitialBlockText}>
-            {staticData?.static_data.body.we_have}
+            {capitalize(staticData?.static_data.body.we_have)}
           </div>
         </div>
 

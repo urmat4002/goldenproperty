@@ -7,6 +7,7 @@ import {
   useGetStaticData,
 } from "@/shared/api/hooks";
 import styles from "./Filter.module.scss";
+import { capitalize } from "@/shared/helper/utils";
 
 interface FilterValues {
   city: number[];
@@ -93,7 +94,7 @@ export const Filter = () => {
         />
         <Button type="primary" onClick={handleFilter}>
           <Typography variant="button">
-            {data?.static_data.body.show_result}
+            {capitalize(data?.static_data.body.show_result)}
           </Typography>
         </Button>
       </div>

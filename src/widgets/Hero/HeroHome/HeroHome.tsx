@@ -4,6 +4,7 @@ import { Button, Typography } from "@shared/ui";
 import { Filter } from "@/features/Filter";
 import styles from "./HeroHome.module.scss";
 import { useGetStaticData } from "@/shared/api/hooks";
+import { capitalize } from "@/shared/helper/utils";
 
 export const HeroHome = () => {
   const { data } = useGetStaticData()
@@ -28,7 +29,7 @@ export const HeroHome = () => {
             </div>
             <Link to="/estates">
               <Button type="primary">
-                <Typography variant="button">{data?.static_data.body.see_real_estates}</Typography>
+                <Typography variant="button">{capitalize(data?.static_data.body.see_real_estates)}</Typography>
               </Button>
             </Link>
           </div>
