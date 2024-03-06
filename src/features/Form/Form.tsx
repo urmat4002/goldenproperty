@@ -28,7 +28,8 @@ export const Form: FC<FormProps> = ({
   closeBtn,
 }) => {
   const { data } = useGetStaticData();
-  const { closeModal } = useContext(ModalContext);
+  const { closeModal, showFormMessageSuccess, showFormMessageError } =
+    useContext(ModalContext);
   const [calendarActive, setCalendarActive] = useState(false);
   const [date, setDate] = useState("");
 
@@ -39,18 +40,19 @@ export const Form: FC<FormProps> = ({
   const [phone, setPhone] = useState("");
 
   const [roleValue, setRolValue] = useState([1]);
+  console.log(roleValue);
   const roleOptions = [
     {
       id: 1,
-      label: "I am an agent",
+      label: data?.static_data.forms.agent,
     },
     {
       id: 2,
-      label: "I am an potintial Buyer",
+      label: data?.static_data.forms.buyer,
     },
     {
       id: 3,
-      label: "A potential Buyer I just exploring",
+      label: data?.static_data.forms.exploring,
     },
   ];
 
@@ -101,7 +103,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-05",
+        at_date: "2024-03-07",
         appeal_type: "buy",
         estate_id: "1",
       };
@@ -113,7 +115,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-06",
+        at_date: "2024-03-07",
         appeal_type: catalog,
       };
     }
@@ -124,7 +126,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-06",
+        at_date: "2024-03-07",
         appeal_type: catalog,
       };
     }
@@ -145,12 +147,14 @@ export const Form: FC<FormProps> = ({
         sendData
       );
       console.log(data);
+      showFormMessageSuccess();
     } catch {
       console.log("Error");
+      showFormMessageError();
     } finally {
       //  setIsLoading(false);
     }
-    //showFormMessage();
+
     // closeModal();
   };
 

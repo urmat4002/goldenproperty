@@ -5,7 +5,8 @@ interface ContextProps {
   isForm?: boolean;
   closeModal?: () => void;
   downloadCatalog?: () => void;
-  showFormMessage?: () => void;
+  showFormMessageSuccess?: () => void;
+  showFormMessageError?: () => void;
   sellEstate?: () => void;
 }
 

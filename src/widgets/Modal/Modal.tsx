@@ -9,7 +9,7 @@ import { useGetStaticData } from "@/shared/api/hooks";
 export const Modal: FC = () => {
   const { isModalOpen } = useContext(ModalContext);
   const { closeModal } = useContext(ModalContext);
-  const { isForm } = useContext(ModalContext);
+  // const { isForm } = useContext(ModalContext);
 
   const { data } = useGetStaticData();
 
@@ -19,19 +19,28 @@ export const Modal: FC = () => {
       className={clsx(modal.modal, isModalOpen && modal.active)}
     >
       <div onClick={(e) => e.stopPropagation()}>
-        {isForm ? (
+        {isModalOpen === "download_catalog" && (
           <Form
             closeBtn
             catalog={isModalOpen}
-            title={
-              isModalOpen === "download_catalog"
-                ? data?.static_data.forms?.download_catalog
-                : data?.static_data.forms.sell_with_us
-            }
+            title={data?.static_data.forms?.download_catalog}
             subTitle="Can you answer the following questions?"
           />
-        ) : (
-          <FormMessage />
+        )}
+        {isModalOpen === "sell" && (
+          <Form
+            closeBtn
+            catalog={isModalOpen}
+            title={data?.static_data.forms.sell_with_us}
+            subTitle="Can you answer the following questions?"
+          />
+        )}
+        {isModalOpen === "form_message_success" && <FormMessage />}
+        {isModalOpen === "form_message_error" && (
+          <FormMessage
+            title="The application has not been accepted!"
+            subTitle="Try it again"
+          />
         )}
       </div>
     </div>
