@@ -1,7 +1,10 @@
 import { Typography } from "@/shared/ui/Typography/Typography";
 import styles from "./NotFound.module.scss";
+import {useGetStaticData} from "@shared/api/hooks";
 
 export const NotFound = () => {
+  const { data } = useGetStaticData();
+
   return (
     <div className={styles.error}>
       <Typography
@@ -10,15 +13,15 @@ export const NotFound = () => {
         color="white"
         className={styles.errorTitle}
       >
-        404
+          404
       </Typography>
       <Typography
         variant="h3"
         weight="bold"
         color="white"
         className={styles.errorTitle}
-      >
-        Not found
+        >
+        {data?.static_data.error.not_found}
       </Typography>
 
       <Typography
@@ -27,8 +30,7 @@ export const NotFound = () => {
         color="white"
         className={styles.errorText}
       >
-        Sorry, the page was not found, it may have been moved, deleted, or
-        temporarily unavailable; check that the address you entered is correct.
+        {data?.static_data.error.error_description}
       </Typography>
     </div>
   );
