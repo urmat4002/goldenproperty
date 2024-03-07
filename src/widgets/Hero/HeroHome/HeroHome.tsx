@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import { Section } from "@/features";
-import styles from "./HeroHome.module.scss";
 import { Button, Typography } from "@shared/ui";
 import { Filter } from "@/features/Filter";
-import { Link } from "react-router-dom";
+import styles from "./HeroHome.module.scss";
 
 export const HeroHome = () => {
   return (

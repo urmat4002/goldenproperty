@@ -1,38 +1,45 @@
 @import "@var";
 @import "@classes";
 
-.property {
-  &Body {
-    display: flex;
-    gap: 20px;
-  }
-  &Content {
-    flex: 1 1 50%;
-  }
-  &Image {
-    flex: 1 1 50%;
-    position: relative;
-    padding: 0 0 30% 0;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 5px;
-    }
-  }
+.body {
+  // height: 440px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 440px);
+  gap: 20px;
 }
-.textBlock {
-  &Title {
-    margin-bottom: 10px;
-  }
-  &Description {
-    margin-bottom: 25px;
-    height: 100%;
-    max-height: 365px;
-    overflow: hidden;
-  }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  height: 100%;
+}
+
+.description {
+  position: relative;
+  flex-shrink: 1;
+  overflow-y: hidden;
+}
+
+.descriptionShade {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  // background-image: linear-gradient(to);
+  border: 1px solid red;
+}
+
+.buttonWrapper {
+  margin-top: auto;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
 }

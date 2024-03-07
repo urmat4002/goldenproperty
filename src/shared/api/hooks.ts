@@ -1,6 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { axiosAPI } from "./axiosApi";
-import { useSearchParams } from "react-router-dom";
 import {
   CityIdResponse,
   CityResponse,
@@ -9,6 +8,7 @@ import {
   EstateTypesResponse,
   EstatesResponse,
   StaticDataResponse,
+  StaticFormsResponse,
   StaticHeaderResponse,
 } from "./types";
 import { capitalize } from "../helper/utils";
@@ -30,51 +30,62 @@ const composeOrdering = (searchParams: URLSearchParams) => {
   }
 };
 
-export const useGetEstates = (limit: number) => {
-  const [searchParams] = useSearchParams();
-  const { status, data, isFetching, fetchNextPage, hasNextPage, refetch } =
-    useInfiniteQuery({
-      queryKey: ["estates"],
-      queryFn: async ({ pageParam }) => {
-        const cityParams = searchParams.get("city");
-        const response = await axiosAPI<EstatesResponse>("/estate/", {
-          params: {
-            search: searchParams.get("search"),
-            estate_type_id: searchParams.get("type"),
-            city_id: cityParams && encodeURIComponent(cityParams),
-            ordering: composeOrdering(searchParams),
-            limit: limit > 0 ? limit : 0,
-            offset: pageParam,
-          },
-        });
-        return response.data;
+export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
+  const search = searchParams.get("search");
+  const estate_type_id = searchParams.get("type");
+  const cityParams = searchParams.get("city");
+  const city_id = cityParams; //&& encodeURIComponent(cityParams);
+  const ordering = composeOrdering(searchParams);
+  const { data, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
+    queryKey: [
+      "estates",
+      {
+        search,
+        estate_type_id,
+        city_id,
+        ordering,
+        limit,
       },
-      initialPageParam: 0,
-      getPreviousPageParam: () => undefined,
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.next) return undefined;
-        const searchParams = new URLSearchParams(lastPage.next);
-        const offset = parseInt(searchParams.get("offset") || "");
-        return offset ?? undefined;
-      },
-    });
-  return { data, status, fetchNextPage, refetch, isFetching, hasNextPage };
+    ],
+    queryFn: async ({ pageParam }) => {
+      const response = await axiosAPI<EstatesResponse>("/estate/", {
+        params: {
+          search,
+          estate_type_id,
+          city_id,
+          ordering,
+          limit: limit > 0 ? limit : 0,
+          offset: pageParam,
+        },
+      });
+      return response.data;
+    },
+    initialPageParam: 0,
+    getPreviousPageParam: () => undefined,
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.next) return undefined;
+      const searchParams = new URLSearchParams(lastPage.next);
+      const offset = parseInt(searchParams.get("offset") || "");
+      return offset ?? undefined;
+    },
+  });
+  return { data, fetchNextPage, isFetching, hasNextPage };
 };
 
-export const useGetEstateById = (id: number) => {
-  const { data, isSuccess } = useQuery({
-    queryKey: ["estate"],
+export const useGetEstateById = (id?: number | string) => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["estate", { id }],
     queryFn: async () => {
       const response = await axiosAPI<EstateIdResponse>(`/estate/${id}/`);
       return response.data;
     },
   });
-  return { data, isSuccess };
+  return { data, isLoading };
 };
 
-export const useGetSimilarEstates = (id: number) => {
+export const useGetSimilarEstates = (id?: number | string) => {
   const { data, isSuccess } = useQuery({
-    queryKey: ["similar_estates"],
+    queryKey: ["similar_estates", { id }],
     queryFn: async () => {
       const response = await axiosAPI<EstatesResponse>(
         `/estate/${id}/similar/`
@@ -123,15 +134,15 @@ export const useGetCities = () => {
   return { data, cityOptions, isSuccess };
 };
 
-export const useGetCityById = (id: number) => {
-  const { data, isSuccess } = useQuery({
-    queryKey: ["city"],
+export const useGetCityById = (id: number | string) => {
+  const { data } = useQuery({
+    queryKey: ["city", { id }],
     queryFn: async () => {
-      const response = await axiosAPI<CityIdResponse>(`/city/${id}/`);
+      const response = await axiosAPI<CityIdResponse>(`/cities/${id}/`);
       return response.data;
     },
   });
-  return { data, isSuccess };
+  return { data };
 };
 
 export const useGetCompany = () => {
@@ -171,6 +182,19 @@ export const useGetStaticHeader = () => {
     queryFn: async () => {
       const response = await axiosAPI<StaticHeaderResponse>(
         "/static_data/header/"
+      );
+      return response.data;
+    },
+  });
+  return { data, isSuccess };
+};
+
+export const useGetStaticForms = () => {
+  const { data, isSuccess } = useQuery({
+    queryKey: ["forms"],
+    queryFn: async () => {
+      const response = await axiosAPI<StaticFormsResponse>(
+        "/static_data/forms/"
       );
       return response.data;
     },

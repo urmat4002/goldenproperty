@@ -5,6 +5,7 @@ import { Routing } from "./app/providers/RouterProvider";
 import "@app/styles/index.scss";
 import { Provider } from "react-redux";
 import { store } from "./app/lib/store";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <QueryClientProvider client={client}>
         <Routing />
+        <ReactQueryDevtools buttonPosition="bottom-left" />
       </QueryClientProvider>
     </Provider>
   </BrowserRouter>

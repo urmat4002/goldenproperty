@@ -11,7 +11,19 @@
     gap: 16px;
     list-style: none;
     @include isDesktop {
-      gap: 12px;
+      flex-direction: column;
+      padding: 0;
+      align-items: flex-start;
+    }
+    @include tablet {
+      flex-direction: column;
+      padding: 0;
+      align-items: flex-start;
+    }
+    @include mobile {
+      flex-direction: column;
+      padding: 0;
+      align-items: flex-start;
     }
   }
   &MenuSelect {
@@ -22,14 +34,25 @@
   &MenuItem {
     padding: 18px 24px;
     cursor: pointer;
-    @include isDesktop {
-      padding: 12px 24px;
+
+    svg {
+      transition: 0.3s ease;
+      @include tablet {
+        width: 18px;
+      }
+      @include mobile {
+        width: 14px;
+      }
     }
+
     a {
       text-decoration: none;
       font-size: 20px;
       font-weight: 400;
       color: $colorWhite;
+      @include isDesktop {
+        font-size: 24px;
+      }
       @include tablet {
         font-size: 14px;
       }
@@ -37,8 +60,44 @@
         font-size: 14px;
       }
     }
+
+    @include isDesktop {
+      padding: 0;
+
+      p {
+        font-size: 24px;
+      }
+    }
+    @include tablet {
+      font-size: 14px;
+      padding: 0;
+    }
+    @include mobile {
+      font-size: 14px;
+      padding: 0;
+    }
     :hover {
       color: $colorPrimary;
     }
+
+    &.active svg {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  @include isDesktop {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  @include tablet {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  @include mobile {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
   }
 }

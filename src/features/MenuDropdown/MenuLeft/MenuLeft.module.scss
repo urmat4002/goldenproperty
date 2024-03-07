@@ -1,4 +1,5 @@
 @import "@var";
+@import "@mixin";
 
 .menuLeft {
   display: flex;
@@ -13,6 +14,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    @include isDesktop {
+      padding: 0;
+    }
+    @include tablet {
+      padding: 0;
+    }
+    @include mobile {
+      padding: 0;
+    }
   }
   &Typography {
     &.active {
@@ -21,5 +31,24 @@
     &.default {
       color: $colorWhite;
     }
+  }
+
+  @include isDesktop {
+    border: none;
+    padding: 0;
+    gap: 12px;
+    padding-left: 15px;
+  }
+  @include tablet {
+    border: none;
+    padding: 0;
+    gap: 12px;
+    padding-left: 15px;
+  }
+  @include mobile {
+    border: none;
+    padding: 0;
+    gap: 12px;
+    padding-left: 15px;
   }
 }

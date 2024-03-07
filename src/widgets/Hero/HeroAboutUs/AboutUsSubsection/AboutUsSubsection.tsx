@@ -2,9 +2,9 @@ import { FC } from "react";
 import { Typography } from "@/shared/ui";
 
 interface Props {
-  imageUrl: string;
-  title: string;
-  content: string;
+  imageUrl: string | undefined;
+  title?: string;
+  content: string | undefined;
   styles: CSSModuleClasses;
 }
 

@@ -1,7 +1,9 @@
 @import "@var";
+@import "@mixin";
 
 .breadcrumbs {
   display: flex;
+  margin-bottom: 55px;
 
   &Content {
     display: flex;
@@ -20,5 +22,14 @@
     margin-right: 5px;
     text-decoration: none;
     color: $colorGray200;
+  }
+
+  @include tablet {
+    gap: 50px;
+    margin-bottom: 30px;
+  }
+  @include mobile {
+    gap: 50px;
+    margin-bottom: 30px;
   }
 }

@@ -4,13 +4,11 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
-  &Content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    p {
-      text-align: center;
-    }
-  }
+}
+
+.HeroEstatesContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }

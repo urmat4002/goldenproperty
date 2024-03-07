@@ -1,35 +1,55 @@
-import { Fragment } from "react";
-import { ObjectCard } from "@/entities";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { PropertyCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
-import { useAppSelector } from "@/shared/hooks/hooks";
 import { Filter } from "@/features/Filter";
-import styles from "./Estates.module.scss";
 import { useGetEstates } from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
+import styles from "./Estates.module.scss";
+
+const getCitySearchParam = (searchParams: URLSearchParams): string | null => {
+  const cityParams = searchParams.get("city");
+  if (!cityParams || cityParams.includes(",")) return null;
+  return cityParams;
+};
 
 export const Estates = () => {
-  const isOpen = useAppSelector((state) => state.citySlice.isOpen);
+  const [searchParams] = useSearchParams();
+  const singleCityId = getCitySearchParam(searchParams);
+  const gridRef = useRef(null);
+  const [cardPageLimit, setCardPageLimit] = useState(9);
+  const { data, fetchNextPage, isFetching, hasNextPage } = useGetEstates(
+    cardPageLimit,
+    searchParams
+  );
 
-  const { data, status, fetchNextPage, refetch, isFetching, hasNextPage } =
-    useGetEstates(3);
+  useEffect(() => {
+    if (!gridRef.current) return;
+    const gridComputedStyle = window.getComputedStyle(gridRef.current);
+    const gridColumnCount = gridComputedStyle
+      .getPropertyValue("grid-template-columns")
+      .split(" ").length;
+    const cardPageLimit = gridColumnCount === 2 ? 8 : 9;
+    setCardPageLimit(cardPageLimit);
+  }, []);
 
   return (
     <>
-      {isOpen ? (
-        <HeroEstates />
+      {singleCityId ? (
+        <HeroEstates cityId={singleCityId} />
       ) : (
         <Section title="All real estates" container>
-          <Filter refetch={refetch} />
+          <Filter />
         </Section>
       )}
       <Section container>
-        <div className={styles.estates}>
-          {status === "success" &&
-            data?.pages.map((page) => (
+        <div ref={gridRef} className={styles.estates}>
+          {data &&
+            data.pages.map((page) => (
               <Fragment key={page.next}>
                 {page.estates.map((item) => (
-                  <ObjectCard
+                  <PropertyCard
                     key={item.id}
                     id={item.id}
                     images={item.images}

@@ -1,12 +1,12 @@
-import { AboutUs, Estates, Home, Room } from "@/pages";
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
+import { AboutUs, Estates, Home, Room } from "@/pages";
 import { Layout } from "./Layout";
-import { Error } from "../../pages";
+import { NotFound } from "@/pages";
 
 const router = [
   {
-    path: `/estates`,
+    path: "/estates",
     element: <Estates />,
   },
   {
@@ -14,7 +14,7 @@ const router = [
     element: <Room />,
   },
   {
-    path: `/about-us`,
+    path: "/about-us",
     element: <AboutUs />,
   },
 ];
@@ -28,7 +28,7 @@ export const Routing: FC = () => {
           <Route key={index} path={item.path} element={item.element} />
         ))}
       </Route>
-      <Route path="*" element={<Error />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

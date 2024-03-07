@@ -1,43 +1,58 @@
-import style from "./Benefits.module.scss";
+import { Building2, Columns3, ShieldCheck, UserPlus } from "lucide-react";
+import { useGetStaticData } from "@/shared/api/hooks";
 import { Section } from "@/features";
 import { Typography } from "@/shared/ui";
-import { Building2, Columns3, ShieldCheck, UserPlus } from "lucide-react";
-
-const objectBenefits = [
-  {
-    img: <Columns3 />,
-    title: "Exclusive offers",
-    body: "Our company offers a wide selection of real estate from exclusive apartments to country houses",
-  },
-  {
-    img: <ShieldCheck />,
-    title: "Confidentiality",
-    body: "We guarantee the confidentiality of your data and cooperate only with trusted agents and sellers.",
-  },
-  {
-    img: <Building2 />,
-    title: "A wide selection",
-    body: "Exclusive offers, virtual tours, consultations with experts - everything to make the process of choosing a property convenient and exciting.",
-  },
-  {
-    img: <UserPlus />,
-    title: "Feedback",
-    body: "If you need help managing your property, we provide rental management services, ensuring your property receives maximum value and care.",
-  },
-];
+import style from "./Benefits.module.scss";
+import { ReactNode } from "react";
+import { capitalize } from "@/shared/helper/utils";
 
 export const Benefits = () => {
+  const { data } = useGetStaticData();
+
   return (
-    <Section title="Benefits of Golden House" container>
+    <Section title={capitalize(data?.static_data.body.benefits)} container>
       <div className={style.benefits}>
-        {objectBenefits.map((item) => (
-          <div className={style.benefitsItem} key={item.title}>
-            {item.img}
-            <Typography variant="h3">{item.title}</Typography>
-            <Typography variant="body">{item.body}</Typography>
-          </div>
-        ))}
+        <BenefitsCard
+          icon={<Columns3 />}
+          title={data?.static_data.body.exclusive_offers}
+          description={data?.static_data.body.exclusive_offers_description}
+        />
+        <BenefitsCard
+          icon={<ShieldCheck />}
+          title={data?.static_data.body.confidentiality}
+          description={data?.static_data.body.confidentiality_description}
+        />
+        <BenefitsCard
+          icon={<Building2 />}
+          title={data?.static_data.body.wide_selection}
+          description={data?.static_data.body.wide_selection_description}
+        />
+        <BenefitsCard
+          icon={<UserPlus />}
+          title={data?.static_data.body.feedback}
+          description={data?.static_data.body.feedback_description}
+        />
       </div>
     </Section>
   );
 };
+
+const BenefitsCard = ({
+  icon,
+  title,
+  description,
+}: {
+  icon: ReactNode;
+  title: string | undefined;
+  description: string | undefined;
+}) => (
+  <div className={style.benefitsItem}>
+    {icon}
+    <Typography variant="h3" capitalize>
+      {title}
+    </Typography>
+    <Typography variant="body" capitalize>
+      {description}
+    </Typography>
+  </div>
+);

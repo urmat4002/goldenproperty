@@ -1,6 +1,6 @@
 @import "@mixin";
 
-.objectCard {
+.propertyCard {
   --accent-color: #c6a15b;
   // height: 520px;
   border-radius: 25px;
@@ -53,6 +53,10 @@
 
 .arrowButton:hover {
   opacity: 1;
+}
+
+.arrowButton:active {
+  transform: scale(1.1);
 }
 
 .dotsWrapper {
@@ -141,4 +145,8 @@
 
 .buttonWhatsapp:hover {
   filter: brightness(0.8);
+}
+
+.buttonWhatsapp:active {
+  filter: brightness(0.5);
 }
