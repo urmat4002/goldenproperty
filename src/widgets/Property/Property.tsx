@@ -5,7 +5,7 @@ import { Button, Typography } from "@/shared/ui";
 import { Section } from "@/features";
 import { useInnerWidthExceedsDefault } from "@/shared/helper/ScreenWidthTracker";
 import { useGetCityById, useGetStaticData } from "@/shared/api/hooks";
-import style from "./Property.module.scss";
+import styles from "./Property.module.scss";
 
 export const Property: FC = () => {
   const state = useInnerWidthExceedsDefault({ defaultThreshold: 992 });
@@ -20,26 +20,25 @@ export const Property: FC = () => {
   }, [state, value]);
 
   return (
-    <Section title="Property" customClassName={style.property} container>
-      <div className={style.propertyBody}>
-        <div className={style.propertyContent}>
-          <div className={style.textBlock}>
-            <Typography
-              variant="h2"
-              color="gold"
-              weight="bold"
-              className={style.textBlockTitle}
-            >
-              {data?.city.city_name}
+    <Section title="Property" customClassName={styles.property} container>
+      <div className={styles.body}>
+        <div className={styles.content}>
+          <Typography
+            variant="h2"
+            color="gold"
+            weight="bold"
+            className={styles.title}
+          >
+            {data?.city.city_name}
+          </Typography>
+          <div className={styles.description}>
+            <Typography variant="body" weight="regular" color="white">
+              {data?.city.city_description.repeat(3)}
             </Typography>
-            <div className={style.textBlockDescription}>
-              <Typography variant="body" weight="regular" color="white">
-                {data?.city.city_description}
-              </Typography>
-            </div>
+            <div className={styles.descriptionShade}></div>
           </div>
           {/* FIX_ME Dubai may end up having different id than 3, should consider that */}
-          <Link to="/estates/?city=3">
+          <Link className={styles.buttonWrapper} to="/estates/?city=3">
             <Button type="primary">
               <Typography variant="button" capitalize>
                 {staticData?.static_data.body.see_real_estates}
@@ -48,9 +47,8 @@ export const Property: FC = () => {
             </Button>
           </Link>
         </div>
-        <div className={style.propertyImage}>
-          <img src={data?.city.city_img} alt="Картина" />
-        </div>
+
+        <img className={styles.image} src={data?.city.city_img} alt="Картина" />
       </div>
     </Section>
   );
