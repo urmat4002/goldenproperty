@@ -101,6 +101,18 @@ export type StaticHeaderResponse = Response & {
   };
 };
 
+export type StaticFormCatalogResponse = Response & {
+  form: {
+    choices: Record<string, string>;
+    download: string;
+    download_catalog: string;
+    phone_number: string;
+    select_role: string;
+    your_email: string;
+    your_name: string;
+  };
+};
+
 export type StaticFormsResponse = Response & {
   forms: {
     contact_us: string;

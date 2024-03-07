@@ -8,7 +8,7 @@ import style from "./Select.module.scss";
 
 interface SelectItem {
   id: number;
-  label: string;
+  label?: string;
 }
 
 interface SelectProps {

@@ -1,12 +1,12 @@
 import { createContext } from "react";
 
-interface ContextProps {
-  isModalOpen?: string;
-  isForm?: boolean;
-  closeModal?: () => void;
-  downloadCatalog?: () => void;
-  showFormMessage?: () => void;
-  sellEstate?: () => void;
+export interface ContextProps {
+  isModalOpen: string;
+  closeModal: () => void;
+  downloadCatalog: () => void;
+  showFormMessageSuccess: () => void;
+  showFormMessageError: () => void;
+  sellEstate: () => void;
 }
 
-export const ModalContext = createContext<ContextProps>({});
+export const ModalContext = createContext<ContextProps>({} as ContextProps);

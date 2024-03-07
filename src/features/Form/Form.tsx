@@ -1,13 +1,16 @@
-import { Button } from "@/shared/ui/Button/Button";
 import { FC, ReactNode, useContext, useState } from "react";
-import form from "./Form.module.scss";
-import { Input, Select, Typography } from "@/shared/ui";
 import { XCircle } from "lucide-react";
+import { Button } from "@/shared/ui/Button/Button";
+import { Input, Select, Typography } from "@/shared/ui";
 import { Calendar } from "@/shared/ui/Calendar";
-import { ModalContext } from "@/app/providers/Context";
-import axios from "axios";
-import { useGetStaticData } from "@/shared/api/hooks";
+import { ContextProps, ModalContext } from "@/app/providers/Context";
+import {
+  useGetStaticData,
+  useGetStaticFormDownloadCatalog,
+} from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
+import { axiosAPI } from "@/shared/api/axiosApi";
+import form from "./Form.module.scss";
 
 interface FormProps {
   title?: string;
@@ -28,69 +31,44 @@ export const Form: FC<FormProps> = ({
   closeBtn,
 }) => {
   const { data } = useGetStaticData();
-  const { closeModal } = useContext(ModalContext);
+
+  const { data: dataCatalog } = useGetStaticFormDownloadCatalog();
+  const choices = dataCatalog?.form?.choices;
+
+  const { closeModal, showFormMessageSuccess, showFormMessageError } =
+    useContext(ModalContext) as ContextProps;
   const [calendarActive, setCalendarActive] = useState(false);
+
   const [date, setDate] = useState("");
-
-  ////////////////////////////////////////
-
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
-
   const [roleValue, setRolValue] = useState([1]);
-  const roleOptions = [
-    {
-      id: 1,
-      label: "I am an agent",
-    },
-    {
-      id: 2,
-      label: "I am an potintial Buyer",
-    },
-    {
-      id: 3,
-      label: "A potential Buyer I just exploring",
-    },
-  ];
 
-  // const [isLoading, setIsLoading] = useState(false);
+  const roleName2 = { 1: "agent", 2: "buyer", 3: "explorer" };
 
-  //const consultation = {
-  //name: "string",
-  //last_name: "",
-  //phone: "+996700555888",
-  //city: "Dubai",
-  // at_date: "2024-03-05",
-  // appeal_type: "consultation",
-  //};
+  const roleOptions = [];
 
-  // const buy = {
-  // name: "string",
-  // last_name: "",
-  // phone: "+996700555888",
-  // city: "Dubai",
-  // at_date: "2024-03-05",
-  // appeal_type: "buy",
-  // estate_id: "1",
-  // };
+  for (const key in choices) {
+    if (choices != undefined)
+      roleOptions.push({ id: roleOptions.length + 1, label: choices[key] });
+  }
+  console.log(roleOptions);
 
-  // const sell = {
-  // name: "string",
-  // last_name: "",
-  // phone: "+996700555888",
-  // city: "Dubai",
-  // at_date: "2024-03-05",
-  // appeal_type: "sell",
-  //};
-
-  // const catalogDownload = {
-  // name: "string",
-  // phone: "+996700555888",
-  // email: "user@example.com",
-  // role: "agent",
-  // estate_id: "1",
-  //};
+  // const roleOptions = [
+  //   {
+  //     id: 1,
+  //     label: data?.static_data.forms.agent,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: data?.static_data.forms.buyer,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: data?.static_data.forms.exploring,
+  //   },
+  // ];
 
   const handleClick = async () => {
     // setIsLoading(true);
@@ -101,7 +79,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-05",
+        at_date: "2024-03-07",
         appeal_type: "buy",
         estate_id: "1",
       };
@@ -113,7 +91,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-06",
+        at_date: "2024-03-07",
         appeal_type: catalog,
       };
     }
@@ -124,7 +102,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-06",
+        at_date: "2024-03-07",
         appeal_type: catalog,
       };
     }
@@ -134,24 +112,21 @@ export const Form: FC<FormProps> = ({
         name,
         phone,
         email: "user@example.com",
-        role: "agent",
+        role: roleName2[1],
         estate_id: "1",
       };
     }
 
     try {
-      const { data } = await axios.post(
-        `http://34.16.179.95/api/v1/appeal/${catalog}/`,
-        sendData
-      );
+      const { data } = await axiosAPI.post(`/appeal/${catalog}/`, sendData);
       console.log(data);
+      showFormMessageSuccess();
     } catch {
       console.log("Error");
+      showFormMessageError();
     } finally {
       //  setIsLoading(false);
     }
-    //showFormMessage();
-    // closeModal();
   };
 
   return (

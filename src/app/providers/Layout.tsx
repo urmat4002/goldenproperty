@@ -8,23 +8,23 @@ import styles from "./style/Layout.module.scss";
 
 export const Layout: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState("");
-  const [isForm, setIsForm] = useState(true);
+  //const [isForm, setIsForm] = useState(true);
 
-  const showFormMessage = () => {
-    setIsModalOpen("open");
-    setIsForm(false);
+  const showFormMessageSuccess = () => {
+    setIsModalOpen("form_message_success");
+  };
+  const showFormMessageError = () => {
+    setIsModalOpen("form_message_error");
+  };
+  const downloadCatalog = () => {
+    setIsModalOpen("download_catalog");
+  };
+  const sellEstate = () => {
+    setIsModalOpen("sell");
   };
 
   const closeModal = () => {
     setIsModalOpen("");
-    setIsForm(true);
-  };
-  const downloadCatalog = () => {
-    setIsModalOpen("download_catalog");
-    // setIsCatalog(true);
-  };
-  const sellEstate = () => {
-    setIsModalOpen("sell");
   };
 
   return (
@@ -33,10 +33,10 @@ export const Layout: FC = () => {
         value={{
           closeModal,
           downloadCatalog,
-          showFormMessage,
+          showFormMessageSuccess,
+          showFormMessageError,
           sellEstate,
           isModalOpen,
-          isForm,
         }}
       >
         <Header />
