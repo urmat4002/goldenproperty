@@ -1,16 +1,24 @@
+import { useParams } from "react-router-dom";
 import { Section } from "@/features";
+import { useGetEstateById, useGetStaticData } from "@shared/api/hooks";
 import styles from "./Description.module.scss";
-import {useGetEstateById, useGetStaticData} from "@shared/api/hooks";
-import {useParams} from "react-router-dom"
+import { Typography } from "@/shared/ui";
 
 export const Description = () => {
-  const {id} = useParams()
-  const {data} = useGetStaticData();
-  const {data:dataDescription} = useGetEstateById()
+  const { id } = useParams();
+  const { data: staticData } = useGetStaticData();
+  const { data: descriptionData } = useGetEstateById(id);
+
+  const paragraphs = descriptionData?.estate.description.split("\n\n") || [];
+
   return (
-    <Section title = {data?.static_data.body.description} container>
+    <Section title={staticData?.static_data.body.description} container>
       <div className={styles.description}>
-          {dataDescription?.estate.description}
+        {paragraphs.map((item, index) => (
+          <Typography key={index} variant="body">
+            {item}
+          </Typography>
+        ))}
       </div>
     </Section>
   );

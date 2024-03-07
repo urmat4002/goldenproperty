@@ -1,19 +1,5 @@
 @import "@var";
 
-.description {
-  display: flex;
-  justify-content: space-between;
-  padding-block: 20px;
-}
-
-.descriptionItem {
-  padding-block: 10px;
-}
-
-.text {
-  padding-block: 20px;
-}
-
 .slider {
   background-color: #60543d;
 }
@@ -42,16 +28,4 @@
 
 .activeSlideImage {
   border: 5px solid #c6a15b;
-}
-
-.priceRow {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.buttons {
-  display: flex;
-  gap: 10px;
 }

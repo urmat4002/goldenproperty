@@ -9,3 +9,4 @@ export * from "./FloatingButtons";
 export * from "./Section";
 export * from "./MenuDropdown";
 export * from "./SlideCard";
+export { SliderObject } from "./Slider/SliderObject/SliderObject";

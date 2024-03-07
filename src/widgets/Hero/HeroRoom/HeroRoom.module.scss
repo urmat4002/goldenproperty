@@ -1,0 +1,42 @@
+@import "@mixin";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brief {
+  padding-block: 20px;
+}
+
+.bullets {
+  padding-block: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 22px;
+  @include tablet {
+    grid-template-columns: 1fr auto;
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bulletPoint {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+}
+
+.priceRow {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
