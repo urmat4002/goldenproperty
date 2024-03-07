@@ -1,7 +1,7 @@
 import { Button, Typography } from "@/shared/ui";
 import styles from "./MenuLeft.module.scss";
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, memo, useState } from "react";
 import { ICity } from "../types/MenuDropDown.types";
 import { useNavigate } from "react-router-dom";
 
@@ -36,9 +36,10 @@ export const MenuLeft: FC<MenuLeftProps> = ({
           >
             <Typography
               variant="button"
+              color={isActive ? 'gold' : 'white'}
               className={clsx(
                 styles.menuBannerTypography,
-                id ? styles.active : styles.default
+                isActive ? styles.active : styles.default
               )}
             >
               {item.city__name}
@@ -48,4 +49,4 @@ export const MenuLeft: FC<MenuLeftProps> = ({
       })}
     </div>
   );
-};
+});
