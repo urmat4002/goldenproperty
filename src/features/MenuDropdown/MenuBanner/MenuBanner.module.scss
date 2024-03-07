@@ -8,7 +8,7 @@
   justify-content: flex-start;
   gap: 16px;
   padding: 16px 0 16px 16px;
-  width: 80%;
+  width: 75%;
   &Top {
     height: 100%;
     width: 100%;
@@ -19,16 +19,18 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 100%;
     width: 100%;
   }
   &Description {
-    height: 340px;
     overflow: hidden;
   }
   &Image {
     img {
       max-width: 386px;
-      height: 386px;
+      height: 100%;
+      max-height: 386px;
+      min-height: 386px;
     }
   }
 }

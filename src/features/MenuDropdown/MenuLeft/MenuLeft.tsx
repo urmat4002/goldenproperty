@@ -14,7 +14,6 @@ interface MenuLeftProps {
 
 export const MenuLeft: FC<MenuLeftProps> = ({
   onClick,
-  id,
   isMobile,
 }) => {
   const navigate = useNavigate();
@@ -38,8 +37,7 @@ export const MenuLeft: FC<MenuLeftProps> = ({
             <Typography
               variant="button"
               className={clsx(
-                styles.menuBannerTypography,
-                id ? styles.active : styles.default
+                styles.menuBannerTypography
               )}
             >
               {item.city_name}

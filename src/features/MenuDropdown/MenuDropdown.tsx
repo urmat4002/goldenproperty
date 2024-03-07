@@ -3,16 +3,18 @@ import { useEffect, useState } from "react";
 import styles from "./MenuDropdown.module.scss";
 import { ICity } from "./types/MenuDropDown.types";
 import { MenuBanner } from "./MenuBanner";
-import { useAppDispatch } from "@/shared/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
 import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
 import { MenuLeft } from "./MenuLeft/MenuLeft";
-import { useGetCities } from '@/shared/api/hooks'
+import clsx from "clsx";
+import { useGetCities } from "@/shared/api/hooks";
 
 export const MenuDropdown = () => {
   const [city, setCity] = useState<ICity | undefined>(undefined);
   const [cityId, setCityId] = useState<number>(1);
   const dispatch = useAppDispatch();
   const { data } = useGetCities();
+  const isOpen = useAppSelector((state) => state.menuSlice.isOpen);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const cities = data?.cities || [];
@@ -33,12 +35,10 @@ export const MenuDropdown = () => {
     <div
       onMouseEnter={() => dispatch(setOpen())}
       onMouseLeave={() => dispatch(setClose())}
-      className={styles.menuDropdown}
+      className={clsx(styles.menuDropdown, isOpen ? styles.open : styles.close)}
     >
       <div className={styles.menuDropdownContainer}>
-        {cities && (
-          <MenuLeft onClick={handleCityClick} id={cityId} />
-        )}
+        {cities && <MenuLeft onClick={handleCityClick} id={cityId} />}
         {city && <MenuBanner city={city} />}
       </div>
     </div>
