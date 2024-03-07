@@ -1,5 +1,6 @@
 @import "@var";
 @import "@classes";
+@import "@mixin";
 
 .footer {
   background-color: $colorGray500;
@@ -11,37 +12,57 @@
   }
 
   &Top {
-    padding: 40px 0 20px 0;
+    padding: 40px 0 10px 0;
     display: flex;
     gap: 64px; /* Adjust gap for better spacing at 1050px */
     justify-content: space-between;
     align-items: flex-start;
+    border-bottom: 1px solid #fff;
+    margin: 0 60px;
   }
 
   &Navigate {
+    position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 32px;
+    gap: 20px;
     width: 100%;
   }
 
   &Option {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     list-style: none;
-    gap: 18px;
+    flex-wrap: wrap;
+    padding-top: 50px;
+
+    &::before {
+      content: attr(data-title);
+      position: absolute;
+      top: 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
 
     li {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       gap: 12px;
-      margin-top: 5px;
-      margin-bottom: 5px;
       font-size: 14px;
+      margin-bottom: 20px;
     }
+  }
+
+  &Icons {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 
   .footerSocials {
@@ -63,71 +84,82 @@
     align-items: center;
     justify-content: center;
     padding: 26px 0;
+
+    &Link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: underline;
+      color: $colorWhite;
+    }
   }
 
   &Link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    text-decoration: underline;
-    color: $colorWhite;
+    padding: 0;
   }
 
-  @media (max-width: 768px) {
-    .footerLogo {
+  &Typography {
+    transition: color 0.3s ease;
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+
+  @include isDesktop {
+    &Logo {
       display: none;
     }
-    .footerContainer {
+  }
+
+  @include tablet {
+    &Logo {
+      display: none;
+    }
+
+    &Top {
+      margin: 0 30px;
+    }
+
+    &Option {
+      &::before {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @include mobile {
+    &Logo {
+      display: none;
+    }
+
+    &Top {
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    &Navigate {
       flex-direction: column;
+      gap: 0;
+    }
+
+    &Option {
+      flex-direction: row;
       align-items: center;
-    }
-    .footerTop {
-      display: flex;
-      justify-content: space-between;
-    }
-    .footerNavigate {
-      display: flex;
-      justify-content: space-between;
-    }
-    .footerSocials {
-      margin: 20px 0;
-    }
-  }
+      margin-bottom: 28px;
+      padding-top: 40px;
 
-  @media (max-width: 465px) {
-    .footerLogo {
-      display: none;
-    }
-    .footerTop {
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .footerNavigate {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-    }
-    .footerSocials {
-      margin: 10px 0;
-    }
-  }
+      li {
+        margin: 0 10px 10px 0;
+      }
 
-  @media (max-width: 1050px) {
-  .footerOption {
-    font-size: 14px;
-    width: auto;
-    gap: 10px;
-    li {
-      margin-top: 3px;
-      margin-bottom: 3px;
-      font-size: 12px; // Уменьшаем размер шрифта до 12px
-    }
-  }
-    .footerLogo{
-      display: none;
+      &::before {
+        font-size: 14px;
+      }
     }
 
+    &Icons {
+      left: 0;
+    }
   }
 }

@@ -1,10 +1,19 @@
 import { LogoFooter } from "@/shared/ui/Icons/LogoFooter";
 import styles from "./Footer.module.scss";
 import { Geeks } from "@/shared/ui/Icons/Geeks";
-import { Facebook, Instagram, Mail, Phone } from "lucide-react";
-import { Typography, WhatsApp } from "@/shared/ui";
+import { Mail, Phone } from "lucide-react";
+import { Typography, WhatsApp, Facebook, Instagram, Button } from "@/shared/ui";
+// import {
+//   useGetCities,
+//   useGetEstateTypes,
+//   useGetStaticHeader,
+// } from "@/shared/api/hooks";
 
 export const Footer = () => {
+  // const { cities } = useGetCities();
+  // const { types } = useGetEstateTypes();
+  // const { pages } = useGetStaticHeader();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
@@ -13,88 +22,165 @@ export const Footer = () => {
             <LogoFooter />
           </div>
           <div className={styles.footerNavigate}>
-            <ul className={styles.footerOption}>
+            <ul data-title={"Город"} className={styles.footerOption}>
               <li>
-                <Typography variant="body" weight="bold">
-                  Город
-                </Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Дубай
+                  </Typography>
+                </Button>
               </li>
               <li>
-                <Typography variant="body">Дубай</Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Анталья
+                  </Typography>
+                </Button>
               </li>
               <li>
-                <Typography variant="body">Анталья</Typography>
-              </li>
-              <li>
-                <Typography variant="body">Стамбул</Typography>
-              </li>
-            </ul>
-            <ul className={styles.footerOption}>
-              <li>
-                <Typography variant="body" weight="bold">
-                  Тип
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body">Виллы</Typography>
-              </li>
-              <li>
-                <Typography variant="body">Квартиры</Typography>
-              </li>
-              <li>
-                <Typography variant="body">Дуплексы</Typography>
-              </li>
-              <li>
-                <Typography variant="body">Участки</Typography>
-              </li>
-              <li>
-                <Typography variant="body">Магазины</Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Стамбул
+                  </Typography>
+                </Button>
               </li>
             </ul>
-            <ul className={styles.footerOption}>
+            <ul data-title={"Тип"} className={styles.footerOption}>
               <li>
-                <Typography variant="body" weight="bold">
-                  Страница
-                </Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Виллы
+                  </Typography>
+                </Button>
               </li>
               <li>
-                <Typography variant="body">Вся недвижимость</Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Квартиры
+                  </Typography>
+                </Button>
               </li>
               <li>
-                <Typography variant="body">О нас</Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Дуплексы
+                  </Typography>
+                </Button>
               </li>
               <li>
-                <Typography variant="body">Разместить объявление</Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Участки
+                  </Typography>
+                </Button>
+              </li>
+              <li>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Магазины
+                  </Typography>
+                </Button>
               </li>
             </ul>
-            <ul className={styles.footerOption}>
+            <ul data-title={"Страница"} className={styles.footerOption}>
               <li>
-                <Typography variant="body" weight="bold">
-                  Связаться с нами
-                </Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Вся недвижимость
+                  </Typography>
+                </Button>
               </li>
               <li>
-                <Mail strokeWidth={1} size={24} />
-                <Typography variant="body">info@Gulsdem.com</Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    О нас
+                  </Typography>
+                </Button>
               </li>
               <li>
-                <Phone strokeWidth={1} size={24} />
-                <Typography variant="body">+90(212)67890900</Typography>
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    Разместить объявление
+                  </Typography>
+                </Button>
               </li>
-              <li className={styles.icons}>
-                <Facebook strokeWidth={1} size={24} />
-                <Instagram strokeWidth={1} size={24} />
+            </ul>
+            <ul data-title={"Связаться с нами"} className={styles.footerOption}>
+              <li>
+                <Mail />
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    info@Gulsdem.com
+                  </Typography>
+                </Button>
+              </li>
+              <li>
+                <Phone />
+                <Button type="link" customClasses={styles.footerLink}>
+                  <Typography
+                    variant="body"
+                    className={styles.footerTypography}
+                  >
+                    +90(212)67890900
+                  </Typography>
+                </Button>
+              </li>
+            </ul>
+            <div className={styles.footerIcons}>
+              <Button type="link" customClasses={styles.footerLink}>
+                <Facebook />
+              </Button>
+              <Button type="link" customClasses={styles.footerLink}>
+                <Instagram />
+              </Button>
+              <Button type="link" customClasses={styles.footerLink}>
                 <WhatsApp />
-              </li>
-            </ul>
+              </Button>
+            </div>
           </div>
         </div>
         <div className={styles.footerBottom}>
           <a
             href="https://www.instagram.com/geeks_pro/?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA%3D%3D"
-            className={styles.footerLink}
+            className={styles.footerBottomLink}
           >
-            Made by Geeks
+            Made by GeeksPro
             <Geeks />
           </a>
         </div>
@@ -102,4 +188,3 @@ export const Footer = () => {
     </footer>
   );
 };
-
