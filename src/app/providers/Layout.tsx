@@ -8,6 +8,7 @@ import styles from "./style/Layout.module.scss";
 
 export const Layout: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState("");
+  const [PDFURL, setPDFURL] = useState<string | undefined>();
   //const [isForm, setIsForm] = useState(true);
 
   const showFormMessageSuccess = () => {
@@ -16,7 +17,12 @@ export const Layout: FC = () => {
   const showFormMessageError = () => {
     setIsModalOpen("form_message_error");
   };
-  const downloadCatalog = () => {
+  const downloadCatalog = (pdfUrl: string | undefined) => {
+    if (localStorage.getItem("catalog")) {
+      window.open(pdfUrl, "_blank");
+      return;
+    }
+    setPDFURL(pdfUrl);
     setIsModalOpen("download_catalog");
   };
   const sellEstate = () => {
@@ -37,6 +43,7 @@ export const Layout: FC = () => {
           showFormMessageError,
           sellEstate,
           isModalOpen,
+          PDFURL,
         }}
       >
         <Header />

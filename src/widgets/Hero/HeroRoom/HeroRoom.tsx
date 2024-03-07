@@ -18,6 +18,7 @@ export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
   const { id } = useParams();
   const { data, isLoading } = useGetEstateById(id);
   const estate = data?.estate;
+  const pdfUrl = estate?.project.pdf_catalog;
 
   return (
     <Section title={isLoading ? "" : estate?.project.name} container>
@@ -33,7 +34,7 @@ export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
           <div className={styles.buttons}>
             <Button
               customClasses={styles.priceBtnsItem}
-              onClick={downloadCatalog}
+              onClick={() => downloadCatalog(pdfUrl)}
               type="primary"
             >
               Catalog
