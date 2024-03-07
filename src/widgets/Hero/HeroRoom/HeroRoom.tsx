@@ -129,8 +129,7 @@ const BulletPoint: FC<{
     case "string":
       renderedValue = value;
       break;
-    // case "boolean":
-    case "undefined":
+    case "boolean":
       renderedValue = value ? <Check strokeWidth={3} /> : <X strokeWidth={3} />;
       break;
 
