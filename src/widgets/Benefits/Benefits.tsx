@@ -1,10 +1,13 @@
-import { Building2, Columns3, ShieldCheck, UserPlus } from "lucide-react";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { Section } from "@/features";
 import { Typography } from "@/shared/ui";
 import style from "./Benefits.module.scss";
 import { ReactNode } from "react";
 import { capitalize } from "@/shared/helper/utils";
+import { Сonfidentiality } from "../../shared/ui/Icons/Сonfidentiality"
+import { WideSelection } from "../../shared/ui/Icons/WideSelection"
+import { Feedback } from "../../shared/ui/Icons/Feedback"
+import { ExclusiveOffers } from "../../shared/ui/Icons/ExclusiveOffers"
 
 export const Benefits = () => {
   const { data } = useGetStaticData();
@@ -13,22 +16,22 @@ export const Benefits = () => {
     <Section title={capitalize(data?.static_data.body.benefits)} container>
       <div className={style.benefits}>
         <BenefitsCard
-          icon={<Columns3 />}
+          icon={<ExclusiveOffers />}
           title={data?.static_data.body.exclusive_offers}
           description={data?.static_data.body.exclusive_offers_description}
         />
         <BenefitsCard
-          icon={<ShieldCheck />}
+          icon={<Сonfidentiality />}
           title={data?.static_data.body.confidentiality}
           description={data?.static_data.body.confidentiality_description}
         />
         <BenefitsCard
-          icon={<Building2 />}
+          icon={<WideSelection />}
           title={data?.static_data.body.wide_selection}
           description={data?.static_data.body.wide_selection_description}
         />
         <BenefitsCard
-          icon={<UserPlus />}
+          icon={<Feedback />}
           title={data?.static_data.body.feedback}
           description={data?.static_data.body.feedback_description}
         />
