@@ -8,6 +8,7 @@ import {
   EstateTypesResponse,
   EstatesResponse,
   StaticDataResponse,
+  StaticFormCatalogResponse,
   StaticFormsResponse,
   StaticHeaderResponse,
 } from "./types";
@@ -195,6 +196,19 @@ export const useGetStaticForms = () => {
     queryFn: async () => {
       const response = await axiosAPI<StaticFormsResponse>(
         "/static_data/forms/"
+      );
+      return response.data;
+    },
+  });
+  return { data, isSuccess };
+};
+
+export const useGetStaticFormDownloadCatalog = () => {
+  const { data, isSuccess } = useQuery({
+    queryKey: ["formsCatalog"],
+    queryFn: async () => {
+      const response = await axiosAPI<StaticFormCatalogResponse>(
+        "/appeal/download_catalog/"
       );
       return response.data;
     },

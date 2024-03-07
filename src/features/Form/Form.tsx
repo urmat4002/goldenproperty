@@ -4,7 +4,7 @@ import form from "./Form.module.scss";
 import { Input, Select, Typography } from "@/shared/ui";
 import { XCircle } from "lucide-react";
 import { Calendar } from "@/shared/ui/Calendar";
-import { ModalContext } from "@/app/providers/Context";
+import { ContextProps, ModalContext } from "@/app/providers/Context";
 import axios from "axios";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
@@ -28,19 +28,31 @@ export const Form: FC<FormProps> = ({
   closeBtn,
 }) => {
   const { data } = useGetStaticData();
+
+  // const { data: dataCatalog } = useGetStaticFormDownloadCatalog();
+  //const choices = dataCatalog?.form?.choices;
+
   const { closeModal, showFormMessageSuccess, showFormMessageError } =
-    useContext(ModalContext);
+    useContext(ModalContext) as ContextProps;
   const [calendarActive, setCalendarActive] = useState(false);
+
   const [date, setDate] = useState("");
-
-  ////////////////////////////////////////
-
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
-
   const [roleValue, setRolValue] = useState([1]);
-  console.log(roleValue);
+
+  const roleName2 = { 1: "agent", 2: "buyer", 3: "explorer" };
+
+  //const roleOptions = [];
+
+  //let item:keyof typeof choices
+  //for (item in choices) {
+  // if(choices!=undefined)
+  // roleOptions.push({ id: roleOptions.length + 1, label: choices[item] });
+  // }
+  // console.log(roleOptions);
+
   const roleOptions = [
     {
       id: 1,
@@ -55,44 +67,6 @@ export const Form: FC<FormProps> = ({
       label: data?.static_data.forms.exploring,
     },
   ];
-
-  // const [isLoading, setIsLoading] = useState(false);
-
-  //const consultation = {
-  //name: "string",
-  //last_name: "",
-  //phone: "+996700555888",
-  //city: "Dubai",
-  // at_date: "2024-03-05",
-  // appeal_type: "consultation",
-  //};
-
-  // const buy = {
-  // name: "string",
-  // last_name: "",
-  // phone: "+996700555888",
-  // city: "Dubai",
-  // at_date: "2024-03-05",
-  // appeal_type: "buy",
-  // estate_id: "1",
-  // };
-
-  // const sell = {
-  // name: "string",
-  // last_name: "",
-  // phone: "+996700555888",
-  // city: "Dubai",
-  // at_date: "2024-03-05",
-  // appeal_type: "sell",
-  //};
-
-  // const catalogDownload = {
-  // name: "string",
-  // phone: "+996700555888",
-  // email: "user@example.com",
-  // role: "agent",
-  // estate_id: "1",
-  //};
 
   const handleClick = async () => {
     // setIsLoading(true);
@@ -136,7 +110,7 @@ export const Form: FC<FormProps> = ({
         name,
         phone,
         email: "user@example.com",
-        role: "agent",
+        role: roleName2[1],
         estate_id: "1",
       };
     }
@@ -154,8 +128,6 @@ export const Form: FC<FormProps> = ({
     } finally {
       //  setIsLoading(false);
     }
-
-    // closeModal();
   };
 
   return (

@@ -3,13 +3,12 @@ import clsx from "clsx";
 import modal from "./Modal.module.scss";
 import { FormMessage } from "@/features/Form/FormMessage/FormMessage";
 import { FC, useContext } from "react";
-import { ModalContext } from "@/app/providers/Context";
+import { ContextProps, ModalContext } from "@/app/providers/Context";
 import { useGetStaticData } from "@/shared/api/hooks";
 
 export const Modal: FC = () => {
-  const { isModalOpen } = useContext(ModalContext);
-  const { closeModal } = useContext(ModalContext);
-  // const { isForm } = useContext(ModalContext);
+  const { isModalOpen } = useContext(ModalContext) as ContextProps;
+  const { closeModal } = useContext(ModalContext) as ContextProps;
 
   const { data } = useGetStaticData();
 
