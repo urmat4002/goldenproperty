@@ -7,6 +7,7 @@ import {
   useGetStaticData,
 } from "@/shared/api/hooks";
 import styles from "./Filter.module.scss";
+import { capitalize } from "@/shared/helper/utils";
 
 interface FilterValues {
   city: number[];
@@ -45,6 +46,7 @@ export const Filter = () => {
   const [filterValues, setFilterValues] = useState<FilterValues>(
     getinitialFilterParams()
   );
+  const { data } = useGetStaticData();
 
   const handleFilter = () => {
     const newSearchParams = new window.URLSearchParams();
@@ -91,7 +93,9 @@ export const Filter = () => {
           }}
         />
         <Button type="primary" onClick={handleFilter}>
-          <Typography variant="button">Show results</Typography>
+          <Typography variant="button">
+            {capitalize(data?.static_data.body.show_result)}
+          </Typography>
         </Button>
       </div>
     </div>

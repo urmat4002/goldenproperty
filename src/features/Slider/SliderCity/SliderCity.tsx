@@ -3,15 +3,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Section } from "@/features";
-import { useGetCities } from "@/shared/api/hooks";
+import { useGetCities, useGetStaticData } from "@/shared/api/hooks";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import style from "./SliderCity.module.scss";
+import { capitalize } from "@/shared/helper/utils";
 
 export const SliderCity: FC = () => {
   const [swiperWidth, setSwiperWidth] = useState();
   const [highlitedIndex, setHighlitedIndex] = useState<number | null>(null);
-
+  const { data: staticData} = useGetStaticData()
   const { data, isSuccess } = useGetCities();
 
   return (
@@ -46,7 +47,7 @@ export const SliderCity: FC = () => {
           style={{ width: swiperWidth }}
         >
           <div className={style.sliderInitialBlockText}>
-            We have real estate in cities such as
+            {capitalize(staticData?.static_data.body.we_have)}
           </div>
         </div>
 
