@@ -2,11 +2,10 @@ import { Button, Typography } from "@/shared/ui";
 import styles from "./MenuLeft.module.scss";
 import clsx from "clsx";
 import { FC } from "react";
-import { ICity } from "../types/MenuDropDown.types";
 import { useNavigate } from "react-router-dom";
+import { useGetCities } from '@/shared/api/hooks'
 
 interface MenuLeftProps {
-  data: ICity[];
   // eslint-disable-next-line no-unused-vars
   onClick: (id: number) => void;
   id: number;
@@ -14,15 +13,17 @@ interface MenuLeftProps {
 }
 
 export const MenuLeft: FC<MenuLeftProps> = ({
-  data,
   onClick,
   id,
   isMobile,
 }) => {
   const navigate = useNavigate();
+  const { data } = useGetCities();
+
+  const cities = data?.cities || [];
   return (
     <div className={styles.menuLeft}>
-      {data.map((item) => {
+      {cities.map((item) => {
         return (
           <Button
             customClasses={styles.menuLeftButton}
@@ -41,7 +42,7 @@ export const MenuLeft: FC<MenuLeftProps> = ({
                 id ? styles.active : styles.default
               )}
             >
-              {item.city__name}
+              {item.city_name}
             </Typography>
           </Button>
         );

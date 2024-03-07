@@ -21,7 +21,7 @@ export const Header = () => {
           </Link>
         </div>
         <div className={styles.headerNavbar}>
-          <Navbar />
+          <Navbar isMobile={isOpenMobileMD} />
         </div>
         <div className={styles.headerActions}>
           <div

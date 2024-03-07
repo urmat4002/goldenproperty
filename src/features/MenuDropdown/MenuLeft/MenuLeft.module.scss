@@ -9,6 +9,18 @@
   padding: 16px 56px 16px 0;
   border-right: 1px solid $colorGray450;
   width: 20%;
+  overflow-y: scroll;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  scrollbar-track-color: transparent;
+  ::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
   &Button {
     width: 100%;
     display: flex;

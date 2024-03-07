@@ -13,7 +13,7 @@ export const Property: FC = () => {
   const { data } = useGetCityById(3);
   const { data: staticData } = useGetStaticData();
 
-  console.log(data?.city.city_description);
+  // console.log(data?.city.city_description);
 
   useEffect(() => {
     setValue(state ? 520 : 320);
