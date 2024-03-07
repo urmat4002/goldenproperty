@@ -3,7 +3,6 @@ import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import clsx from "clsx";
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
-import { Section } from "@/features";
 import { useGetEstateById } from "@/shared/api/hooks";
 import styles from "./SliderObject.module.scss";
 

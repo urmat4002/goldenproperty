@@ -3,9 +3,15 @@ import { useParams } from "react-router-dom";
 import { Section, SliderObject } from "@/features";
 import { Button, Typography } from "@/shared/ui";
 import { ModalContext } from "@/app/providers/Context";
-import { useGetEstateById } from "@/shared/api/hooks";
+import { useGetEstateById, useGetStaticData } from "@/shared/api/hooks";
 import styles from "./HeroRoom.module.scss";
 import { TriangleRuler } from "@/shared/ui/Icons/TriangleRuler";
+import { Location } from "@/shared/ui/Icons/Location";
+import { capitalize } from "@/shared/helper/utils";
+import { CityOne } from "@/shared/ui/Icons/CityOne";
+import { Calendar } from "@/shared/ui/Icons/Calendar";
+import { Sofa } from "@/shared/ui/Icons/Sofa";
+import { Check, X } from "lucide-react";
 
 export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
   const { downloadCatalog } = useContext(ModalContext);
@@ -58,88 +64,48 @@ const Bullets: FC<{ styles: CSSModuleClasses; id: string | undefined }> = ({
   id,
 }) => {
   const { data } = useGetEstateById(id);
+  const { data: staticData } = useGetStaticData();
   const estate = data?.estate;
 
   return (
     <ul className={styles.bullets}>
       <BulletPoint
         styles={styles}
-        icon={<TriangleRuler />}
-        label="label"
-        value="value"
+        icon={<Location />}
+        label={estate?.city}
+        value={estate?.project.location}
+        comma
+      />
+      <BulletPoint
+        styles={styles}
+        icon={<CityOne />}
+        label={capitalize(staticData?.static_data.body.estate_type)}
+        value={capitalize(estate?.estate_type)}
+      />
+      <BulletPoint
+        styles={styles}
+        icon={<Calendar />}
+        label={capitalize(staticData?.static_data.body.completion)}
+        value={estate?.project.completion}
+      />
+      <BulletPoint
+        styles={styles}
+        icon={<Sofa />}
+        label={capitalize(staticData?.static_data.body.furnished)}
+        value={estate?.project.is_furnished}
       />
       <BulletPoint
         styles={styles}
         icon={<TriangleRuler />}
-        label="label"
-        value="value"
+        label="Area !API"
+        value={estate?.area}
       />
       <BulletPoint
         styles={styles}
-        icon={<TriangleRuler />}
-        label="label"
-        value="value"
+        icon={<CityOne />}
+        label="Is secondary !API"
+        value={estate?.is_secondary}
       />
-      <BulletPoint
-        styles={styles}
-        icon={<TriangleRuler />}
-        label="label"
-        value="value"
-      />
-      <BulletPoint
-        styles={styles}
-        icon={<TriangleRuler />}
-        label="label"
-        value="value"
-      />
-      <BulletPoint
-        styles={styles}
-        icon={<TriangleRuler />}
-        label="label"
-        value="value"
-      />
-      {/* <div>
-        <div className={styles.descriptionItem}>
-          <Typography variant="body" weight="medium" color="white">
-            {`${estate?.city}, ${estate?.project.name}`}
-          </Typography>
-        </div>
-        <div className={styles.descriptionItem}>
-          <Typography variant="body" weight="medium" color="white">
-            Furnished:
-            {estate?.project.is_furnished ? (
-              <span> yes</span>
-            ) : (
-              <span> no</span>
-            )}
-          </Typography>
-        </div>
-      </div>
-      <div>
-        <div className={styles.descriptionItem}>
-          <Typography variant="body" weight="medium" color="white">
-            Type: {estate?.estate_type}
-          </Typography>
-        </div>
-        <div className={styles.descriptionItem}>
-          <Typography variant="body" weight="medium" color="white">
-            Area: {estate?.area}
-          </Typography>
-        </div>
-      </div>
-      <div>
-        <div className={styles.descriptionItem}>
-          <Typography variant="body" weight="medium" color="white">
-            Completion: {estate?.project.completion}
-          </Typography>
-        </div>
-        <div className={styles.descriptionItem}>
-          <Typography variant="body" weight="medium" color="white">
-            Is secondary:{" "}
-            {estate?.is_secondary ? <span>yes</span> : <span>no</span>}{" "}
-          </Typography>
-        </div>
-      </div> */}
     </ul>
   );
 };
@@ -147,13 +113,39 @@ const Bullets: FC<{ styles: CSSModuleClasses; id: string | undefined }> = ({
 const BulletPoint: FC<{
   styles: CSSModuleClasses;
   icon: ReactNode;
-  label: string;
-  value: ReactNode;
-}> = ({ styles, icon, label, value }) => {
+  label: string | undefined;
+  value: string | number | boolean | undefined;
+  comma?: boolean;
+}> = ({ styles, icon, label, value, comma }) => {
+  let renderedValue: ReactNode = "...";
+  switch (typeof value) {
+    case "number":
+      renderedValue = (
+        <>
+          {value.toString()} m<sup>2</sup>
+        </>
+      );
+      break;
+    case "string":
+      renderedValue = value;
+      break;
+    // case "boolean":
+    case "undefined":
+      renderedValue = value ? <Check strokeWidth={3} /> : <X strokeWidth={3} />;
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <li className={styles.bulletPoint}>
       {icon}
-      <span>{label}</span>:<span>{value}</span>
+      <span>
+        {label || "..."}
+        {comma ? ", " : ": "}
+      </span>
+      <span>{renderedValue}</span>
     </li>
   );
 };
