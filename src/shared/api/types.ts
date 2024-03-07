@@ -126,3 +126,37 @@ export type StaticFormsResponse = Response & {
     exploring: string;
   };
 };
+
+export interface IBody {
+  main: string;
+  search: string;
+  slogan: string;
+  see_real_estates: string;
+  city: string;
+  estate_type: string;
+  popular: string;
+  new_add: string;
+  all: string;
+  show_result: string;
+  we_have: string;
+  benefits: string;
+  wide_selection: string;
+  wide_selection_description: string;
+  confidentiality: string;
+  confidentiality_description: string;
+  exclusive_offers: string;
+  exclusive_offers_description: string;
+  feedback: string;
+  feedback_description: string;
+  furnished: string;
+  completion: string;
+  price_at: string;
+  catalog: string;
+  features_and_amenities: string;
+  description: string;
+  similar_properties: string;
+  mission_and_history: string;
+  mission: string;
+  history: string;
+  company: string;
+}
