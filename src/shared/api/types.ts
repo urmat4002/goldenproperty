@@ -103,7 +103,7 @@ export type StaticHeaderResponse = Response & {
 
 export type StaticFormCatalogResponse = Response & {
   form: {
-    choices: { agent: string; buyer: string; explorer: string };
+    choices: Record<string, string>;
     download: string;
     download_catalog: string;
     phone_number: string;

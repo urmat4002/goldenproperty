@@ -13,19 +13,18 @@ export const Layout: FC = () => {
   const showFormMessageSuccess = () => {
     setIsModalOpen("form_message_success");
   };
-
   const showFormMessageError = () => {
     setIsModalOpen("form_message_error");
-  };
-
-  const closeModal = () => {
-    setIsModalOpen("");
   };
   const downloadCatalog = () => {
     setIsModalOpen("download_catalog");
   };
   const sellEstate = () => {
     setIsModalOpen("sell");
+  };
+
+  const closeModal = () => {
+    setIsModalOpen("");
   };
 
   return (

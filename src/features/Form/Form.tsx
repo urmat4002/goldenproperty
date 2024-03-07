@@ -1,13 +1,16 @@
-import { Button } from "@/shared/ui/Button/Button";
 import { FC, ReactNode, useContext, useState } from "react";
-import form from "./Form.module.scss";
-import { Input, Select, Typography } from "@/shared/ui";
 import { XCircle } from "lucide-react";
+import { Button } from "@/shared/ui/Button/Button";
+import { Input, Select, Typography } from "@/shared/ui";
 import { Calendar } from "@/shared/ui/Calendar";
 import { ContextProps, ModalContext } from "@/app/providers/Context";
-import axios from "axios";
-import { useGetStaticData } from "@/shared/api/hooks";
+import {
+  useGetStaticData,
+  useGetStaticFormDownloadCatalog,
+} from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
+import { axiosAPI } from "@/shared/api/axiosApi";
+import form from "./Form.module.scss";
 
 interface FormProps {
   title?: string;
@@ -29,8 +32,8 @@ export const Form: FC<FormProps> = ({
 }) => {
   const { data } = useGetStaticData();
 
-  // const { data: dataCatalog } = useGetStaticFormDownloadCatalog();
-  //const choices = dataCatalog?.form?.choices;
+  const { data: dataCatalog } = useGetStaticFormDownloadCatalog();
+  const choices = dataCatalog?.form?.choices;
 
   const { closeModal, showFormMessageSuccess, showFormMessageError } =
     useContext(ModalContext) as ContextProps;
@@ -44,29 +47,28 @@ export const Form: FC<FormProps> = ({
 
   const roleName2 = { 1: "agent", 2: "buyer", 3: "explorer" };
 
-  //const roleOptions = [];
+  const roleOptions = [];
 
-  //let item:keyof typeof choices
-  //for (item in choices) {
-  // if(choices!=undefined)
-  // roleOptions.push({ id: roleOptions.length + 1, label: choices[item] });
-  // }
-  // console.log(roleOptions);
+  for (const key in choices) {
+    if (choices != undefined)
+      roleOptions.push({ id: roleOptions.length + 1, label: choices[key] });
+  }
+  console.log(roleOptions);
 
-  const roleOptions = [
-    {
-      id: 1,
-      label: data?.static_data.forms.agent,
-    },
-    {
-      id: 2,
-      label: data?.static_data.forms.buyer,
-    },
-    {
-      id: 3,
-      label: data?.static_data.forms.exploring,
-    },
-  ];
+  // const roleOptions = [
+  //   {
+  //     id: 1,
+  //     label: data?.static_data.forms.agent,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: data?.static_data.forms.buyer,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: data?.static_data.forms.exploring,
+  //   },
+  // ];
 
   const handleClick = async () => {
     // setIsLoading(true);
@@ -116,10 +118,7 @@ export const Form: FC<FormProps> = ({
     }
 
     try {
-      const { data } = await axios.post(
-        `http://34.16.179.95/api/v1/appeal/${catalog}/`,
-        sendData
-      );
+      const { data } = await axiosAPI.post(`/appeal/${catalog}/`, sendData);
       console.log(data);
       showFormMessageSuccess();
     } catch {

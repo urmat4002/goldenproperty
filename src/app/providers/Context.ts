@@ -9,4 +9,4 @@ export interface ContextProps {
   sellEstate: () => void;
 }
 
-export const ModalContext = createContext<ContextProps | null>(null);
+export const ModalContext = createContext<ContextProps>({} as ContextProps);
