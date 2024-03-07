@@ -1,13 +1,13 @@
+import { ReactNode } from "react";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { Section } from "@/features";
 import { Typography } from "@/shared/ui";
-import style from "./Benefits.module.scss";
-import { ReactNode } from "react";
 import { capitalize } from "@/shared/helper/utils";
-import { Сonfidentiality } from "../../shared/ui/Icons/Сonfidentiality"
-import { WideSelection } from "../../shared/ui/Icons/WideSelection"
-import { Feedback } from "../../shared/ui/Icons/Feedback"
-import { ExclusiveOffers } from "../../shared/ui/Icons/ExclusiveOffers"
+import { Сonfidentiality } from "../../shared/ui/Icons/Сonfidentiality";
+import { WideSelection } from "../../shared/ui/Icons/WideSelection";
+import { Feedback } from "../../shared/ui/Icons/Feedback";
+import { ExclusiveOffers } from "../../shared/ui/Icons/ExclusiveOffers";
+import style from "./Benefits.module.scss";
 
 export const Benefits = () => {
   const { data } = useGetStaticData();
@@ -54,7 +54,7 @@ const BenefitsCard = ({
     <Typography variant="h3" capitalize>
       {title}
     </Typography>
-    <Typography variant="body" capitalize>
+    <Typography variant="body" capitalize color="white">
       {description}
     </Typography>
   </div>
