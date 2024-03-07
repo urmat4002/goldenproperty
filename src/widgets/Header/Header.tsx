@@ -13,6 +13,7 @@ export const Header = () => {
   const isOpen = useAppSelector((state) => state.menuSlice.isOpen);
 
   return (
+    <>
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.headerLogo}>
@@ -21,7 +22,7 @@ export const Header = () => {
           </Link>
         </div>
         <div className={styles.headerNavbar}>
-          <Navbar />
+          <Navbar isMobile={isOpenMobileMD} />
         </div>
         <div className={styles.headerActions}>
           <div
@@ -45,5 +46,7 @@ export const Header = () => {
         {isOpenMobileMD && <MenuDropdownMobile />}
       </div>
     </header>
+    <MenuDropdown />
+    </>
   );
 };

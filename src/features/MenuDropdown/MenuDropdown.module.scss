@@ -2,22 +2,28 @@
 @import "@classes";
 
 .menuDropdown {
+  max-height: 768px;
   padding: 24px 0;
   background: $colorGray500;
   border-radius: 0px, 0px, 25px, 25px;
-  position: absolute;
-  top: 58px;
+  position: fixed;
   left: 0;
   right: 0;
-  z-index: 998;
+  z-index: 996;
+  transition: 0.7s ease;
   &Container {
     display: flex;
     gap: 16px;
+    left: 0;
+    right: 0;
   }
   &.open {
-    visibility: visible;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
   }
   &.close {
-    visibility: hidden;
+    top: -1000px;
   }
 }

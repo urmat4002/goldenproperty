@@ -45,7 +45,7 @@
 }
 .button {
   font-size: 24px;
-  @extend .medium;
+  @extend .regular;
   @include tablet {
     font-size: 14px;
   }
