@@ -37,7 +37,7 @@
     list-style: none;
     flex-wrap: wrap;
     word-break: break-word;
-    min-width: 130px;
+    min-width: 135px;
 
     &::before {
       content: attr(data-title);
@@ -116,6 +116,10 @@
   @include tablet {
     &Logo {
       display: none;
+    }
+
+    &Navigate {
+      gap: 5px;
     }
 
     &Option {
