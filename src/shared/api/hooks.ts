@@ -81,7 +81,8 @@ export const useGetEstateById = (id?: number | string) => {
       return response.data;
     },
   });
-  return { data, isLoading };
+  const estate = data?.estate;
+  return { data, estate, isLoading };
 };
 
 export const useGetSimilarEstates = (id?: number | string) => {
