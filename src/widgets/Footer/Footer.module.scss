@@ -37,7 +37,7 @@
     list-style: none;
     flex-wrap: wrap;
     word-break: break-word;
-    min-width: 90px;
+    min-width: 130px;
 
     &::before {
       content: attr(data-title);
