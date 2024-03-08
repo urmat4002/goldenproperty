@@ -7,8 +7,8 @@ import { useGetStaticData } from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
 
 export const HeroHome = () => {
-  const { data } = useGetStaticData()
-  
+  const { data } = useGetStaticData();
+
   return (
     <Section color="white" hero>
       <div className={styles.heroHome}>
@@ -23,13 +23,16 @@ export const HeroHome = () => {
               <Typography variant="large">
                 <span>Golden</span> House
               </Typography>
-              <Typography variant="body">
-                Find your dream home with us
+              <Typography variant="body" capitalize>
+                {data?.static_data.body.slogan ||
+                  "Find your dream home with us"}
               </Typography>
             </div>
             <Link to="/estates">
               <Button type="primary">
-                <Typography variant="button">{capitalize(data?.static_data.body.see_real_estates)}</Typography>
+                <Typography variant="button">
+                  {capitalize(data?.static_data.body.see_real_estates)}
+                </Typography>
               </Button>
             </Link>
           </div>
