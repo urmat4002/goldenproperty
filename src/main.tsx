@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routing } from "./app/providers/RouterProvider";
-import "@app/styles/index.scss";
-import { Provider } from "react-redux";
+//FIX_ME remove redux
 import { store } from "./app/lib/store";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import "@app/styles/index.scss";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -21,7 +21,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <QueryClientProvider client={client}>
         <Routing />
-        <ReactQueryDevtools buttonPosition="bottom-left" />
       </QueryClientProvider>
     </Provider>
   </BrowserRouter>
