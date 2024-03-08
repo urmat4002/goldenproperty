@@ -70,7 +70,7 @@ export const Filter = () => {
         <Select
           value={filterValues.city}
           options={cityOptions}
-          placeholder={"City"}
+          placeholder={capitalize(data?.static_data.body.city)}
           checkbox={true}
           onChange={(option) => {
             setFilterValues({ ...filterValues, city: option });
@@ -79,7 +79,7 @@ export const Filter = () => {
         <Select
           value={filterValues.type}
           options={typeOptions}
-          placeholder={"Type"}
+          placeholder={capitalize(data?.static_data.body.estate_type)}
           onChange={(option) => {
             setFilterValues({ ...filterValues, type: option });
           }}
@@ -87,7 +87,7 @@ export const Filter = () => {
         <Select
           value={filterValues.order}
           options={orderOptions}
-          placeholder={"Popular"}
+          placeholder={capitalize(data?.static_data.body.popular)}
           onChange={(option) => {
             setFilterValues({ ...filterValues, order: option });
           }}
