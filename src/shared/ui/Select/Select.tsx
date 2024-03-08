@@ -14,7 +14,7 @@ interface SelectItem {
 interface SelectProps {
   value: number[];
   options?: SelectItem[];
-  placeholder: string;
+  placeholder?: string;
   checkbox?: boolean;
   backgroundColor?: boolean;
   onChange: (_value: number[]) => void;

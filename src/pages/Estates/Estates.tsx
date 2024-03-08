@@ -23,6 +23,7 @@ export const Estates = () => {
     cardPageLimit,
     searchParams
   );
+  
 
   useEffect(() => {
     if (!gridRef.current) return;

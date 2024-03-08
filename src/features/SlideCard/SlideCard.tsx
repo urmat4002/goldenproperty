@@ -2,15 +2,16 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Section } from "..";
 import { PropertyCard } from "@/entities";
-import { useGetSimilarEstates } from "@/shared/api/hooks";
+import { useGetSimilarEstates, useGetStaticData } from "@/shared/api/hooks";
 import style from "./SlideCard.module.scss";
+import { capitalize } from "@/shared/helper/utils";
 
 export const SlideCard = () => {
   const { id } = useParams();
   const { data } = useGetSimilarEstates(id);
-
+  const { data: staticData } = useGetStaticData();
   return (
-    <Section title="Similar properties" container>
+    <Section title={capitalize(staticData?.static_data.body.similar_properties)} container>
       <Swiper spaceBetween={20} slidesPerView="auto">
         <div className={style.Sliders}>
           {data &&
