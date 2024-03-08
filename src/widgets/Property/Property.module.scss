@@ -20,6 +20,7 @@
 .description {
   position: relative;
   flex-shrink: 1;
+  flex-grow: 1;
   overflow-y: hidden;
 }
 
@@ -27,13 +28,13 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
-  // background-image: linear-gradient(to);
-  border: 1px solid red;
-}
-
-.buttonWrapper {
-  margin-top: auto;
+  height: 100px;
+  background-image: linear-gradient(
+    to top,
+    $colorGray400,
+    $colorGray400 10%,
+    transparent
+  );
 }
 
 .image {

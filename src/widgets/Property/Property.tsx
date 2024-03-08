@@ -4,23 +4,29 @@ import { ArrowRight } from "lucide-react";
 import { Button, Typography } from "@/shared/ui";
 import { Section } from "@/features";
 import { useInnerWidthExceedsDefault } from "@/shared/helper/ScreenWidthTracker";
-import { useGetCityById, useGetStaticData } from "@/shared/api/hooks";
+import { useGetCities, useGetStaticData } from "@/shared/api/hooks";
 import styles from "./Property.module.scss";
 
 export const Property: FC = () => {
   const state = useInnerWidthExceedsDefault({ defaultThreshold: 992 });
   const [value, setValue] = useState<number>(0);
-  const { data } = useGetCityById(3);
+  const { data } = useGetCities();
   const { data: staticData } = useGetStaticData();
 
-  // console.log(data?.city.city_description);
+  console.log(staticData?.static_data.body.see_real_estates);
+
+  const firstCityData = data?.cities?.[0];
 
   useEffect(() => {
     setValue(state ? 520 : 320);
   }, [state, value]);
 
   return (
-    <Section title="Property" customClassName={styles.property} container>
+    <Section
+      title={staticData?.static_data.body.property || "Property"}
+      customClassName={styles.property}
+      container
+    >
       <div className={styles.body}>
         <div className={styles.content}>
           <Typography
@@ -29,26 +35,32 @@ export const Property: FC = () => {
             weight="bold"
             className={styles.title}
           >
-            {data?.city.city_name}
+            {firstCityData?.city_name || "Dubai"}
           </Typography>
+
           <div className={styles.description}>
             <Typography variant="body" weight="regular" color="white">
-              {data?.city.city_description.repeat(3)}
+              {firstCityData?.city_description}
             </Typography>
             <div className={styles.descriptionShade}></div>
           </div>
-          {/* FIX_ME Dubai may end up having different id than 3, should consider that */}
-          <Link className={styles.buttonWrapper} to="/estates/?city=3">
+
+          <Link to={`/estates/?city=${firstCityData?.id || "1"}`}>
             <Button type="primary">
               <Typography variant="button" capitalize>
-                {staticData?.static_data.body.see_real_estates}
+                {staticData?.static_data.body.see_real_estates ||
+                  "See real estates"}
               </Typography>
               <ArrowRight />
             </Button>
           </Link>
         </div>
 
-        <img className={styles.image} src={data?.city.city_img} alt="Картина" />
+        <img
+          className={styles.image}
+          src={firstCityData?.city_img}
+          alt="Картина"
+        />
       </div>
     </Section>
   );
