@@ -4,8 +4,8 @@ import styles from "./MenuBanner.module.scss";
 import { Button, Typography } from "@/shared/ui";
 import { ArrowRight } from "lucide-react";
 import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
-import { useGetStaticData } from '@/shared/api/hooks';
-import { IBody } from '@/shared/api/types'
+import { useGetStaticData } from "@/shared/api/hooks";
+import { IBody } from "@/shared/api/types";
 
 interface MenuBannerProps {
   city: ICity;
@@ -13,7 +13,7 @@ interface MenuBannerProps {
 
 export const MenuBanner: FC<MenuBannerProps> = memo(({ city }) => {
   const { data } = useGetStaticData();
-  const seeRealEstates = data?.static_data.body as IBody | undefined
+  const seeRealEstates = data?.static_data.body as IBody | undefined;
   return (
     <div className={styles.menuBanner}>
       <div className={styles.menuBannerTop}>
@@ -29,9 +29,11 @@ export const MenuBanner: FC<MenuBannerProps> = memo(({ city }) => {
             />
           </div>
         </div>
-        <div className={styles.menuBannerImage}>
-          <img src={city.city_img} alt={city.city_name} />
-        </div>
+        <img
+          src={city.city_img}
+          alt={city.city_name}
+          className={styles.menuBannerImage}
+        />
       </div>
       <Button type="primary" customClasses={styles.menuBannerButton}>
         <Typography variant="button" className={styles.menuBannerTypography}>
