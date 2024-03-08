@@ -4,11 +4,7 @@ import { PropertyCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
 import { Filter } from "@/features/Filter";
-import {
-  useGetEstates,
-  useGetStaticData,
-  useGetStaticForms,
-} from "@/shared/api/hooks";
+import { useGetEstates, useGetStaticData } from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
 import styles from "./Estates.module.scss";
 import { capitalize } from "@/shared/helper/utils";

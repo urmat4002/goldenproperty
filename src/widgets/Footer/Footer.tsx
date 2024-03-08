@@ -2,7 +2,7 @@ import { LogoFooter } from "@/shared/ui/Icons/LogoFooter";
 import styles from "./Footer.module.scss";
 import { Geeks } from "@/shared/ui/Icons/Geeks";
 import { Mail, Phone } from "lucide-react";
-import { Typography, WhatsApp, Facebook, Instagram, Button } from "@/shared/ui";
+import { Typography, WhatsApp, Facebook, Instagram } from "@/shared/ui";
 import { Link } from "react-router-dom";
 import { ModalContext } from "@/app/providers/Context";
 import { useContext } from "react";
