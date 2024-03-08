@@ -79,7 +79,7 @@ export const Filter = () => {
         <Select
           value={filterValues.type}
           options={typeOptions}
-          placeholder={"Type"}
+          placeholder={capitalize(data?.static_data.body.estate_type)}
           onChange={(option) => {
             setFilterValues({ ...filterValues, type: option });
           }}

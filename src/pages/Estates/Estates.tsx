@@ -4,9 +4,14 @@ import { PropertyCard } from "@/entities";
 import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
 import { Filter } from "@/features/Filter";
-import { useGetEstates } from "@/shared/api/hooks";
+import {
+  useGetEstates,
+  useGetStaticData,
+  useGetStaticForms,
+} from "@/shared/api/hooks";
 import { Button } from "@/shared/ui";
 import styles from "./Estates.module.scss";
+import { capitalize } from "@/shared/helper/utils";
 
 const getCitySearchParam = (searchParams: URLSearchParams): string | null => {
   const cityParams = searchParams.get("city");
@@ -23,7 +28,7 @@ export const Estates = () => {
     cardPageLimit,
     searchParams
   );
-  
+  const { data: staticData } = useGetStaticData();
 
   useEffect(() => {
     if (!gridRef.current) return;
@@ -40,7 +45,10 @@ export const Estates = () => {
       {singleCityId ? (
         <HeroEstates cityId={singleCityId} />
       ) : (
-        <Section title="All real estates" container>
+        <Section
+          title={capitalize(staticData?.static_data.header.all_real_estates)}
+          container
+        >
           <Filter />
         </Section>
       )}
