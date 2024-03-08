@@ -1,15 +1,17 @@
+import { useWhatsApp } from "@/shared/api/hooks";
 import { FC } from "react";
 
 export const WhatsAppButton: FC<{ styles: CSSModuleClasses }> = ({
   styles,
 }) => {
-  const messageText = encodeURI("");
-  const phoneNumber = "+111222333444".replace("+", ""); //c
+  const { whatsappUrl } = useWhatsApp();
+  //const messageText = encodeURI("");
+
   return (
     <a
       className={styles.button}
       aria-label="Chat on WhatsdApp"
-      href={`https://wa.me/${phoneNumber}?text=${messageText}`}
+      href={whatsappUrl}
       target="_blank"
     >
       <svg

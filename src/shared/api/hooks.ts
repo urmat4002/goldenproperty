@@ -157,6 +157,18 @@ export const useGetCompany = () => {
   return { data, isSuccess };
 };
 
+export const useWhatsApp = (id?: number | string) => {
+  const { data } = useGetCompany();
+  const whatsappNumber = data?.about_company.whatsapp.replace(/\D/g, "");
+  let whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  if (id) {
+    const message = `/?text=${import.meta.env.VITE_HOST}/estate/${id}`;
+    //whatsappUrl += encodeURI(message);
+    whatsappUrl += message;
+  }
+  return { whatsappUrl };
+};
+
 export const useGetStaticData = () => {
   const { data, isSuccess } = useQuery({
     queryKey: ["static_data"],

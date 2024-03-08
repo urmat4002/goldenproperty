@@ -78,6 +78,9 @@ export type CompanyResponse = Response & {
     company: string;
     phone: string;
     email: string;
+    facebook: string;
+    instagram: string;
+    whatsapp: string;
     company_img: string;
   };
 };

@@ -1,21 +1,26 @@
 import { FC, ReactNode, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Check, X } from "lucide-react";
 import { Section, SliderObject } from "@/features";
 import { Button, Typography } from "@/shared/ui";
 import { ModalContext } from "@/app/providers/Context";
-import { useGetEstateById, useGetStaticData } from "@/shared/api/hooks";
-import styles from "./HeroRoom.module.scss";
+import {
+  useGetEstateById,
+  useGetStaticData,
+  useWhatsApp,
+} from "@/shared/api/hooks";
 import { TriangleRuler } from "@/shared/ui/Icons/TriangleRuler";
 import { Location } from "@/shared/ui/Icons/Location";
 import { capitalize } from "@/shared/helper/utils";
 import { CityOne } from "@/shared/ui/Icons/CityOne";
 import { Calendar } from "@/shared/ui/Icons/Calendar";
 import { Sofa } from "@/shared/ui/Icons/Sofa";
-import { Check, X } from "lucide-react";
+import styles from "./HeroRoom.module.scss";
 
 export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
   const { downloadCatalog } = useContext(ModalContext);
   const { id } = useParams();
+  const { whatsappUrl } = useWhatsApp(id);
   const { data, isLoading } = useGetEstateById(id);
   const estate = data?.estate;
   const pdfUrl = estate?.project.pdf_catalog;
@@ -31,6 +36,7 @@ export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
           <Typography variant="h2" color="gold" weight="bold">
             Price at: {estate?.price_usd} USD
           </Typography>
+
           <div className={styles.buttons}>
             <Button
               customClasses={styles.priceBtnsItem}
@@ -39,9 +45,12 @@ export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
             >
               Catalog
             </Button>
-            <Button customClasses={styles.priceBtnsItem} type="primary">
-              WhatsApp
-            </Button>
+
+            <Link to={whatsappUrl} target="_blank">
+              <Button customClasses={styles.priceBtnsItem} type="primary">
+                WhatsApp
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { WhatsApp } from "@shared/ui/Icons";
 import { Estate } from "@/shared/api/types";
 import styles from "./PropertyCard.module.scss";
+import { useWhatsApp } from "@/shared/api/hooks";
 
 export const PropertyCard: FC<Estate> = ({
   images: originalImages,
@@ -13,6 +14,7 @@ export const PropertyCard: FC<Estate> = ({
   project,
   id,
 }) => {
+  const { whatsappUrl } = useWhatsApp(id);
   const [currentSlide, setCurrentSlide] = useState(0);
   const images = originalImages.slice(0, 15);
 
@@ -76,8 +78,7 @@ export const PropertyCard: FC<Estate> = ({
         <p className={styles.price}>USD {price_usd.toLocaleString("us")}</p>
       </div>
 
-      {/* FIX_ME get whatsapp link from api */}
-      <Link to={"http://wa.me/996000000000"} target="_blank">
+      <Link to={whatsappUrl} target="_blank">
         <button className={styles.buttonWhatsapp}>
           WhatsApp
           <WhatsApp />
