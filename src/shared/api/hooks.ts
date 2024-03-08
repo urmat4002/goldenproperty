@@ -209,6 +209,7 @@ export const useGetStaticForms = () => {
       const response = await axiosAPI<StaticFormsResponse>(
         "/static_data/forms/"
       );
+
       return response.data;
     },
   });

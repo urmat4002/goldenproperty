@@ -18,7 +18,6 @@
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 1px solid #fff;
-    margin: 0 60px;
   }
 
   &Navigate {
@@ -37,14 +36,14 @@
     align-items: flex-start;
     list-style: none;
     flex-wrap: wrap;
-    padding-top: 50px;
+    word-break: break-word;
+    min-width: 90px;
 
     &::before {
       content: attr(data-title);
-      position: absolute;
-      top: 0;
       font-size: 20px;
       font-weight: 700;
+      margin-bottom: 20px;
     }
 
     li {
@@ -101,6 +100,8 @@
 
   &Typography {
     transition: color 0.3s ease;
+    text-align: left;
+
     &:hover {
       color: $colorPrimary;
     }
@@ -117,10 +118,6 @@
       display: none;
     }
 
-    &Top {
-      margin: 0 30px;
-    }
-
     &Option {
       &::before {
         font-size: 16px;
@@ -134,8 +131,7 @@
     }
 
     &Top {
-      margin: 0;
-      padding: 20px 0;
+      padding: 20px 0 0px 0;
     }
 
     &Navigate {
@@ -146,7 +142,7 @@
     &Option {
       flex-direction: row;
       align-items: center;
-      margin-bottom: 28px;
+      margin-bottom: 33px;
       padding-top: 40px;
 
       li {
@@ -154,6 +150,9 @@
       }
 
       &::before {
+        content: attr(data-title);
+        position: absolute;
+        top: 0;
         font-size: 14px;
       }
     }
