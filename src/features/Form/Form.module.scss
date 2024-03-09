@@ -51,6 +51,9 @@
   width: 100%;
   justify-content: flex-end;
   align-items: center;
+  @include mobile {
+    justify-content: flex-start;
+  }
 }
 
 .formGrid {
@@ -58,6 +61,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }
 
 .formInput {
