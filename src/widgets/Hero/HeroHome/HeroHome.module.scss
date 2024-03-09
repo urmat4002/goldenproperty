@@ -60,7 +60,7 @@ $colorGray350: #ccc; // Assuming this is a valid color
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: 70vh;
+  height: min(70vh, 700px);
   overflow: hidden;
   background-size: cover;
   background-position: center;

@@ -7,7 +7,7 @@ export const Brief: FC<{ styles: CSSModuleClasses; description?: string }> = ({
 }) => (
   <div className={styles.brief}>
     <Typography variant="body" weight="medium" color="white">
-      {description}
+      {description?.split("\n")[0]}
     </Typography>
   </div>
 );
