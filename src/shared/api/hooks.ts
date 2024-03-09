@@ -187,7 +187,9 @@ export const useGetStaticData = () => {
       ]
     : [];
 
-  return { data, orderOptions, isSuccess };
+  const staticData = data?.static_data;
+
+  return { data, staticData, orderOptions, isSuccess };
 };
 
 export const useGetStaticHeader = () => {
@@ -218,14 +220,16 @@ export const useGetStaticForms = () => {
 };
 
 export const useGetStaticFormDownloadCatalog = () => {
-  const { data, isSuccess } = useQuery({
+  const { data } = useQuery({
     queryKey: ["formsCatalog"],
     queryFn: async () => {
-      const response = await axiosAPI<StaticFormCatalogResponse>(
-        "/appeal/download_catalog/"
-      );
+      const response =
+        await axiosAPI<StaticFormCatalogResponse>("/download_catalog/");
       return response.data;
     },
   });
-  return { data, isSuccess };
+
+  const choices = data?.form.choices;
+
+  return { data, choices };
 };

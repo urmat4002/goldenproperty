@@ -1,127 +1,141 @@
-import { FC, ReactNode, useContext, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { XCircle } from "lucide-react";
 import { Button } from "@/shared/ui/Button/Button";
 import { Input, Select, Typography } from "@/shared/ui";
 import { Calendar } from "@/shared/ui/Calendar";
-import { ContextProps, ModalContext } from "@/app/providers/Context";
 import {
   useGetStaticData,
   useGetStaticFormDownloadCatalog,
 } from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
 import { axiosAPI } from "@/shared/api/axiosApi";
-import form from "./Form.module.scss";
+import { SelectItem } from "@/shared/ui/Select/Select";
+import { useParams } from "react-router-dom";
+import { useModalContext } from "@/app/providers/useModalContext";
+import styles from "./Form.module.scss";
 
-interface FormProps {
-  title?: string;
-  subTitle?: string;
-  btnTitle?: string;
-  catalog?: string;
-  icon?: ReactNode;
-  closeBtn?: boolean;
-  onClick?: () => void;
-}
+type FormProps = {
+  variant: "download_catalog" | "buy" | "sell" | "consultation";
+};
 
-export const Form: FC<FormProps> = ({
-  title,
-  subTitle,
-  btnTitle = "Send",
-  catalog = "",
-  icon,
-  closeBtn,
-}) => {
-  const { data } = useGetStaticData();
+type FormParams = {
+  title: string;
+  subTitle: string;
+  buttonCaption: string;
+  buttonIcon: ReactNode;
+  closeButton: boolean;
+};
 
-  const { data: dataCatalog } = useGetStaticFormDownloadCatalog();
-  const choices = dataCatalog?.form?.choices;
+type FormData = {
+  name: string;
+  last_name: string;
+  phone: string;
+  email?: string;
+  city?: string;
+  at_date?: string;
+  appeal_type: string;
+  estate_id?: string;
+  role?: string;
+};
+
+export const Form: FC<FormProps> = ({ variant }) => {
+  const { id: estateId } = useParams();
+  const { staticData } = useGetStaticData();
+  const { choices } = useGetStaticFormDownloadCatalog();
 
   const { closeModal, showFormMessageSuccess, showFormMessageError } =
-    useContext(ModalContext) as ContextProps;
+    useModalContext();
+
   const [calendarActive, setCalendarActive] = useState(false);
 
   const [date, setDate] = useState("");
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
-  const [roleValue, setRolValue] = useState([1]);
+  const [role, setRole] = useState([1]);
 
-  const roleName2 = { 1: "agent", 2: "buyer", 3: "explorer" };
-
-  const roleOptions = [];
+  const roleApiNames: Record<number, string> = {};
+  const roleOptions: SelectItem[] = [];
 
   for (const key in choices) {
-    if (choices != undefined)
-      roleOptions.push({ id: roleOptions.length + 1, label: choices[key] });
+    if (choices != undefined) {
+      const id = roleOptions.length + 1;
+      roleOptions.push({ id, label: choices[key] });
+      roleApiNames[id] = key;
+    }
   }
 
-  // const roleOptions = [
-  //   {
-  //     id: 1,
-  //     label: data?.static_data.forms.agent,
-  //   },
-  //   {
-  //     id: 2,
-  //     label: data?.static_data.forms.buyer,
-  //   },
-  //   {
-  //     id: 3,
-  //     label: data?.static_data.forms.exploring,
-  //   },
-  // ];
+  const formParams: FormParams = {
+    title: "",
+    subTitle: "",
+    buttonCaption: "",
+    buttonIcon: null,
+    closeButton: false,
+  };
+
+  const formData: FormData = {
+    name,
+    last_name: lastName,
+    phone: "",
+    appeal_type: variant,
+  };
+
+  switch (variant) {
+    case "buy":
+      formParams.title = staticData?.forms.submit_application || "...";
+      formParams.subTitle = staticData?.forms.fill_form || "...";
+      formParams.buttonCaption = staticData?.forms.send || "...";
+      formData.name = name;
+      formData.last_name = lastName;
+      formData.phone = phone;
+      formData.city = city;
+      formData.at_date = date;
+      formData.estate_id = estateId;
+      break;
+    case "sell":
+      formParams.title = staticData?.forms.sell_with_us || "...";
+      formParams.subTitle = staticData?.forms.fill_form || "...";
+      formParams.buttonCaption = staticData?.forms.send || "...";
+      formParams.closeButton = true;
+      formData.name = name;
+      formData.last_name = lastName;
+      formData.phone = phone;
+      formData.city = city;
+      formData.at_date = date;
+      break;
+    case "consultation":
+      formParams.title = staticData?.forms.any_question || "...";
+      formParams.subTitle = staticData?.forms.leave_your_contacts || "...";
+      formParams.buttonCaption = staticData?.forms.send || "...";
+      formData.name = name;
+      formData.last_name = lastName;
+      formData.phone = phone;
+      formData.city = city;
+      formData.at_date = date;
+      break;
+    case "download_catalog":
+      formParams.title = staticData?.forms.download_catalog || "...";
+      formParams.subTitle = staticData?.forms.catalog_fill_form || "...";
+      formParams.buttonCaption = staticData?.forms.download || "...";
+      //FIX_ME add suitable icon
+      formParams.buttonIcon = null;
+      formParams.closeButton = true;
+      formData.name = name;
+      formData.last_name = lastName;
+      formData.phone = phone;
+      formData.city = city;
+      formData.at_date = date;
+      formData.role = roleApiNames[role[0]];
+      break;
+  }
 
   const handleClick = async () => {
-    // setIsLoading(true);
-    let sendData = {};
-    if (catalog === "buy") {
-      sendData = {
-        name,
-        last_name: "",
-        phone,
-        city,
-        at_date: date,
-        appeal_type: "buy",
-        estate_id: "1",
-      };
-    }
-
-    if (catalog === "consultation") {
-      sendData = {
-        name,
-        last_name: "",
-        phone,
-        city,
-        at_date: date,
-        appeal_type: catalog,
-      };
-    }
-
-    if (catalog === "sell") {
-      sendData = {
-        name,
-        last_name: "",
-        phone,
-        city,
-        at_date: date,
-        appeal_type: catalog,
-      };
-    }
-
-    if (catalog === "download_catalog") {
-      sendData = {
-        name,
-        phone,
-        email: "user@example.com",
-        role: roleName2[1],
-        estate_id: "1",
-      };
-    }
-
     try {
-      const { data } = await axiosAPI.post(`/appeal/${catalog}/`, sendData);
-      console.log(data);
+      const response = await axiosAPI.post(`/appeal/${variant}/`, formData);
+      console.log(response);
       showFormMessageSuccess();
     } catch {
-      console.log("Error");
       showFormMessageError();
     } finally {
       //  setIsLoading(false);
@@ -129,47 +143,56 @@ export const Form: FC<FormProps> = ({
   };
 
   return (
-    <form className={form.form}>
-      {closeBtn && (
-        <Button onClick={closeModal} customClasses={form.formBtn} type="icon">
+    <form className={styles.form}>
+      {formParams.closeButton && (
+        <Button onClick={closeModal} customClasses={styles.formBtn} type="icon">
           <XCircle color="white" />
         </Button>
       )}
-      <div className={form.formTitle}>
+      <div className={styles.formTitle}>
         <Typography variant="h3" weight="medium" color="gold" capitalize>
-          {title}
+          {formParams.title}
         </Typography>
         <Typography variant="body" weight="medium" color="white" capitalize>
-          {subTitle}
+          {formParams.subTitle}
         </Typography>
       </div>
-      <div className={form.formInputs}>
-        <div className={form.formWrapper}>
+      <div className={styles.formInputs}>
+        <input
+          className={styles.honeypot}
+          type="text"
+          id="last_name"
+          name="last_name"
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <div className={styles.formWrapper}>
           <Input
             value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
-            placeholder={capitalize(data?.static_data.forms.your_name)}
+            placeholder={capitalize(staticData?.forms.your_name) || "Name"}
           />
           <Input
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            placeholder={capitalize(data?.static_data.forms.phone_number)}
+            placeholder={
+              capitalize(staticData?.forms.phone_number) || "Phone number"
+            }
           />
         </div>
-        <div className={form.formWrapper}>
+        <div className={styles.formWrapper}>
           <Input
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            placeholder={capitalize(data?.static_data.forms.your_city)}
+            placeholder={capitalize(staticData?.forms.your_city) || "Your city"}
           />
-          {catalog === "download_catalog" ? (
-            <div className={form.formSelect}>
+          {variant === "download_catalog" ? (
+            <div className={styles.formSelect}>
               <Select
-                value={roleValue}
+                value={role}
                 options={roleOptions}
-                onChange={(val) => setRolValue(val)}
+                onChange={(val) => setRole(val)}
                 placeholder={"Select role"}
                 backgroundColor={false}
               />
@@ -178,7 +201,7 @@ export const Form: FC<FormProps> = ({
             <>
               <Input
                 onFocus={() => setCalendarActive(true)}
-                placeholder={capitalize(data?.static_data.forms.date)}
+                placeholder={capitalize(staticData?.forms.date) || "Date"}
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
@@ -191,11 +214,11 @@ export const Form: FC<FormProps> = ({
           )}
         </div>
       </div>
-      <div className={form.formButton}>
+      <div className={styles.formButton}>
         <Button onClick={handleClick} type="primary">
           <Typography variant="button">
-            {btnTitle}
-            {icon}
+            {formParams.buttonCaption}
+            {formParams.buttonIcon}
           </Typography>
         </Button>
       </div>

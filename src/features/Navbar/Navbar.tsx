@@ -3,15 +3,15 @@ import styles from "./Navbar.module.scss";
 import { Typography } from "@/shared/ui";
 import { NavLink } from "react-router-dom";
 import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
-import { FC, useContext, useState } from "react";
+import { FC, useState } from "react";
 import { MenuLeft } from "../MenuDropdown/MenuLeft";
 import { ChevronDown } from "lucide-react";
-import { ModalContext } from "@/app/providers/Context";
 import { useGetStaticData } from "@/shared/api/hooks";
-import { NavbarProps, isData } from './types/Navbar.types'
+import { NavbarProps, isData } from "./types/Navbar.types";
+import { useModalContext } from "@/app/providers/useModalContext";
 
-export const Navbar: FC<NavbarProps> = ({isMobile}) => {
-  const { sellEstate } = useContext(ModalContext);
+export const Navbar: FC<NavbarProps> = ({ isMobile }) => {
+  const { sellEstate } = useModalContext();
   const dispatch = useAppDispatch();
   const [openCity, setOpenCity] = useState(false);
   const [cityId, setCityId] = useState<number>(0);
@@ -29,11 +29,7 @@ export const Navbar: FC<NavbarProps> = ({isMobile}) => {
   return (
     <div className={styles.navbar}>
       {openCity && (
-        <MenuLeft
-          onClick={handleCityClick}
-          id={cityId}
-          isMobile={isMobile}
-        />
+        <MenuLeft onClick={handleCityClick} id={cityId} isMobile={isMobile} />
       )}
       <ul className={styles.navbarMenu}>
         <li>

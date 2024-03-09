@@ -6,7 +6,7 @@ import { Checkbox } from "../Checkbox";
 import { capitalize } from "@/shared/helper/utils";
 import style from "./Select.module.scss";
 
-interface SelectItem {
+export interface SelectItem {
   id: number;
   label?: string;
 }

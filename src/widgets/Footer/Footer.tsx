@@ -1,11 +1,8 @@
-import { LogoFooter } from "@/shared/ui/Icons/LogoFooter";
-import styles from "./Footer.module.scss";
-import { Geeks } from "@/shared/ui/Icons/Geeks";
-import { Mail, Phone } from "lucide-react";
-import { Typography, WhatsApp, Facebook, Instagram } from "@/shared/ui";
 import { Link } from "react-router-dom";
-import { ModalContext } from "@/app/providers/Context";
-import { useContext } from "react";
+import { Mail, Phone } from "lucide-react";
+import { LogoFooter } from "@/shared/ui/Icons/LogoFooter";
+import { Geeks } from "@/shared/ui/Icons/Geeks";
+import { Typography, WhatsApp, Facebook, Instagram } from "@/shared/ui";
 import { capitalize as cap } from "@/shared/helper/utils";
 import {
   useGetCities,
@@ -15,9 +12,11 @@ import {
   useGetStaticHeader,
   useWhatsApp,
 } from "@/shared/api/hooks";
+import { useModalContext } from "@/app/providers/useModalContext";
+import styles from "./Footer.module.scss";
 
 export const Footer = () => {
-  const { sellEstate } = useContext(ModalContext);
+  const { sellEstate } = useModalContext();
   const { whatsappUrl } = useWhatsApp();
   const { data: cities } = useGetCities();
   const { data: types } = useGetEstateTypes();

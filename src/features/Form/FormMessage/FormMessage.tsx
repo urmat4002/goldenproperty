@@ -1,7 +1,7 @@
-import { FC, useContext } from "react";
-import formMessage from "../Form.module.scss";
+import { FC } from "react";
 import { Button, Typography } from "@/shared/ui";
-import { ModalContext } from "@/app/providers/Context";
+import { useModalContext } from "@/app/providers/useModalContext";
+import formMessage from "../Form.module.scss";
 
 interface FromProps {
   title?: string;
@@ -12,7 +12,7 @@ export const FormMessage: FC<FromProps> = ({
   title = "The application has been successfully accepted!",
   subTitle = "Thank you for contacting us! Our specialist will contact you soon.",
 }) => {
-  const { closeModal } = useContext(ModalContext);
+  const { closeModal } = useModalContext();
 
   return (
     <div className={formMessage.form}>

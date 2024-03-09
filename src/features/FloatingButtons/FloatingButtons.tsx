@@ -1,6 +1,6 @@
-import styles from "./FloatingButtons.module.scss";
 import { ScrollTopButton } from "./ui/ScrollTopButton";
 import { WhatsAppButton } from "./ui/WhatsAppButton";
+import styles from "./FloatingButtons.module.scss";
 
 export const FloatingButtons = () => {
   return (

@@ -1,42 +1,25 @@
-import { Form } from "@/features/Form/Form";
+import { FC } from "react";
 import clsx from "clsx";
-import modal from "./Modal.module.scss";
+import { Form } from "@/features/Form/Form";
 import { FormMessage } from "@/features/Form/FormMessage/FormMessage";
-import { FC, useContext } from "react";
-import { ContextProps, ModalContext } from "@/app/providers/Context";
-import { useGetStaticData } from "@/shared/api/hooks";
+import { useModalContext } from "@/app/providers/useModalContext";
+import styles from "./Modal.module.scss";
 
 export const Modal: FC = () => {
-  const { isModalOpen } = useContext(ModalContext) as ContextProps;
-  const { closeModal } = useContext(ModalContext) as ContextProps;
-
-  const { data } = useGetStaticData();
+  const { modalVariant, closeModal } = useModalContext();
 
   return (
     <div
       onClick={closeModal}
-      className={clsx(modal.modal, isModalOpen && modal.active)}
+      className={clsx(styles.modal, modalVariant && styles.active)}
     >
       <div onClick={(e) => e.stopPropagation()}>
-        {isModalOpen === "download_catalog" && (
-          <Form
-            closeBtn
-            catalog={isModalOpen}
-            title={data?.static_data.forms?.download_catalog}
-            subTitle="Can you answer the following questions?"
-          />
-        )}
-        {isModalOpen === "sell" && (
-          <Form
-            closeBtn
-            catalog={isModalOpen}
-            title={data?.static_data.forms.sell_with_us}
-            subTitle="Can you answer the following questions?"
-          />
-        )}
-        {isModalOpen === "form_message_success" && <FormMessage />}
-        {isModalOpen === "form_message_error" && (
+        {modalVariant === "download_catalog" && <Form variant={modalVariant} />}
+        {modalVariant === "sell" && <Form variant={modalVariant} />}
+        {modalVariant === "form_message_success" && <FormMessage />}
+        {modalVariant === "form_message_error" && (
           <FormMessage
+            // FIX_ME
             title="The application has not been accepted!"
             subTitle="Try it again"
           />

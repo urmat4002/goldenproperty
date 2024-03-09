@@ -35,7 +35,7 @@ export const PropertyCard: FC<Estate> = ({
   return (
     <div className={styles.propertyCard}>
       <div className={styles.imageWrapper}>
-        <Link to={`${id}`}>
+        <Link to={`/estates/${id}`}>
           <img
             className={styles.image}
             src={images[currentSlide]}
@@ -66,7 +66,7 @@ export const PropertyCard: FC<Estate> = ({
       </div>
 
       <div className={styles.content}>
-        <Link to={`${id}`}>
+        <Link to={`/estates/${id}`}>
           <h3 className={styles.projectName}>{project.name}</h3>
         </Link>
 

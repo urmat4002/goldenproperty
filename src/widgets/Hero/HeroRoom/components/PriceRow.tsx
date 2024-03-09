@@ -1,8 +1,8 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
-import { ModalContext } from "@/app/providers/Context";
 import { useWhatsApp } from "@/shared/api/hooks";
 import { Button, Typography } from "@/shared/ui";
+import { useModalContext } from "@/app/providers/useModalContext";
 
 export const PriceRow: FC<{
   styles: CSSModuleClasses;
@@ -10,7 +10,7 @@ export const PriceRow: FC<{
   price: string | number | undefined;
   id: string | undefined;
 }> = ({ styles, pdfUrl, price, id }) => {
-  const { downloadCatalog } = useContext(ModalContext);
+  const { downloadCatalog } = useModalContext();
   const { whatsappUrl } = useWhatsApp(id);
 
   return (

@@ -8,12 +8,8 @@ export const FormCallBack = () => {
   const { data } = useGetStaticData();
 
   return (
-    <Section title={data?.static_data?.forms?.contact_us} container={state}>
-      <Form
-        title={data?.static_data?.forms?.any_question}
-        subTitle={data?.static_data?.forms?.leave_your_contacts}
-        catalog="consultation"
-      />
+    <Section title={data?.static_data.forms.contact_us} container={state}>
+      <Form variant="consultation" />
     </Section>
   );
 };
