@@ -1,5 +1,22 @@
-import { useContext } from "react";
-import { ContextProps, ModalContext } from "./ModalProvider";
+import { createContext, useContext } from "react";
+
+export type ModalVariant =
+  | null
+  | "sell"
+  | "download_catalog"
+  | "form_message_error"
+  | "form_message_success";
+
+export type ContextProps = {
+  modalVariant: ModalVariant;
+  closeModal: () => void;
+  downloadCatalog: (_pdfUrl: string | undefined) => void;
+  showFormMessageSuccess: () => void;
+  showFormMessageError: () => void;
+  sellEstate: () => void;
+};
+
+export const ModalContext = createContext<ContextProps>({} as ContextProps);
 
 export const useModalContext = () => {
   const modalContext = useContext<ContextProps>(ModalContext);
