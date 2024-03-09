@@ -2,49 +2,18 @@
 @import "@mixin";
 
 .form {
+  position: relative;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   border-radius: 3px;
-  gap: 20px;
   background-color: $colorGray500;
   padding: 40px 100px;
-  margin: 0 auto;
+  margin-inline: auto;
   @include tablet {
     padding: 20px 62px;
   }
   @include mobile {
     padding: 20px 16px;
   }
-  &Select {
-    margin-top: 20px;
-  }
-  &Btn {
-    align-self: end;
-  }
-  &Title {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  &Inputs {
-    width: 100%;
-    display: flex;
-    gap: 16px;
-  }
-
-  &Wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  &Button {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
   @include mobile {
     padding: 10px;
     &Inputs {
@@ -54,6 +23,67 @@
       justify-content: flex-start;
     }
   }
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.subtitle {
+  margin-top: 10px;
+}
+
+.formInputs {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+}
+
+.formWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.formButton {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.formGrid {
+  margin-block: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formInput {
+  color: $colorWhite;
+  width: 100%;
+  background: $colorGray400;
+  border: 0.5px solid $colorGray450;
+  border-radius: 56px;
+  padding: 8px 28px;
+  outline: none;
+  transition: 0.3s ease;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formInput::placeholder {
+  border: none;
+}
+
+.formInput:hover {
+  background-color: $colorGray450;
+}
+
+.formInput:focus {
+  background-color: $colorGray550;
+  border: 0.5px solid $colorGray400;
 }
 
 .honeypot {

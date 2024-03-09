@@ -1,6 +1,18 @@
 import { FC } from "react";
-import { InputProps } from "./types/Input.types";
-import style from "./Input.module.scss";
+import { ChangeEvent } from "react";
+import styles from "./Input.module.scss";
+
+export interface InputProps {
+  type?: "text" | "number";
+  label?: string;
+  value?: string | number;
+  name?: string;
+  placeholder?: string;
+  isDisabled?: boolean;
+  className?: string;
+  onChange?: (_e: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: () => void;
+}
 
 export const Input: FC<InputProps> = ({
   type,
@@ -12,16 +24,15 @@ export const Input: FC<InputProps> = ({
   onFocus,
 }) => {
   return (
-    <div className={style.inputWrapper}>
-      <input
-        type={type}
-        id={label}
-        value={value}
-        name={name}
-        placeholder={placeholder}
-        onChange={onChange}
-        onFocus={onFocus}
-      />
-    </div>
+    <input
+      className={styles.input}
+      type={type}
+      id={label}
+      value={value}
+      name={name}
+      placeholder={placeholder}
+      onChange={onChange}
+      onFocus={onFocus}
+    />
   );
 };

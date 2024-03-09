@@ -1,9 +1,10 @@
 import { FC, ReactNode, useState } from "react";
-import { XCircle } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "@/shared/ui/Button/Button";
-import { Input, Select, Typography } from "@/shared/ui";
+import { Select, Typography } from "@/shared/ui";
 import { Calendar } from "@/shared/ui/Calendar";
 import {
+  useGetEstateById,
   useGetStaticData,
   useGetStaticFormDownloadCatalog,
 } from "@/shared/api/hooks";
@@ -42,6 +43,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
   const { id: estateId } = useParams();
   const { staticData } = useGetStaticData();
   const { choices } = useGetStaticFormDownloadCatalog();
+  const { pdfUrl } = useGetEstateById(estateId);
 
   const { closeModal, showFormMessageSuccess, showFormMessageError } =
     useModalContext();
@@ -49,11 +51,13 @@ export const Form: FC<FormProps> = ({ variant }) => {
   const [calendarActive, setCalendarActive] = useState(false);
 
   const [date, setDate] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState("Elon Musk");
+  const [email, setEmail] = useState("aaa@bbb.com");
   const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
-  const [phone, setPhone] = useState("");
-  const [role, setRole] = useState([1]);
+  //FIX_ME:
+  const [phone, setPhone] = useState("+996700111222");
+  const [role, setRole] = useState(1);
 
   const roleApiNames: Record<number, string> = {};
   const roleOptions: SelectItem[] = [];
@@ -123,97 +127,122 @@ export const Form: FC<FormProps> = ({ variant }) => {
       formParams.closeButton = true;
       formData.name = name;
       formData.last_name = lastName;
+      formData.email = email;
       formData.phone = phone;
       formData.city = city;
       formData.at_date = date;
-      formData.role = roleApiNames[role[0]];
+      formData.estate_id = estateId;
+      formData.role = roleApiNames[role];
       break;
   }
 
   const handleClick = async () => {
     try {
-      const response = await axiosAPI.post(`/appeal/${variant}/`, formData);
-      console.log(response);
+      await axiosAPI.post(`/appeal/${variant}/`, formData);
+      if (variant === "download_catalog") {
+        localStorage.setItem("catalog", "true");
+        setTimeout(() => {
+          window.open(pdfUrl, "_blank");
+        }, 500);
+      }
       showFormMessageSuccess();
     } catch {
+      localStorage.removeItem("catalog");
       showFormMessageError();
-    } finally {
-      //  setIsLoading(false);
     }
   };
 
   return (
     <form className={styles.form}>
-      {formParams.closeButton && (
-        <Button onClick={closeModal} customClasses={styles.formBtn} type="icon">
-          <XCircle color="white" />
-        </Button>
-      )}
-      <div className={styles.formTitle}>
-        <Typography variant="h3" weight="medium" color="gold" capitalize>
-          {formParams.title}
-        </Typography>
-        <Typography variant="body" weight="medium" color="white" capitalize>
-          {formParams.subTitle}
-        </Typography>
-      </div>
-      <div className={styles.formInputs}>
+      <Typography variant="h3" weight="medium" color="gold" capitalize>
+        {formParams.title}
+      </Typography>
+      <Typography
+        className={styles.subtitle}
+        variant="body"
+        weight="medium"
+        color="white"
+        capitalize
+      >
+        {formParams.subTitle}
+      </Typography>
+
+      <div className={styles.formGrid}>
         <input
-          className={styles.honeypot}
-          type="text"
-          id="last_name"
-          name="last_name"
-          onChange={(e) => setLastName(e.target.value)}
+          className={styles.formInput}
+          id="name"
+          name="name"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          placeholder={capitalize(staticData?.forms.your_name) || "Name"}
         />
-        <div className={styles.formWrapper}>
-          <Input
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            placeholder={capitalize(staticData?.forms.your_name) || "Name"}
-          />
-          <Input
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+
+        {variant === "download_catalog" ? (
+          <input
+            className={styles.formInput}
+            id="email"
+            name="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder={
-              capitalize(staticData?.forms.phone_number) || "Phone number"
+              capitalize(staticData?.forms.your_email) || "Your email"
             }
           />
-        </div>
-        <div className={styles.formWrapper}>
-          <Input
+        ) : (
+          <input
+            className={styles.formInput}
+            id="city"
+            name="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            placeholder={capitalize(staticData?.forms.your_city) || "Your city"}
+            placeholder={"Your city"}
           />
-          {variant === "download_catalog" ? (
-            <div className={styles.formSelect}>
-              <Select
-                value={role}
-                options={roleOptions}
-                onChange={(val) => setRole(val)}
-                placeholder={"Select role"}
-                backgroundColor={false}
-              />
-            </div>
-          ) : (
-            <>
-              <Input
-                onFocus={() => setCalendarActive(true)}
-                placeholder={capitalize(staticData?.forms.date) || "Date"}
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-              <Calendar
-                calendarActive={calendarActive}
-                setCalendarActive={() => setCalendarActive(false)}
-                setDate={setDate}
-              />
-            </>
-          )}
-        </div>
+        )}
+
+        <input
+          className={styles.formInput}
+          id="phone"
+          name="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder={
+            capitalize(staticData?.forms.phone_number) || "Phone number"
+          }
+        />
+
+        {variant === "download_catalog" ? (
+          <Select
+            value={[role]}
+            options={roleOptions}
+            onChange={(val) => setRole(val[0])}
+            placeholder={
+              capitalize(staticData?.forms.select_role) || "Select role"
+            }
+            backgroundColor={false}
+          />
+        ) : (
+          <>
+            <input
+              className={styles.formInput}
+              id="date"
+              name="date"
+              value={date}
+              onFocus={() => setCalendarActive(true)}
+              placeholder={capitalize(staticData?.forms.date) || "Date"}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <Calendar
+              calendarActive={calendarActive}
+              setCalendarActive={() => setCalendarActive(false)}
+              setDate={setDate}
+            />
+          </>
+        )}
       </div>
+
       <div className={styles.formButton}>
         <Button onClick={handleClick} type="primary">
           <Typography variant="button">
@@ -222,6 +251,24 @@ export const Form: FC<FormProps> = ({ variant }) => {
           </Typography>
         </Button>
       </div>
+
+      {formParams.closeButton && (
+        <Button
+          onClick={closeModal}
+          customClasses={styles.closeButton}
+          type="icon"
+        >
+          <X color="white" />
+        </Button>
+      )}
+
+      <input
+        className={styles.honeypot}
+        type="text"
+        id="last_name"
+        name="last_name"
+        onChange={(e) => setLastName(e.target.value)}
+      />
     </form>
   );
 };

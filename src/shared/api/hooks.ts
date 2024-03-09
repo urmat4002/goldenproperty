@@ -82,7 +82,8 @@ export const useGetEstateById = (id?: number | string) => {
     },
   });
   const estate = data?.estate;
-  return { data, estate, isLoading };
+  const pdfUrl = estate?.project.pdf_catalog;
+  return { data, estate, pdfUrl, isLoading };
 };
 
 export const useGetSimilarEstates = (id?: number | string) => {
@@ -223,8 +224,9 @@ export const useGetStaticFormDownloadCatalog = () => {
   const { data } = useQuery({
     queryKey: ["formsCatalog"],
     queryFn: async () => {
-      const response =
-        await axiosAPI<StaticFormCatalogResponse>("/download_catalog/");
+      const response = await axiosAPI<StaticFormCatalogResponse>(
+        "/appeal/download_catalog/"
+      );
       return response.data;
     },
   });
