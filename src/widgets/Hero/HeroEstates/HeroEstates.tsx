@@ -13,7 +13,7 @@ export const HeroEstates = ({ cityId }: { cityId: string }) => {
       <div className={styles.HeroEstates}>
         <div className={styles.HeroEstatesContent}>
           <Typography variant="h1">{city?.city_name || "..."}</Typography>
-          <Typography variant="body">
+          <Typography className={styles.content} variant="body">
             {city?.city_description || "..."}
           </Typography>
         </div>
