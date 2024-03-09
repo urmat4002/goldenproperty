@@ -16,7 +16,8 @@ export const PriceRow: FC<{
   return (
     <div className={styles.priceRow}>
       <Typography variant="h2" color="gold" weight="bold">
-        Price at: {price?.toString()} USD
+        <span className={styles.priceAt}>Price at: </span>{" "}
+        <span>{price?.toLocaleString("en")} USD</span>
       </Typography>
 
       <div className={styles.buttons}>
