@@ -27,7 +27,7 @@ export const Calendar: FC<CalendarProps> = (props) => {
   const nextMonth = () => {
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
-    console.log(year);
+
     setCurrentDate(new Date(year, month + 1));
   };
   const prevMonth = () => {
@@ -39,9 +39,7 @@ export const Calendar: FC<CalendarProps> = (props) => {
 
   const handleClick = (day: number) => {
     setSelectedDay(day);
-    setDate(
-      `${day} ${currentDate.toLocaleString("default", { month: "long" })}`
-    );
+    setDate(`${currentDate.getFullYear()}-${currentDate.getMonth()}-${day}`);
   };
 
   const month = [];

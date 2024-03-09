@@ -53,7 +53,6 @@ export const Form: FC<FormProps> = ({
     if (choices != undefined)
       roleOptions.push({ id: roleOptions.length + 1, label: choices[key] });
   }
-  console.log(roleOptions);
 
   // const roleOptions = [
   //   {
@@ -79,7 +78,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-07",
+        at_date: date,
         appeal_type: "buy",
         estate_id: "1",
       };
@@ -91,7 +90,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-07",
+        at_date: date,
         appeal_type: catalog,
       };
     }
@@ -102,7 +101,7 @@ export const Form: FC<FormProps> = ({
         last_name: "",
         phone,
         city,
-        at_date: "2024-03-07",
+        at_date: date,
         appeal_type: catalog,
       };
     }
