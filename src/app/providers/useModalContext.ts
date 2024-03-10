@@ -14,6 +14,7 @@ export type ContextProps = {
   showFormMessageSuccess: () => void;
   showFormMessageError: () => void;
   sellEstate: () => void;
+  pdfUrl: string | undefined;
 };
 
 export const ModalContext = createContext<ContextProps>({} as ContextProps);

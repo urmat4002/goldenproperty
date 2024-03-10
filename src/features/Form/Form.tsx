@@ -4,7 +4,6 @@ import { Button } from "@/shared/ui/Button/Button";
 import { Select, Typography } from "@/shared/ui";
 import { Calendar } from "@/shared/ui/Calendar";
 import {
-  useGetEstateById,
   useGetStaticData,
   useGetStaticFormDownloadCatalog,
 } from "@/shared/api/hooks";
@@ -28,8 +27,8 @@ type FormParams = {
 };
 
 type FormData = {
-  name: string;
   last_name: string;
+  name: string;
   phone: string;
   email?: string;
   city?: string;
@@ -39,25 +38,27 @@ type FormData = {
   role?: string;
 };
 
+const initialFormState = {
+  lastName: "",
+  name: "Elon Musk",
+  phone: "+996700111222",
+  city: "",
+  email: "aaa@bbb.com",
+  date: "",
+  role: 1,
+};
+
 export const Form: FC<FormProps> = ({ variant }) => {
   const { id: estateId } = useParams();
   const { staticData } = useGetStaticData();
   const { choices } = useGetStaticFormDownloadCatalog();
-  const { pdfUrl } = useGetEstateById(estateId);
 
-  const { closeModal, showFormMessageSuccess, showFormMessageError } =
+  const { closeModal, showFormMessageSuccess, showFormMessageError, pdfUrl } =
     useModalContext();
 
   const [calendarActive, setCalendarActive] = useState(false);
 
-  const [date, setDate] = useState("");
-  const [name, setName] = useState("Elon Musk");
-  const [email, setEmail] = useState("aaa@bbb.com");
-  const [lastName, setLastName] = useState("");
-  const [city, setCity] = useState("");
-  //FIX_ME:
-  const [phone, setPhone] = useState("+996700111222");
-  const [role, setRole] = useState(1);
+  const [formState, setFormState] = useState(initialFormState);
 
   const roleApiNames: Record<number, string> = {};
   const roleOptions: SelectItem[] = [];
@@ -78,45 +79,22 @@ export const Form: FC<FormProps> = ({ variant }) => {
     closeButton: false,
   };
 
-  const formData: FormData = {
-    name,
-    last_name: lastName,
-    phone: "",
-    appeal_type: variant,
-  };
-
   switch (variant) {
     case "buy":
       formParams.title = staticData?.forms.submit_application || "...";
       formParams.subTitle = staticData?.forms.fill_form || "...";
       formParams.buttonCaption = staticData?.forms.send || "...";
-      formData.name = name;
-      formData.last_name = lastName;
-      formData.phone = phone;
-      formData.city = city;
-      formData.at_date = date;
-      formData.estate_id = estateId;
       break;
     case "sell":
       formParams.title = staticData?.forms.sell_with_us || "...";
       formParams.subTitle = staticData?.forms.fill_form || "...";
       formParams.buttonCaption = staticData?.forms.send || "...";
       formParams.closeButton = true;
-      formData.name = name;
-      formData.last_name = lastName;
-      formData.phone = phone;
-      formData.city = city;
-      formData.at_date = date;
       break;
     case "consultation":
       formParams.title = staticData?.forms.any_question || "...";
       formParams.subTitle = staticData?.forms.leave_your_contacts || "...";
       formParams.buttonCaption = staticData?.forms.send || "...";
-      formData.name = name;
-      formData.last_name = lastName;
-      formData.phone = phone;
-      formData.city = city;
-      formData.at_date = date;
       break;
     case "download_catalog":
       formParams.title = staticData?.forms.download_catalog || "...";
@@ -125,57 +103,56 @@ export const Form: FC<FormProps> = ({ variant }) => {
       //FIX_ME add suitable icon
       formParams.buttonIcon = null;
       formParams.closeButton = true;
-      formData.name = name;
-      formData.last_name = lastName;
-      formData.email = email;
-      formData.phone = phone;
-      formData.city = city;
-      formData.at_date = date;
-      formData.estate_id = estateId;
-      formData.role = roleApiNames[role];
       break;
   }
 
-  const handleClick = async () => {
+  const handleSubmit = async () => {
+    const formData: FormData = {
+      last_name: formState.lastName,
+      name: formState.name,
+      phone: formState.phone,
+      email: formState.email,
+      city: formState.city,
+      at_date: formState.date,
+      appeal_type: variant,
+      estate_id: estateId,
+    };
+    if (variant === "download_catalog") {
+      formData.role = roleApiNames[formState.role];
+    }
+
     try {
       await axiosAPI.post(`/appeal/${variant}/`, formData);
       if (variant === "download_catalog") {
-        localStorage.setItem("catalog", "true");
+        localStorage.setItem("questionnaire", "true");
         setTimeout(() => {
-          window.open(pdfUrl, "_blank");
+          pdfUrl && window.open(pdfUrl, "_blank");
         }, 500);
       }
       showFormMessageSuccess();
     } catch {
-      localStorage.removeItem("catalog");
+      localStorage.removeItem("questionnaire");
       showFormMessageError();
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    const fieldName = event.target.id;
+    setFormState((prev) => ({ ...prev, [fieldName]: newValue }));
+  };
+
   return (
     <form className={styles.form}>
-      <Typography variant="h3" weight="medium" color="gold" capitalize>
-        {formParams.title}
-      </Typography>
-      <Typography
-        className={styles.subtitle}
-        variant="body"
-        weight="medium"
-        color="white"
-        capitalize
-      >
-        {formParams.subTitle}
-      </Typography>
+      <FormHeading formParams={formParams} />
 
       <div className={styles.formGrid}>
         <input
           className={styles.formInput}
           id="name"
           name="name"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
+          value={formState.name}
+          onChange={handleChange}
           placeholder={capitalize(staticData?.forms.your_name) || "Name"}
         />
 
@@ -185,8 +162,8 @@ export const Form: FC<FormProps> = ({ variant }) => {
             id="email"
             name="email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formState.email}
+            onChange={handleChange}
             placeholder={
               capitalize(staticData?.forms.your_email) || "Your email"
             }
@@ -196,8 +173,8 @@ export const Form: FC<FormProps> = ({ variant }) => {
             className={styles.formInput}
             id="city"
             name="city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            value={formState.city}
+            onChange={handleChange}
             placeholder={"Your city"}
           />
         )}
@@ -206,8 +183,8 @@ export const Form: FC<FormProps> = ({ variant }) => {
           className={styles.formInput}
           id="phone"
           name="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          value={formState.phone}
+          onChange={handleChange}
           placeholder={
             capitalize(staticData?.forms.phone_number) || "Phone number"
           }
@@ -215,9 +192,11 @@ export const Form: FC<FormProps> = ({ variant }) => {
 
         {variant === "download_catalog" ? (
           <Select
-            value={[role]}
+            value={[formState.role]}
             options={roleOptions}
-            onChange={(val) => setRole(val[0])}
+            onChange={(newRole) =>
+              setFormState((prev) => ({ ...prev, role: newRole[0] }))
+            }
             placeholder={
               capitalize(staticData?.forms.select_role) || "Select role"
             }
@@ -229,22 +208,24 @@ export const Form: FC<FormProps> = ({ variant }) => {
               className={styles.formInput}
               id="date"
               name="date"
-              value={date}
+              value={formState.date}
               onFocus={() => setCalendarActive(true)}
               placeholder={capitalize(staticData?.forms.date) || "Date"}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={handleChange}
             />
             <Calendar
               calendarActive={calendarActive}
               setCalendarActive={() => setCalendarActive(false)}
-              setDate={setDate}
+              setDate={(newDate) =>
+                setFormState((prev) => ({ ...prev, date: newDate }))
+              }
             />
           </>
         )}
       </div>
 
       <div className={styles.formButton}>
-        <Button onClick={handleClick} type="primary">
+        <Button onClick={handleSubmit} type="primary">
           <Typography variant="button">
             {formParams.buttonCaption}
             {formParams.buttonIcon}
@@ -264,11 +245,29 @@ export const Form: FC<FormProps> = ({ variant }) => {
 
       <input
         className={styles.honeypot}
+        value={formState.lastName}
         type="text"
-        id="last_name"
+        id="lastName"
         name="last_name"
-        onChange={(e) => setLastName(e.target.value)}
+        onChange={handleChange}
       />
     </form>
   );
 };
+
+const FormHeading: FC<{ formParams: FormParams }> = ({ formParams }) => (
+  <>
+    <Typography variant="h3" weight="medium" color="gold" capitalize>
+      {formParams.title}
+    </Typography>
+    <Typography
+      className={styles.subtitle}
+      variant="body"
+      weight="medium"
+      color="white"
+      capitalize
+    >
+      {formParams.subTitle}
+    </Typography>
+  </>
+);

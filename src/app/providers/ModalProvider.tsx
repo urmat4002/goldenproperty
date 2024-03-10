@@ -3,6 +3,7 @@ import { ModalContext, ModalVariant } from "./useModalContext";
 
 export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [modalVariant, setModalVariant] = useState<ModalVariant>(null);
+  const [pdfUrl, setPdfUrl] = useState<string | undefined>();
 
   const showFormMessageSuccess = () => {
     setModalVariant("form_message_success");
@@ -11,10 +12,11 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setModalVariant("form_message_error");
   };
   const downloadCatalog = (pdfUrl: string | undefined) => {
-    if (localStorage.getItem("catalog")) {
+    if (localStorage.getItem("questionnaire")) {
       window.open(pdfUrl, "_blank");
       return;
     }
+    setPdfUrl(pdfUrl);
     setModalVariant("download_catalog");
   };
   const sellEstate = () => {
@@ -23,6 +25,7 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const closeModal = () => {
     setModalVariant(null);
+    setPdfUrl(undefined);
   };
 
   return (
@@ -34,6 +37,7 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
         showFormMessageError,
         sellEstate,
         modalVariant,
+        pdfUrl,
       }}
     >
       {children}
