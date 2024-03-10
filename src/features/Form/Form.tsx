@@ -1,5 +1,7 @@
 import { FC, useState } from "react";
 import { X } from "lucide-react";
+import { AxiosError } from "axios";
+import { PhoneInput } from "react-international-phone";
 import { Button } from "@/shared/ui/Button/Button";
 import { Select, Typography } from "@/shared/ui";
 import { Calendar } from "@/shared/ui/Calendar";
@@ -14,7 +16,6 @@ import { useParams } from "react-router-dom";
 import { useModalContext } from "@/app/providers/useModalContext";
 import { FormMessage } from "./FormMessage/FormMessage";
 import styles from "./Form.module.scss";
-import { AxiosError } from "axios";
 
 type FormProps = {
   variant: "download_catalog" | "buy" | "sell" | "consultation";
@@ -131,7 +132,10 @@ export const Form: FC<FormProps> = ({ variant }) => {
       setMessage({
         title: data.form.successfully,
         subtitle: data.form.thanks,
-        handleClose: closeModal,
+        handleClose:
+          variant === "download_catalog" || variant === "sell"
+            ? closeModal
+            : () => setMessage(null),
       });
     } catch (e) {
       //on error
@@ -200,14 +204,17 @@ export const Form: FC<FormProps> = ({ variant }) => {
           />
         )}
 
-        <input
+        <PhoneInput
           className={styles.formInput}
-          id="phone"
-          name="phone"
           value={formState.phone}
-          onChange={handleChange}
+          hideDropdown
+          countrySelectorStyleProps={{ style: { display: "none" } }}
+          defaultCountry="ae"
           placeholder={
             capitalize(staticData?.forms.phone_number) || "Phone number"
+          }
+          onChange={(value) =>
+            setFormState((prev) => ({ ...prev, phone: value }))
           }
         />
 
