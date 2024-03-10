@@ -1,28 +1,13 @@
 @import "@var";
 @import "@mixin";
 
-.breadcrumbs {
-  display: flex;
+.breadcrumbsContainer {
+  margin-top: 10px;
   margin-bottom: 55px;
-
-  &Content {
-    display: flex;
-
-    max-width: $containerMaxWidth;
-    width: 100%;
-    margin: 0 auto;
-    padding: 5px $containerPadding;
-    &Block {
-      display: flex;
-      align-items: center;
-      margin-right: 5px;
-    }
-  }
-  &Link {
-    margin-right: 5px;
-    text-decoration: none;
-    color: $colorGray200;
-  }
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 
   @include tablet {
     gap: 50px;
@@ -32,4 +17,12 @@
     gap: 50px;
     margin-bottom: 30px;
   }
+}
+
+.crumbText {
+  color: $colorGray200;
+}
+
+.breadcrumbsContainer a:last-of-type > p {
+  color: white;
 }
