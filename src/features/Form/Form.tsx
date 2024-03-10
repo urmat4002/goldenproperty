@@ -42,10 +42,10 @@ type FormData = {
 
 const initialFormState = {
   lastName: "",
-  name: "Elon Musk",
-  phone: "+996700111222",
+  name: "",
+  phone: "",
   city: "",
-  email: "aaa@bbb.com",
+  email: "",
   date: "",
   role: 1,
 };
