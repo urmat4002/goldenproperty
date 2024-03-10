@@ -21,7 +21,7 @@ export const HeroHome = () => {
           <div className={styles.heroHomeContainer}>
             <div className={styles.heroHomeText}>
               <Typography variant="large">
-                <span>Golden</span> House
+                <span>Golden Hut</span> Properties
               </Typography>
               <Typography variant="body" capitalize>
                 {data?.static_data.body.slogan ||
