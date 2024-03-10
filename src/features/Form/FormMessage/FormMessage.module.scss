@@ -1,1 +1,35 @@
- 
+@import "@mixin";
+
+.backdrop {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  flex: 0 1 1165px;
+  background-color: #1b1b1b;
+  padding: 40px 100px;
+  border-radius: 3px;
+  @include tablet {
+    padding: 20px 62px;
+  }
+  @include mobile {
+    padding: 20px 16px;
+  }
+}
+
+.subtitle {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  white-space: pre-line;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: end;
+}

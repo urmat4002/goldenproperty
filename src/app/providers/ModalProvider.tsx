@@ -5,12 +5,12 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [modalVariant, setModalVariant] = useState<ModalVariant>(null);
   const [pdfUrl, setPdfUrl] = useState<string | undefined>();
 
-  const showFormMessageSuccess = () => {
-    setModalVariant("form_message_success");
-  };
-  const showFormMessageError = () => {
-    setModalVariant("form_message_error");
-  };
+  // const showFormMessageSuccess = () => {
+  //   setModalVariant("form_message_success");
+  // };
+  // const showFormMessageError = () => {
+  //   setModalVariant("form_message_error");
+  // };
   const downloadCatalog = (pdfUrl: string | undefined) => {
     if (localStorage.getItem("questionnaire")) {
       window.open(pdfUrl, "_blank");
@@ -33,8 +33,8 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         closeModal,
         downloadCatalog,
-        showFormMessageSuccess,
-        showFormMessageError,
+        // showFormMessageSuccess,
+        // showFormMessageError,
         sellEstate,
         modalVariant,
         pdfUrl,

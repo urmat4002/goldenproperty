@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, useState } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/shared/ui/Button/Button";
 import { Select, Typography } from "@/shared/ui";
@@ -12,7 +12,9 @@ import { axiosAPI } from "@/shared/api/axiosApi";
 import { SelectItem } from "@/shared/ui/Select/Select";
 import { useParams } from "react-router-dom";
 import { useModalContext } from "@/app/providers/useModalContext";
+import { FormMessage } from "./FormMessage/FormMessage";
 import styles from "./Form.module.scss";
+import { AxiosError } from "axios";
 
 type FormProps = {
   variant: "download_catalog" | "buy" | "sell" | "consultation";
@@ -22,7 +24,6 @@ type FormParams = {
   title: string;
   subTitle: string;
   buttonCaption: string;
-  buttonIcon: ReactNode;
   closeButton: boolean;
 };
 
@@ -53,12 +54,12 @@ export const Form: FC<FormProps> = ({ variant }) => {
   const { staticData } = useGetStaticData();
   const { choices } = useGetStaticFormDownloadCatalog();
 
-  const { closeModal, showFormMessageSuccess, showFormMessageError, pdfUrl } =
-    useModalContext();
+  const { closeModal, pdfUrl } = useModalContext();
 
   const [calendarActive, setCalendarActive] = useState(false);
 
   const [formState, setFormState] = useState(initialFormState);
+  const [message, setMessage] = useState<FormMessage | null>(null);
 
   const roleApiNames: Record<number, string> = {};
   const roleOptions: SelectItem[] = [];
@@ -75,7 +76,6 @@ export const Form: FC<FormProps> = ({ variant }) => {
     title: "",
     subTitle: "",
     buttonCaption: "",
-    buttonIcon: null,
     closeButton: false,
   };
 
@@ -100,8 +100,6 @@ export const Form: FC<FormProps> = ({ variant }) => {
       formParams.title = staticData?.forms.download_catalog || "...";
       formParams.subTitle = staticData?.forms.catalog_fill_form || "...";
       formParams.buttonCaption = staticData?.forms.download || "...";
-      //FIX_ME add suitable icon
-      formParams.buttonIcon = null;
       formParams.closeButton = true;
       break;
   }
@@ -122,17 +120,40 @@ export const Form: FC<FormProps> = ({ variant }) => {
     }
 
     try {
-      await axiosAPI.post(`/appeal/${variant}/`, formData);
+      const { data } = await axiosAPI.post(`/appeal/${variant}/`, formData);
       if (variant === "download_catalog") {
         localStorage.setItem("questionnaire", "true");
         setTimeout(() => {
           pdfUrl && window.open(pdfUrl, "_blank");
         }, 500);
       }
-      showFormMessageSuccess();
-    } catch {
+      //on success
+      setMessage({
+        title: data.form.successfully,
+        subtitle: data.form.thanks,
+        handleClose: closeModal,
+      });
+    } catch (e) {
+      //on error
+      const error = e as AxiosError;
+      const errorData = error?.response?.data as
+        | Record<string, string[]>
+        | undefined;
+      let errorMessage = "";
+      if (errorData) {
+        errorMessage = Object.keys(errorData)
+          .map(
+            (errorKey) =>
+              `${capitalize(errorKey)}: ${errorData[errorKey].join("\n ")}`
+          )
+          .join("\n ");
+      }
+      setMessage({
+        title: "Fix_me The application has not been accepted!",
+        subtitle: errorMessage,
+        handleClose: () => setMessage(null),
+      });
       localStorage.removeItem("questionnaire");
-      showFormMessageError();
     }
   };
 
@@ -226,9 +247,8 @@ export const Form: FC<FormProps> = ({ variant }) => {
 
       <div className={styles.formButton}>
         <Button onClick={handleSubmit} type="primary">
-          <Typography variant="button">
+          <Typography variant="button" capitalize>
             {formParams.buttonCaption}
-            {formParams.buttonIcon}
           </Typography>
         </Button>
       </div>
@@ -251,6 +271,8 @@ export const Form: FC<FormProps> = ({ variant }) => {
         name="last_name"
         onChange={handleChange}
       />
+
+      <FormMessage message={message} />
     </form>
   );
 };

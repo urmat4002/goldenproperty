@@ -1,31 +1,51 @@
 import { FC } from "react";
 import { Button, Typography } from "@/shared/ui";
-import { useModalContext } from "@/app/providers/useModalContext";
-import formMessage from "../Form.module.scss";
+import styles from "./FormMessage.module.scss";
+import { useGetStaticData } from "@/shared/api/hooks";
 
-interface FromProps {
-  title?: string;
-  subTitle?: string;
-}
+export type FormMessage = {
+  title: string;
+  subtitle: string;
+  handleClose: () => void;
+};
+
+export type FromProps = {
+  message: FormMessage | null;
+};
 
 export const FormMessage: FC<FromProps> = ({
-  title = "The application has been successfully accepted!",
-  subTitle = "Thank you for contacting us! Our specialist will contact you soon.",
+  // title = "The application has been successfully accepted!",
+  // subTitle = "Thank you for contacting us! Our specialist will contact you soon.",
+  message,
 }) => {
-  const { closeModal } = useModalContext();
+  const { staticData } = useGetStaticData();
+
+  if (!message) return null;
+
+  const handleClose = message.handleClose;
 
   return (
-    <div className={formMessage.form}>
-      <Typography variant="h3" weight="medium" color="gold">
-        {title}
-      </Typography>
-      <Typography variant="body" weight="medium" color="white">
-        {subTitle}
-      </Typography>
-      <div className={formMessage.formBtn}>
-        <Button onClick={closeModal} type="primary">
-          <Typography variant="button">Close</Typography>
-        </Button>
+    <div className={styles.backdrop} onMouseDown={handleClose}>
+      <div className={styles.message} onMouseDown={(e) => e.stopPropagation()}>
+        <Typography variant="h3" weight="medium" color="gold" capitalize>
+          {message.title}
+        </Typography>
+        <Typography
+          className={styles.subtitle}
+          variant="body"
+          weight="medium"
+          color="white"
+          capitalize
+        >
+          {message.subtitle}
+        </Typography>
+        <div className={styles.buttonRow}>
+          <Button onClick={handleClose} type="primary">
+            <Typography variant="button" capitalize>
+              {staticData?.forms.close || "Close"}
+            </Typography>
+          </Button>
+        </div>
       </div>
     </div>
   );

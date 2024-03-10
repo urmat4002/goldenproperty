@@ -1,18 +1,15 @@
 import { createContext, useContext } from "react";
 
-export type ModalVariant =
-  | null
-  | "sell"
-  | "download_catalog"
-  | "form_message_error"
-  | "form_message_success";
+export type ModalVariant = null | "sell" | "download_catalog";
+// | "form_message_error"
+// | "form_message_success";
 
 export type ContextProps = {
   modalVariant: ModalVariant;
   closeModal: () => void;
   downloadCatalog: (_pdfUrl: string | undefined) => void;
-  showFormMessageSuccess: () => void;
-  showFormMessageError: () => void;
+  // showFormMessageSuccess: () => void;
+  // showFormMessageError: () => void;
   sellEstate: () => void;
   pdfUrl: string | undefined;
 };
