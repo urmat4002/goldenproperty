@@ -7,14 +7,14 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
   gap: 5px;
 
   @include tablet {
-    gap: 50px;
     margin-bottom: 30px;
   }
   @include mobile {
-    gap: 50px;
     margin-bottom: 30px;
   }
 }
