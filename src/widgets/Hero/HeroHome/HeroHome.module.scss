@@ -50,9 +50,11 @@ $colorGray350: #ccc; // Assuming this is a valid color
     transform: translateX(0);
   }
 }
+
 .sectionHero {
   margin: 0;
 }
+
 .heroHome {
   position: relative;
   width: 100%;
@@ -71,73 +73,79 @@ $colorGray350: #ccc; // Assuming this is a valid color
   @include mobile {
     height: 30vh;
   }
-  &Background {
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  &Container {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 52px;
-    @include tablet {
-      gap: 32px;
-      left: 12%;
-    }
-    @include mobile {
-      gap: 12px;
-      left: 8%;
-    }
-  }
-  &Content {
-    width: 100%;
-    position: absolute;
+}
 
-    button {
-      position: relative;
-      opacity: 0;
-      animation: textSlideIn 1.5s ease-out 1.5s forwards;
-    }
-    span {
-      color: $colorPrimary;
-    }
+.heroHomeBackground {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.heroHomeContainer {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 52px;
+  @include tablet {
+    gap: 32px;
+    left: 12%;
   }
-  &Text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    h1 {
-      opacity: 0;
-      animation: textSlideIn 0.5s ease-out 0.5s forwards;
-    }
-    p {
-      position: relative;
-      opacity: 0;
-      animation: textSlideIn 1s ease-out 1s forwards;
-    }
+  @include mobile {
+    gap: 12px;
+    left: 8%;
   }
-  &FilterSubsection {
-    height: 48px;
+}
+
+.heroHomeContent {
+  width: 100%;
+  position: absolute;
+
+  button {
     position: relative;
-    @include tablet {
-      height: 80px;
-    }
-    @include mobile {
-      height: auto;
-    }
+    opacity: 0;
+    animation: textSlideIn 1.5s ease-out 1.5s forwards;
   }
-  &FilterWrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    @include mobile {
-      position: static;
-    }
+  span {
+    color: $colorPrimary;
+  }
+}
+
+.heroHomeText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  h1 {
+    opacity: 0;
+    animation: textSlideIn 0.5s ease-out 0.5s forwards;
+  }
+  p {
+    position: relative;
+    opacity: 0;
+    animation: textSlideIn 1s ease-out 1s forwards;
+  }
+}
+
+.heroHomeFilterSubsection {
+  height: 48px;
+  position: relative;
+  @include tablet {
+    height: 80px;
+  }
+  @include mobile {
+    height: auto;
+  }
+}
+
+.heroHomeFilterWrapperContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include mobile {
+    position: static;
   }
 }
 

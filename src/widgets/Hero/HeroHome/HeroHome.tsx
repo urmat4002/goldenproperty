@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Section } from "@/features";
 import { Button, Typography } from "@shared/ui";
 import { Filter } from "@/features/Filter";
-import styles from "./HeroHome.module.scss";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
+import styles from "./HeroHome.module.scss";
 
 export const HeroHome = () => {
   const { data } = useGetStaticData();
@@ -39,7 +39,7 @@ export const HeroHome = () => {
         </div>
       </div>
       <div className={styles.heroHomeFilterSubsection}>
-        <div className={styles.heroHomeFilterWrapper}>
+        <div className={styles.heroHomeFilterWrapperContainer}>
           <Filter />
         </div>
       </div>

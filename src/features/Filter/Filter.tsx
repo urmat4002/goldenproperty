@@ -6,8 +6,8 @@ import {
   useGetEstateTypes,
   useGetStaticData,
 } from "@/shared/api/hooks";
-import styles from "./Filter.module.scss";
 import { capitalize } from "@/shared/helper/utils";
+import styles from "./Filter.module.scss";
 
 interface FilterValues {
   city: number[];
@@ -65,39 +65,37 @@ export const Filter = () => {
   }, [searchParams]);
 
   return (
-    <div className="filterContainer">
-      <div className={styles.filter}>
-        <Select
-          value={filterValues.city}
-          options={cityOptions}
-          placeholder={capitalize(data?.static_data.body.city)}
-          checkbox={true}
-          onChange={(option) => {
-            setFilterValues({ ...filterValues, city: option });
-          }}
-        />
-        <Select
-          value={filterValues.type}
-          options={typeOptions}
-          placeholder={capitalize(data?.static_data.body.estate_type)}
-          onChange={(option) => {
-            setFilterValues({ ...filterValues, type: option });
-          }}
-        />
-        <Select
-          value={filterValues.order}
-          options={orderOptions}
-          placeholder={capitalize(data?.static_data.body.popular)}
-          onChange={(option) => {
-            setFilterValues({ ...filterValues, order: option });
-          }}
-        />
-        <Button type="primary" onClick={handleFilter}>
-          <Typography variant="button">
-            {capitalize(data?.static_data.body.show_result)}
-          </Typography>
-        </Button>
-      </div>
+    <div className={styles.filter}>
+      <Select
+        value={filterValues.city}
+        options={cityOptions}
+        placeholder={capitalize(data?.static_data.body.city)}
+        checkbox={true}
+        onChange={(option) => {
+          setFilterValues({ ...filterValues, city: option });
+        }}
+      />
+      <Select
+        value={filterValues.type}
+        options={typeOptions}
+        placeholder={capitalize(data?.static_data.body.estate_type)}
+        onChange={(option) => {
+          setFilterValues({ ...filterValues, type: option });
+        }}
+      />
+      <Select
+        value={filterValues.order}
+        options={orderOptions}
+        placeholder={capitalize(data?.static_data.body.popular)}
+        onChange={(option) => {
+          setFilterValues({ ...filterValues, order: option });
+        }}
+      />
+      <Button type="primary" onClick={handleFilter}>
+        <Typography variant="button">
+          {capitalize(data?.static_data.body.show_result)}
+        </Typography>
+      </Button>
     </div>
   );
 };
