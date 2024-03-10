@@ -15,11 +15,11 @@ export const Breadcrumbs = () => {
     .filter((segment) => segment != "")
     .map((segment, index) => {
       linkAdr += `/${segment}`;
-      if (parseInt(segment)) return <EstateCrumb />;
+      if (parseInt(segment)) return <EstateCrumb key={segment} />;
       if (segment === "estates")
         return (
           <Crumb
-            key={index}
+            key={segment}
             index={index}
             content={staticData?.header.all_real_estates || "All real estates"}
             href={linkAdr}
@@ -28,7 +28,7 @@ export const Breadcrumbs = () => {
       if (segment === "about-us")
         return (
           <Crumb
-            key={index}
+            key={segment}
             index={index}
             content={staticData?.header.about_us || "About us"}
             href={linkAdr}
