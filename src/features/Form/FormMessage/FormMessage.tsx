@@ -14,11 +14,7 @@ export type FromProps = {
   message: FormMessage | null;
 };
 
-export const FormMessage: FC<FromProps> = ({
-  // title = "The application has been successfully accepted!",
-  // subTitle = "Thank you for contacting us! Our specialist will contact you soon.",
-  message,
-}) => {
+export const FormMessage: FC<FromProps> = ({ message }) => {
   const { staticData } = useGetStaticData();
 
   if (!message) return null;

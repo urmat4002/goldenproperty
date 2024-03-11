@@ -154,7 +154,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
           .join("\n ");
       }
       setMessage({
-        title: "Fix_me The application has not been accepted!",
+        title: staticData?.forms.error_title || "Looks like a server error.",
         subtitle: errorMessage,
         handleClose: () => setMessage(null),
       });
