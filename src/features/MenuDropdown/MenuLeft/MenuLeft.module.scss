@@ -22,10 +22,13 @@
     background-color: transparent;
   }
   &Button {
-    width: 100%;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    :hover {
+      color: $colorPrimary;
+    }
     @include isDesktop {
       padding: 0;
     }
@@ -52,10 +55,13 @@
     padding-left: 15px;
   }
   @include tablet {
+    margin-top: 10px;
+    width: 100%;
     border: none;
     padding: 0;
     gap: 12px;
     padding-left: 15px;
+    color: $colorGray100;
   }
   @include mobile {
     border: none;

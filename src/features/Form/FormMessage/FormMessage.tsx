@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { Button, Typography } from "@/shared/ui";
+import { Typography } from "@/shared/ui";
 import styles from "./FormMessage.module.scss";
 import { useGetStaticData } from "@/shared/api/hooks";
+import { GButton } from "@/shared/ui/Button/GButton";
 
 export type FormMessage = {
   title: string;
@@ -40,11 +41,9 @@ export const FormMessage: FC<FromProps> = ({
           {message.subtitle}
         </Typography>
         <div className={styles.buttonRow}>
-          <Button onClick={handleClose} type="primary">
-            <Typography variant="button" capitalize>
-              {staticData?.forms.close || "Close"}
-            </Typography>
-          </Button>
+          <GButton onClick={handleClose}>
+            {staticData?.forms.close || "Close"}
+          </GButton>
         </div>
       </div>
     </div>

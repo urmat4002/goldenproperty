@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { useWhatsApp } from "@/shared/api/hooks";
-import { Button, Typography } from "@/shared/ui";
+import { Typography } from "@/shared/ui";
 import { useModalContext } from "@/app/providers/useModalContext";
+import { GButton } from "@/shared/ui/Button/GButton";
 
 export const PriceRow: FC<{
   styles: CSSModuleClasses;
@@ -21,18 +22,17 @@ export const PriceRow: FC<{
       </Typography>
 
       <div className={styles.buttons}>
-        <Button
-          customClasses={styles.priceBtnsItem}
+        <GButton
+          className={styles.priceBtnsItem}
           onClick={() => downloadCatalog(pdfUrl)}
-          type="primary"
         >
           Catalog
-        </Button>
+        </GButton>
 
         <Link to={whatsappUrl} target="_blank">
-          <Button customClasses={styles.priceBtnsItem} type="primary">
+          <GButton className={styles.priceBtnsItem} variant="whatsapp">
             WhatsApp
-          </Button>
+          </GButton>
         </Link>
       </div>
     </div>

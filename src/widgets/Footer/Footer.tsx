@@ -116,13 +116,17 @@ export const Footer = () => {
             >
               <li>
                 <Mail />
-                <Typography variant="body" className={styles.footerTypography}>
+                <Typography
+                  variant="body" /* className={styles.footerTypography} */
+                >
                   {company?.about_company.email}
                 </Typography>
               </li>
               <li>
                 <Phone />
-                <Typography variant="body" className={styles.footerTypography}>
+                <Typography
+                  variant="body" /* className={styles.footerTypography} */
+                >
                   {company?.about_company.phone}
                 </Typography>
               </li>

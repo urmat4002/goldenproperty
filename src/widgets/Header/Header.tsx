@@ -14,39 +14,39 @@ export const Header = () => {
 
   return (
     <>
-    <header className={styles.header}>
-      <div className={styles.headerContainer}>
-        <div className={styles.headerLogo}>
-          <Link to={"/"}>
-            <Logo />
-          </Link>
-        </div>
-        <div className={styles.headerNavbar}>
-          <Navbar isMobile={isOpenMobileMD} />
-        </div>
-        <div className={styles.headerActions}>
-          <div
-            className={`${styles.main} ${isOpenMobileMD ? styles.active : ""}`}
-          >
-            <Search />
-            <LanguageSelector />
+      <header className={styles.header}>
+        <div className={styles.headerContainer}>
+          <div className={styles.headerLogo}>
+            <Link to={"/"}>
+              <Logo />
+            </Link>
           </div>
+          <div className={styles.headerNavbar}>
+            <Navbar isMobile={isOpenMobileMD} />
+          </div>
+          <div className={styles.headerActions}>
+            <div
+              className={`${styles.main} ${isOpenMobileMD ? styles.active : ""}`}
+            >
+              <Search />
+              <LanguageSelector />
+            </div>
 
-          <Button
-            type="icon"
-            customClasses={styles.headerMenu}
-            onClick={() => setIsOpenMobileMD(!isOpenMobileMD)}
-          >
-            {isOpenMobileMD ? <X /> : <MenuIcon />}
-          </Button>
+            <Button
+              type="icon"
+              customClasses={styles.headerMenu}
+              onClick={() => setIsOpenMobileMD(!isOpenMobileMD)}
+            >
+              {isOpenMobileMD ? <X /> : <MenuIcon />}
+            </Button>
+          </div>
         </div>
-      </div>
-      <div className={styles.menuDropdown}>{isOpen && <MenuDropdown />}</div>
-      <div className={styles.menuDropdownMobile}>
-        {isOpenMobileMD && <MenuDropdownMobile />}
-      </div>
-    </header>
-    <MenuDropdown />
+        <div className={styles.menuDropdown}>{isOpen && <MenuDropdown />}</div>
+        <div className={styles.menuDropdownMobile}>
+          {isOpenMobileMD && <MenuDropdownMobile />}
+        </div>
+      </header>
+      <MenuDropdown />
     </>
   );
 };

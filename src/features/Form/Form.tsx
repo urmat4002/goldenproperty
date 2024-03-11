@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import { X } from "lucide-react";
 import { AxiosError } from "axios";
 import { PhoneInput } from "react-international-phone";
-import { Button } from "@/shared/ui/Button/Button";
 import { Select, Typography } from "@/shared/ui";
 import { Calendar } from "@/shared/ui/Calendar";
 import {
@@ -16,6 +15,7 @@ import { useParams } from "react-router-dom";
 import { useModalContext } from "@/app/providers/useModalContext";
 import { FormMessage } from "./FormMessage/FormMessage";
 import styles from "./Form.module.scss";
+import { GButton } from "@/shared/ui/Button/GButton";
 
 type FormProps = {
   variant: "download_catalog" | "buy" | "sell" | "consultation";
@@ -105,7 +105,8 @@ export const Form: FC<FormProps> = ({ variant }) => {
       break;
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit: React.FormEventHandler = async (event) => {
+    event.preventDefault();
     const formData: FormData = {
       last_name: formState.lastName,
       name: formState.name,
@@ -253,21 +254,13 @@ export const Form: FC<FormProps> = ({ variant }) => {
       </div>
 
       <div className={styles.formButton}>
-        <Button onClick={handleSubmit} type="primary">
-          <Typography variant="button" capitalize>
-            {formParams.buttonCaption}
-          </Typography>
-        </Button>
+        <GButton onClick={handleSubmit}>{formParams.buttonCaption}</GButton>
       </div>
 
       {formParams.closeButton && (
-        <Button
-          onClick={closeModal}
-          customClasses={styles.closeButton}
-          type="icon"
-        >
+        <button onClick={closeModal} className={styles.closeButton}>
           <X color="white" />
-        </Button>
+        </button>
       )}
 
       <input

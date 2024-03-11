@@ -5,9 +5,9 @@ import { Section } from "@/features";
 import { HeroEstates } from "@/widgets";
 import { Filter } from "@/features/Filter";
 import { useGetEstates, useGetStaticData } from "@/shared/api/hooks";
-import { Button } from "@/shared/ui";
 import styles from "./Estates.module.scss";
 import { capitalize } from "@/shared/helper/utils";
+import { GButton } from "@/shared/ui/Button/GButton";
 
 const getCitySearchParam = (searchParams: URLSearchParams): string | null => {
   const cityParams = searchParams.get("city");
@@ -20,7 +20,7 @@ export const Estates = () => {
   const singleCityId = getCitySearchParam(searchParams);
   const gridRef = useRef(null);
   const [cardPageLimit, setCardPageLimit] = useState(9);
-  const { data, fetchNextPage, isFetching, hasNextPage } = useGetEstates(
+  const { data, fetchNextPage, hasNextPage } = useGetEstates(
     cardPageLimit,
     searchParams
   );
@@ -66,18 +66,11 @@ export const Estates = () => {
               </Fragment>
             ))}
         </div>
-
-        {hasNextPage && (
-          <div className={styles.viewMore}>
-            <Button
-              type="primary"
-              disabled={isFetching}
-              onClick={() => fetchNextPage()}
-            >
-              View more
-            </Button>
-          </div>
-        )}
+        <div className={styles.viewMore}>
+          <GButton disabled={!hasNextPage} onClick={() => fetchNextPage()}>
+            View more
+          </GButton>
+        </div>
       </Section>
     </>
   );

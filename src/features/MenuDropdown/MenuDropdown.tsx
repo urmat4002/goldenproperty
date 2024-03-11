@@ -12,7 +12,6 @@ export const MenuDropdown = () => {
   const dispatch = useAppDispatch();
   const { data } = useGetCities();
   const isOpen = useAppSelector((state) => state.menuSlice.isOpen);
-
   const cities = data?.cities || [];
   const currentCity = data?.cities.find((city) => city.id === cityId);
 

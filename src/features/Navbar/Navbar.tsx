@@ -28,9 +28,6 @@ export const Navbar: FC<NavbarProps> = ({ isMobile }) => {
 
   return (
     <div className={styles.navbar}>
-      {openCity && (
-        <MenuLeft onClick={handleCityClick} id={cityId} isMobile={isMobile} />
-      )}
       <ul className={styles.navbarMenu}>
         <li>
           <button
@@ -40,15 +37,23 @@ export const Navbar: FC<NavbarProps> = ({ isMobile }) => {
             className={`${styles.navbarMenuItem} ${openCity ? styles.active : ""}`}
           >
             <Typography
+              className={styles.navbarMenuSelect}
               variant="body"
+              capitalize
               weight="medium"
               color="white"
-              className={styles.navbarMenuSelect}
             >
               {headerData?.city}
-              {isMobile ? <ChevronDown /> : null}
             </Typography>
+            {isMobile ? <ChevronDown /> : null}
           </button>
+          {openCity && (
+            <MenuLeft
+              onClick={handleCityClick}
+              id={cityId}
+              isMobile={isMobile}
+            />
+          )}
         </li>
         <li className={styles.navbarMenuItem}>
           <NavLink
@@ -57,7 +62,9 @@ export const Navbar: FC<NavbarProps> = ({ isMobile }) => {
               return isActive ? { color: "#c6a15b" } : {};
             }}
           >
-            {headerData?.all_real_estates}
+            <Typography variant="body" capitalize weight="medium" color="white">
+              {headerData?.all_real_estates}
+            </Typography>
           </NavLink>
         </li>
         <li className={styles.navbarMenuItem}>
@@ -67,12 +74,14 @@ export const Navbar: FC<NavbarProps> = ({ isMobile }) => {
               return isActive ? { color: "#c6a15b" } : {};
             }}
           >
-            {headerData?.about_us}
+            <Typography variant="body" capitalize weight="medium" color="white">
+              {headerData?.about_us}
+            </Typography>
           </NavLink>
         </li>
         <li className={styles.navbarMenuItem}>
           <button onClick={sellEstate}>
-            <Typography variant="body" weight="medium" color="white">
+            <Typography variant="body" capitalize weight="medium" color="white">
               {headerData?.place_ad}
             </Typography>
           </button>

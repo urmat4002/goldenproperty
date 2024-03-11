@@ -1,9 +1,9 @@
-import { Button, Typography } from "@/shared/ui";
+import { Typography } from "@/shared/ui";
 import styles from "./MenuLeft.module.scss";
 import clsx from "clsx";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGetCities } from '@/shared/api/hooks'
+import { useGetCities } from "@/shared/api/hooks";
 
 interface MenuLeftProps {
   // eslint-disable-next-line no-unused-vars
@@ -12,10 +12,7 @@ interface MenuLeftProps {
   isMobile?: boolean;
 }
 
-export const MenuLeft: FC<MenuLeftProps> = ({
-  onClick,
-  isMobile,
-}) => {
+export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile }) => {
   const navigate = useNavigate();
   const { data } = useGetCities();
 
@@ -24,8 +21,8 @@ export const MenuLeft: FC<MenuLeftProps> = ({
     <div className={styles.menuLeft}>
       {cities.map((item) => {
         return (
-          <Button
-            customClasses={styles.menuLeftButton}
+          <a
+            className={styles.menuLeftButton}
             type="link"
             key={item.id}
             onClick={
@@ -33,16 +30,15 @@ export const MenuLeft: FC<MenuLeftProps> = ({
                 ? () => navigate(`/estates/${item.id}`)
                 : () => onClick(item.id)
             }
+            onMouseEnter={() => onClick(item.id)}
           >
             <Typography
               variant="button"
-              className={clsx(
-                styles.menuBannerTypography
-              )}
+              className={clsx(styles.menuBannerTypography)}
             >
               {item.city_name}
             </Typography>
-          </Button>
+          </a>
         );
       })}
     </div>
