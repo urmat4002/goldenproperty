@@ -14,6 +14,16 @@ export const PriceRow: FC<{
   const { downloadCatalog } = useModalContext();
   const { whatsappUrl } = useWhatsApp(id);
 
+  const handleDownloadClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    console.log(e);
+    if (e.ctrlKey && e.shiftKey) {
+      localStorage.removeItem("questionnaire");
+    }
+    downloadCatalog(pdfUrl);
+  };
+
   return (
     <div className={styles.priceRow}>
       <Typography variant="h2" color="gold" weight="bold">
@@ -22,10 +32,7 @@ export const PriceRow: FC<{
       </Typography>
 
       <div className={styles.buttons}>
-        <GButton
-          className={styles.priceBtnsItem}
-          onClick={() => downloadCatalog(pdfUrl)}
-        >
+        <GButton className={styles.priceBtnsItem} onClick={handleDownloadClick}>
           Catalog
         </GButton>
 
