@@ -1,4 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 @import "./assets/reset";
 @import "./assets/variables";
-@import "./assets/classes";
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: $baseFontFamily;
+  color: $colorWhite;
+}
+
+[class*="Container"] {
+  max-width: $containerMaxWidth;
+  margin-inline: auto;
+  padding: 0 $containerPadding;
+}
