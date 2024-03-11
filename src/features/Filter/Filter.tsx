@@ -41,19 +41,19 @@ const getOptionsFromQueryparams = (searchParams: URLSearchParams) => {
 export const Filter = () => {
   const { cityOptions } = useGetCities();
   const { typeOptions } = useGetEstateTypes();
-  const { orderOptions } = useGetStaticData();
+  const { orderOptions, staticData } = useGetStaticData();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [filterValues, setFilterValues] = useState<FilterValues>(
     getinitialFilterParams()
   );
-  const { data } = useGetStaticData();
 
   const handleFilter = () => {
     const newSearchParams = new window.URLSearchParams();
     filterValues.city.length > 0 &&
       newSearchParams.append("city", filterValues.city.join(","));
     filterValues.type.length > 0 &&
+      filterValues.type[0] >= 0 &&
       newSearchParams.append("type", filterValues.type[0]?.toString());
     filterValues.order.length > 0 &&
       newSearchParams.append("order", filterValues.order[0]?.toString());
@@ -70,7 +70,7 @@ export const Filter = () => {
       <Select
         value={filterValues.city}
         options={cityOptions}
-        placeholder={capitalize(data?.static_data.body.city)}
+        placeholder={capitalize(staticData?.body.city)}
         checkbox={true}
         onChange={(option) => {
           setFilterValues({ ...filterValues, city: option });
@@ -78,8 +78,11 @@ export const Filter = () => {
       />
       <Select
         value={filterValues.type}
-        options={typeOptions}
-        placeholder={capitalize(data?.static_data.body.estate_type)}
+        options={[
+          ...typeOptions,
+          { id: -1, label: staticData?.body.all || "All" },
+        ]}
+        placeholder={capitalize(staticData?.body.estate_type)}
         onChange={(option) => {
           setFilterValues({ ...filterValues, type: option });
         }}
@@ -87,13 +90,13 @@ export const Filter = () => {
       <Select
         value={filterValues.order}
         options={orderOptions}
-        placeholder={capitalize(data?.static_data.body.popular)}
+        placeholder={capitalize(staticData?.body.popular)}
         onChange={(option) => {
           setFilterValues({ ...filterValues, order: option });
         }}
       />
       <GButton onClick={handleFilter} fullWidth disabled={false}>
-        {data?.static_data.body.show_result}
+        {staticData?.body.show_result}
       </GButton>
     </div>
   );

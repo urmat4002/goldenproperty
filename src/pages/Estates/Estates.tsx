@@ -20,7 +20,7 @@ export const Estates = () => {
   const singleCityId = getCitySearchParam(searchParams);
   const gridRef = useRef(null);
   const [cardPageLimit, setCardPageLimit] = useState(9);
-  const { data, fetchNextPage, hasNextPage } = useGetEstates(
+  const { data, fetchNextPage, hasNextPage, isFetching } = useGetEstates(
     cardPageLimit,
     searchParams
   );
@@ -66,11 +66,13 @@ export const Estates = () => {
               </Fragment>
             ))}
         </div>
-        <div className={styles.viewMore}>
-          <GButton disabled={!hasNextPage} onClick={() => fetchNextPage()}>
-            View more
-          </GButton>
-        </div>
+        {hasNextPage && (
+          <div className={styles.viewMore}>
+            <GButton disabled={isFetching} onClick={() => fetchNextPage()}>
+              View more
+            </GButton>
+          </div>
+        )}
       </Section>
     </>
   );
