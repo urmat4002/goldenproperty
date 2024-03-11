@@ -8,9 +8,12 @@
   &Menu {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
     gap: 16px;
     list-style: none;
     @include isDesktop {
+      height: 60px;
       flex-direction: column;
       padding: 0;
       align-items: flex-start;
@@ -32,8 +35,10 @@
     gap: 4px;
   }
   &MenuItem {
-    padding: 18px 24px;
     cursor: pointer;
+    height: 60px;
+    display: flex;
+    align-items: center;
 
     svg {
       transition: 0.3s ease;
@@ -63,12 +68,12 @@
 
     @include isDesktop {
       padding: 0;
-
       p {
         font-size: 24px;
       }
     }
     @include tablet {
+      height: unset;
       font-size: 14px;
       padding: 0;
     }
@@ -77,6 +82,7 @@
       padding: 0;
     }
     :hover {
+      cursor: pointer;
       color: $colorPrimary;
     }
 

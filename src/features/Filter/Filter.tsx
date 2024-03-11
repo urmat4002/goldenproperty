@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { Button, Select, Typography } from "@/shared/ui";
+import { Select } from "@/shared/ui";
 import {
   useGetCities,
   useGetEstateTypes,
@@ -8,6 +8,7 @@ import {
 } from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
 import styles from "./Filter.module.scss";
+import { GButton } from "@/shared/ui/Button/GButton";
 
 interface FilterValues {
   city: number[];
@@ -91,11 +92,9 @@ export const Filter = () => {
           setFilterValues({ ...filterValues, order: option });
         }}
       />
-      <Button type="primary" onClick={handleFilter}>
-        <Typography variant="button">
-          {capitalize(data?.static_data.body.show_result)}
-        </Typography>
-      </Button>
+      <GButton onClick={handleFilter} fullWidth disabled={false}>
+        {data?.static_data.body.show_result}
+      </GButton>
     </div>
   );
 };

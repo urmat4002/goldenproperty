@@ -5,7 +5,6 @@ export interface ICity {
   city__img: string;
 }
 
-
 export interface IHeader {
   city: string;
   all_real_estates: string;
@@ -13,7 +12,7 @@ export interface IHeader {
   about_us: string;
 }
 
-export type isData = IHeader | undefined
+export type isData = IHeader | undefined;
 
 export interface ICities {
   id: number;

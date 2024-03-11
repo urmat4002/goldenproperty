@@ -12,7 +12,7 @@ import { capitalize } from "@/shared/helper/utils";
 export const SliderCity: FC = () => {
   const [swiperWidth, setSwiperWidth] = useState();
   const [highlitedIndex, setHighlitedIndex] = useState<number | null>(null);
-  const { data: staticData} = useGetStaticData()
+  const { data: staticData } = useGetStaticData();
   const { data, isSuccess } = useGetCities();
 
   return (

@@ -1,19 +1,21 @@
-import { FC, memo } from "react";
 import { ICity } from "../types/MenuDropDown.types";
 import styles from "./MenuBanner.module.scss";
-import { Button, Typography } from "@/shared/ui";
-import { ArrowRight } from "lucide-react";
+import { Typography } from "@/shared/ui";
 import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { IBody } from "@/shared/api/types";
+import { GButton } from "@/shared/ui/Button/GButton";
+import { Link } from "react-router-dom";
 
 interface MenuBannerProps {
   city: ICity;
 }
 
-export const MenuBanner: FC<MenuBannerProps> = memo(({ city }) => {
+export const MenuBanner: React.FC<MenuBannerProps> = ({ city }) => {
   const { data } = useGetStaticData();
+
   const seeRealEstates = data?.static_data.body as IBody | undefined;
+
   return (
     <div className={styles.menuBanner}>
       <div className={styles.menuBannerTop}>
@@ -35,12 +37,9 @@ export const MenuBanner: FC<MenuBannerProps> = memo(({ city }) => {
           className={styles.menuBannerImage}
         />
       </div>
-      <Button type="primary" customClasses={styles.menuBannerButton}>
-        <Typography variant="button" className={styles.menuBannerTypography}>
-          {seeRealEstates?.see_real_estates}
-        </Typography>
-        <ArrowRight />
-      </Button>
+      <Link to={`/estates/?city=${city.id}`}>
+        <GButton variant="navigate">{seeRealEstates?.see_real_estates}</GButton>
+      </Link>
     </div>
   );
-});
+};

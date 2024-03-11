@@ -1,0 +1,39 @@
+@import "@var";
+
+.button {
+  & p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  padding: 8px 28px;
+  border-radius: 56px;
+  cursor: pointer;
+  transition: 0.2s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  white-space: nowrap;
+  background-color: $colorPrimary;
+  color: $colorGray400;
+  &[data-full-width="true"] {
+    width: 100%;
+  }
+  &:hover {
+    color: $colorWhite;
+  }
+  &:active {
+    transition: none;
+    background-color: $colorGray450;
+  }
+
+  &:disabled {
+    color: $colorGray300;
+    background-color: $colorGray500;
+  }
+  &:disabled &:hover {
+    color: $colorGray300;
+    background-color: $colorGray500;
+  }
+}
