@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { Feather } from "lucide-react";
 import { Section } from "@/features";
 import { useGetEstateById, useGetStaticData } from "@/shared/api/hooks";
 import { Typography } from "@/shared/ui";
@@ -19,8 +18,8 @@ export const Features = () => {
         <div className={style.featuresContainer}>
           {data?.estate.project.facilities.map((features) => (
             <div className={style.featuresItem} key={features.type}>
-              {features.icon ? <img src={features.icon} alt="" /> : <Feather />}
-              <Typography variant="body" capitalize>
+              {features.icon && <img src={features.icon} alt="" />}
+              <Typography variant="body" capitalize ellipsis>
                 {features.type}
               </Typography>
             </div>
