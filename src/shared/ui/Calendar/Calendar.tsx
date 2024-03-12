@@ -1,9 +1,27 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "./Calendar.module.scss";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import close from "../Icons/close.png";
-import { Button } from "@/shared/ui/Button/Button";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
+
+//import { arSA } from "date-fns/locale";
+
 import clsx from "clsx";
+
+const css = `
+  .my-selected:not([disabled]) { 
+    font-weight: bold; 
+    border: 2px solid currentColor;
+  }
+  .my-selected:hover:not([disabled]) { 
+    border-color: #c6a15b;
+    color: #c6a15b;
+  }
+  .my-today { 
+    font-weight: bold;
+    font-size: 140%; 
+    color: #c6a15b;
+  }
+`;
 
 interface CalendarProps {
   calendarActive?: boolean;
@@ -14,108 +32,42 @@ interface CalendarProps {
 
 export const Calendar: FC<CalendarProps> = (props) => {
   const { setCalendarActive, calendarActive, setDate } = props;
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(currentDate.getDate());
 
-  const weekDays = {
-    en: ["M", "T", "W", "T", "F", "S", "S"],
-    ru: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-  };
-  const date = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth() + 1,
-    0
-  );
+  ////////////////////////////////////////////
+  const [selected, setSelected] = useState<Date[]>();
 
-  const nextMonth = () => {
-    const month = currentDate.getMonth();
-    const year = currentDate.getFullYear();
-
-    setCurrentDate(new Date(year, month + 1));
-  };
-  const prevMonth = () => {
-    const month = currentDate.getMonth();
-    const year = currentDate.getFullYear();
-
-    setCurrentDate(new Date(year, month - 1));
-  };
-
-  const handleClick = (day: number) => {
-    setSelectedDay(day);
-    setDate(`${currentDate.getFullYear()}-${currentDate.getMonth()}-${day}`);
-  };
-
-  const month = [];
-  let week = [];
-  let weeks = 0;
-  let days = 1;
-
-  const endOfMonth = date.getDate();
-  const firstWeekDay = currentDate.getDay();
-  let firstWeekDayFl = false;
-
-  while (weeks < 5) {
-    let limit = 7;
-    if (weeks === 4) limit = endOfMonth % 7;
-    for (let i = 0; i < limit; i++) {
-      if (firstWeekDay === i + 1) firstWeekDayFl = true;
-      if (firstWeekDayFl) week.push(days++);
-      else week.push(0);
-    }
-    month.push(week);
-    week = [];
-    weeks++;
-  }
+  useEffect(() => {
+    if (selected)
+      setDate(
+        `${selected[0].getDate()}-${selected[0].getMonth()}-${selected[0].getFullYear()}`
+      );
+    setSelected(undefined);
+  }, [selected, setDate]);
 
   return (
     <div
       onClick={setCalendarActive}
       className={clsx(styles.calendar, calendarActive && styles.calendarActive)}
     >
+      <style>{css}</style>
       <div
+        className={styles.calendarCustom}
         onClick={(e) => e.stopPropagation()}
-        className={clsx(styles.calendarCustom)}
       >
-        <div className={styles.calendarCustomHeader}>
-          <div className={styles.calendarCustomTitle}>
-            <div className={styles.calendarCustomChevron}>
-              <ChevronLeft onClick={prevMonth} color="white" width={20} />
-            </div>
-            <div>
-              {currentDate.toLocaleString("default", { month: "long" })}
-            </div>
-            <div className={styles.calendarCustomChevron}>
-              <ChevronRight onClick={nextMonth} color="white" width={20} />
-            </div>
-            <div className={styles.calendarCustomTitleBtn}>
-              <Button onClick={setCalendarActive} type="icon">
-                <img src={close} />
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.calendarWeek}>
-          {weekDays.ru.map((item, index) => (
-            <span key={index}>{item}</span>
-          ))}
-        </div>
-        <div className={styles.calendarCustomMonth}>
-          {month.map((item, index) => (
-            <div key={index} className={styles.calendarCustomWeek}>
-              {item.map((item, index) => (
-                <div
-                  onClick={() => handleClick(item)}
-                  className={`${styles.calendarCustomDay} ${
-                    selectedDay === item ? styles.calendarCustomDayActive : ""
-                  }`}
-                  key={index}
-                >
-                  <div onClick={setCalendarActive}>{item}</div>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+        <DayPicker
+          //locale={arSA}
+          mode="multiple"
+          max={1}
+          selected={selected}
+          onSelect={setSelected}
+          modifiersClassNames={{
+            selected: "my-selected",
+            today: "my-today",
+          }}
+          modifiersStyles={{
+            disabled: { fontSize: "75%" },
+          }}
+        />
       </div>
     </div>
   );
