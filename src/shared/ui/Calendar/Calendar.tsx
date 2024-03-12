@@ -3,29 +3,13 @@ import styles from "./Calendar.module.scss";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-//import { arSA } from "date-fns/locale";
+//import { arSA, tr, ru, enGB } from "date-fns/locale";
 
 import clsx from "clsx";
 
-const css = `
-  .my-selected:not([disabled]) { 
-    font-weight: bold; 
-    border: 2px solid currentColor;
-  }
-  .my-selected:hover:not([disabled]) { 
-    border-color: #c6a15b;
-    color: #c6a15b;
-  }
-  .my-today { 
-    font-weight: bold;
-    font-size: 140%; 
-    color: #c6a15b;
-  }
-`;
-
 interface CalendarProps {
   calendarActive?: boolean;
-  setCalendarActive?: () => void;
+  setCalendarActive: () => void;
   // eslint-disable-next-line no-unused-vars
   setDate: (data: string) => void;
 }
@@ -33,40 +17,32 @@ interface CalendarProps {
 export const Calendar: FC<CalendarProps> = (props) => {
   const { setCalendarActive, calendarActive, setDate } = props;
 
-  ////////////////////////////////////////////
-  const [selected, setSelected] = useState<Date[]>();
+  const [selected, setSelected] = useState<Date>();
 
   useEffect(() => {
-    if (selected)
+    if (selected) {
       setDate(
-        `${selected[0].getDate()}-${selected[0].getMonth()}-${selected[0].getFullYear()}`
+        `${selected.getFullYear()}-${selected.getMonth() + 1}-${selected.getDate()}`
       );
+      setCalendarActive();
+    }
     setSelected(undefined);
-  }, [selected, setDate]);
+  }, [selected, setDate, setCalendarActive]);
 
   return (
     <div
       onClick={setCalendarActive}
       className={clsx(styles.calendar, calendarActive && styles.calendarActive)}
     >
-      <style>{css}</style>
       <div
         className={styles.calendarCustom}
         onClick={(e) => e.stopPropagation()}
       >
         <DayPicker
-          //locale={arSA}
-          mode="multiple"
-          max={1}
+          // locale={enGB}
+          mode="single"
           selected={selected}
           onSelect={setSelected}
-          modifiersClassNames={{
-            selected: "my-selected",
-            today: "my-today",
-          }}
-          modifiersStyles={{
-            disabled: { fontSize: "75%" },
-          }}
         />
       </div>
     </div>
