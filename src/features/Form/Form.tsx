@@ -201,7 +201,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
             name="city"
             value={formState.city}
             onChange={handleChange}
-            placeholder={"Your city"}
+            placeholder={capitalize(staticData?.forms.your_city) || "Your city"}
           />
         )}
 
