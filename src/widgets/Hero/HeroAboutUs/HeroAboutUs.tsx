@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Section } from "@/features";
-import styles from "./HeroAboutUs.module.scss";
 import HeroSubsection from "./AboutUsSubsection/AboutUsSubsection";
 import { useGetCompany, useGetStaticData } from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
+import styles from "./HeroAboutUs.module.scss";
 
 export const HeroAboutUs: FC = () => {
   const { data } = useGetCompany();
