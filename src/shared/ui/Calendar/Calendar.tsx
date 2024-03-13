@@ -21,10 +21,6 @@ export const Calendar: FC<CalendarProps> = (props) => {
 
   useEffect(() => {
     const storeLanguage = localStorage.getItem("language");
-    //if (storeLanguage === "ru") setLanguage(ru);
-    //if (storeLanguage === "tr") setLanguage(tr);
-    //if (storeLanguage === "en") setLanguage(enGB);
-    //if (storeLanguage === "ar") setLanguage(arSA);
 
     switch (storeLanguage) {
       case "ru":
@@ -45,10 +41,19 @@ export const Calendar: FC<CalendarProps> = (props) => {
   }, [setDate, language]);
 
   useEffect(() => {
+    const currentDate = new Date();
     if (selected) {
-      setDate(
-        `${selected.getFullYear()}-${selected.getMonth() + 1}-${selected.getDate()}`
-      );
+      if (
+        selected.getFullYear() < currentDate.getFullYear() ||
+        selected.getMonth() < currentDate.getMonth() ||
+        selected.getDate() < currentDate.getDate()
+      ) {
+        setDate("--------");
+      } else {
+        setDate(
+          `${selected.getFullYear()}-${selected.getMonth() + 1}-${selected.getDate()}`
+        );
+      }
       setCalendarActive();
     }
     setSelected(undefined);
