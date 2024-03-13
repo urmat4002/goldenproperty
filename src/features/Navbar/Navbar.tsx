@@ -8,7 +8,7 @@ import { NavbarProps, isData } from "./types/Navbar.types";
 import { useModalContext } from "@/app/providers/useModalContext";
 import { MenuLeft } from "../MenuDropdown/MenuLeft";
 
-export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered }) => {
+export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered, onClickClose }) => {
   const { sellEstate } = useModalContext();
   const [openCity, setOpenCity] = useState(false);
   const { data } = useGetStaticData();
@@ -36,7 +36,7 @@ export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered }) => {
             data-mobile-ddm-open={isMobile ? openCity : false}
             className={styles.ddm}
           >
-            <MenuLeft isMobile={true} />
+            <MenuLeft isMobile={true} onClickClose={onClickClose} />
           </div>
         </li>
         <li className={styles.navbarMenuItem}>

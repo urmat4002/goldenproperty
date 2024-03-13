@@ -23,6 +23,7 @@ export const Header = () => {
           >
             <Navbar
               isMobile={isOpenMobileMD}
+              onClickClose={setIsOpenMobileMD}
               isCityhovered={styles.isCityhovered}
             />
           </div>
