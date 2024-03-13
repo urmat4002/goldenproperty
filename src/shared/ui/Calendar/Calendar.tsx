@@ -3,7 +3,7 @@ import styles from "./Calendar.module.scss";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-//import { arSA, tr, ru, enGB } from "date-fns/locale";
+import { arSA, tr, ru, enGB } from "date-fns/locale";
 
 import clsx from "clsx";
 
@@ -16,8 +16,33 @@ interface CalendarProps {
 
 export const Calendar: FC<CalendarProps> = (props) => {
   const { setCalendarActive, calendarActive, setDate } = props;
-
+  const [language, setLanguage] = useState(enGB);
   const [selected, setSelected] = useState<Date>();
+
+  useEffect(() => {
+    const storeLanguage = localStorage.getItem("language");
+    //if (storeLanguage === "ru") setLanguage(ru);
+    //if (storeLanguage === "tr") setLanguage(tr);
+    //if (storeLanguage === "en") setLanguage(enGB);
+    //if (storeLanguage === "ar") setLanguage(arSA);
+
+    switch (storeLanguage) {
+      case "ru":
+        setLanguage(ru);
+        break;
+      case "tr":
+        setLanguage(tr);
+        break;
+      case "en":
+        setLanguage(enGB);
+        break;
+      case "ar":
+        setLanguage(arSA);
+        break;
+      default:
+        setLanguage(enGB);
+    }
+  }, [setDate, language]);
 
   useEffect(() => {
     if (selected) {
@@ -39,7 +64,7 @@ export const Calendar: FC<CalendarProps> = (props) => {
         onClick={(e) => e.stopPropagation()}
       >
         <DayPicker
-          // locale={enGB}
+          locale={language}
           mode="single"
           selected={selected}
           onSelect={setSelected}
