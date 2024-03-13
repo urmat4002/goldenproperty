@@ -34,3 +34,10 @@
     }
   }
 }
+
+.language:hover svg {
+  stroke: $colorPrimary;
+}
+.language:hover .languagePlaceholder p {
+  color: $colorPrimary !important;
+}

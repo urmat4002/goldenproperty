@@ -69,11 +69,12 @@ export const LanguageSelector: FC = () => {
   };
 
   return (
-    <div className={styles.language} ref={selectRef}>
-      <div
-        className={styles.languagePlaceholder}
-        onClick={() => setIsOpen(!isOpen)}
-      >
+    <div
+      className={styles.language}
+      ref={selectRef}
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className={styles.languagePlaceholder}>
         <Globe color="white" width={20} />
         <Typography variant="body" weight="regular" color="white">
           {selectedLanguage}

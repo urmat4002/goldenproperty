@@ -13,7 +13,7 @@
     gap: 16px;
     list-style: none;
     @include isDesktop {
-      height: 60px;
+      // height: 60px;
       flex-direction: column;
       padding: 0;
       align-items: flex-start;
@@ -41,7 +41,8 @@
     align-items: center;
 
     svg {
-      transition: 0.3s ease;
+      transform: rotateZ(0.75turn);
+      transition: transform 0.3s ease;
       @include tablet {
         width: 18px;
       }
@@ -83,27 +84,59 @@
     }
     :hover {
       cursor: pointer;
-      color: $colorPrimary;
+      p {
+        color: $colorPrimary;
+      }
+      svg {
+        stroke: $colorPrimary;
+      }
     }
-
-    &.active svg {
-      transform: rotateZ(180deg);
-    }
-  }
-
-  @include isDesktop {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-  }
-  @include tablet {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-  }
-  @include mobile {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
   }
 }
+
+.navbar {
+  .ddm {
+    display: none;
+  }
+  @media (max-width: $desktopBreakpoint) {
+    .ddm {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 500ms;
+    }
+    &MenuItem {
+      display: block;
+    }
+    left: 16px;
+    position: relative;
+
+    .navbarMenuItem {
+      height: unset;
+    }
+
+    div[data-mobile-ddm-open="true"] {
+      grid-template-rows: 1fr;
+      transition: grid-template-rows 500ms;
+      p {
+        color: $colorGray200;
+      }
+
+      p:hover {
+        color: $colorPrimary;
+      }
+    }
+
+    .cityButton {
+      display: flex;
+    }
+  }
+}
+
+.navbar:has(div[data-mobile-ddm-open="true"]) svg {
+  transform: rotateZ(1turn);
+}
+
+// .active {
+//   flex-direction: column;
+//   height: unset;
+// }

@@ -7,8 +7,8 @@ import { useGetCities } from "@/shared/api/hooks";
 
 interface MenuLeftProps {
   // eslint-disable-next-line no-unused-vars
-  onClick: (id: number) => void;
-  id: number;
+  onClick?: (id: number) => void;
+  id?: number;
   isMobile?: boolean;
 }
 
@@ -28,9 +28,9 @@ export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile }) => {
             onClick={
               isMobile
                 ? () => navigate(`/estates/${item.id}`)
-                : () => onClick(item.id)
+                : () => onClick!(item.id)
             }
-            onMouseEnter={() => onClick(item.id)}
+            onMouseEnter={!isMobile ? () => onClick!(item.id) : undefined}
           >
             <Typography
               variant="button"
