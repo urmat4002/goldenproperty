@@ -49,9 +49,7 @@ export const Calendar: FC<CalendarProps> = (props) => {
       ) {
         setDate("--------");
       } else {
-        setDate(
-          `${selected.getFullYear()}-${selected.getMonth() + 1}-${selected.getDate()}`
-        );
+        setDate(selected.toLocaleDateString("en-CA"));
       }
       setCalendarActive();
     }
