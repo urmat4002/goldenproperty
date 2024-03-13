@@ -34,6 +34,8 @@
   &Image {
     width: 386px;
     height: 386px;
+    object-fit: cover;
+    object-position: center;
   }
 }
 

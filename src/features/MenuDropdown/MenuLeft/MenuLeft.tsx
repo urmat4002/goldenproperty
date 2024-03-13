@@ -15,7 +15,6 @@ interface MenuLeftProps {
 export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile }) => {
   const navigate = useNavigate();
   const { data } = useGetCities();
-
   const cities = data?.cities || [];
   return (
     <div className={styles.menuLeft}>
@@ -27,7 +26,7 @@ export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile }) => {
             key={item.id}
             onClick={
               isMobile
-                ? () => navigate(`/estates/${item.id}`)
+                ? () => navigate(`/estates/?city=${item.id}`)
                 : () => onClick!(item.id)
             }
             onMouseEnter={!isMobile ? () => onClick!(item.id) : undefined}

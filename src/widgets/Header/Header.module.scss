@@ -39,7 +39,12 @@
     display: flex;
     align-items: center;
     gap: 36px;
-
+    @media (max-width: 500px) {
+      gap: 16px;
+      .main {
+        gap: 16px !important;
+      }
+    }
     .main {
       display: flex;
       align-items: center;
@@ -82,7 +87,6 @@
   }
   svg {
     stroke: $colorPrimary;
-    // transform: rotateZ(1turn);
   }
 }
 

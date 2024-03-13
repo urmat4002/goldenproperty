@@ -1,21 +1,30 @@
 import { SearchIcon } from "lucide-react";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./Search.module.scss";
-//import { useQuery } from "@tanstack/react-query";
 
 export const Search: FC = () => {
-  //const { refetch } = useQuery({ queryKey: ["estates"] });
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [searchText, setSearchText] = useState("");
+  const [isFocuse, setIsFocus] = useState(false);
+  const inputRef = useRef(null);
 
-  const handleSearch: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const handleClick: React.MouseEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    /* setTimeout(() => {
-      if (refetch) refetch();
-    }, 0); */
-    navigate(`/estates/?search=${searchText}`);
+    const input = inputRef.current! as HTMLInputElement;
+    input.focus();
+    setIsFocus(true);
+  };
+  const handleOnBluer = () => {
+    setSearchText("");
+    setIsFocus(false);
+  };
+  const handleSearch: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
+    if (searchText) {
+      navigate(`/estates/?search=${searchText}`);
+    }
   };
 
   useEffect(() => {
@@ -23,15 +32,26 @@ export const Search: FC = () => {
   }, [searchParams]);
 
   return (
-    <form className={styles.searchForm} onSubmit={handleSearch}>
+    <form
+      className={styles.searchForm}
+      onClick={handleClick}
+      onBlur={handleOnBluer}
+    >
       <input
+        ref={inputRef}
         type="text"
         placeholder="Search"
         className={styles.searchInput}
         value={searchText}
         onChange={(event) => setSearchText(event.target.value)}
+        onBlur={handleOnBluer}
+        data-focus={isFocuse}
       />
-      <button className={styles.searchButton}>
+      <button
+        className={styles.searchButton}
+        onMouseDown={handleSearch}
+        onBlur={handleOnBluer}
+      >
         <SearchIcon />
       </button>
     </form>

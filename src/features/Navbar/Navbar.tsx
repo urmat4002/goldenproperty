@@ -7,15 +7,12 @@ import { useGetStaticData } from "@/shared/api/hooks";
 import { NavbarProps, isData } from "./types/Navbar.types";
 import { useModalContext } from "@/app/providers/useModalContext";
 import { MenuLeft } from "../MenuDropdown/MenuLeft";
-// import { useMediaQuery } from "react-responsive";
 
 export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered }) => {
   const { sellEstate } = useModalContext();
-  //  const [isOpenDDMMobile, setIsOpenDDMMobile] = useState(false);
   const [openCity, setOpenCity] = useState(false);
   const { data } = useGetStaticData();
   const headerData = data?.static_data.header as isData;
-  // const isMobile = useMediaQuery({ query: "(max-width: 1128px)" });
   const toggleCity = () => {
     setOpenCity(!openCity);
   };
@@ -23,11 +20,7 @@ export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered }) => {
   return (
     <div className={styles.navbar}>
       <ul className={styles.navbarMenu}>
-        <li
-          className={`${styles.navbarMenuItem} ${isCityhovered}`}
-          //  data-mobile-ddm-open={openCity}
-          // onClick={isMobile ? () => setIsOpenDDMMobile(prev=> !prev) : undefined}
-        >
+        <li className={`${styles.navbarMenuItem} ${isCityhovered}`}>
           <div>
             <button
               onClick={isMobile ? () => toggleCity() : undefined}
@@ -43,7 +36,7 @@ export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered }) => {
             data-mobile-ddm-open={isMobile ? openCity : false}
             className={styles.ddm}
           >
-            <MenuLeft />
+            <MenuLeft isMobile={true} />
           </div>
         </li>
         <li className={styles.navbarMenuItem}>
