@@ -23,4 +23,5 @@ export interface ICities {
 
 export interface NavbarProps {
   isMobile: boolean;
+  isCityhovered?: string;
 }

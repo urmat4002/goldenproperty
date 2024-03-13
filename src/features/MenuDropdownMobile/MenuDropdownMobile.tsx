@@ -4,8 +4,8 @@ import { Navbar } from "..";
 
 export const MenuDropdownMobile = () => {
   return (
-    <div className={styles.menuDropdown}>
-      <div className={styles.menuDropdownContainer}>
+    <div className={styles.MenuDropdownMobile}>
+      <div className={styles.MenuDropdownMobileContainer}>
         <Navbar isMobile={true} />
       </div>
     </div>

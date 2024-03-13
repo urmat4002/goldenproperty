@@ -2,7 +2,6 @@
 @import "@mixin";
 
 .header {
-  background-color: $colorGray500;
   height: 60px;
   border-bottom: 0.5px solid $colorGray450;
   z-index: 9999;
@@ -15,6 +14,7 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    background-color: $colorGray500;
   }
   &Navbar {
     max-width: 800px;
@@ -70,11 +70,6 @@
     }
   }
 
-  @include isDesktop {
-    .menuDropdown {
-      display: none;
-    }
-  }
   @include tablet {
     .menuDropdown {
       display: none;
@@ -91,4 +86,34 @@
       display: none;
     }
   }
+}
+
+.header:has(.isCityhovered:hover) .menuDropdown {
+  top: 0px;
+}
+.menuDropdown:hover {
+  top: 0px;
+}
+
+.menuDropdown[close="true"] {
+  top: -1000px;
+}
+
+.menuDropdown {
+  z-index: -20;
+  max-height: 768px;
+  padding: 24px 0;
+  background: $colorGray500;
+  border-radius: 0px, 0px, 25px, 25px;
+  position: relative;
+  left: 0;
+  right: 0;
+  transition: 0.7s ease;
+  &Container {
+    display: flex;
+    gap: 16px;
+    left: 0;
+    right: 0;
+  }
+  top: -1000px;
 }
