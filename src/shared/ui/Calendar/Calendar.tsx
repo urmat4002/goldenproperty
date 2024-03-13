@@ -40,17 +40,9 @@ export const Calendar: FC<CalendarProps> = (props) => {
   }, [setDate, language]);
 
   useEffect(() => {
-    const currentDate = new Date();
     if (selected) {
-      if (
-        selected.getFullYear() < currentDate.getFullYear() ||
-        selected.getMonth() < currentDate.getMonth() ||
-        selected.getDate() < currentDate.getDate()
-      ) {
-        setDate("--------");
-      } else {
-        setDate(selected.toLocaleDateString("en-CA"));
-      }
+      setDate(selected.toLocaleDateString("en-CA"));
+
       setCalendarActive();
     }
     setSelected(undefined);
