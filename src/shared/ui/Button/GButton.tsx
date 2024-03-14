@@ -25,7 +25,7 @@ export const GButton: React.FC<GButtonProps> = (props) => {
       iconToRender = <ArrowRight />;
       break;
     case "whatsapp":
-      iconToRender = <WhatsApp />;
+      iconToRender = <WhatsApp size={35} />;
       break;
     default:
       iconToRender = null;

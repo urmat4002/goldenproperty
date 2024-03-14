@@ -32,7 +32,11 @@ export const PriceRow: FC<{
       </Typography>
 
       <div className={styles.buttons}>
-        <GButton className={styles.priceBtnsItem} onClick={handleDownloadClick}>
+        <GButton
+          variant="download"
+          className={styles.priceBtnsItem}
+          onClick={handleDownloadClick}
+        >
           Catalog
         </GButton>
 

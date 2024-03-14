@@ -81,7 +81,7 @@ export const PropertyCard: FC<Estate> = ({
       <Link to={whatsappUrl} target="_blank">
         <button className={styles.buttonWhatsapp}>
           WhatsApp
-          <WhatsApp />
+          <WhatsApp size={35} />
         </button>
       </Link>
     </div>
