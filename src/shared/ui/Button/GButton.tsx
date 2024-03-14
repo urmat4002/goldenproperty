@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import styles from "./GButton.module.scss";
+import { ArrowRight } from "lucide-react";
 import { Typography } from "../Typography";
 import { WhatsApp } from "../Icons/WhatsApp";
 import Download from "../Icons/Download";
-import { ArrowRight } from "lucide-react";
 import { GButtonProps } from "./types/GButton.types";
+import styles from "./GButton.module.scss";
 
 export const GButton: React.FC<GButtonProps> = (props) => {
   const {

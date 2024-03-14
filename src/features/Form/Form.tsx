@@ -14,8 +14,8 @@ import { SelectItem } from "@/shared/ui/Select/Select";
 import { useParams } from "react-router-dom";
 import { useModalContext } from "@/app/providers/useModalContext";
 import { FormMessage } from "./FormMessage/FormMessage";
-import styles from "./Form.module.scss";
 import { GButton } from "@/shared/ui/Button/GButton";
+import styles from "./Form.module.scss";
 
 type FormProps = {
   variant: "download_catalog" | "buy" | "sell" | "consultation";
@@ -54,11 +54,9 @@ export const Form: FC<FormProps> = ({ variant }) => {
   const { id: estateId } = useParams();
   const { staticData } = useGetStaticData();
   const { choices } = useGetStaticFormDownloadCatalog();
-
   const { closeModal, pdfUrl } = useModalContext();
-
   const [calendarActive, setCalendarActive] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [formState, setFormState] = useState(initialFormState);
   const [message, setMessage] = useState<FormMessage | null>(null);
 
@@ -122,21 +120,19 @@ export const Form: FC<FormProps> = ({ variant }) => {
     }
 
     try {
+      setIsLoading(true);
       const { data } = await axiosAPI.post(`/appeal/${variant}/`, formData);
+      //on success
       if (variant === "download_catalog") {
         localStorage.setItem("questionnaire", "true");
-        setTimeout(() => {
-          pdfUrl && window.open(pdfUrl, "_blank");
-        }, 500);
+        pdfUrl && window.open(pdfUrl, "_blank");
+        closeModal();
+        return;
       }
-      //on success
       setMessage({
         title: data.form.successfully,
         subtitle: data.form.thanks,
-        handleClose:
-          variant === "download_catalog" || variant === "sell"
-            ? closeModal
-            : () => setMessage(null),
+        handleClose: variant === "sell" ? closeModal : () => setMessage(null),
       });
     } catch (e) {
       //on error
@@ -159,6 +155,8 @@ export const Form: FC<FormProps> = ({ variant }) => {
         handleClose: () => setMessage(null),
       });
       localStorage.removeItem("questionnaire");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -169,7 +167,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
   };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <FormHeading formParams={formParams} />
 
       <div className={styles.formGrid}>
@@ -180,6 +178,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
           value={formState.name}
           onChange={handleChange}
           placeholder={capitalize(staticData?.forms.your_name) || "Name"}
+          required
         />
 
         {variant === "download_catalog" ? (
@@ -193,6 +192,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
             placeholder={
               capitalize(staticData?.forms.your_email) || "Your email"
             }
+            required
           />
         ) : (
           <input
@@ -202,11 +202,13 @@ export const Form: FC<FormProps> = ({ variant }) => {
             value={formState.city}
             onChange={handleChange}
             placeholder={capitalize(staticData?.forms.your_city) || "Your city"}
+            required
           />
         )}
 
         <PhoneInput
-          className={styles.formInput}
+          inputClassName={styles.formInput}
+          name="phone"
           value={formState.phone}
           hideDropdown
           countrySelectorStyleProps={{ style: { display: "none" } }}
@@ -217,6 +219,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
           onChange={(value) =>
             setFormState((prev) => ({ ...prev, phone: value }))
           }
+          required
         />
 
         {variant === "download_catalog" ? (
@@ -241,6 +244,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
               onFocus={() => setCalendarActive(true)}
               placeholder={capitalize(staticData?.forms.date) || "Date"}
               onChange={handleChange}
+              required
             />
             <Calendar
               calendarActive={calendarActive}
@@ -254,7 +258,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
       </div>
 
       <div className={styles.formButton}>
-        <GButton onClick={handleSubmit}>{formParams.buttonCaption}</GButton>
+        <GButton disabled={isLoading}>{formParams.buttonCaption}</GButton>
       </div>
 
       {formParams.closeButton && (
