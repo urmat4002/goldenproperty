@@ -4,165 +4,99 @@
 .footer {
   background-color: $colorGray500;
   margin-top: 100px;
+}
 
-  &Container {
-    display: flex;
-    flex-direction: column;
+@include subDesktop {
+  .footerLogo {
+    display: none;
   }
+}
 
-  &Top {
-    padding: 40px 0 10px 0;
-    display: flex;
-    gap: 64px; /* Adjust gap for better spacing at 1050px */
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid #fff;
-  }
-
-  &Navigate {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-    width: 100%;
-  }
-
-  &Option {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    list-style: none;
-    flex-wrap: wrap;
-    word-break: break-word;
-    min-width: 135px;
-
-    &::before {
-      content: attr(data-title);
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 12px;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-  }
-
-  &Icons {
-    display: flex;
-    gap: 20px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-
-  .footerSocials {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    gap: 16px;
-    border-bottom: 1px solid $colorGray400;
-    padding-bottom: 16px;
-    width: 100%;
-
-    li {
-      margin-right: 5px; /* Optional: Add margin to adjust icon spacing */
-    }
-  }
-
-  &Bottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 26px 0;
-
-    &Link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-decoration: underline;
-      color: $colorWhite;
-    }
-  }
-
-  &Link {
-    padding: 0;
-  }
-
-  &Typography {
-    transition: color 0.3s ease;
-    text-align: left;
-
-    &:hover {
-      color: $colorPrimary;
-      cursor: pointer;
-    }
-  }
-
-  @include isDesktop {
-    &Logo {
-      display: none;
-    }
-  }
-
-  @include tablet {
-    &Logo {
-      display: none;
-    }
-
-    &Navigate {
-      gap: 5px;
-    }
-
-    &Option {
-      &::before {
-        font-size: 16px;
-      }
-    }
-  }
-
+.footerTop {
+  position: relative;
+  padding: 40px 0 10px 0;
+  display: flex;
+  gap: 64px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #fff;
   @include mobile {
-    &Logo {
-      display: none;
-    }
-
-    &Top {
-      padding: 20px 0 0px 0;
-    }
-
-    &Navigate {
-      flex-direction: column;
-      gap: 0;
-    }
-
-    &Option {
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 33px;
-      padding-top: 40px;
-
-      li {
-        margin: 0 10px 10px 0;
-      }
-
-      &::before {
-        content: attr(data-title);
-        position: absolute;
-        top: 0;
-        font-size: 14px;
-      }
-    }
-
-    &Icons {
-      left: 0;
-    }
+    padding: 20px 0 0px 0;
   }
+}
+
+.footerColumns {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  @include mobile {
+    gap: 10px;
+  }
+  @include mobile {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+}
+
+.footerList {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 20px;
+  @include mobile {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 33px;
+    gap: 10px;
+  }
+}
+
+.footerContact {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  word-break: break-all;
+}
+
+.footerIcons {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  @include mobile {
+    left: 0;
+  }
+}
+
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 26px 0;
+}
+
+.footerBottomLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-decoration: underline;
+  color: $colorWhite;
+}
+
+.footerTypography {
+  transition: color 0.3s ease;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.footerTypography:hover {
+  color: $colorPrimary;
+  cursor: pointer;
 }

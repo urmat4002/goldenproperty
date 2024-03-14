@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone } from "lucide-react";
 import { LogoFooter } from "@/shared/ui/Icons/LogoFooter";
@@ -27,16 +27,13 @@ export const Footer: FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerContainer}>
+      <div className={"Container"}>
         <div className={styles.footerTop}>
           <div className={styles.footerLogo}>
             <LogoFooter />
           </div>
-          <div className={styles.footerNavigate}>
-            <ul
-              data-title={`${cap(staticData?.footer.cities)}`}
-              className={styles.footerOption}
-            >
+          <div className={styles.footerColumns}>
+            <FooterColumn title={cap(staticData?.footer.cities)}>
               {cities?.cities.map((city) => {
                 return (
                   <FooterLink
@@ -46,11 +43,8 @@ export const Footer: FC = () => {
                   />
                 );
               })}
-            </ul>
-            <ul
-              data-title={`${cap(staticData?.footer.estate_types)}`}
-              className={styles.footerOption}
-            >
+            </FooterColumn>
+            <FooterColumn title={cap(staticData?.footer.estate_types)}>
               {types?.estate_types.map((type) => {
                 return (
                   <FooterLink
@@ -60,11 +54,8 @@ export const Footer: FC = () => {
                   />
                 );
               })}
-            </ul>
-            <ul
-              data-title={`${cap(staticData?.footer.pages)}`}
-              className={styles.footerOption}
-            >
+            </FooterColumn>
+            <FooterColumn title={cap(staticData?.footer.pages)}>
               <FooterLink
                 to={"/estates"}
                 label={pages?.header.all_real_estates || "Estates"}
@@ -84,20 +75,13 @@ export const Footer: FC = () => {
                   </Typography>
                 </button>
               </li>
-            </ul>
-            <ul
-              data-title={`${cap(staticData?.footer.contact_us)}`}
-              className={styles.footerOption}
-            >
-              <li>
-                <Mail />
-                <Typography variant="body">{company?.email}</Typography>
-              </li>
-              <li>
-                <Phone />
-                <Typography variant="body">{company?.phone}</Typography>
-              </li>
-            </ul>
+            </FooterColumn>
+
+            <FooterColumn title={cap(staticData?.footer.contact_us)}>
+              <FooterContact icon={<Mail />} label={company?.email || "..."} />
+              <FooterContact icon={<Phone />} label={company?.phone || "..."} />
+            </FooterColumn>
+
             <div className={styles.footerIcons}>
               <Link to={company?.facebook || "#"} target="_blank">
                 <Facebook />
@@ -111,6 +95,7 @@ export const Footer: FC = () => {
             </div>
           </div>
         </div>
+
         <div className={styles.footerBottom}>
           <a
             href="https://www.instagram.com/geeks_pro/?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA%3D%3D"
@@ -134,4 +119,26 @@ const FooterLink: FC<{ to: string; label: string }> = ({ to, label }) => (
       </Typography>
     </Link>
   </li>
+);
+
+const FooterContact: FC<{ label: string; icon: ReactNode }> = ({
+  label,
+  icon,
+}) => (
+  <li className={styles.footerContact}>
+    {icon}
+    <Typography variant="body">{label}</Typography>
+  </li>
+);
+
+const FooterColumn: FC<{ title: string; children: ReactNode }> = ({
+  title,
+  children,
+}) => (
+  <div>
+    <Typography variant="body" capitalize weight="semibold" ellipsis>
+      {title}
+    </Typography>
+    <ul className={styles.footerList}>{children}</ul>
+  </div>
 );

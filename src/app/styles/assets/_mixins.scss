@@ -21,6 +21,11 @@
     @content;
   }
 }
+@mixin subDesktop {
+  @media (max-width: $desktopBreakpoint) {
+    @content;
+  }
+}
 
 @mixin scroll {
   &::-webkit-scrollbar {
