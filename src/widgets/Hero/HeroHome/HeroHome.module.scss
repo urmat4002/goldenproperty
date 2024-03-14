@@ -62,16 +62,18 @@ $colorGray350: #ccc; // Assuming this is a valid color
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: min(70vh, 700px);
   overflow: hidden;
   background-size: cover;
   background-position: center;
   background-color: #4c4c4c;
+  @media (min-width: 600px) {
+    height: min(70vh, 700px);
+  }
   @include tablet {
-    height: 50vh;
+    // height: 50vh;
   }
   @include mobile {
-    height: 30vh;
+    // height: 30vh;
   }
 }
 

@@ -10,17 +10,21 @@ interface MenuLeftProps {
   onClick?: (id: number) => void;
   id?: number;
   isMobile?: boolean;
-  onClickClose?: React.Dispatch<React.SetStateAction<boolean>>
+  onClickClose?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile, onClickClose }) => {
+export const MenuLeft: FC<MenuLeftProps> = ({
+  onClick,
+  isMobile,
+  onClickClose,
+}) => {
   const navigate = useNavigate();
   const { data } = useGetCities();
   const cities = data?.cities || [];
   const mobileClick = (id: number) => {
-    onClickClose!(false)
-    navigate(`/estates/?city=${id}`)
-  }
+    onClickClose!(false);
+    navigate(`/estates/?city=${id}`);
+  };
   return (
     <div className={styles.menuLeft}>
       {cities.map((item) => {
@@ -29,12 +33,10 @@ export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile, onClickClose })
             className={styles.menuLeftButton}
             type="link"
             key={item.id}
-            onClick={
-              isMobile
-                ? () => mobileClick(item.id)
-                : () => onClick!(item.id)
+            onClick={() =>
+              isMobile ? mobileClick(item.id) : onClick!(item.id)
             }
-            onMouseEnter={!isMobile ? () => onClick!(item.id) : undefined}
+            onMouseEnter={() => (!isMobile ? onClick!(item.id) : undefined)}
           >
             <Typography
               variant="button"

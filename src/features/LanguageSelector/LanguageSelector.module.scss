@@ -44,11 +44,11 @@
 .language:hover svg {
   stroke: $colorPrimary;
 }
-.ChevronDown[data-animate="false"] {
-  transform: rotate(0.75turn);
-}
+// .ChevronDown[data-animate="false"] {
+//   transform: rotate(0.75turn);
+// }
 .ChevronDown[data-animate="true"] {
-  transform: rotate(1turn);
+  transform: rotate(0.5turn);
 }
 
 .language:hover .languagePlaceholder p {

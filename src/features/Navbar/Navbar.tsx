@@ -8,7 +8,11 @@ import { NavbarProps, isData } from "./types/Navbar.types";
 import { useModalContext } from "@/app/providers/useModalContext";
 import { MenuLeft } from "../MenuDropdown/MenuLeft";
 
-export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered, onClickClose }) => {
+export const Navbar: FC<NavbarProps> = ({
+  isMobile,
+  isCityhovered,
+  onClickClose,
+}) => {
   const { sellEstate } = useModalContext();
   const [openCity, setOpenCity] = useState(false);
   const { data } = useGetStaticData();

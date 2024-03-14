@@ -25,9 +25,7 @@ export const MenuDropdown: React.FC<{ moduleStyle: CSSModuleClasses }> = ({
       menuDropdown.removeAttribute("close");
     }, 2000);
   };
-  // Cannot read properties of undefined (reading 'menuDropdown')
-  // FIX_ME background strech
-   
+
   return (
     <div className={clsx(moduleStyle.menuDropdown)} ref={ref}>
       <div className={moduleStyle.menuDropdownContainer}>

@@ -41,7 +41,6 @@
     align-items: center;
 
     svg {
-      transform: rotateZ(0.75turn);
       transition: transform 0.3s ease;
       @include tablet {
         width: 18px;
@@ -106,12 +105,14 @@
     }
     &MenuItem {
       display: block;
+      transition: grid-template-rows 500ms;
     }
-    left: 16px;
+    padding-left: 16px;
     position: relative;
 
     .navbarMenuItem {
       height: unset;
+      // width: unset;
     }
 
     div[data-mobile-ddm-open="true"] {
@@ -133,7 +134,7 @@
 }
 
 .navbar:has(div[data-mobile-ddm-open="true"]) svg {
-  transform: rotateZ(1turn);
+  transform: rotate(0.5turn);
 }
 
 // .active {

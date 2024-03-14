@@ -20,9 +20,14 @@
   &Navbar {
     max-width: 800px;
     width: 100%;
+    background-color: $colorGray500;
     @media (max-width: $desktopBreakpoint) {
       position: absolute;
       top: -1000px;
+      z-index: -1;
+      transition:
+        top 0.7s ease,
+        opacity 1s ease;
       &[data-mobile-open="true"] {
         max-width: 100%;
         background-color: $colorGray500;
@@ -30,9 +35,18 @@
         top: 58px;
         padding-bottom: 20px;
       }
+      &[data-mobile-open="false"] {
+        max-width: 100%;
+        top: -1000px;
+        left: 0;
+        transition:
+          top 0.7s ease,
+          opacity 1s ease,
+          all 0.7 ease;
+      }
     }
     @include mobile {
-      height: 100vh;
+      // height: 100vh;
     }
   }
   &Actions {
@@ -72,7 +86,7 @@
     }
     .isCityhovered svg {
       color: $colorPrimary;
-      transform: rotateZ(1turn);
+      transform: rotate(0.5turn);
     }
   }
 
@@ -97,7 +111,6 @@
 .menuDropdown {
   visibility: visible;
   opacity: 0;
-  max-width: 1326px;
   z-index: -20;
   max-height: 768px;
   padding: 24px 0;
@@ -116,9 +129,10 @@
     left: 0;
     right: 0;
   }
+  top: 0px;
   top: -1000px;
 }
 
-.menuDropdown[data-mobile-open="true"] {
-  top: 0px;
-}
+// .headerNavbar[data-mobile-open="true"] {
+//   top: 0px;
+// }
