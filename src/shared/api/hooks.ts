@@ -156,7 +156,9 @@ export const useGetCompany = () => {
       return response.data;
     },
   });
-  return { data, isSuccess };
+  const company = data?.about_company;
+
+  return { data, company, isSuccess };
 };
 
 export const useWhatsApp = (id?: number | string) => {

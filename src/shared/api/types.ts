@@ -70,19 +70,21 @@ export type CityIdResponse = Response & {
   };
 };
 
+export type Company = {
+  company_name: string;
+  mission: string;
+  history: string;
+  company: string;
+  phone: string;
+  email: string;
+  facebook: string;
+  instagram: string;
+  whatsapp: string;
+  company_img: string;
+};
+
 export type CompanyResponse = Response & {
-  about_company: {
-    company_name: string;
-    mission: string;
-    history: string;
-    company: string;
-    phone: string;
-    email: string;
-    facebook: string;
-    instagram: string;
-    whatsapp: string;
-    company_img: string;
-  };
+  about_company: Company;
 };
 
 export type StaticDataResponse = Response & {
