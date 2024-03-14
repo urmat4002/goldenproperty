@@ -30,7 +30,8 @@
 
   &:disabled {
     color: $colorGray300;
-    background-color: $colorGray500;
+    background-color: $colorGray550;
+    cursor: auto;
   }
   &:disabled &:hover {
     color: $colorGray300;
