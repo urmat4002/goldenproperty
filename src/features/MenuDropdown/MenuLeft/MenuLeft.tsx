@@ -7,16 +7,20 @@ import { useGetCities } from "@/shared/api/hooks";
 
 interface MenuLeftProps {
   // eslint-disable-next-line no-unused-vars
-  onClick: (id: number) => void;
-  id: number;
+  onClick?: (id: number) => void;
+  id?: number;
   isMobile?: boolean;
+  onClickClose?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile }) => {
+export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile, onClickClose }) => {
   const navigate = useNavigate();
   const { data } = useGetCities();
-
   const cities = data?.cities || [];
+  const mobileClick = (id: number) => {
+    onClickClose!(false)
+    navigate(`/estates/?city=${id}`)
+  }
   return (
     <div className={styles.menuLeft}>
       {cities.map((item) => {
@@ -27,10 +31,10 @@ export const MenuLeft: FC<MenuLeftProps> = ({ onClick, isMobile }) => {
             key={item.id}
             onClick={
               isMobile
-                ? () => navigate(`/estates/${item.id}`)
-                : () => onClick(item.id)
+                ? () => mobileClick(item.id)
+                : () => onClick!(item.id)
             }
-            onMouseEnter={() => onClick(item.id)}
+            onMouseEnter={!isMobile ? () => onClick!(item.id) : undefined}
           >
             <Typography
               variant="button"

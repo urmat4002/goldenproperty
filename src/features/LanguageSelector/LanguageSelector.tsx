@@ -60,7 +60,7 @@ export const LanguageSelector: FC = () => {
 
   const handleLanguageChange = (language: Language) => {
     setSelectedLanguage(language);
-    //setIsOpen(true);
+    setIsOpen(true);
   };
 
   // Dayan: Реверс страницы при выборе арабского языка
@@ -69,35 +69,44 @@ export const LanguageSelector: FC = () => {
   };
 
   return (
-    <div className={styles.language} ref={selectRef}>
-      <div
-        className={styles.languagePlaceholder}
-        onClick={() => setIsOpen(!isOpen)}
-      >
+    <div
+      className={styles.language}
+      ref={selectRef}
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className={styles.languagePlaceholder}>
         <Globe color="white" width={20} />
         <Typography variant="body" weight="regular" color="white">
           {selectedLanguage}
         </Typography>
-        <ChevronDown color="white" width={20} />
+        <ChevronDown
+          color="white"
+          width={20}
+          className={styles.ChevronDown}
+          data-animate={isOpen}
+        />
       </div>
-      {isOpen && (
-        <div className={styles.languageOptions}>
-          {/* Dayan: фича для итерации по enum*/}
-          {Object.values(Language).map((lang) => (
-            <div
-              key={lang}
-              className={styles.languageOption}
-              onClick={() => {
-                handleLanguageChange(lang), setIsOpen(!isOpen);
-              }}
-            >
-              <Typography variant="body" weight="regular">
-                {lang}
-              </Typography>
-            </div>
-          ))}
-        </div>
-      )}
+
+      <div
+        className={styles.languageOptions}
+        data-opened={isOpen}
+        onMouseLeave={() => setIsOpen(!isOpen)}
+      >
+        {/* Dayan: фича для итерации по enum*/}
+        {Object.values(Language).map((lang) => (
+          <div
+            key={lang}
+            className={styles.languageOption}
+            onClick={() => {
+              handleLanguageChange(lang), setIsOpen(false);
+            }}
+          >
+            <Typography variant="body" weight="regular">
+              {lang}
+            </Typography>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

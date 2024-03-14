@@ -1,9 +1,9 @@
 @import "@var";
 
 .language {
-  width: 86px;
   position: relative;
   cursor: pointer;
+  transition: all 0.3s linear;
   &Placeholder {
     display: flex;
     align-items: center;
@@ -11,16 +11,19 @@
     text-transform: uppercase;
   }
   &Options {
+    transition: all 0.3s linear;
     position: absolute;
-    top: 44px;
-    z-index: 9999;
-
+    top: -500px;
+    z-index: -1;
     width: 100%;
     display: flex;
     flex-direction: column;
     background-color: $colorBackgroundSelect;
     border-radius: 0px 0px 25px 25px;
     overflow: hidden;
+  }
+  &Options[data-opened="true"] {
+    top: 44px;
   }
   &Option {
     display: flex;
@@ -33,4 +36,21 @@
       background-color: $colorPrimary;
     }
   }
+}
+
+.language svg {
+  transition: transform 0.2s linear;
+}
+.language:hover svg {
+  stroke: $colorPrimary;
+}
+.ChevronDown[data-animate="false"] {
+  transform: rotate(0.75turn);
+}
+.ChevronDown[data-animate="true"] {
+  transform: rotate(1turn);
+}
+
+.language:hover .languagePlaceholder p {
+  color: $colorPrimary !important;
 }

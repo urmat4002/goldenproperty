@@ -1,7 +1,7 @@
 import { ICity } from "../types/MenuDropDown.types";
 import styles from "./MenuBanner.module.scss";
 import { Typography } from "@/shared/ui";
-import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
+// import { TrimLimit } from "@/shared/helper/TrimLimit/TrimLimit";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { IBody } from "@/shared/api/types";
 import { GButton } from "@/shared/ui/Button/GButton";
@@ -9,9 +9,10 @@ import { Link } from "react-router-dom";
 
 interface MenuBannerProps {
   city: ICity;
+  closeDDM: () => void;
 }
 
-export const MenuBanner: React.FC<MenuBannerProps> = ({ city }) => {
+export const MenuBanner: React.FC<MenuBannerProps> = ({ closeDDM, city }) => {
   const { data } = useGetStaticData();
 
   const seeRealEstates = data?.static_data.body as IBody | undefined;
@@ -24,11 +25,9 @@ export const MenuBanner: React.FC<MenuBannerProps> = ({ city }) => {
             {city.city_name}
           </Typography>
           <div className={styles.menuBannerDescription}>
-            <TrimLimit
-              text={city.city_description}
-              limit={560}
-              more={`estates/${city.id}`}
-            />
+            <Typography variant="body" weight="regular" color="white">
+              {city.city_description}
+            </Typography>
           </div>
         </div>
         <img
@@ -37,7 +36,7 @@ export const MenuBanner: React.FC<MenuBannerProps> = ({ city }) => {
           className={styles.menuBannerImage}
         />
       </div>
-      <Link to={`/estates/?city=${city.id}`}>
+      <Link to={`/estates/?city=${city.id}`} onClick={closeDDM}>
         <GButton variant="navigate">{seeRealEstates?.see_real_estates}</GButton>
       </Link>
     </div>

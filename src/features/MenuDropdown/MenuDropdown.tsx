@@ -1,33 +1,36 @@
-import { useState } from "react";
-import styles from "./MenuDropdown.module.scss";
+import { useRef, useState } from "react";
 import { MenuBanner } from "./MenuBanner";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks/hooks";
-import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
 import { MenuLeft } from "./MenuLeft/MenuLeft";
 import clsx from "clsx";
 import { useGetCities } from "@/shared/api/hooks";
 
-export const MenuDropdown = () => {
+export const MenuDropdown: React.FC<{ moduleStyle: CSSModuleClasses }> = ({
+  moduleStyle,
+}) => {
   const [cityId, setCityId] = useState<number>(1);
-  const dispatch = useAppDispatch();
   const { data } = useGetCities();
-  const isOpen = useAppSelector((state) => state.menuSlice.isOpen);
   const cities = data?.cities || [];
   const currentCity = data?.cities.find((city) => city.id === cityId);
-
+  const ref = useRef(null);
   const handleCityClick = (id: number) => {
     setCityId(id);
   };
 
+  const closeDDM = () => {
+    const menuDropdown = ref.current! as HTMLDivElement;
+
+    if (!menuDropdown) return;
+    menuDropdown.setAttribute("close", "true");
+    setTimeout(() => {
+      menuDropdown.removeAttribute("close");
+    }, 2000);
+  };
+
   return (
-    <div
-      onMouseEnter={() => dispatch(setOpen())}
-      onMouseLeave={() => dispatch(setClose())}
-      className={clsx(styles.menuDropdown, isOpen ? styles.open : styles.close)}
-    >
-      <div className={styles.menuDropdownContainer}>
+    <div className={clsx(moduleStyle.menuDropdown)} ref={ref}>
+      <div className={moduleStyle.menuDropdownContainer}>
         {cities && <MenuLeft onClick={handleCityClick} id={cityId} />}
-        {currentCity && <MenuBanner city={currentCity} />}
+        {currentCity && <MenuBanner closeDDM={closeDDM} city={currentCity} />}
       </div>
     </div>
   );

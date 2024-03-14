@@ -49,21 +49,21 @@
   }
 
   @include isDesktop {
+    width: 100%;
     border: none;
     padding: 0;
     gap: 12px;
     padding-left: 15px;
   }
   @include tablet {
-    margin-top: 10px;
     width: 100%;
     border: none;
     padding: 0;
     gap: 12px;
     padding-left: 15px;
-    color: $colorGray100;
   }
   @include mobile {
+    width: 100%;
     border: none;
     padding: 0;
     gap: 12px;

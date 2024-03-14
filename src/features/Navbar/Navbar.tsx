@@ -1,27 +1,18 @@
-import { useAppDispatch } from "@/shared/hooks/hooks";
 import styles from "./Navbar.module.scss";
 import { Typography } from "@/shared/ui";
 import { NavLink } from "react-router-dom";
-import { setClose, setOpen } from "@/shared/slices/MenuCityHover/MenuCityHover";
 import { FC, useState } from "react";
-import { MenuLeft } from "../MenuDropdown/MenuLeft";
 import { ChevronDown } from "lucide-react";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { NavbarProps, isData } from "./types/Navbar.types";
 import { useModalContext } from "@/app/providers/useModalContext";
+import { MenuLeft } from "../MenuDropdown/MenuLeft";
 
-export const Navbar: FC<NavbarProps> = ({ isMobile }) => {
+export const Navbar: FC<NavbarProps> = ({ isMobile, isCityhovered, onClickClose }) => {
   const { sellEstate } = useModalContext();
-  const dispatch = useAppDispatch();
   const [openCity, setOpenCity] = useState(false);
-  const [cityId, setCityId] = useState<number>(0);
   const { data } = useGetStaticData();
   const headerData = data?.static_data.header as isData;
-
-  const handleCityClick = (id: number) => {
-    setCityId(id);
-  };
-
   const toggleCity = () => {
     setOpenCity(!openCity);
   };
@@ -29,31 +20,24 @@ export const Navbar: FC<NavbarProps> = ({ isMobile }) => {
   return (
     <div className={styles.navbar}>
       <ul className={styles.navbarMenu}>
-        <li>
-          <button
-            onMouseEnter={isMobile ? undefined : () => dispatch(setOpen())}
-            onMouseLeave={isMobile ? undefined : () => dispatch(setClose())}
-            onClick={isMobile ? () => toggleCity() : undefined}
-            className={`${styles.navbarMenuItem} ${openCity ? styles.active : ""}`}
-          >
-            <Typography
-              className={styles.navbarMenuSelect}
-              variant="body"
-              capitalize
-              weight="medium"
-              color="white"
+        <li className={`${styles.navbarMenuItem} ${isCityhovered}`}>
+          <div>
+            <button
+              onClick={isMobile ? () => toggleCity() : undefined}
+              className={`${styles.navbarMenuItem} ${styles.cityButton}`}
             >
-              {headerData?.city}
-            </Typography>
-            {isMobile ? <ChevronDown /> : null}
-          </button>
-          {openCity && (
-            <MenuLeft
-              onClick={handleCityClick}
-              id={cityId}
-              isMobile={isMobile}
-            />
-          )}
+              <Typography variant="body" capitalize weight="medium">
+                {headerData?.city}
+              </Typography>
+              <ChevronDown />
+            </button>
+          </div>
+          <div
+            data-mobile-ddm-open={isMobile ? openCity : false}
+            className={styles.ddm}
+          >
+            <MenuLeft isMobile={true} onClickClose={onClickClose} />
+          </div>
         </li>
         <li className={styles.navbarMenuItem}>
           <NavLink
