@@ -245,6 +245,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
               placeholder={capitalize(staticData?.forms.date) || "Date"}
               onChange={handleChange}
               required
+              readOnly
             />
             <Calendar
               calendarActive={calendarActive}
