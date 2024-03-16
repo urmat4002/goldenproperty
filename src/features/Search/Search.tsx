@@ -1,11 +1,9 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { SearchIcon } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useHeaderContext } from "@/app/providers/useHeaderContext";
 import styles from "./Search.module.scss";
 
 export const Search: FC = () => {
-  const { isMobile } = useHeaderContext();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [searchText, setSearchText] = useState("");
