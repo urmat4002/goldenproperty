@@ -10,9 +10,14 @@ export const Features = () => {
   const { data } = useGetEstateById(id);
   const { data: staticData } = useGetStaticData();
 
+  if (!data || data?.estate.project.facilities.length === 0) return null;
+
   return (
     <Section
-      title={capitalize(staticData?.static_data.body.features_and_amenities)}
+      title={capitalize(
+        staticData?.static_data.body.features_and_amenities ||
+          "Features and amenities"
+      )}
     >
       <div className={style.features}>
         <div className={style.featuresContainer}>

@@ -31,12 +31,10 @@ export type EstateIdResponse = Response & {
     images: string[];
     project: {
       name: string;
-      facilities: [
-        {
-          type: string;
-          icon: string;
-        },
-      ];
+      facilities: {
+        type: string;
+        icon: string;
+      }[];
       location: string;
       completion: string;
       is_furnished: boolean;
