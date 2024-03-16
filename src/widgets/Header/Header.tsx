@@ -1,51 +1,39 @@
-import { LanguageSelector, Navbar, Search } from "@/features";
-import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
-import { Button, Logo } from "@/shared/ui";
-import { MenuDropdown } from "..";
 import { MenuIcon, X } from "lucide-react";
-import { useState } from "react";
+import { LanguageSelector, Search } from "@/features";
+import { Logo } from "@/shared/ui";
+import { Navbar } from "./Navbar/Navbar";
+import { useHeaderContext } from "@/app/providers/useHeaderContext";
+import { Dropdown } from "./Dropdown/Dropdown";
+import styles from "./Header.module.scss";
 
 export const Header = () => {
-  const [isOpenMobileMD, setIsOpenMobileMD] = useState(false);
-  return (
-    <>
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <div className={styles.headerLogo}>
-            <Link to={"/"}>
-              <Logo />
-            </Link>
-          </div>
-          <div
-            className={styles.headerNavbar}
-            data-mobile-open={isOpenMobileMD}
-          >
-            <Navbar
-              isMobile={isOpenMobileMD}
-              onClickClose={setIsOpenMobileMD}
-              isCityhovered={styles.isCityhovered}
-            />
-          </div>
-          <div className={styles.headerActions}>
-            <div
-              className={`${styles.main} ${isOpenMobileMD ? styles.active : ""}`}
-            >
-              <Search />
-              <LanguageSelector />
-            </div>
+  const { isDropdownOpen, closeDropdown, isMobile, toggleDropdown } =
+    useHeaderContext();
 
-            <Button
-              type="icon"
-              customClasses={styles.headerMenu}
-              onClick={() => setIsOpenMobileMD(!isOpenMobileMD)}
-            >
-              {isOpenMobileMD ? <X /> : <MenuIcon />}
-            </Button>
-          </div>
-        </div>
-        <MenuDropdown moduleStyle={styles} />
-      </header>
-    </>
+  const handleMouseLeave = () => {
+    if (isMobile || !isDropdownOpen) return;
+    closeDropdown();
+  };
+
+  return (
+    <header className={styles.header} onMouseLeave={handleMouseLeave}>
+      <div className={styles.headerContainer}>
+        <Link to={"/"}>
+          <Logo />
+        </Link>
+        {!isMobile && <Navbar />}
+        <section className={styles.searchSection}>
+          <Search />
+          <LanguageSelector />
+          {isMobile && (
+            <button className={styles.burgerButton} onClick={toggleDropdown}>
+              {isDropdownOpen ? <X /> : <MenuIcon />}
+            </button>
+          )}
+        </section>
+      </div>
+      <Dropdown styles={styles} />
+    </header>
   );
 };

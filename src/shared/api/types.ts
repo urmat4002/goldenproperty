@@ -59,14 +59,14 @@ export type CityResponse = Response & {
   }[];
 };
 
-export type CityIdResponse = Response & {
-  city: {
-    id: number;
-    city_name: string;
-    city_description: string;
-    city_img: string;
-  };
+export type City = {
+  id: number;
+  city_name: string;
+  city_description: string;
+  city_img: string;
 };
+
+export type CityIdResponse = Response & { city: City };
 
 export type Company = {
   company_name: string;

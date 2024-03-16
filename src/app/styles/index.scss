@@ -11,8 +11,12 @@
   color: $colorWhite;
 }
 
-[class*="Container"] {
+.container {
   max-width: $containerMaxWidth;
   margin-inline: auto;
-  padding: 0 $containerPadding;
+  padding-inline: $containerPadding;
+}
+
+[class*="Container"] {
+  @extend .container;
 }

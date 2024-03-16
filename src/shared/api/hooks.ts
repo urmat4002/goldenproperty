@@ -134,7 +134,9 @@ export const useGetCities = () => {
       }))
     : [];
 
-  return { data, cityOptions, isSuccess };
+  const cities = data?.cities;
+
+  return { data, cities, cityOptions, isSuccess };
 };
 
 export const useGetCityById = (id: number | string) => {
@@ -145,7 +147,10 @@ export const useGetCityById = (id: number | string) => {
       return response.data;
     },
   });
-  return { data };
+
+  const city = data?.city;
+
+  return { data, city };
 };
 
 export const useGetCompany = () => {

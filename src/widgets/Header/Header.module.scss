@@ -2,137 +2,46 @@
 @import "@mixin";
 
 .header {
+  position: relative;
   height: 60px;
   border-bottom: 0.5px solid $colorGray450;
-  z-index: 9999;
+  z-index: 10;
   background-color: $colorGray500;
-  &Logo {
-    cursor: pointer;
-    z-index: 1;
-  }
-  &Container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    background-color: $colorGray500;
-  }
-  &Navbar {
-    max-width: 800px;
-    width: 100%;
-    background-color: $colorGray500;
-    @media (max-width: $desktopBreakpoint) {
-      position: absolute;
-      top: -1000px;
-      z-index: -1;
-      transition:
-        top 0.7s ease,
-        opacity 1s ease;
-      &[data-mobile-open="true"] {
-        max-width: 100%;
-        background-color: $colorGray500;
-        left: 0;
-        top: 58px;
-        padding-bottom: 20px;
-      }
-      &[data-mobile-open="false"] {
-        max-width: 100%;
-        top: -1000px;
-        left: 0;
-        transition:
-          top 0.7s ease,
-          opacity 1s ease,
-          all 0.7 ease;
-      }
-    }
-    @include mobile {
-      // height: 100vh;
-    }
-  }
-  &Actions {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    @media (max-width: 500px) {
-      gap: 16px;
-      .main {
-        gap: 16px !important;
-      }
-    }
-    .main {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
-  }
-  &Menu {
-    color: $colorWhite;
-    display: none;
-    @media (max-width: $desktopBreakpoint) {
-      display: flex;
-      z-index: 1;
-    }
-  }
 }
 
-@media (min-width: $desktopBreakpoint) {
-  .header:has(.isCityhovered:hover, .menuDropdown:hover) {
-    .menuDropdown {
-      top: 0px;
-      opacity: 1;
-    }
-    .isCityhovered p {
-      color: $colorPrimary;
-    }
-    .isCityhovered svg {
-      color: $colorPrimary;
-      transform: rotate(0.5turn);
-    }
-  }
-
-  .menuDropdown:hover {
-    top: 0px;
-    opacity: 1;
-  }
-}
-.isCityhovered:active {
-  p {
-    color: $colorPrimary;
-  }
-  svg {
-    stroke: $colorPrimary;
-  }
-}
-
-.menuDropdown[close="true"] {
-  top: -1000px !important;
-}
-
-.menuDropdown {
-  visibility: visible;
-  opacity: 0;
-  z-index: -20;
-  max-height: 768px;
-  padding: 24px 0;
-  background: $colorGray500;
-  border-radius: 0px, 0px, 25px, 25px;
+.headerContainer {
   position: relative;
-  left: 50%;
-  right: 0;
-  transform: translateX(-50%);
-  transition:
-    top 0.7s ease,
-    opacity 1s ease;
-  &Container {
-    display: flex;
-    gap: 16px;
-    left: 0;
-    right: 0;
-  }
-  top: 0px;
-  top: -1000px;
+  background-color: $colorGray500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  height: 100%;
+  z-index: 2;
 }
 
-// .headerNavbar[data-mobile-open="true"] {
-//   top: 0px;
-// }
+.searchSection {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  @include mobile {
+    gap: 20px;
+  }
+}
+
+.burgerButton {
+  color: white;
+}
+
+.dropdown {
+  position: absolute;
+  bottom: 0;
+  background-color: $colorGray500;
+  z-index: 1;
+  width: 100%;
+  transition: transform 300ms ease-in-out;
+}
+
+.dropdown.active {
+  transform: translateY(100%);
+}

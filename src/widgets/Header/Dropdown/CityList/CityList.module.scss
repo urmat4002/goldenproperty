@@ -1,0 +1,27 @@
+@import "@var";
+@import "@mixin";
+
+.cityList {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-right: 40px;
+  border-right: 1px solid $colorGray450;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  scrollbar-track-color: transparent;
+  ::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}
+
+.cityName:hover,
+.cityName.active {
+  color: $colorPrimary;
+}

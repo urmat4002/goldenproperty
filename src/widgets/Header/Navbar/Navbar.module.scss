@@ -1,0 +1,28 @@
+@import "@var";
+@import "@mixin";
+
+.navbarMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 40px;
+}
+
+.cityButton {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.chevron {
+  transition: transform 300ms ease-in-out;
+}
+
+.chevronActive {
+  transform: rotateZ(-180deg);
+}
+
+.sellButton {
+  cursor: pointer;
+}
