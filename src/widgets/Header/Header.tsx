@@ -10,6 +10,7 @@ import styles from "./Header.module.scss";
 export const Header = () => {
   const { isDropdownOpen, closeDropdown, isMobile, toggleDropdown } =
     useHeaderContext();
+  const isMobileDropdownOpen = isMobile && isDropdownOpen;
 
   const handleMouseLeave = () => {
     if (isMobile || !isDropdownOpen) return;
@@ -24,8 +25,12 @@ export const Header = () => {
         </Link>
         {!isMobile && <Navbar />}
         <section className={styles.searchSection}>
-          <Search />
-          <LanguageSelector />
+          {!isMobileDropdownOpen && (
+            <>
+              <Search />
+              <LanguageSelector />
+            </>
+          )}
           {isMobile && (
             <button className={styles.burgerButton} onClick={toggleDropdown}>
               {isDropdownOpen ? <X /> : <MenuIcon />}

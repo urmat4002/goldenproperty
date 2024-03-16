@@ -1,12 +1,18 @@
 @import "@var";
 @import "@mixin";
 
-.navbarMenu {
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   gap: 40px;
+}
+
+.navbar.mobile {
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
 }
 
 .cityButton {

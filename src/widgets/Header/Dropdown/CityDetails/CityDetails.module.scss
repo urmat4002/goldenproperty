@@ -1,6 +1,8 @@
 @import "@var";
 
 .cityDetails {
+  padding-left: 40px;
+  border-left: 1px solid $colorGray450;
   display: grid;
   grid-template-columns: 1fr 380px;
   grid-template-rows: 300px;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
@@ -6,46 +6,30 @@ import { Typography } from "@/shared/ui";
 import { useGetStaticData } from "@/shared/api/hooks";
 import { useModalContext } from "@/app/providers/useModalContext";
 import { useHeaderContext } from "@/app/providers/useHeaderContext";
+import { CityList } from "../Dropdown/CityList/CityList";
 import styles from "./Navbar.module.scss";
 
 export const Navbar: FC = () => {
-  const { toggleDropdown, openDropdown, isDropdownOpen } = useHeaderContext();
+  const { isMobile } = useHeaderContext();
   const { sellEstate } = useModalContext();
-  const { staticData } = useGetStaticData();
-  const headerData = staticData?.header;
+  const { header } = useGetStaticData();
 
   return (
     <nav>
-      <ul className={styles.navbarMenu}>
-        <li>
-          <button
-            className={styles.cityButton}
-            onMouseEnter={openDropdown}
-            onClick={toggleDropdown}
-          >
-            <Typography variant="body" capitalize weight="medium">
-              {headerData?.city || "City"}
-            </Typography>
-            <ChevronDown
-              className={clsx(
-                styles.chevron,
-                isDropdownOpen && styles.chevronActive
-              )}
-            />
-          </button>
-        </li>
+      <ul className={clsx(styles.navbar, isMobile && styles.mobile)}>
+        <CityButton styles={styles} />
 
         <NavbarLink
           to="/estates"
-          label={headerData?.all_real_estates || "Estates"}
+          label={header?.all_real_estates || "Estates"}
         />
 
-        <NavbarLink to="/about-us" label={headerData?.about_us || "About us"} />
+        <NavbarLink to="/about-us" label={header?.about_us || "About us"} />
 
         <li>
           <button className={styles.sellButton} onClick={sellEstate}>
             <Typography variant="body" capitalize weight="medium" color="white">
-              {headerData?.place_ad || "Sell"}
+              {header?.place_ad || "Sell"}
             </Typography>
           </button>
         </li>
@@ -68,3 +52,52 @@ const NavbarLink: FC<{ to: string; label: string }> = ({ to, label }) => (
     </NavLink>
   </li>
 );
+
+const CityButton: FC<{
+  styles: CSSModuleClasses;
+}> = ({ styles }) => {
+  const { toggleDropdown, openDropdown, isDropdownOpen, isMobile } =
+    useHeaderContext();
+  const { header } = useGetStaticData();
+  const [showCityList, setshowCityList] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (isMobile) return;
+    openDropdown();
+  };
+
+  const handleClick = () => {
+    if (isMobile) {
+      setshowCityList((prev) => !prev);
+      return;
+    }
+    toggleDropdown();
+  };
+
+  const isChevronActive = () => {
+    if (isMobile && showCityList) return true;
+    if (!isMobile && isDropdownOpen) return true;
+    return false;
+  };
+
+  return (
+    <li>
+      <button
+        className={styles.cityButton}
+        onMouseEnter={handleMouseEnter}
+        onClick={handleClick}
+      >
+        <Typography variant="body" capitalize weight="medium">
+          {header?.city || "City"}
+        </Typography>
+        <ChevronDown
+          className={clsx(
+            styles.chevron,
+            isChevronActive() && styles.chevronActive
+          )}
+        />
+      </button>
+      {isMobile && showCityList && <CityList />}
+    </li>
+  );
+};

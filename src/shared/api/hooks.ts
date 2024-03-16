@@ -196,8 +196,9 @@ export const useGetStaticData = () => {
     : [];
 
   const staticData = data?.static_data;
+  const header = staticData?.header;
 
-  return { data, staticData, orderOptions, isSuccess };
+  return { data, staticData, header, orderOptions, isSuccess };
 };
 
 export const useGetStaticHeader = () => {
