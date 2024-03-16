@@ -17,7 +17,6 @@ export const PriceRow: FC<{
   const handleDownloadClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    console.log(e);
     if (e.ctrlKey && e.shiftKey) {
       localStorage.removeItem("questionnaire");
     }
