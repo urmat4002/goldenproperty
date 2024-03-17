@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Typography } from "../Typography";
 import { WhatsApp } from "../Icons/WhatsApp";
 import Download from "../Icons/Download";
@@ -22,7 +22,7 @@ export const GButton: React.FC<GButtonProps> = (props) => {
       iconToRender = <Download />;
       break;
     case "navigate":
-      iconToRender = <ArrowRight />;
+      iconToRender = document.dir === "ltr" ? <ArrowRight /> : <ArrowLeft />;
       break;
     case "whatsapp":
       iconToRender = <WhatsApp size={35} />;
