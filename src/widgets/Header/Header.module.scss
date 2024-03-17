@@ -45,6 +45,10 @@
 
 .burgerButton {
   color: white;
+  cursor: pointer;
+  :hover {
+    color: $colorPrimary;
+  }
 }
 
 .dropdown {

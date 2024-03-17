@@ -15,7 +15,8 @@
 
 .imageWrapper {
   position: relative;
-  height: 312px;
+  max-height: 400px;
+  aspect-ratio: 5/4;
 }
 
 .image {
