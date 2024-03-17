@@ -14,9 +14,6 @@
   height: var(--input-size);
   display: flex;
   align-items: center;
-  background-color: $colorGray300;
-  border: 1px solid $colorGray300;
-  border-radius: 24px;
 }
 
 .searchInput {
@@ -28,15 +25,10 @@
   font-size: 20px;
   color: $colorGray100;
   font-weight: 500;
-}
-
-.searchLabel:hover {
-  background-color: $colorGray350;
-}
-
-.searchLabel:focus-within {
-  background-color: $colorGray350;
-  border: 1px solid $colorGray200;
+  margin-right: calc(0px - var(--input-size));
+  padding-right: var(--input-size);
+  background-color: $colorGray300;
+  border-radius: 24px;
 }
 
 .searchButton {
@@ -53,11 +45,11 @@
 
 .searchButton:hover {
   cursor: pointer;
-  background-color: $colorGray200;
+  color: $colorPrimary;
 }
 
 .searchButton:active {
-  color: $colorPrimary;
+  background-color: $colorGray350;
 }
 
 @media (max-width: 500px) {
@@ -67,16 +59,13 @@
   .searchInput {
     padding: 0;
     width: 0px;
+    background-color: transparent;
   }
   .searchInput:focus,
   .searchInput:not(:placeholder-shown) {
+    background-color: $colorGray300;
     padding-left: 15px;
-    padding-right: 5px;
-    width: 100%;
-  }
-  .searchform:focus-within {
-    position: absolute;
-    left: -100%;
+    padding-right: var(--input-size);
     width: 100%;
   }
 }
