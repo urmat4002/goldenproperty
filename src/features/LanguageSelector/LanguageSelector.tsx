@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { ChevronDown, Globe } from "lucide-react";
 import { Typography } from "@/shared/ui";
 import styles from "./LanguageSelector.module.scss";
+import clsx from "clsx";
 
 /* eslint-disable no-unused-vars */
 enum Language {
@@ -19,9 +20,6 @@ const userLocale =
     ? navigator.languages[0]
     : navigator.language
   ).substring(0, 2);
-
-//FIX_ME
-// Notification: При реверсе страницы заголовок не меняет положение! нужно исправить
 
 export const LanguageSelector: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -72,25 +70,25 @@ export const LanguageSelector: FC = () => {
       className={styles.language}
       ref={selectRef}
       onClick={() => setIsOpen(!isOpen)}
+      onMouseLeave={() => setIsOpen(false)}
     >
-      <div className={styles.languagePlaceholder}>
-        <Globe color="white" width={20} />
-        <Typography variant="body" weight="regular" color="white">
+      <div className={styles.indicator}>
+        <Globe width={20} />
+        <Typography
+          className={styles.indicatorText}
+          variant="body"
+          weight="regular"
+          color="white"
+        >
           {selectedLanguage}
         </Typography>
         <ChevronDown
-          color="white"
           width={20}
-          className={styles.ChevronDown}
-          data-animate={isOpen}
+          className={clsx(styles.chevron, isOpen && styles.open)}
         />
       </div>
 
-      <div
-        className={styles.languageOptions}
-        data-opened={isOpen}
-        onMouseLeave={() => setIsOpen(!isOpen)}
-      >
+      <div className={clsx(styles.options, isOpen && styles.open)}>
         {Object.values(Language).map((lang) => (
           <div
             key={lang}
