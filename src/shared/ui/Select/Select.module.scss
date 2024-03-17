@@ -22,10 +22,6 @@
     transition: transform 0.3s ease;
   }
 
-  /* &Label {
-    flex: 1 1 auto;
-  } */
-
   &Content {
     display: flex;
     align-items: center;
@@ -44,7 +40,7 @@
   }
 
   &.active .option {
-    max-height: 500px;
+    max-height: none;
   }
 }
 
@@ -58,10 +54,6 @@
   overflow: hidden;
   transition: max-height 0.3s ease;
   z-index: 99;
-
-  &List {
-    list-style: none;
-  }
 
   &Item {
     padding: 10px 25px;

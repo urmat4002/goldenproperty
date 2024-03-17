@@ -4,7 +4,7 @@
   .check {
     display: flex;
     align-items: center;
-    padding-left: 1.2rem;
+    padding-inline-start: 1.2rem;
 
     &Input {
       position: absolute;
@@ -14,12 +14,12 @@
     }
 
     p {
-      margin-left: 10px;
+      margin-inline-start: 10px;
     }
 
     svg {
       position: absolute;
-      margin-left: -1.2rem;
+      margin-inline-start: -1.2rem;
       width: 1.4rem;
       height: 1.4rem;
     }

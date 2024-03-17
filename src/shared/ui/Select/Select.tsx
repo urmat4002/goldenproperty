@@ -65,13 +65,11 @@ export const Select = ({
       tabIndex={0}
     >
       <div className={style.selectContent} onClick={() => setIsOpen(!isOpen)}>
-        {/* <div className={style.selectLabel}> */}
         <Typography variant="body" weight="medium" ellipsis>
           {valueOptions.length > 0
             ? valueOptions.map((obj) => capitalize(obj.label)).join(", ")
             : capitalize(placeholder)}
         </Typography>
-        {/* </div> */}
         <ChevronDown />
       </div>
 
