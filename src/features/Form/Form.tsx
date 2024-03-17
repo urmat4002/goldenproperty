@@ -284,7 +284,13 @@ export const Form: FC<FormProps> = ({ variant }) => {
 
 const FormHeading: FC<{ formParams: FormParams }> = ({ formParams }) => (
   <>
-    <Typography variant="h3" weight="medium" color="gold" capitalize>
+    <Typography
+      className={styles.formTitle}
+      variant="h3"
+      weight="medium"
+      color="gold"
+      capitalize
+    >
       {formParams.title}
     </Typography>
     <Typography
