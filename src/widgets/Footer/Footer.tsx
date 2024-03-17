@@ -10,7 +10,6 @@ import {
   useGetCompany,
   useGetEstateTypes,
   useGetStaticData,
-  useGetStaticHeader,
   useWhatsApp,
 } from "@/shared/api/hooks";
 import { useModalContext } from "@/app/providers/useModalContext";
@@ -21,7 +20,6 @@ export const Footer: FC = () => {
   const { whatsappUrl } = useWhatsApp();
   const { data: cities } = useGetCities();
   const { data: types } = useGetEstateTypes();
-  const { data: pages } = useGetStaticHeader();
   const { staticData } = useGetStaticData();
   const { company } = useGetCompany();
 
@@ -33,7 +31,7 @@ export const Footer: FC = () => {
             <LogoFooter />
           </div>
           <div className={styles.footerColumns}>
-            <FooterColumn title={cap(staticData?.footer.cities)}>
+            <FooterColumn title={cap(staticData?.footer.cities || "Cities")}>
               {cities?.cities.map((city) => {
                 return (
                   <FooterLink
@@ -44,7 +42,9 @@ export const Footer: FC = () => {
                 );
               })}
             </FooterColumn>
-            <FooterColumn title={cap(staticData?.footer.estate_types)}>
+            <FooterColumn
+              title={cap(staticData?.footer.estate_types || "Estates")}
+            >
               {types?.estate_types.map((type) => {
                 return (
                   <FooterLink
@@ -55,14 +55,14 @@ export const Footer: FC = () => {
                 );
               })}
             </FooterColumn>
-            <FooterColumn title={cap(staticData?.footer.pages)}>
+            <FooterColumn title={cap(staticData?.footer.pages || "Pages")}>
               <FooterLink
                 to={"/estates"}
-                label={pages?.header.all_real_estates || "Estates"}
+                label={staticData?.header.all_real_estates || "Estates"}
               />
               <FooterLink
                 to={"/about-us"}
-                label={pages?.header.about_us || "About us"}
+                label={staticData?.header.about_us || "About us"}
               />
               <li>
                 <button onClick={sellEstate}>
@@ -71,13 +71,15 @@ export const Footer: FC = () => {
                     capitalize
                     className={styles.footerTypography}
                   >
-                    {pages?.header.place_ad || "Sell"}
+                    {staticData?.header.place_ad || "Sell"}
                   </Typography>
                 </button>
               </li>
             </FooterColumn>
 
-            <FooterColumn title={cap(staticData?.footer.contact_us)}>
+            <FooterColumn
+              title={cap(staticData?.footer.contact_us || "Contact us")}
+            >
               <FooterContact icon={<Mail />} label={company?.email || "..."} />
               <FooterContact icon={<Phone />} label={company?.phone || "..."} />
             </FooterColumn>

@@ -95,15 +95,6 @@ export type StaticDataResponse = Response & {
   };
 };
 
-export type StaticHeaderResponse = Response & {
-  header: {
-    city: string;
-    all_real_estates: string;
-    place_ad: string;
-    about_us: string;
-  };
-};
-
 export type StaticFormCatalogResponse = Response & {
   form: {
     choices: Record<string, string>;
@@ -113,32 +104,6 @@ export type StaticFormCatalogResponse = Response & {
     select_role: string;
     your_email: string;
     your_name: string;
-  };
-};
-
-export type StaticFormsResponse = Response & {
-  forms: {
-    contact_us: string;
-    any_question: string;
-    leave_your_contacts: string;
-    submit_application: string;
-    fill_form: string;
-    sell_with_us: string;
-    successfully: string;
-    thanks: string;
-    download_catalog: string;
-    your_name: string;
-    your_email: string;
-    phone_number: string;
-    your_city: string;
-    date: string;
-    send: string;
-    close: string;
-    download: string;
-    select_role: string;
-    agent: string;
-    buyer: string;
-    exploring: string;
   };
 };
 
