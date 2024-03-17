@@ -83,18 +83,18 @@ export const Footer: FC = () => {
               <FooterContact icon={<Mail />} label={company?.email || "..."} />
               <FooterContact icon={<Phone />} label={company?.phone || "..."} />
             </FooterColumn>
+          </div>
 
-            <div className={styles.footerIcons}>
-              <Link to={company?.facebook || "#"} target="_blank">
-                <Facebook />
-              </Link>
-              <Link to={company?.instagram || "#"} target="_blank">
-                <Instagram />
-              </Link>
-              <Link to={whatsappUrl} target="_blank">
-                <WhatsApp />
-              </Link>
-            </div>
+          <div className={styles.footerIcons}>
+            <Link to={company?.facebook || "#"} target="_blank">
+              <Facebook />
+            </Link>
+            <Link to={company?.instagram || "#"} target="_blank">
+              <Instagram />
+            </Link>
+            <Link to={whatsappUrl} target="_blank">
+              <WhatsApp />
+            </Link>
           </div>
         </div>
 
