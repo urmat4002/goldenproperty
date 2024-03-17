@@ -7,8 +7,8 @@ import {
   useGetStaticData,
 } from "@/shared/api/hooks";
 import { capitalize } from "@/shared/helper/utils";
-import styles from "./Filter.module.scss";
 import { GButton } from "@/shared/ui/Button/GButton";
+import styles from "./Filter.module.scss";
 
 interface FilterValues {
   city: number[];
