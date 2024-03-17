@@ -1,4 +1,5 @@
 @import "@var";
+@import "@mixin";
 
 .language {
   position: relative;
@@ -24,6 +25,9 @@
 .indicatorText {
   color: inherit;
   min-width: 31px;
+  @include tablet {
+    min-width: 22px;
+  }
 }
 
 .options {
