@@ -2,8 +2,11 @@ import { FC, useEffect, useRef, useState } from "react";
 import { SearchIcon } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./Search.module.scss";
+import { useGetStaticData } from "@/shared/api/hooks";
+import { capitalize } from "@/shared/helper/utils";
 
 export const Search: FC = () => {
+  const { staticData } = useGetStaticData();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [searchText, setSearchText] = useState("");
@@ -40,7 +43,7 @@ export const Search: FC = () => {
           id="search"
           ref={inputRef}
           type="text"
-          placeholder="Search"
+          placeholder={capitalize(staticData?.body.search) || "Search"}
           value={searchText}
           onChange={(event) => setSearchText(event.target.value)}
         />
