@@ -28,7 +28,13 @@ export const Navbar: FC = () => {
 
         <li>
           <button className={styles.sellButton} onClick={sellEstate}>
-            <Typography variant="body" capitalize weight="medium" color="white">
+            <Typography
+              className={styles.navbarItemText}
+              variant="body"
+              capitalize
+              weight="medium"
+              color="white"
+            >
               {header?.place_ad || "Sell"}
             </Typography>
           </button>
@@ -42,11 +48,17 @@ const NavbarLink: FC<{ to: string; label: string }> = ({ to, label }) => (
   <li>
     <NavLink
       to={to}
-      style={({ isActive }) => {
-        return isActive ? { color: "#c6a15b" } : {};
-      }}
+      className={({ isActive }) =>
+        isActive ? styles.activeNavLink : styles.navLink
+      }
     >
-      <Typography variant="body" capitalize weight="medium" color="white">
+      <Typography
+        className={clsx(styles.inheritColor, styles.navbarItemText)}
+        variant="body"
+        capitalize
+        weight="medium"
+        color="white"
+      >
         {label}
       </Typography>
     </NavLink>
@@ -83,11 +95,16 @@ const CityButton: FC<{
   return (
     <li>
       <button
-        className={styles.cityButton}
+        className={clsx(styles.cityButton, styles.navbarItemText)}
         onMouseEnter={handleMouseEnter}
         onClick={handleClick}
       >
-        <Typography variant="body" capitalize weight="medium">
+        <Typography
+          className={styles.inheritColor}
+          variant="body"
+          capitalize
+          weight="medium"
+        >
           {header?.city || "City"}
         </Typography>
         <ChevronDown
