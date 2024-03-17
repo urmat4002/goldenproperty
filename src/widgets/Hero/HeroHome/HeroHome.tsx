@@ -23,7 +23,7 @@ export const HeroHome = () => {
               <Typography variant="large">
                 <span>Golden Hut</span> Properties
               </Typography>
-              <Typography variant="body" capitalize>
+              <Typography variant="h3" color="white" capitalize>
                 {data?.static_data.body.slogan ||
                   "Find your dream home with us"}
               </Typography>
