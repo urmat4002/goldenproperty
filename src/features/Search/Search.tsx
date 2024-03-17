@@ -7,23 +7,24 @@ export const Search: FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [searchText, setSearchText] = useState("");
-  const [isFocuse, setIsFocus] = useState(false);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleClick: React.MouseEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
-    const input = inputRef.current! as HTMLInputElement;
-    input.focus();
-    setIsFocus(true);
+  const runSearch = () => {
+    navigate(`/estates/?search=${searchText}`);
   };
-  const handleOnBluer = () => {
-    setSearchText("");
-    setIsFocus(false);
+
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    if (searchText) {
+      runSearch();
+      return;
+    }
+    inputRef.current?.focus();
   };
-  const handleSearch: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+
+  const handleSubmit: React.MouseEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if (searchText) {
-      navigate(`/estates/?search=${searchText}`);
+      runSearch();
     }
   };
 
@@ -32,28 +33,25 @@ export const Search: FC = () => {
   }, [searchParams]);
 
   return (
-    <form
-      className={styles.searchForm}
-      onClick={handleClick}
-      onBlur={handleOnBluer}
-    >
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder="Search"
-        className={styles.searchInput}
-        value={searchText}
-        onChange={(event) => setSearchText(event.target.value)}
-        onBlur={handleOnBluer}
-        data-focus={isFocuse}
-      />
-      <button
-        className={styles.searchButton}
-        onMouseDown={handleSearch}
-        onBlur={handleOnBluer}
-      >
-        <SearchIcon />
-      </button>
+    <form className={styles.searchForm} onSubmit={handleSubmit}>
+      <label className={styles.searchLabel} htmlFor="search">
+        <input
+          className={styles.searchInput}
+          id="search"
+          ref={inputRef}
+          type="text"
+          placeholder="Search"
+          value={searchText}
+          onChange={(event) => setSearchText(event.target.value)}
+        />
+        <button
+          type="button"
+          className={styles.searchButton}
+          onClick={handleClick}
+        >
+          <SearchIcon />
+        </button>
+      </label>
     </form>
   );
 };

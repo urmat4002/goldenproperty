@@ -2,39 +2,46 @@
 
 .searchForm {
   --input-size: 40px;
+  height: 100%;
+  max-width: 250px;
+  display: flex;
+  align-items: center;
+  background-color: $colorGray500;
+}
+
+.searchLabel {
   position: relative;
-  max-width: 220px;
-  z-index: 1;
+  height: var(--input-size);
+  display: flex;
+  align-items: center;
+  background-color: $colorGray300;
+  border: 1px solid $colorGray300;
+  border-radius: 24px;
 }
 
 .searchInput {
   width: 100%;
-  height: var(--input-size);
+  height: 100%;
+  min-width: 0px;
   padding-left: 15px;
-  padding-right: 40px;
-  background-color: $colorGray300;
-  border: 1px solid $colorGray300;
-  border-radius: 24px;
+  padding-right: 5px;
   font-size: 20px;
   color: $colorGray100;
   font-weight: 500;
 }
 
-.searchInput:hover {
+.searchLabel:hover {
   background-color: $colorGray350;
 }
 
-.searchInput:focus {
+.searchLabel:focus-within {
   background-color: $colorGray350;
   border: 1px solid $colorGray200;
 }
 
 .searchButton {
-  position: absolute;
-  right: 0px;
-  top: 0;
+  flex-shrink: 0;
   height: var(--input-size);
-  z-index: 2;
   width: var(--input-size);
   border-radius: var(--input-size);
   border: none;
@@ -50,23 +57,26 @@
 }
 
 .searchButton:active {
-  opacity: 0.5;
+  color: $colorPrimary;
 }
 
 @media (max-width: 500px) {
-  .searchInput {
-    width: 0px;
-    padding-right: 23px;
+  .searchForm {
+    max-width: none;
   }
-  .searchInput[data-focus="true"] {
-    padding-right: 40px;
+  .searchInput {
+    padding: 0;
+    width: 0px;
+  }
+  .searchInput:focus,
+  .searchInput:not(:placeholder-shown) {
+    padding-left: 15px;
+    padding-right: 5px;
     width: 100%;
   }
-  .searchForm:has(.searchInput[data-focus="true"]) {
-    right: 50px;
+  .searchform:focus-within {
     position: absolute;
-    @media (max-width: 360px) {
-      max-width: 170px;
-    }
+    left: -100%;
+    width: 100%;
   }
 }

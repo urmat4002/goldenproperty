@@ -21,11 +21,25 @@
 }
 
 .searchSection {
+  height: 100%;
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 30px;
   @include mobile {
     gap: 20px;
+  }
+  pointer-events: none;
+  & > * {
+    pointer-events: all;
+  }
+}
+
+@media (max-width: 500px) {
+  .searchSection {
+    padding-inline: $containerPadding;
+    position: absolute;
+    inset: 0;
   }
 }
 

@@ -1,16 +1,17 @@
-/* eslint-disable no-unused-vars */
 import { FC, useEffect, useRef, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { ChevronDown, Globe } from "lucide-react";
 import { Typography } from "@/shared/ui";
 import styles from "./LanguageSelector.module.scss";
-import { useQueryClient } from "@tanstack/react-query";
 
+/* eslint-disable no-unused-vars */
 enum Language {
   Arabic = "ar",
   Turkish = "tr",
   English = "en",
   Russian = "ru",
 }
+/* eslint-enable no-unused-vars */
 
 const userLocale =
   navigator.languages &&
@@ -26,7 +27,6 @@ export const LanguageSelector: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const queryClient = useQueryClient();
 
-  // Dayan: строгая типизация с помощью enum и отображение актуального языка
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(() => {
     const storeLanguage = localStorage.getItem("language") as Language;
     if (storeLanguage) return storeLanguage;
@@ -63,7 +63,6 @@ export const LanguageSelector: FC = () => {
     setIsOpen(true);
   };
 
-  // Dayan: Реверс страницы при выборе арабского языка
   const updateDirections = (language: Language) => {
     document.documentElement.dir = language === Language.Arabic ? "rtl" : "ltr";
   };
@@ -92,7 +91,6 @@ export const LanguageSelector: FC = () => {
         data-opened={isOpen}
         onMouseLeave={() => setIsOpen(!isOpen)}
       >
-        {/* Dayan: фича для итерации по enum*/}
         {Object.values(Language).map((lang) => (
           <div
             key={lang}
