@@ -8,7 +8,6 @@ export * from "./Hero/HeroHome";
 export * from "./Hero/HeroRoom";
 export * from "./Hero/HeroAboutUs";
 export * from "./Hero/HeroAboutUs";
-export * from "../features/MenuDropdown";
 export * from "./FormCallBack";
 export * from "./Benefits";
 export * from "./FormRoom";
