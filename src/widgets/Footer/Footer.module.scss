@@ -64,13 +64,14 @@
 }
 
 .footerIcons {
+  width: 100%;
   display: flex;
+  justify-content: end;
   gap: 20px;
   position: absolute;
-  right: 0;
   bottom: 0;
   @include mobile {
-    left: 0;
+    justify-content: start;
   }
 }
 
