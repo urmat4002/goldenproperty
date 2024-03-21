@@ -13,6 +13,7 @@ export const Routing: FC = () => {
         <Route path="estates/:id" element={<Room />} />
         <Route path="about-us" element={<AboutUs />} />
       </Route>
+      <Route path="not-found" element={<NotFound />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -63,8 +63,6 @@ $colorGray350: #ccc; // Assuming this is a valid color
   justify-content: center;
   align-items: flex-start;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
   background-color: #4c4c4c;
   @media (min-width: 600px) {
     height: min(70vh, 700px);
@@ -79,9 +77,8 @@ $colorGray350: #ccc; // Assuming this is a valid color
 
 .heroHomeBackground {
   width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .heroHomeContainer {

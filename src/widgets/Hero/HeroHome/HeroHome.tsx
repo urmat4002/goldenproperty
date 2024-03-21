@@ -3,8 +3,8 @@ import { Section } from "@/features";
 import { Typography } from "@shared/ui";
 import { Filter } from "@/features/Filter";
 import { useGetCompany, useGetStaticData } from "@/shared/api/hooks";
-import styles from "./HeroHome.module.scss";
 import { GButton } from "@/shared/ui/Button/GButton";
+import styles from "./HeroHome.module.scss";
 
 export const HeroHome = () => {
   const { data } = useGetStaticData();

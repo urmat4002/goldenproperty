@@ -14,7 +14,7 @@ export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
   const pdfUrl = estate?.project.pdf_catalog;
 
   useEffect(() => {
-    if (error) navigate("/404", { replace: true });
+    if (error) navigate("/not-found", { replace: true });
   }, [error, navigate]);
 
   return (
