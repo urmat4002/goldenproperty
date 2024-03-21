@@ -173,14 +173,15 @@ export const useGetCompany = () => {
 
 export const useWhatsApp = (id?: number | string) => {
   const { data } = useGetCompany();
+  const { staticData } = useGetStaticData();
   const whatsappNumber = data?.about_company.whatsapp.replace(/\D/g, "");
-  let whatsappUrl = `https://wa.me/${whatsappNumber}`;
-  if (id) {
-    const message = `/?text=${import.meta.env.VITE_HOST}/estate/${id}`;
-    //whatsappUrl += encodeURI(message);
-    whatsappUrl += message;
+  let whatsappUrl = whatsappNumber && `https://wa.me/${whatsappNumber}`;
+  if (id && staticData) {
+    const message = `/?text=${staticData.body.whatsapp_message || ""} ${import.meta.env.VITE_HOST || "https://goldenhutproperties.com"}/estates/${id}`;
+    whatsappUrl += encodeURI(message);
+    //whatsappUrl += message;
   }
-  return { whatsappUrl };
+  return { whatsappUrl: whatsappUrl || "#" };
 };
 
 export const useGetStaticData = () => {

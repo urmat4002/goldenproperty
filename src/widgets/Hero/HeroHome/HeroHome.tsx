@@ -16,7 +16,7 @@ export const HeroHome = () => {
         <img
           className={styles.heroHomeBackground}
           src={company?.background_img}
-          alt="background"
+          alt=""
         />
         <div className={styles.heroHomeContent}>
           <div className={styles.heroHomeContainer}>
