@@ -213,6 +213,7 @@ export const Form: FC<FormProps> = ({ variant }) => {
           hideDropdown
           countrySelectorStyleProps={{ style: { display: "none" } }}
           disableDialCodePrefill
+          flags={[]}
           placeholder={
             capitalize(staticData?.forms.phone_number) || "Phone number"
           }
