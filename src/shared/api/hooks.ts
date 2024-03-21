@@ -140,8 +140,9 @@ export const useGetCities = () => {
     : [];
 
   const cities = data?.cities;
+  const dubai = cities?.find((city) => city.id === 1);
 
-  return { data, cities, cityOptions, isSuccess };
+  return { data, cities, dubai, cityOptions, isSuccess };
 };
 
 export const useGetCityById = (id: number | string) => {

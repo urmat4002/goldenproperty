@@ -7,10 +7,8 @@ import { GButton } from "@/shared/ui/Button/GButton";
 import styles from "./Property.module.scss";
 
 export const Property: FC = () => {
-  const { data } = useGetCities();
+  const { dubai } = useGetCities();
   const { staticData } = useGetStaticData();
-
-  const firstCityData = data?.cities?.[0];
 
   return (
     <Section
@@ -26,19 +24,19 @@ export const Property: FC = () => {
             weight="bold"
             className={styles.title}
           >
-            {firstCityData?.city_name || "Dubai"}
+            {dubai?.city_name || "Dubai"}
           </Typography>
 
           <div className={styles.description}>
             <Typography variant="body" weight="regular" color="white">
-              {firstCityData?.city_description}
+              {dubai?.city_description}
             </Typography>
             <div className={styles.descriptionShade}></div>
           </div>
 
           <Link
             className={styles.button}
-            to={`/estates/?city=${firstCityData?.id || "1"}`}
+            to={`/estates/?city=${dubai?.id || "1"}`}
           >
             <GButton className={styles.button} variant="navigate">
               {staticData?.body.see_real_estates || "See real estates"}
@@ -46,11 +44,7 @@ export const Property: FC = () => {
           </Link>
         </div>
 
-        <img
-          className={styles.image}
-          src={firstCityData?.city_img}
-          alt="Картина"
-        />
+        <img className={styles.image} src={dubai?.city_img} alt="Картина" />
       </div>
     </Section>
   );
