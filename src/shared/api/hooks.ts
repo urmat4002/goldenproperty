@@ -11,6 +11,7 @@ import {
   StaticFormCatalogResponse,
 } from "./types";
 import { capitalize } from "../helper/utils";
+import { useSearchParams } from "react-router-dom";
 
 export type FilterOption = {
   id: number;
@@ -72,16 +73,22 @@ export const useGetEstates = (limit: number, searchParams: URLSearchParams) => {
 };
 
 export const useGetEstateById = (id?: number | string) => {
-  const { data, isLoading } = useQuery({
+  const [searchParams] = useSearchParams();
+  const preview = searchParams.get("preview");
+  const { data, isLoading, error } = useQuery({
     queryKey: ["estate", { id }],
     queryFn: async () => {
-      const response = await axiosAPI<EstateIdResponse>(`/estate/${id}/`);
+      const response = await axiosAPI<EstateIdResponse>(`/estate/${id}/`, {
+        params: {
+          preview,
+        },
+      });
       return response.data;
     },
   });
   const estate = data?.estate;
   const pdfUrl = estate?.project.pdf_catalog;
-  return { data, estate, pdfUrl, isLoading };
+  return { data, estate, pdfUrl, isLoading, error };
 };
 
 export const useGetSimilarEstates = (id?: number | string) => {

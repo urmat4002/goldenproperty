@@ -2,19 +2,20 @@ import { Link } from "react-router-dom";
 import { Section } from "@/features";
 import { Typography } from "@shared/ui";
 import { Filter } from "@/features/Filter";
-import { useGetStaticData } from "@/shared/api/hooks";
+import { useGetCompany, useGetStaticData } from "@/shared/api/hooks";
 import styles from "./HeroHome.module.scss";
 import { GButton } from "@/shared/ui/Button/GButton";
 
 export const HeroHome = () => {
   const { data } = useGetStaticData();
+  const { company } = useGetCompany();
 
   return (
     <Section color="white" hero>
       <div className={styles.heroHome}>
         <img
           className={styles.heroHomeBackground}
-          src="https://images.unsplash.com/photo-1597659840241-37e2b9c2f55f?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src={company?.background_img}
           alt="background"
         />
         <div className={styles.heroHomeContent}>

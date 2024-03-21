@@ -28,31 +28,37 @@ export const Bullets: FC<{
       <BulletPoint
         styles={styles}
         icon={<CityOne />}
-        label={capitalize(staticData?.static_data.body.estate_type)}
+        label={capitalize(staticData?.static_data.body.estate_type || "Type")}
         value={capitalize(estate?.estate_type)}
       />
       <BulletPoint
         styles={styles}
         icon={<Calendar />}
-        label={capitalize(staticData?.static_data.body.completion)}
+        label={capitalize(
+          staticData?.static_data.body.completion || "Completion"
+        )}
         value={estate?.project.completion}
       />
       <BulletPoint
         styles={styles}
         icon={<Sofa />}
-        label={capitalize(staticData?.static_data.body.furnished)}
+        label={capitalize(
+          staticData?.static_data.body.furnished || "Furnished"
+        )}
         value={estate?.project.is_furnished}
       />
       <BulletPoint
         styles={styles}
         icon={<TriangleRuler />}
-        label="Area !API"
+        label={capitalize(staticData?.static_data.body.area || "Area")}
         value={estate?.area}
       />
       <BulletPoint
         styles={styles}
         icon={<CityOne />}
-        label="Is secondary !API"
+        label={capitalize(
+          staticData?.static_data.body.is_secondary || "Secondary"
+        )}
         value={estate?.is_secondary}
       />
     </ul>

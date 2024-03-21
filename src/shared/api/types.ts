@@ -79,6 +79,10 @@ export type Company = {
   instagram: string;
   whatsapp: string;
   company_img: string;
+  first_img: string;
+  second_img: string;
+  third_img: string;
+  background_img: string;
 };
 
 export type CompanyResponse = Response & {

@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { useParams } from "react-router-dom";
+import { FC, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Section, SliderObject } from "@/features";
 import { useGetEstateById } from "@/shared/api/hooks";
 import { Brief } from "./components/Brief";
@@ -9,8 +9,13 @@ import styles from "./HeroRoom.module.scss";
 
 export const HeroRoom: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
   const { id } = useParams();
-  const { estate, isLoading } = useGetEstateById(id);
+  const { estate, isLoading, error } = useGetEstateById(id);
+  const navigate = useNavigate();
   const pdfUrl = estate?.project.pdf_catalog;
+
+  useEffect(() => {
+    if (error) navigate("/404", { replace: true });
+  }, [error, navigate]);
 
   return (
     <Section title={isLoading ? "" : estate?.project.name} container>
